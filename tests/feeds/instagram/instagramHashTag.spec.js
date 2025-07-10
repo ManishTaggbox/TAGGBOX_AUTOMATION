@@ -27,3 +27,9 @@ test('@InstagramHashTag Create Feed', async ({ page, token }) => {
   });
 });
 
+test.afterEach(async ({ page }) => {
+  console.log('🧹 Running teardown...');
+  await page.evaluate(() => localStorage.clear());
+  await page.close();
+  console.log('✅ Teardown complete.');
+});

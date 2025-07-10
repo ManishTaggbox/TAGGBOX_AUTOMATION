@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const ManageFeeds = require('../../feeds/managefeeds/ManageFeeds.js');
+import {INSTAGRAM} from '../../utils/constant.js';
 
 class InstagramHashTag {
   constructor(page) {
@@ -10,7 +11,7 @@ class InstagramHashTag {
 
   async instagramHashTag() {
     await test.step('Step 1: Fill hashtag input with "dance"', async () => {
-      await this.enterHashTag.fill('dance');
+      await this.enterHashTag.fill(INSTAGRAM.INSTAGRAMHASHTAG);
     });
 
     await test.step('Step 2: Wait 2 seconds for UI update', async () => {
