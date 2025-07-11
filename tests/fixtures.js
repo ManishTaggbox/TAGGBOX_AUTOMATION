@@ -1,4 +1,4 @@
-
+// fixtures.js
 import { test as base, request } from '@playwright/test';
 import { APiUtils } from '../utils/APiUtils.js';
 
@@ -9,11 +9,23 @@ const loginPayload = {
 };
 
 export const test = base.extend({
-  token: [async ({}, use) => {
+  apiContext: [async ({ }, use) => {
     const apiCtx = await request.newContext();
-    const apiUtils = new APiUtils(apiCtx, loginPayload);
+    await use(apiCtx);
+  }, { scope: 'worker' }],
+
+  token: [async ({ apiContext }, use) => {
+    const apiUtils = new APiUtils(apiContext, loginPayload);
     const token = await apiUtils.getToken();
+    console.log("✅ Token received:", token);
     await use(token);
+  }, { scope: 'worker' }],
+
+  wallId: [async ({ apiContext, token }, use) => {
+    const apiUtils = new APiUtils(apiContext, loginPayload);
+    const wallId = await apiUtils.getWallId(token);
+    console.log("✅ Wall ID received:", wallId);
+    await use(wallId);
   }, { scope: 'worker' }],
 });
 
