@@ -1,4 +1,5 @@
 export const INSTAGRAM = {
-  INSTAGRAMHASHTAG: 'car'
+  INSTAGRAMHASHTAG: 'car',
+  INSTAGRAMHANDLE: 'vantara'
   // add more as needed
 };
