@@ -12,3 +12,12 @@ export const LINKEDIN = {
 export const GOOGLE = {
   GOOGLEPLACE: 'Taggbox, Queens Road, Vidyut Nagar B, Neelkanth Colony, Vidhyut Nagar, Jaipur, Rajasthan, India'
 };
+
+export const YOUTUBE = {
+  YOUTUBECHANNELURL: 'aajtak',
+  YOUTUBESHORTSURL: 'aajtak',
+  YOUTUBEPLAYLISTURL: 'https://www.youtube.com/playlist?list=PLP-nGFpz3fa8QR65NQKLTmDmwKbUzjkOg',
+  YOUTUBEKEYWORDS: 'aajtak',
+  YOUTUBELOCATION: 'Jaipur',
+  YOUTUBELOCATIONKEYWORDS: 'food'
+};
