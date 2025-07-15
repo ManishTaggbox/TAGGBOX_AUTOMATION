@@ -21,3 +21,11 @@ export const YOUTUBE = {
   YOUTUBELOCATION: 'Jaipur',
   YOUTUBELOCATIONKEYWORDS: 'food'
 };
+
+
+
+export const TIKTOK = {
+  TIKTOKHASHTAG: 'nature',
+  TIKTOKHANDLE: 'charlidamelio',
+  TiKTOKPOSTURL: 'https://www.tiktok.com/@sam.clovers/video/7330025636594994474'
+};
