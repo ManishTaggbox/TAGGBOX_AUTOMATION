@@ -1,4 +1,4 @@
-import { GOOGLE, PINTEREST } from "../pageobjects/utils/constant";
+import { GOOGLE, PINTEREST, TUMBLR } from "../pageobjects/utils/constant";
 
 // constants.js
 export const FEED_PATH = {
@@ -8,6 +8,10 @@ export const FEED_PATH = {
   YOUTUBE: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/7`,
   TIKTOK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/28`,
   PINTEREST: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/5`,
-  VIMEO: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/8`
+  VIMEO: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/8`,
+  FLICKR: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/6`,
+  TUMBLR: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/11`,
+  YELP: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/19`,
+  AIRBNB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/23`
   
 };
