@@ -29,3 +29,15 @@ export const TIKTOK = {
   TIKTOKHANDLE: 'charlidamelio',
   TiKTOKPOSTURL: 'https://www.tiktok.com/@sam.clovers/video/7330025636594994474'
 };
+
+
+export const  PINTEREST = {
+ PINTERESTHANDLE: 'charlidamelio',
+ PINTERESTUSERBOARD: 'https://in.pinterest.com/meghajmallick/manish/'
+};
+
+
+export const  VIMEO = {
+ VIDEMOHASHTAG: 'beach',
+  VIMEOHANDLE: 'globalmobilitygmj'
+};
