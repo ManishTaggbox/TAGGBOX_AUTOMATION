@@ -83,3 +83,14 @@ export const  AliExpress = {
   AliExpressReviewsUrl: 'https://www.aliexpress.com/item/3256807619446344.html'
 
 };
+
+
+export const  BOOKINGCOM = {
+  BOOKINGCOMHOTELURL: 'https://www.booking.com/hotel/ae/tryp-by-wyndham-dubai.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4AuT13MMGwAIB0gIkMjA1YjMzZGItZGNhZi00NGI2LTgwYTItYWE2MGUyMDMwM2Fm2AIF4AIB&sid=b5825a17b1d3f37b5168197e0a7a0954'
+
+};
+
+export const  RSSDATA = {
+  RSSDISPLAYNAME: 'rss feed',
+  RSSURL: 'https://www.indiatv.in/rssnews/topstory-sports.xml'
+};

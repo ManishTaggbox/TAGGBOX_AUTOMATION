@@ -15,6 +15,8 @@ export const FEED_PATH = {
   AIRBNB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/23`,
   TRIPADVISOR: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/35`,
   AMAZON: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/34`,
-  ALIEXPRESS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/37`
+  ALIEXPRESS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/37`,
+  BOOKINGCOM: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/38`,
+  RSS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/12`,
   
 };
