@@ -12,6 +12,9 @@ export const FEED_PATH = {
   FLICKR: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/6`,
   TUMBLR: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/11`,
   YELP: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/19`,
-  AIRBNB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/23`
+  AIRBNB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/23`,
+  TRIPADVISOR: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/35`,
+  AMAZON: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/34`,
+  ALIEXPRESS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/37`
   
 };

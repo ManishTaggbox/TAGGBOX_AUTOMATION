@@ -66,3 +66,20 @@ export const  AIRBNB = {
  AIRBNBROOMS: 'https://www.airbnb.co.in/rooms/37898787?adults=1&category_tag=Tag%3A8536&children=0&enable_m3_private_room=true&infants=0&pets=0&photo_id=887849071&search_mode=flex_destinations_search&check_in=2024-05-03&check_out=2024-05-08&source_impression_id=p3_1713855063_XZ%2FCaIWzrjjurlHm&previous_page_section_name=1000&federated_search_id=27b2f3f8-8b3e-4344-937b-7999ac7dd528'
  
 };
+
+
+export const  TRIPADVISOR = {
+ TRIPADVISORRESTAURANT: 'https://www.tripadvisor.in/Attraction_Review-g304555-d317345-Reviews-Hawa_Mahal_Palace_of_Wind-Jaipur_Jaipur_District_Rajasthan.html',
+ TRIPADVISORHOTEL: 'https://www.tripadvisor.in/Hotel_Review-g304555-d304847-Reviews-Jai_Mahal_Palace-Jaipur_Jaipur_District_Rajasthan.html'
+};
+
+export const  Amazon = {
+  AMAZONPRODUCTURL: 'https://www.amazon.in/Haier-Inverter-Refrigerator-HES-690SS-P-Convertible/dp/B0BZ12FPM1/ref=pd_sbs_d_sccl_2_5/258-6572085-0089955?pd_rd_w=V9o47&content-id=amzn1.sym.6d240404-f8ea-42f5-98fe-bf3c8ec77086&pf_rd_p=6d240404-f8ea-42f5-98fe-bf3c8ec77086&pf_rd_r=QH2VJ7VF4S8D7035T76N&pd_rd_wg=CiKgl&pd_rd_r=aa4e63da-43a4-48bd-bc78-8ee85594e72f&pd_rd_i=B0BZ12FPM1&psc=1' 
+
+};
+
+
+export const  AliExpress = {
+  AliExpressReviewsUrl: 'https://www.aliexpress.com/item/3256807619446344.html'
+
+};
