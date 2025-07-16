@@ -18,5 +18,6 @@ export const FEED_PATH = {
   ALIEXPRESS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/37`,
   BOOKINGCOM: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/38`,
   RSS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/12`,
+  SLACK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/20`
   
 };
