@@ -7,47 +7,58 @@ class RequestNetwork {
         this.page = page;
 
         // Locators
-        this.btnRequestNetwork = page.locator("button.custom-req-network");
-        this.inputDescription = page.locator('#r_f_desc');
-        this.btnTriggerFileUpload = page.locator('#sugg_doc');
-        this.inputFile = page.locator('input[type="file"]').first();
-        this.btnUploadFile = page.locator("//button[normalize-space()='Upload 1 file']");
-        this.btnCreateFeed = page.locator('#r_f_submit');
+        this.requestNetworkbtn = page.locator("button[class='custom-req-network border-0 px-2 btn btn-secondary']");
+        this.description = page.locator('#r_f_desc');
+        this.uploadFilebtn1 = page.locator("#sugg_doc");
+        this.fileInput = page.locator('input[type="file"]').first();
+        this.uploadFileBtn = page.locator("//button[normalize-space()='Upload 1 file']");
+        this.submitBtn = page.locator('#r_f_submit');
+        this.successMessage = page.locator("//div[contains(text(),'Request shared successfully')]");
+
     }
+
 
     getAbsolutePath(relativePath) {
         const fullPath = path.resolve(__dirname, relativePath);
         if (!fs.existsSync(fullPath)) {
-            throw new Error(`❌ File not found at: ${fullPath}`);
+            throw new Error(`❌ File not found: ${fullPath}`);
         }
         return fullPath;
     }
 
-    async uploadFile(locator, relativePath) {
-        const filePath = this.getAbsolutePath(relativePath);
-        await locator.setInputFiles(filePath);
+    async uploadFile(input, filePath) {
+        const fullPath = this.getAbsolutePath(filePath);
+        await input.setInputFiles(fullPath);
     }
 
+
+
     async requestNetwork() {
-        await test.step('Fill description and open file upload', async () => {
-            await this.btnRequestNetwork.click({ force: true });
-            await this.inputDescription.fill('This is a test description for Request Network feed.');
+        await test.step('Click "Upload" tab', async () => {
+            await this.requestNetworkbtn.click({ force: true });
+            await this.description.fill('This is a test description for Request Network feed.');
         });
 
-        await test.step('Upload video from device', async () => {
-            await this.btnTriggerFileUpload.click({ force: true });
-            await this.uploadFile(this.inputFile, '../../../videos/demovideo.mp4');
-            await this.btnUploadFile.waitFor({ state: 'visible', timeout: 5000 });
-            await this.btnUploadFile.click({ force: true });
+        await test.step('Select "My Device" and upload video', async () => {
+            await this.uploadFilebtn1.click({ force: true });
 
-            // Optional: Wait until file upload is processed (you can replace with a better condition if possible)
-            await this.page.waitForLoadState('networkidle');
+
+            await this.uploadFile(this.fileInput, '../../../videos/demovideo.mp4');
+            await this.uploadFileBtn.click({ force: true });
+            await this.page.waitForTimeout(8000);
         });
 
-        await test.step('Submit the network feed', async () => {
-            await this.btnCreateFeed.click();
+
+
+        await test.step('Click "Submit" button', async () => {
+            await this.submitBtn.click();
         });
+        await test.step('Soft verify success message', async () => {
+            await expect.soft(this.successMessage).toHaveText('Request shared successfully');
+        });
+
     }
 }
 
 module.exports = RequestNetwork;
+
