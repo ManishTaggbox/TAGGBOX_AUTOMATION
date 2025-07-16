@@ -1,19 +1,17 @@
 import { test, expect } from '../../fixtures.js';
 import { FEED_PATH } from '../../../utils/constants.js';
 
-import TiktokPersonalPage from '../../../pageobjects/feeds/upload/TiktokPersonal.js';
-import InstagramPostUrlPage from '../../../pageobjects/feeds/upload/InstagramPostUrl.js';   
-import ManualUploadPage from '../../../pageobjects/feeds/upload/ManualUpload.js';
+import RequestNetworkPage from '../../../pageobjects/feeds/requestnetwork/RequestNetwork.js';   
 
 // Reusable function to run feed test
-const runUploadFeedTest = ({ tag, PageObject, method }) => {
+const runRequestNetworkFeedTest = ({ tag, PageObject, method }) => {
   test(tag, async ({ page, token, wallId }) => {
     await test.step('Inject token into local storage', async () => {
       await page.addInitScript(token => localStorage.setItem('token', token), token);
     });
 
     await test.step('Navigate to Add Feed page', async () => {
-      await page.goto(FEED_PATH.UPLOAD(wallId), { waitUntil: 'domcontentloaded' });
+      await page.goto(FEED_PATH.REQUESTNETWORK(wallId), { waitUntil: 'domcontentloaded' });
     });
 
     await test.step('Soft check for correct page title', async () => {
@@ -32,16 +30,15 @@ const runUploadFeedTest = ({ tag, PageObject, method }) => {
 };
 
 // Feed types configuration
-const uploadFeeds = [
-  { tag: '@TiktokPersonal  Create Feed', PageObject: TiktokPersonalPage, method: 'tiktokPersonal' },
-  { tag: '@InstagramPostUrl  Create Feed', PageObject: InstagramPostUrlPage, method: 'instagramPostUrl' },
-  { tag: '@ManualUpload  Create Feed', PageObject: ManualUploadPage, method: 'manualUpload' }
+const requestNetworkFeeds = [
+  { tag: '@RequestNetwork  Create Feed', PageObject: RequestNetworkPage, method: 'requestNetwork' }
+
  
  
 ];
 
 // Dynamically register each test
-uploadFeeds.forEach(runUploadFeedTest);
+requestNetworkFeeds.forEach(runRequestNetworkFeedTest);
 
 // Common teardown
 test.afterEach(async ({ page }) => {

@@ -19,6 +19,7 @@ export const FEED_PATH = {
   BOOKINGCOM: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/38`,
   RSS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/12`,
   SLACK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/20`,
-  UPLOAD: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`
+  UPLOAD: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`,
+  REQUESTNETWORK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`
 
 };
