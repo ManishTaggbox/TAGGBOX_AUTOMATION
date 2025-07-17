@@ -10,6 +10,7 @@ import InstagramMentionsPage from '../../../pageobjects/feeds/instagram/Instagra
 import InstagramTaggedInstaLoginPage from '../../../pageobjects/feeds/instagram/InstagramTaggedInstaLogin.js';
 import InstagramTaggedFBLoginPage from '../../../pageobjects/feeds/instagram/InstagramTaggedFBLogin.js';
 import InstagramReelsPage from '../../../pageobjects/feeds/instagram/InstagramReels.js';
+import InstagramOnlyReelsPage from '../../../pageobjects/feeds/instagram/InstagramOnlyReels.js';
 
 // Reusable function to run feed test
 const runInstagramFeedTest = ({ tag, PageObject, method }) => {
@@ -47,6 +48,7 @@ const instagramFeeds = [
   { tag: '@InstagramTaggedInstaLogin Create Feed', PageObject: InstagramTaggedInstaLoginPage, method: 'instagramTaggedInstaLogin' },
   { tag: '@InstagramTaggedFBLogin Create Feed', PageObject: InstagramTaggedFBLoginPage, method: 'instagramTaggedFBLogin' },
   { tag: '@InstagramReels Create Feed', PageObject: InstagramReelsPage, method: 'instagramReels' },
+  { tag: '@InstagramOnlyReels Create Feed', PageObject: InstagramOnlyReelsPage, method: 'instagramOnlyReels' }
 ];
 
 // Dynamically register each test

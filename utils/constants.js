@@ -22,6 +22,7 @@ export const FEED_PATH = {
   UPLOAD: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`,
   REQUESTNETWORK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`,
   TWITTER: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/1`,
-  FACEBOOK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/3`
+  FACEBOOK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/3`,
+  REVIEWHUB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/29`,
 
 };
