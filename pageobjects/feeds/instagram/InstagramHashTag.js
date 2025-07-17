@@ -27,7 +27,7 @@ class InstagramHashTag {
     });
 
     await test.step('Step 5: Wait 25 seconds for Content Gallery to load', async () => {
-      await this.page.waitForTimeout(35000);
+      await this.page.waitForTimeout(45000);
     });
 
     await test.step('Step 6: Proceed with feed management if Content Gallery is loaded', async () => {

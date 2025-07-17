@@ -20,7 +20,7 @@ class TwitterAdvanced {
     });
 
     await test.step('Step 3: Wait 2 seconds for UI update', async () => {
-      await this.page.waitForTimeout(2000);
+      await this.page.waitForTimeout(3000);
     });
 
     await test.step('Step 4: Verify "Create Feed" button is enabled', async () => {
@@ -32,7 +32,7 @@ class TwitterAdvanced {
     });
 
     await test.step('Step 6: Wait 10 seconds for Content Gallery to load', async () => {
-      await this.page.waitForTimeout(10000);
+      await this.page.waitForTimeout(13000);
     });
 
     await test.step('Step 7: Proceed with feed management if Content Gallery is loaded', async () => {

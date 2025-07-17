@@ -101,7 +101,7 @@ export const  TWITTER = {
  TWITTERHASHTAG: 'war',
   TWITTERHANDLE: 'elonmusk',
   TWITTERMENTION: 'elonmusk',
-  TWITTERADVANCED: 'beach'
+  TWITTERADVANCED: 'food'
 
 };
 

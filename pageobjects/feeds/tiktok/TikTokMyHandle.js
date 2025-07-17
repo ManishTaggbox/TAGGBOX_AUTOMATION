@@ -15,7 +15,7 @@ class TikTokMyHandle {
     });
 
     await test.step('Step 2: Wait 2 seconds for UI update', async () => {
-      await this.page.waitForTimeout(2000);
+      await this.page.waitForTimeout(4000);
     });
 
     await test.step('Step 3: Verify "Create Feed" button is enabled', async () => {
@@ -26,7 +26,7 @@ class TikTokMyHandle {
       await this.createFeedBtn.click();
     });
 
-    await test.step('Step 5: Wait 25 seconds for Content Gallery to load', async () => {
+    await test.step('Step 5: Wait 15 seconds for Content Gallery to load', async () => {
       await this.page.waitForTimeout(15000);
     });
 
