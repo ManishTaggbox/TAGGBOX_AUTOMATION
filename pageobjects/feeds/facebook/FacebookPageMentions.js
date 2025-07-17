@@ -2,16 +2,16 @@ const { test, expect } = require('@playwright/test');
 const ManageFeeds = require('../managefeeds/ManageFeeds.js');
 
 
-class InstagramMentions {
+class FacebookPageMentions {
   constructor(page) {
     this.page = page;
-    this.mentions = page.locator("//a[@data-name='mentions']");
+    this.pagementions = page.locator("//a[@data-name='pagementions']");
     this.createFeedBtn = page.locator('#create_feed');
   }
 
-  async instagramMentions() {
-    await test.step('Step 1: Click On  mentions', async () => {
-      await this.mentions.click({ force: true });
+  async facebookPageMentions() {
+    await test.step('Step 1: Click On  pagementions', async () => {
+      await this.pagementions.click({ force: true });
     });
 
     await test.step('Step 2: Wait 2 seconds for UI update', async () => {
@@ -26,8 +26,8 @@ class InstagramMentions {
       await this.createFeedBtn.click();
     });
 
-    await test.step('Step 5: Wait 25 seconds for Content Gallery to load', async () => {
-      await this.page.waitForTimeout(15000);
+    await test.step('Step 5: Wait 10 seconds for Content Gallery to load', async () => {
+      await this.page.waitForTimeout(10000);
     });
 
     await test.step('Step 6: Proceed with feed management if Content Gallery is loaded', async () => {
@@ -41,4 +41,4 @@ class InstagramMentions {
   }
 }
 
-module.exports = InstagramMentions;
+module.exports = FacebookPageMentions;

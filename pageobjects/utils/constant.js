@@ -104,3 +104,8 @@ export const  TWITTER = {
   TWITTERADVANCED: 'beach'
 
 };
+
+export const  FACEBOOK = {
+  FACEBOOKPAGE: 'aajtak'
+
+};
