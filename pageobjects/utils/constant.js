@@ -95,3 +95,12 @@ export const  RSSDATA = {
   RSSDISPLAYNAME: 'rss feed',
   RSSURL: 'https://www.indiatv.in/rssnews/topstory-sports.xml'
 };
+
+
+export const  TWITTER = {
+ TWITTERHASHTAG: 'war',
+  TWITTERHANDLE: 'elonmusk',
+  TWITTERMENTION: 'elonmusk',
+  TWITTERADVANCED: 'beach'
+
+};

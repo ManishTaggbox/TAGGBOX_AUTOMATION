@@ -20,6 +20,7 @@ export const FEED_PATH = {
   RSS: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/12`,
   SLACK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/20`,
   UPLOAD: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`,
-  REQUESTNETWORK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`
+  REQUESTNETWORK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}`,
+  TWITTER: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/1`,
 
 };
