@@ -14,6 +14,7 @@ class ManageFeeds {
   async manageFeed() {
     await test.step("Step 1: Click 'Manage Feeds' button", async () => {
       await this.manageFeedsBtn.click();
+        await this.page.waitForTimeout(2000);
     });
 
     await test.step("Step 2: Soft check that asset count element is visible", async () => {
