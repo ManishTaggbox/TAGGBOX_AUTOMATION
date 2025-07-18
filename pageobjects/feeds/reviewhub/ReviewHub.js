@@ -7,7 +7,7 @@ class ReviewHub {
   constructor(page) {
     this.page = page;
 
-    // --- Feed Creation Locators ---
+  
     this.feedTitle = page.locator('#su_title');
     this.feedSubtitle = page.locator('#su_sub_title');
     this.logo = page.locator('#su_logo');
