@@ -12,7 +12,7 @@ const config = {
   ],
   use: {
     browserName: 'chromium',
-    headless: false,
+    headless: true,
     baseURL: 'https://app.taggbox.com',
     actionTimeout: 0,             // No per-action timeout
     navigationTimeout: 30000,     // Set a safe nav timeout instead of disabling

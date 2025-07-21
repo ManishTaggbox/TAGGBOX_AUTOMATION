@@ -1,10 +1,7 @@
-const { expect } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
-
-class DeleteProduct
- {
-    constructor(page) 
-    {
+class DeleteProduct {
+    constructor(page) {
         this.page = page;
         this.deleteIcon = page.locator('#action-trash-can');
         this.confirmDeleteBtn = page.locator('//button[text()="Yes, delete it!"]');
@@ -12,35 +9,56 @@ class DeleteProduct
         this.productName = page.locator('//span[text()="Test Product"]');
         this.selectAllCheckbox = page.locator('#check_all_pro');
         this.deleteAllBtn = page.locator('#d_selected_btn');
-        
     }
 
-    async deleteProduct() 
-    {
-        // Delete single product 
-        await this.deleteIcon.first().click();
-        await this.confirmDeleteBtn.click();
-        await expect(this.toastMsg).toBeVisible();
-        await expect(this.toastMsg).toHaveText('Successfully Deleted !');
+    async deleteProduct() {
+        await test.step("Step 1: Click on delete icon for single product", async () => {
+            await this.deleteIcon.first().click();
+        });
 
-        // Verify product is deleted
-        await expect(this.productName).not.toBeVisible();
+        await test.step("Step 2: Confirm deletion by clicking 'Yes, delete it!' button", async () => {
+            await this.confirmDeleteBtn.click();
+        });
+
+        await test.step("Step 3: Verify success toast message is visible", async () => {
+            await expect.soft(this.toastMsg).toBeVisible();
+        });
+
+        await test.step("Step 4: Verify success toast message content", async () => {
+            await expect.soft(this.toastMsg).toHaveText('Successfully Deleted !');
+        });
+
+        await test.step("Step 5: Verify the deleted product is no longer visible", async () => {
+            await expect.soft(this.productName).not.toBeVisible();
+        });
     }
 
-    async deleteMultipleProducts() 
-    {
-        // Select multiple products
-        await this.selectAllCheckbox.click();
-        await this.deleteAllBtn.click();
-        await this.confirmDeleteBtn.click();
-        await expect(this.toastMsg).toBeVisible();
-        await expect(this.toastMsg).toHaveText('Successfully Deleted !');
+    async deleteMultipleProducts() {
+        await test.step("Step 1: Select all products using select all checkbox", async () => {
+            await this.selectAllCheckbox.click();
+        });
 
-        // Verify products are deleted
-        const productNames = await this.page.locator('//span[text()="Test Product"]').count();
-        expect(productNames).toBe(0);
+        await test.step("Step 2: Click delete selected products button", async () => {
+            await this.deleteAllBtn.click();
+        });
+
+        await test.step("Step 3: Confirm bulk deletion by clicking 'Yes, delete it!' button", async () => {
+            await this.confirmDeleteBtn.click();
+        });
+
+        await test.step("Step 4: Verify success toast message is visible for bulk deletion", async () => {
+            await expect.soft(this.toastMsg).toBeVisible();
+        });
+
+        await test.step("Step 5: Verify success toast message content for bulk deletion", async () => {
+            await expect.soft(this.toastMsg).toHaveText('Successfully Deleted !');
+        });
+
+        await test.step("Step 6: Verify all products are deleted by checking count", async () => {
+            const productNames = await this.page.locator('//span[text()="Test Product"]').count();
+            expect.soft(productNames).toBe(0);
+        });
     }
-
 }
 
 module.exports = DeleteProduct;

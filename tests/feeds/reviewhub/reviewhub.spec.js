@@ -31,7 +31,10 @@ const runReviewhubFeedTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const reviewFeeds = [
-  { tag: '@ReviewHub Create Feed', PageObject: ReviewHubPage, method: 'reviewHub' }
+  { tag: '@ReviewHub Create Feed', PageObject: ReviewHubPage, method: 'reviewHub' },
+  { tag: '@FillReviewForm Create Feed', PageObject: ReviewHubPage, method: 'fillReviewForm' },
+  { tag: '@VerifySnapUpFeed Create Feed', PageObject: ReviewHubPage, method: 'verifySnapUpFeed' }
+
 ];
 
 // Dynamically register each test
