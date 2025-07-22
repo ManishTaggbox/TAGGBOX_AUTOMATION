@@ -67,7 +67,7 @@ class EditDetails {
         });
 
         await test.step("Step 8: Fill full name field with 'Shristy'", async () => {
-            await this.fullName.fill('Shristy');
+            await this.fullName.fill('Manish Somani');
         });
 
         await test.step("Step 9: Click on first arrow icon to open industry dropdown", async () => {
@@ -91,7 +91,7 @@ class EditDetails {
         });
 
         await test.step("Step 14: Fill contact field with '9876543210'", async () => {
-            await this.contact.fill('9876543210');
+            await this.contact.fill('9876543110');
         });
 
         await test.step("Step 15: Click on first edit icon to open profile picture upload", async () => {
