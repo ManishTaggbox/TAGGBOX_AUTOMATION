@@ -8,10 +8,10 @@ class VerifyDetails
     constructor(page) 
     {
         this.page = page;
-        this.name = page.locator('//h6[text()="Shristy   "]'); 
-        this.email = page.locator('//p[text()="shristy+51@taggbox.com"]');
-        this.fullName = page.locator('//span[text()="Shristy   "]');
-        this.emailAddress = page.locator('//span[text()="shristy+51@taggbox.com"]');
+        this.name = page.locator("//h6[normalize-space()='Manish Somani']"); 
+        this.email = page.locator('//p[text()="manish+51@taggbox.com"]');
+        this.fullName = page.locator('//span[text()="Manish Somani "]');
+        this.emailAddress = page.locator('//span[text()="manish.s+51@taggbox.com"]');
         this.verifyTag = page.locator('//span[text()="Verified"]');
      
     }
@@ -28,8 +28,6 @@ class VerifyDetails
         await expect(this.emailAddress).toHaveText('shristy+51@taggbox.com');
         await expect(this.verifyTag).toBeVisible();
         await expect(this.verifyTag).toHaveText('Verified');
-
-        await this.page.waitForTimeout(25000); 
 
     }
 }
