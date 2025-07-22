@@ -52,7 +52,7 @@ class EditDetails {
         });
 
         await test.step("Step 8: Fill full name field with 'Manish'", async () => {
-            await this.fullName.fill('Manish');
+            await this.fullName.fill('Taggbox');
         });
 
         await test.step("Step 9: Click on first arrow icon to open industry dropdown", async () => {
