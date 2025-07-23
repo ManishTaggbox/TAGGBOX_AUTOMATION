@@ -34,7 +34,7 @@ class YoutubeChannelUrl {
         });
 
         await test.step('Step 6: Wait 25 seconds for Content Gallery to load', async () => {
-            await this.page.waitForTimeout(10000);
+            await this.page.waitForTimeout(20000);
         });
 
         await test.step('Step 7: Proceed with feed management if Content Gallery is loaded', async () => {

@@ -24,6 +24,6 @@ export const FEED_PATH = {
   TWITTER: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/1`,
   FACEBOOK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/3`,
   REVIEWHUB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/29`,
-  MODERATION: (wallId) => `https://app.taggbox.com/content/moderation/${wallId}`,
+  MODERATION: (wallId) => `https://app.taggbox.com/content/moderation/${wallId}/`,
 
 };

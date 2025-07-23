@@ -106,7 +106,7 @@ export const  TWITTER = {
 };
 
 export const  FACEBOOK = {
-  FACEBOOKPAGE: 'aajtak'
+  FACEBOOKPAGE: 'dance'
 
 };
 
