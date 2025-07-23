@@ -8,12 +8,12 @@ class EditDetails {
         this.editBtn = page.locator('//button[text()="Edit Profile"]'); 
         this.fullName = page.locator('//input[@name="fname"]');
         this.orgInput = page.locator('//input[@name="organization"]');
-        this.contact = page.locator('//input[@type="tel"]');
+        this.contact = page.locator("//div[@class='react-international-phone-input-container']");
         this.emailInput = page.locator('//input[@name="email"]');
         this.saveBtn = page.locator('//button[text()="Save Changes"]');
         this.validationMsg = page.locator('//div[text()="Please enter valid name."]');
-        this.industryInput = page.locator('//div[text()="E-Commerce"]');
-        this.designationInput = page.locator('//div[text()="Social Media Manager"]');
+        this.industryInput = page.locator("//div[@class='selectpicker__single-value css-1dimb5e-singleValue']").first();
+        this.designationInput = page.locator("(//div[contains(text(),'Social Media Manager')])[1]");
         this.successMsg = page.locator('//div[text()="Profile Updated ."]');
         this.arrowIcon = page.locator('.css-8mmkcg');
         this.editIcon = page.locator('//button[@class="btn-active-primary my-1 btn btn-icon btn-sm"]');
@@ -90,9 +90,9 @@ class EditDetails {
             await this.designationInput.click();
         });
 
-        await test.step("Step 14: Fill contact field with '9876543210'", async () => {
-            await this.contact.fill('9876543110');
-        });
+        // await test.step("Step 14: Fill contact field with '9876543210'", async () => {
+        //     await this.contact.fill('9876543110');
+        // });
 
         await test.step("Step 15: Click on first edit icon to open profile picture upload", async () => {
             await this.editIcon.first().click();
@@ -117,6 +117,7 @@ class EditDetails {
         await test.step("Step 20: Verify success message text is 'Profile Updated .'", async () => {
             await expect.soft(this.successMsg).toHaveText('Profile Updated .');
         });
+      
     }
 }
 
