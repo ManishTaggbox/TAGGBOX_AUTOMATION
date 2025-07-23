@@ -4,6 +4,7 @@ const isHeadless = !args.includes('--headed'); // Playwright's default is headle
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
   testDir: './tests',
+  retries: 1,
   timeout: 60_000,
   fullyParallel: false,
   workers: 1,
