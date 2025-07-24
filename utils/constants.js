@@ -25,5 +25,6 @@ export const FEED_PATH = {
   FACEBOOK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/3`,
   REVIEWHUB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/29`,
   MODERATION: (wallId) => `https://app.taggbox.com/content/moderation/${wallId}/`,
+  AUTOPILOT:   `https://app.taggbox.com/autopilot/`,
 
 };
