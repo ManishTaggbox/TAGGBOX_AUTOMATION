@@ -5,8 +5,10 @@ import { FEED_PATH } from '../../utils/constants.js';
 import PrivateNetworkPost from '../../pageobjects/autopilot/PrivateNetworkPost.js';
 import PublicNetworkPost from '../../pageobjects/autopilot/PublicNetworkPost.js';
 import AssignTagNetworkPost from '../../pageobjects/autopilot/AssignTagNetworkPost.js';
-import  INSTAGRAMHANDLE  from '../../pageobjects/autopilot/InstagramHandle.js';
+import INSTAGRAMHANDLE from '../../pageobjects/autopilot/InstagramHandle.js';
 import MediaTypeVideoPrivate from '../../pageobjects/autopilot/MediaTypeVideoPrivate.js';
+import MediaTypeVideoPublic from '../../pageobjects/autopilot/MediaTypeVideoPublic.js';
+import DeleteAutopilotRule from '../../pageobjects/autopilot/DeleteAutopilotRule.js';
 
 // Reusable function to run feed test
 const runAutoPilotTest = ({ tag, PageObject, method }) => {
@@ -50,6 +52,9 @@ const autopilot = [
     { tag: '@VerifyAssignTag created', PageObject: AssignTagNetworkPost, method: 'verifyAssignTag' },
     { tag: '@MediaTypeVideoPrivate created', PageObject: MediaTypeVideoPrivate, method: 'mediaTypeVideoPrivate' },
     { tag: '@VerifyMediaPostIsPrivate created', PageObject: MediaTypeVideoPrivate, method: 'verifyMediaPostIsPrivate' },
+    { tag: '@MediaTypeVideoPublic created', PageObject: MediaTypeVideoPublic, method: 'mediaTypeVideoPublic' },
+    { tag: '@VerifyMediaPostIsPublic created', PageObject: MediaTypeVideoPublic, method: 'verifyMediaPostIsPublic' },
+    { tag: '@DeleteAutopilotRule created', PageObject: DeleteAutopilotRule, method: 'deleteAutopilotRule' },
 
 
 ];
