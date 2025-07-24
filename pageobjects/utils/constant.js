@@ -110,7 +110,10 @@ export const  FACEBOOK = {
 
 };
 
+export const  AUTOPILOTASSIGNTAG = {
+  ASSIGNTAG: 'Taggbox'
 
+};
 
 
 
