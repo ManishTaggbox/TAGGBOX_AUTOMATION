@@ -10,7 +10,7 @@ class InstagramHashTag {
   }
 
   async instagramHashTag() {
-    await test.step('Step 1: Fill hashtag input with "dance"', async () => {
+    await test.step('Step 1: Fill hashtag input with "arnodya"', async () => {
       await this.enterHashTag.fill(INSTAGRAM.INSTAGRAMHASHTAG);
     });
 

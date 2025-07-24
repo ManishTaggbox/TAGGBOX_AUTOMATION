@@ -1,6 +1,6 @@
 export const INSTAGRAM = {
-  INSTAGRAMHASHTAG: 'car',
-  INSTAGRAMHANDLE: 'vantara',
+  INSTAGRAMHASHTAG: 'arnodya',
+  INSTAGRAMHANDLE: 'raisr_sanchi',
   INSTAGRAMPOSTURL: 'https://www.instagram.com/reel/C_IJWy1qiLs/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   // add more as needed
 };
