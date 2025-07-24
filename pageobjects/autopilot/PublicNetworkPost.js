@@ -64,6 +64,7 @@ class PublicNetworkPost {
     await test.step('Click on private tab', async () => {
         await this.private.waitFor({ state: 'visible' });
         await this.private.click();
+        await this.page.waitForTimeout(3000);
     });
 
     await test.step('Verify private message appears', async () => {
