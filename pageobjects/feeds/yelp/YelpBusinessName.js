@@ -8,8 +8,9 @@ class YelpBusinessName {
         this.page = page;
         this.businessname = page.locator("//a[@data-name='businessname']");
         this.enterAddress = page.locator("//input[@placeholder='Type address']");
-        this.channelList = page.locator("//*[text()='Jaipur, Rajasthan, India']");
+        this.channelList = page.locator("//*[text()='New Zealand']");
         this.enterKeywords = page.locator('#Business-Name-text');
+        this.selectKeywords = page.locator("(//p[contains(@class,'fw-bold fs-8 mb-0')][normalize-space()='The Smokehouse'])[2]");
         this.createFeedBtn = page.locator('#create_feed');
     }
 
@@ -30,6 +31,11 @@ class YelpBusinessName {
 
         await test.step('Step 4: Fill YouTube Location Keywords ', async () => {
             await this.enterKeywords.fill(YELP.YELPKEYWORDS);
+            await this.enterKeywords.press('Space');
+            await this.page.waitForTimeout(2000);
+             await this.enterKeywords.press('Space');
+            await this.selectKeywords.first().click();
+
 
         });
 
