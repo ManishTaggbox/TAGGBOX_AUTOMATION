@@ -1,3 +1,0 @@
-✅ Deleted 2 rule(s).
-🧹 Running teardown...
-✅ Teardown complete.
