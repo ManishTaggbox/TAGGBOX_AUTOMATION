@@ -10,7 +10,7 @@ const config = {
   expect: {
     timeout: 10000,
   },
-  reporter: [['html']],
+  reporter: [['html'],['allure-playwright']],
   use: {
     browserName: 'chromium',
     headless: isHeadless,

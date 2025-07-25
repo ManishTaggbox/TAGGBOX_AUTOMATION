@@ -1,0 +1,6 @@
+Assets count: 32
+✅ Parsed asset count: 32
+🗑️ Deleting feed #1
+✅ All feeds deleted (1 in total).
+🧹 Running teardown...
+✅ Teardown complete.
