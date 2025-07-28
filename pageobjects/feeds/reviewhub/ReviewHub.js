@@ -88,7 +88,7 @@ class ReviewHub {
 
   async fillReviewForm() {
      await test.step('6️⃣ Navigate to Generated Feed URL', async () => {
-      await this.page.waitForTimeout(5000);
+      await this.page.waitForTimeout(9000);
       const url = await this.shareUrl.inputValue();
       console.log('Feed URL:', url);
 

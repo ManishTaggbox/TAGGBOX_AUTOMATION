@@ -37,7 +37,7 @@ class InstagramPostUrl {
     });
 
     await test.step('Wait for Content Gallery to load', async () => {
-      await this.page.waitForTimeout(15000);
+      await this.page.waitForTimeout(25000);
     });
 
     await test.step('Delete the uploaded post and verify success message', async () => {
