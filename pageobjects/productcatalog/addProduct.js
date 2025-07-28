@@ -9,7 +9,7 @@ class AddProduct {
         this.addSingleProduct = page.locator('//h5[text()="Add Single Product"]');
         this.submitBtn = page.locator('#product_save_');
         this.productNameValidation = page.locator('//div[text()="Product name is required."]');
-        this.productUrlValidation = page.locator('//div[text()="Please enter valid url."]'); 
+        this.productUrlValidation = page.locator('//div[text()="Please enter valid url."]');
         this.productNameInput = page.locator('#pro_name');
         this.priceInput = page.locator('#input_price');
         this.discountInput = page.locator('#input_discount');
@@ -19,7 +19,7 @@ class AddProduct {
         this.categoryInput = page.locator('#input_p_cat');
         this.tagInput = page.locator('#input_p_tag');
         this.toastMsg = page.locator('//div[text()="Product added successfully"]');
-        this.uploadImg = page.locator('#upload_pro_media'); 
+        this.uploadImg = page.locator('#upload_pro_media');
         this.browse = page.locator('//input[@type="file"]');
         this.productName = page.locator('//span[text()="Demo Product"]');
         this.price = page.locator('//span[text()="$1000"]');
@@ -31,21 +31,22 @@ class AddProduct {
         this.tag = page.locator('//span[text()="TagA"]');
         this.deleteIcon = page.locator('#action-trash-can');
         this.confirmDeleteBtn = page.locator('//button[text()="Yes, delete it!"]');
+        this.deleteSuccessMsg = page.locator('//div[text()="Successfully Deleted !"]');
     }
 
-     getAbsolutePath(relativePath) {
-            const fullPath = path.resolve(__dirname, relativePath);
-            if (!fs.existsSync(fullPath)) {
-                throw new Error(`❌ File not found: ${fullPath}`);
-            }
-            return fullPath;
+    getAbsolutePath(relativePath) {
+        const fullPath = path.resolve(__dirname, relativePath);
+        if (!fs.existsSync(fullPath)) {
+            throw new Error(`❌ File not found: ${fullPath}`);
         }
-    
-        async uploadFile(input, filePath) {
-            const fullPath = this.getAbsolutePath(filePath);
-            await input.setInputFiles(fullPath);
-        }
-    
+        return fullPath;
+    }
+
+    async uploadFile(input, filePath) {
+        const fullPath = this.getAbsolutePath(filePath);
+        await input.setInputFiles(fullPath);
+    }
+
 
     async addProduct() {
         await test.step("Step 1: Click on 'Manual Upload' option", async () => {
@@ -114,8 +115,8 @@ class AddProduct {
         });
 
         await test.step("Step 17: Upload product image file", async () => {
-           await this.uploadFile(this.browse.first(), '../../videos/testImg.png');
-           await this.page.waitForTimeout(10000);
+            await this.uploadFile(this.browse.first(), '../../videos/testImg.png');
+            await this.page.waitForTimeout(10000);
         });
 
         await test.step("Step 18: Submit the product form to create new product", async () => {
@@ -168,6 +169,14 @@ class AddProduct {
 
         await test.step("Step 30: Confirm product deletion", async () => {
             await this.confirmDeleteBtn.click();
+        });
+
+        await test.step("Step 31: Verify success toast message is visible", async () => {
+            await expect.soft(this.deleteSuccessMsg).toBeVisible();
+        });
+
+        await test.step("Step 32: Verify success toast message content", async () => {
+            await expect.soft(this.deleteSuccessMsg).toHaveText('Successfully Deleted !');
         });
     }
 }
