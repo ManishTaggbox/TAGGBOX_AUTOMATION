@@ -1,9 +1,9 @@
 import { test, expect } from '../../publishfixtures.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
-import EmailCampaign from '../../../pageobjects/publish/emailcampaign/EmailCampaign.js';
+import Shoponbio from '../../../pageobjects/publish/shoponbio/Shoponbio.js';
 
-const runemailCampaignTest = ({ tag, PageObject, method }) => {
+const runShoponbioTest = ({ tag, PageObject, method }) => {
     test(tag, async ({ page, token, wallId }) => {
         await test.step('Inject token into local storage', async () => {
             await page.addInitScript(token => localStorage.setItem('token', token), token);
@@ -16,7 +16,7 @@ const runemailCampaignTest = ({ tag, PageObject, method }) => {
         });
 
         await test.step(`Run ${tag} feed creation flow`, async () => {
-            const feedPage = new PageObject(page); 
+            const feedPage = new PageObject(page);
             await feedPage[method]();
         });
 
@@ -28,14 +28,15 @@ const runemailCampaignTest = ({ tag, PageObject, method }) => {
 };
 
 // Feed types configuration
-const emailCampaign = [
+const shoponbio = [
 
-    { tag: '@EmailCampaign created', PageObject: EmailCampaign, method: 'emailCampaign' },
-    { tag: '@DeleteEmailCampaign created', PageObject: EmailCampaign, method: 'deleteEmailCampaign' },
-   ];
+    { tag: '@Shoponbio created', PageObject: Shoponbio, method: 'shoponbio' },
+    { tag: '@DeleteShoponbio created', PageObject: Shoponbio, method: 'deleteShoponbio' },
+
+];
 
 // Dynamically register each test
-emailCampaign.forEach(runemailCampaignTest);
+shoponbio.forEach(runShoponbioTest);
 
 // Common teardown
 test.afterEach(async ({ page }) => {
