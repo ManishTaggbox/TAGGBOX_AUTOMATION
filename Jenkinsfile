@@ -65,7 +65,7 @@ pipeline {
 
         failure {
             emailext (
-                subject: "❌ FAILURE | Taggbox Automation Pipeline",
+                subject: "❌ FAILURE | Taggbox Automation Report",
                 body: """
 <html>
   <body style="font-family: Arial, sans-serif; color: #333;">
@@ -73,14 +73,13 @@ pipeline {
     <p>Hello Team,</p>
     <p>The <strong>Taggbox Automation Pipeline</strong> encountered an error during execution.</p>
 
-    <p>Please review the Jenkins logs or the test report to identify the root cause:</p>
+    <p>Please review the test report to identify the root cause:</p>
 
     <p style="margin: 20px 0;">
       🔗 <a href="https://taggboxautomation.netlify.app/" style="font-size: 16px; color: #007bff;">View Test Report</a>
     </p>
 
-    <p>If needed, refer to <a href="https://jenkins.yourcompany.com/job/TaggboxAutomation/">Jenkins Job</a> for logs.</p>
-
+   
     <p>Best regards,<br><strong>Manish Somani</strong></p>
   </body>
 </html>
