@@ -1,7 +1,17 @@
 pipeline {
     agent any
 
+    environment {
+        NETLIFY_AUTH_TOKEN = credentials('NETLIFY_AUTH_TOKEN')  // Store this in Jenkins credentials
+    }
+
     stages {
+        stage('Checkout Code') {
+            steps {
+                git url: 'https://github.com/ManishTaggbox/TAGGBOX_AUTOMATION.git', branch: 'master'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
@@ -16,7 +26,17 @@ pipeline {
 
         stage('Deploy to Netlify') {
             steps {
-                sh 'npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"'
+                withEnv(["PATH+NETLIFY=${WORKSPACE}/node_modules/.bin"]) {
+                    sh '''
+                        # Install Netlify CLI if not present
+                        if ! [ -x "$(command -v netlify)" ]; then
+                          npm install -g netlify-cli
+                        fi
+
+                        # Deploy report
+                        netlify deploy --auth $NETLIFY_AUTH_TOKEN --prod --dir=playwright-report --message "Automated Test Report"
+                    '''
+                }
             }
         }
     }
