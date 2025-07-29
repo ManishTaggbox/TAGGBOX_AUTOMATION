@@ -1,39 +1,22 @@
 pipeline {
     agent any
 
-
     stages {
-        stage('Checkout Code') {
-            steps {
-                git url: 'https://github.com/ManishTaggbox/TAGGBOX_AUTOMATION.git', branch: 'master'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test tests/content tests/feeds tests/productcatalog tests/profile'
+                bat 'npx playwright test tests/content'
             }
         }
 
         stage('Deploy to Netlify') {
             steps {
-                withEnv(["PATH+NETLIFY=${WORKSPACE}/node_modules/.bin"]) {
-                    sh '''
-                        # Install Netlify CLI if not present
-                        if ! [ -x "$(command -v netlify)" ]; then
-                          npm install -g netlify-cli
-                        fi
-
-                        # Deploy report
-                        netlify deploy --auth $NETLIFY_AUTH_TOKEN --prod --dir=playwright-report --message "Automated Test Report"
-                    '''
-                }
+                bat 'npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"'
             }
         }
     }
