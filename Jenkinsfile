@@ -10,11 +10,21 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test -g "@TikTokHashtag"'
+                script {
+                    try {
+                        bat 'npx playwright test -g "@TikTokHashtag"'
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        echo "Tests failed, proceeding to deploy the report"
+                    }
+                }
             }
         }
 
         stage('Deploy to Netlify') {
+            when {
+                always()
+            }
             steps {
                 bat 'npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"'
             }
@@ -52,6 +62,7 @@ Manish Somani
 
 The Jenkins pipeline failed during execution.  
 Please check the Jenkins logs or the report for more details.
+📄 Report URL: https://taggboxautomation.netlify.app/
 
 Best regards,  
 Manish Somani
