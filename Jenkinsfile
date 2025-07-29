@@ -38,7 +38,10 @@ The latest automation tests were executed successfully and the Playwright report
 Best regards,  
 Jenkins
 """,
-                to: 'manish.s@taggbox.com'
+                to: 'manish.s@taggbox.com',
+                from: 'manish.s@gmail.com',
+                replyTo: 'manish.s@gmail.com',
+                mimeType: 'text/plain'
             )
         }
 
@@ -53,7 +56,10 @@ Please check the Jenkins logs or the report for more details.
 Best regards,  
 Jenkins
 """,
-                to: 'manish.s@taggbox.com'
+                to: 'manish.s@taggbox.com',
+                from: 'manish.s@gmail.com',
+                replyTo: 'manish.s@gmail.com',
+                mimeType: 'text/plain'
             )
         }
     }
