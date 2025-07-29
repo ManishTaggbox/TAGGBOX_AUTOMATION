@@ -10,7 +10,7 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test tests/content'
+                bat 'npx playwright test -g "@TikTokHashtag"'
             }
         }
 
@@ -29,14 +29,14 @@ pipeline {
         success {
             emailext (
                 subject: "✅ Taggbox Automation Deployment Successful",
-                body: """Hi Manish,
+                body: """Hi Team,
 
 The latest automation tests were executed successfully and the Playwright report has been deployed.
 
 📄 Report URL: https://taggboxautomation.netlify.app/
 
 Best regards,  
-Jenkins
+Manish Somani
 """,
                 to: 'manish.s@taggbox.com',
                 from: 'manish.s@taggbox.com',
@@ -48,13 +48,13 @@ Jenkins
         failure {
             emailext (
                 subject: "❌ Taggbox Automation Pipeline Failed",
-                body: """Hi Manish,
+                body: """Hi Team,
 
 The Jenkins pipeline failed during execution.  
 Please check the Jenkins logs or the report for more details.
 
 Best regards,  
-Jenkins
+Manish Somani
 """,
                 to: 'manish.s@taggbox.com',
                 from: 'manish.s@taggbox.com',
