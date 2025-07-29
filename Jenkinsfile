@@ -22,11 +22,13 @@ pipeline {
         }
 
         stage('Deploy to Netlify') {
-            when {
-                always()
-            }
             steps {
                 bat 'npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"'
+            }
+            post {
+                always {
+                    echo '✅ Netlify deployment attempted, even if tests failed.'
+                }
             }
         }
     }
