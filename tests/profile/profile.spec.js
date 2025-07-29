@@ -14,7 +14,10 @@ async function setupProfilePage(page, token) {
     });
 }
 
-test.describe('Profile Management Tests', () => {
+// Serial block to enforce order: 1 -> 2 -> 3
+test.describe.serial('Profile Management Tests (Ordered by Priority)', () => {
+
+// test.describe('Profile Management Tests', () => {
     
     test('@VerifyExistingDetails - Verify user profile details are displayed correctly', async ({ page, token }) => {
         await setupProfilePage(page, token);
