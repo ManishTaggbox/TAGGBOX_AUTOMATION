@@ -69,9 +69,9 @@ pipeline {
                 body: """
 <html>
   <body style="font-family: Arial, sans-serif; color: #333;">
-    <h2 style="color: #dc3545;">❌ Jenkins Pipeline Failed</h2>
+    <h2 style="color: #dc3545;">❌ Automation Test Execution</h2>
     <p>Hello Team,</p>
-    <p>The <strong>Taggbox Automation Pipeline</strong> encountered an error during execution.</p>
+    <p>The <strong>Taggbox Automation Report</strong> encountered an error during execution.</p>
 
     <p>Please review the test report to identify the root cause:</p>
 
