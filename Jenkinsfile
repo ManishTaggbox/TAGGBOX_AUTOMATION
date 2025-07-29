@@ -39,8 +39,8 @@ Best regards,
 Jenkins
 """,
                 to: 'manish.s@taggbox.com',
-                from: 'manish.s@gmail.com',
-                replyTo: 'manish.s@gmail.com',
+                from: 'manish.s@taggbox.com',
+                replyTo: 'manish.s@taggbox.com',
                 mimeType: 'text/plain'
             )
         }
@@ -57,8 +57,8 @@ Best regards,
 Jenkins
 """,
                 to: 'manish.s@taggbox.com',
-                from: 'manish.s@gmail.com',
-                replyTo: 'manish.s@gmail.com',
+                from: 'manish.s@taggbox.com',
+                replyTo: 'manish.s@taggbox.com',
                 mimeType: 'text/plain'
             )
         }
