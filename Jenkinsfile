@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat 'npx playwright test -g "@TikTokHashtag"'
+                        bat 'npx playwright test -g "@TikTokHandle"'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         echo "Tests failed, proceeding to deploy the report"
