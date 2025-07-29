@@ -1,7 +1,12 @@
 import { test, expect } from '../moderationfixtures.js';
 import { FEED_PATH } from '../../utils/constants.js';
 import EditPosts from '../../pageobjects/moderation/editPost.js';
-import PostTags from '../../pageobjects/moderation/add-edit-deletePostTags.js';
+import AddTags from '../../pageobjects/moderation/addPostTags.js';
+import EditTags from '../../pageobjects/moderation/editPostTags.js';
+import DeleteTags from '../../pageobjects/moderation/deletePostTags.js';
+import TagProduct from '../../pageobjects/moderation/tagProducts.js';
+import EditProduct from '../../pageobjects/moderation/editTaggedProduct.js';
+import DeleteProduct from '../../pageobjects/moderation/deleteTaggedProduct.js';
 
 
 const runModerationTest = ({ tag, PageObject, method }) => 
@@ -37,12 +42,15 @@ const runModerationTest = ({ tag, PageObject, method }) =>
     });
 };
 
-const moderation = [
-
+const moderation = 
+[
     { tag: '@ModerationEditPost', PageObject: EditPosts, method: 'editPost' },
-    { tag: '@ModerationEditPostTags', PageObject: PostTags, method: 'postTags' }
-
-
+    { tag: '@ModerationAddPostTags', PageObject: AddTags, method: 'addTags' },
+    { tag: '@ModerationEditPostTags', PageObject: EditTags, method: 'editTags' },
+    { tag: '@ModerationDeletePostTags', PageObject: DeleteTags, method: 'deleteTags' },
+    { tag: '@ModeratonTagProducts', PageObject: TagProduct, method: 'productTag' },
+    { tag: '@ModeratonEditTaggedProduct', PageObject: EditProduct, method: 'editProducts' },
+    { tag: '@ModeratonDeleteTaggedProduct', PageObject: DeleteProduct, method: 'deleteProducts' }
 
 ];
 
