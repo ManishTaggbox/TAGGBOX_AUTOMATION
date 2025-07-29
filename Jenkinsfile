@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        NETLIFY_AUTH_TOKEN = credentials('NETLIFY_AUTH_TOKEN')  // Store this in Jenkins credentials
-    }
 
     stages {
         stage('Checkout Code') {
