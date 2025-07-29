@@ -38,41 +38,57 @@ pipeline {
             echo "Pipeline finished."
         }
 
-        success {
+    success {
             emailext (
-                subject: "✅ Taggbox Automation Deployment Successful",
-                body: """Hi Team,
+                subject: "✅ SUCCESS | Taggbox Automation Report Deployed",
+                body: """
+<html>
+  <body style="font-family: Arial, sans-serif; color: #333;">
+    <h2 style="color: #28a745;">✅ Automation Test Execution Successful</h2>
+    <p>Hello Team,</p>
+    <p>The latest <strong>Taggbox Automation Tests</strong> were executed successfully. The detailed Playwright report has been deployed and is accessible below:</p>
 
-The latest automation tests were executed successfully and the Playwright report has been deployed.
+    <p style="margin: 20px 0;">
+      🔗 <a href="https://taggboxautomation.netlify.app/" style="font-size: 16px; color: #007bff;">View Test Report</a>
+    </p>
 
-📄 Report URL: https://taggboxautomation.netlify.app/
-
-Best regards,  
-Manish Somani
+    <p>Best regards,<br><strong>Manish Somani</strong></p>
+  </body>
+</html>
 """,
-                to: 'manish.s@taggbox.com',
+                mimeType: 'text/html',
+                to: 'manish.s@taggbox.com, manish.s+1@taggbox.com',
                 from: 'manish.s@taggbox.com',
-                replyTo: 'manish.s@taggbox.com',
-                mimeType: 'text/plain'
+                replyTo: 'manish.s@taggbox.com'
             )
         }
 
         failure {
             emailext (
-                subject: "❌ Taggbox Automation Pipeline Failed",
-                body: """Hi Team,
+                subject: "❌ FAILURE | Taggbox Automation Pipeline",
+                body: """
+<html>
+  <body style="font-family: Arial, sans-serif; color: #333;">
+    <h2 style="color: #dc3545;">❌ Jenkins Pipeline Failed</h2>
+    <p>Hello Team,</p>
+    <p>The <strong>Taggbox Automation Pipeline</strong> encountered an error during execution.</p>
 
-The Jenkins pipeline failed during execution.  
-Please check the Jenkins logs or the report for more details.
-📄 Report URL: https://taggboxautomation.netlify.app/
+    <p>Please review the Jenkins logs or the test report to identify the root cause:</p>
 
-Best regards,  
-Manish Somani
+    <p style="margin: 20px 0;">
+      🔗 <a href="https://taggboxautomation.netlify.app/" style="font-size: 16px; color: #007bff;">View Test Report</a>
+    </p>
+
+    <p>If needed, refer to <a href="https://jenkins.yourcompany.com/job/TaggboxAutomation/">Jenkins Job</a> for logs.</p>
+
+    <p>Best regards,<br><strong>Manish Somani</strong></p>
+  </body>
+</html>
 """,
-                to: 'manish.s@taggbox.com',
+                mimeType: 'text/html',
+                to: 'manish.s@taggbox.com, manish.s+1@taggbox.com',
                 from: 'manish.s@taggbox.com',
-                replyTo: 'manish.s@taggbox.com',
-                mimeType: 'text/plain'
+                replyTo: 'manish.s@taggbox.com'
             )
         }
     }
