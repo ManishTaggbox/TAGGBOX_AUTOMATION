@@ -11,5 +11,8 @@
     "@playwright/test": "^1.53.2",
     "@types/node": "^24.0.12",
     "playwright": "^1.54.1"
+  },
+  "dependencies": {
+    "node-html-parser": "^7.0.1"
   }
 }
