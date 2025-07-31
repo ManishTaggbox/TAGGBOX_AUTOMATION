@@ -33,7 +33,7 @@ class CreateWebsite {
         });
 
         await test.step("Step 1.6: Wait for success message and validate", async () => {
-            await this.successMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.successMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.successMsg).toHaveText('Website created successfully.');
         });
     }

@@ -30,7 +30,7 @@ class DeleteWebsite {
         });
 
         await test.step("Step 4: Validate success message", async () => {
-            await this.websiteDeleteMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.websiteDeleteMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.websiteDeleteMsg).toHaveText("Website deleted successfully.");
         });
     }

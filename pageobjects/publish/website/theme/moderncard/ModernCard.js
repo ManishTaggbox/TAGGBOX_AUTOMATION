@@ -4,6 +4,7 @@ import CreateWebsite from '../../createwebsite/CreateWebsite';
 class ModernCard {
     constructor(page) {
         this.page = page;
+        this.card = page.locator("//div[@class='flex-column f-center px-3 py-0 card-body']");
         this.modernCardBtn = page.locator("//p[normalize-space()='Modern Card']");
         this.customization = page.locator("//a[@data-rr-ui-event-key='customization']");
         this.cardToggle = page.locator("(//input[@id='inherit_'])[1]");
@@ -32,16 +33,16 @@ class ModernCard {
     }
 
     async modernCard() {
-        const createWebsite = new CreateWebsite(this.page);
-        const dynamicName = 'ModernCard';
-
-        await test.step("Create a website with name 'ModernCard'", async () => {
-            await createWebsite.createWebsite(dynamicName);
+        await test.step('Click Publish and Website menu', async () => {
+            await this.card.waitFor({ state: 'visible', timeout: 10000 });
+            await this.card.click();
+            await this.page.waitForTimeout(2000);
         });
 
         await test.step("Click on 'Modern Card' button", async () => {
             await this.modernCardBtn.waitFor({ state: 'visible' });
             await this.modernCardBtn.click();
+            await this.page.waitForTimeout(2000);
         });
 
         await test.step("Click on 'Customization' tab", async () => {
@@ -66,7 +67,7 @@ class ModernCard {
             await this.selectRochester.click();
         });
 
-         await test.step(`Set font color to`, async () => {
+        await test.step(`Set font color to`, async () => {
             await this.fontColor.click();
             await this.fontColor.press('Control+A');  // or 'Meta+A' on Mac
             await this.fontColor.press('Backspace');
@@ -76,20 +77,20 @@ class ModernCard {
         });
 
         await test.step(`Move font size slider px`, async () => {
-            await this.moveSlider(this.fontSize, 60);
+            await this.moveSlider(this.fontSize, 20);
             await this.page.waitForTimeout(2000);
         });
 
         await test.step(`Move card radius slider px`, async () => {
-            await this.moveSlider(this.cardRadius, 70);
+            await this.moveSlider(this.cardRadius, 10);
             await this.page.waitForTimeout(2000);
         });
 
         await test.step(`Set card color to  and save settings`, async () => {
-           await this.cardColor.click();
+            await this.cardColor.click();
             await this.cardColor.press('Control+A');  // or 'Meta+A' on Mac
             await this.cardColor.press('Backspace');
-            await this.cardColor.type('#f272b6');
+            await this.cardColor.type('#704c60');
             await this.cardColorClose.click();
 
         });

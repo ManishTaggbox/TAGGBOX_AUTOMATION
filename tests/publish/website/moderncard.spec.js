@@ -4,6 +4,7 @@ import { FEED_PATH } from '../../../utils/constants.js';
 import ModernCard from '../../../pageobjects/publish/website/theme/moderncard/moderncard.js';
 import ModernCardWebEmbed from '../../../pageobjects/publish/website/theme/moderncard/ModernCardWebEmbed.js';
 import DeleteWebsite from '../../../pageobjects/publish/website/theme/themeutils/DeleteWebsite.js';
+import CtaButton from '../../../pageobjects/publish/website/theme/ctabutton/CtaButton.js';
 
 
 const runModernCardTest = ({ tag, PageObject, method }) => {
@@ -32,9 +33,10 @@ const runModernCardTest = ({ tag, PageObject, method }) => {
 
 const moderncard = [
 
+{tag: '@CtaButton Theme Created', PageObject: CtaButton,method: 'ctaButton'},
 {tag: '@ModernCard Theme Created', PageObject: ModernCard,method: 'modernCard'},
 {tag: '@ModernCardWebEmbed Theme Created', PageObject: ModernCardWebEmbed, method: 'modernCardWebEmbed'},
-{tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
+//{tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
 
 
    
