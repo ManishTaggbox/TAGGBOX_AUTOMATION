@@ -33,10 +33,10 @@ const runModernCardTest = ({ tag, PageObject, method }) => {
 
 const moderncard = [
 
-{tag: '@CtaButton Theme Created', PageObject: CtaButton,method: 'ctaButton'},
+//{tag: '@CtaButton Theme Created', PageObject: CtaButton,method: 'ctaButton'},
 {tag: '@ModernCard Theme Created', PageObject: ModernCard,method: 'modernCard'},
 {tag: '@ModernCardWebEmbed Theme Created', PageObject: ModernCardWebEmbed, method: 'modernCardWebEmbed'},
-//{tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
+{tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
 
 
    
