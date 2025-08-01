@@ -7,6 +7,10 @@ import DeleteTags from '../../pageobjects/moderation/deletePostTags.js';
 import TagProduct from '../../pageobjects/moderation/tagProducts.js';
 import EditProduct from '../../pageobjects/moderation/editTaggedProduct.js';
 import DeleteProduct from '../../pageobjects/moderation/deleteTaggedProduct.js';
+import PostPinToTop from '../../pageobjects/moderation/postPinToTop.js';
+import PostHighlight from '../../pageobjects/moderation/postHighlight.js';
+import PostPrivatePublic from '../../pageobjects/moderation/postPrivatePublic.js';
+import PostDelete from '../../pageobjects/moderation/postDelete.js';
 
 
 const runModerationTest = ({ tag, PageObject, method }) => 
@@ -50,8 +54,14 @@ const moderation =
     { tag: '@ModerationDeletePostTags', PageObject: DeleteTags, method: 'deleteTags' },
     { tag: '@ModeratonTagProducts', PageObject: TagProduct, method: 'productTag' },
     { tag: '@ModeratonEditTaggedProduct', PageObject: EditProduct, method: 'editProducts' },
-    { tag: '@ModeratonDeleteTaggedProduct', PageObject: DeleteProduct, method: 'deleteProducts' }
-
+    { tag: '@ModeratonDeleteTaggedProduct', PageObject: DeleteProduct, method: 'deleteProducts' },
+    { tag: '@ModerationPostPinToTop', PageObject: PostPinToTop, method: 'pinPost' },
+    { tag: '@ModerationPostHighlight', PageObject: PostHighlight, method: 'highlightPost' },
+    { tag: '@ModerationPostPrivatePublic', PageObject: PostPrivatePublic, method: 'privatePublicPost' },
+    
+    
+    
+    { tag: '@ModerationPostDelete', PageObject: PostDelete, method: 'deletePost' }
 ];
 
 // Dynamically register each test

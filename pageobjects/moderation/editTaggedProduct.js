@@ -35,7 +35,7 @@ class EditProducts
         await test.step("Step 4: Assert the toast msg for duplicate product tag", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('This product already tagged on this post');
+            await expect.soft(this.toastMsg).toHaveText('This product already tagged on this post');
             await this.page.waitForTimeout(5000); 
         });
 
@@ -68,9 +68,9 @@ class EditProducts
 
         await test.step("Step 9: Assert tagged products", async () => 
         {
-            await expect(this.taggedProducts).toHaveCount(1);
+            await expect.soft(this.taggedProducts).toHaveCount(1);
         });
     }
 }
 
-module.exports = EditProducts;
+export default EditProducts;

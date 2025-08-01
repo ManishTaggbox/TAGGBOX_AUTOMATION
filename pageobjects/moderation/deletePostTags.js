@@ -41,7 +41,7 @@ class DeletePostTags
         await test.step("Step 5: Assert toast msg", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Tags updated successfully');
+            await expect.soft(this.toastMsg).toHaveText('Tags updated successfully');
         });
 
         await test.step("Step 6: Click on 'Details' tab", async () => 
@@ -67,4 +67,4 @@ class DeletePostTags
     }
 }
 
-module.exports = DeletePostTags;
+export default DeletePostTags;

@@ -66,7 +66,7 @@ class EditPost
 
         await test.step("Step 4: Assert validation msg against mandatory fields", async () => 
         {
-            await expect(this.validationMsg).toHaveCount(3);
+            await expect.soft(this.validationMsg).toHaveCount(3);
 
             const messages = await this.validationMsg.allTextContents();
             expect(messages.every(text => text === 'This field is required')).toBe(true);    
@@ -113,7 +113,7 @@ class EditPost
         await test.step("Step 12: Assert toast msg", async () => 
         {
             await this.successMsg.waitFor({ state: 'visible' });
-            await expect(this.successMsg).toHaveText('Post updated successfully');
+            await expect.soft(this.successMsg).toHaveText('Post updated successfully');
         });
 
         await test.step("Step 13: Click on 'Details' tab", async () => 
@@ -123,9 +123,9 @@ class EditPost
 
         await test.step("Step 14: Assert post details in details tab", async () => 
         {
-            await expect(this.autherNameDetail).toHaveText('This one is dummy name');
-            //await expect(this.autherHandleDetail).toHaveText('This one is dummy handle');   
-            await expect(this.contentDetail).toHaveText('This one is dummy content');      
+            await expect.soft(this.autherNameDetail).toHaveText('This one is dummy name');
+            //await expect.soft(this.autherHandleDetail).toHaveText('This one is dummy handle');   
+            await expect.soft(this.contentDetail).toHaveText('This one is dummy content');      
         }); 
 
         await test.step("Step 15: Close the modal", async () => 
@@ -135,11 +135,11 @@ class EditPost
 
         await test.step("Step 16: Assert post details", async () => 
         {
-            await expect(this.autherName).toHaveText('This one is dummy name');
-            // await expect(this.autherHandle.first()).toHaveText('This one is dummy handle');   
-            await expect(this.postContent.first()).toHaveText('This one is dummy content');      
+            await expect.soft(this.autherName).toHaveText('This one is dummy name');
+            // await expect.soft(this.autherHandle.first()).toHaveText('This one is dummy handle');   
+            await expect.soft(this.postContent.first()).toHaveText('This one is dummy content');      
         });    
     }
 }
 
-module.exports = EditPost;
+export default EditPost;

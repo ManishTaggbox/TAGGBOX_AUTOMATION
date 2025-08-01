@@ -11,7 +11,6 @@ class DeleteProducts
         this.crossIcon = page.locator('.btn-close');
         this.taggedProducts = page.locator('//div[@role="article"]');
         this.tagBtn = page.locator('#tag_pd_0');
-
     }
 
     async deleteProducts() 
@@ -29,7 +28,7 @@ class DeleteProducts
         await test.step("Step 4: Assert the toast msg for duplicate product tag", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Tagged Product Removed from the Posts Successfully');
+            await expect.soft(this.toastMsg).toHaveText('Tagged Product Removed from the Posts Successfully');
             await this.page.waitForTimeout(5000); 
         });
 
@@ -50,4 +49,5 @@ class DeleteProducts
     }
 }
 
-module.exports = DeleteProducts;
+export default DeleteProducts;
+

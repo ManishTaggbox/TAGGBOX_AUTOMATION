@@ -52,7 +52,7 @@ class AddPostTags
         await test.step("Step 6: Assert toast msg", async () => 
         {
             await this.successMsg.waitFor({ state: 'visible' });
-            await expect(this.successMsg).toHaveText('Tags updated successfully');
+            await expect.soft(this.successMsg).toHaveText('Tags updated successfully');
         });
 
         await test.step("Step 7: Click on 'Details' tab", async () => 
@@ -63,10 +63,10 @@ class AddPostTags
         await test.step("Step 8: Assert added post tags in details tab", async () => 
         {
             await this.addedTag1.waitFor({ state: 'visible' });
-            await expect(this.addedTag1).toHaveText('TagA');
+            await expect.soft(this.addedTag1).toHaveText('TagA');
 
             await this.addedTag2.waitFor({ state: 'visible' });
-            await expect(this.addedTag2).toHaveText('TagB');
+            await expect.soft(this.addedTag2).toHaveText('TagB');
         });
 
         await test.step("Step 9: Close the modal", async () => 
@@ -77,12 +77,12 @@ class AddPostTags
         await test.step("Step 10: Assert added post tags", async () => 
         {
             await this.addedTags.first().waitFor({ state: 'visible' });
-            await expect(this.addedTags.first()).toHaveText('TagA');
+            await expect.soft(this.addedTags.first()).toHaveText('TagA');
 
             await this.addedTags.last().waitFor({ state: 'visible' });
-            await expect(this.addedTags.last()).toHaveText('TagB');
+            await expect.soft(this.addedTags.last()).toHaveText('TagB');
         });
     }
 }
 
-module.exports = AddPostTags;
+export default AddPostTags;

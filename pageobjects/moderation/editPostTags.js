@@ -39,7 +39,7 @@ class EditPostTags
         await test.step("Step 4: Assert error toast msg", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Tag already exists');
+            await expect.soft(this.toastMsg).toHaveText('Tag already exists');
             await this.page.waitForTimeout(5000); // Wait for toast msg to remove
         });
 
@@ -63,7 +63,7 @@ class EditPostTags
         await test.step("Step 8: Assert toast msg", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Tags updated successfully');
+            await expect.soft(this.toastMsg).toHaveText('Tags updated successfully');
         });
 
         await test.step("Step 9: Click on 'Details' tab", async () => 
@@ -74,7 +74,7 @@ class EditPostTags
         await test.step("Step 10: Assert added post tags in details tab", async () => 
         {
             await this.tag1.waitFor({ state: 'visible' });
-            await expect(this.tag1).toHaveText('Tag1');
+            await expect.soft(this.tag1).toHaveText('Tag1');
         });
 
         await test.step("Step 11: Close the modal", async () => 
@@ -86,9 +86,9 @@ class EditPostTags
         {
             await this.page.waitForTimeout(5000); // Wait for page to load 
             await this.addedTags.waitFor({ state: 'visible' });
-            await expect(this.addedTags).toHaveText('Tag1');
+            await expect.soft(this.addedTags).toHaveText('Tag1');
         });
     }
 }
 
-module.exports = EditPostTags;
+export default EditPostTags;

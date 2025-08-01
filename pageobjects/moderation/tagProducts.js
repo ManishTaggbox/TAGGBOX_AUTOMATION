@@ -36,7 +36,7 @@ class TagProducts
         await test.step("Step 4: Assert toast msg", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Product tagged successfully');
+            await expect.soft(this.toastMsg).toHaveText('Product tagged successfully');
             await this.page.waitForTimeout(5000); 
         });
 
@@ -53,12 +53,12 @@ class TagProducts
         await test.step("Step 7: Assert toast msg", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Product tagged successfully');
+            await expect.soft(this.toastMsg).toHaveText('Product tagged successfully');
             await this.page.waitForTimeout(5000); 
         });
 
         await test.step("Step 8: Click again to search product", async () => 
-        {
+        {2
             await this.searchBox.first().click();
         });
 
@@ -70,7 +70,7 @@ class TagProducts
         await test.step("Step 10: Assert toast msg", async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible' });
-            await expect(this.toastMsg).toHaveText('Product tagged successfully');
+            await expect.soft(this.toastMsg).toHaveText('Product tagged successfully');
             await this.page.waitForTimeout(5000); 
         });
 
@@ -81,7 +81,7 @@ class TagProducts
 
         await test.step("Step 12: Assert tagged products", async () => 
         {
-            await expect(this.taggedProducts).toHaveCount(3);
+            await expect.soft(this.taggedProducts).toHaveCount(3);
         });
 
         await test.step("Step 13: Assert tag more products icon isdisplayed", async () => 
@@ -91,4 +91,4 @@ class TagProducts
     }
 }
 
-module.exports = TagProducts;
+export default TagProducts;
