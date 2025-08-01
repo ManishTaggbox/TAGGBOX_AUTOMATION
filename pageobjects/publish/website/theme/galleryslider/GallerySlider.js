@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import CreateWebsite from '../../createwebsite/CreateWebsite';
 
-class Reels {
+class GallerySlider {
     constructor(page) {
         this.page = page;
-        this.reelsBtn = page.locator("//p[@class='mb-0 text-center fs-10'][normalize-space()='Reels']");
+        this.gallerySliderBtn = page.locator("//p[normalize-space()='Gallery Slider']");
         this.customization = page.locator("//a[@data-rr-ui-event-key='customization']");
         this.cardToggle = page.locator("(//input[@id='inherit_'])[1]");
         this.fontFamily = page.locator("//span[@class='sGFfonte-Open Sans']");
@@ -15,6 +15,10 @@ class Reels {
         this.cardRadius = page.locator("//input[@id='radius_range' and @min='0']");
         this.cardColor = page.locator('#card_color');
         this.cardColorClose = page.locator("label[for='card_color']");
+        this.iconColor = page.locator('#icon_color');
+        this.iconColorClose = page.locator("label[for='Defaultsocial icon color_'] span[class='me-2']");
+        this.authorColor = page.locator('#author_color');
+        this.authorColorClose = page.locator("label[for='author_color']");
         this.moreActions = page.locator("//button[normalize-space()='More actions']");
         this.autoslide = page.locator('#Autoslide_');
         this.save = page.locator('#saveSetting');
@@ -45,16 +49,16 @@ class Reels {
         }
     }
 
-    async reels() {
+    async gallerySlider() {
         const createWebsite = new CreateWebsite(this.page);
-        const dynamicName = 'Reels';
+        const dynamicName = 'GallerySlider';
 
-        await test.step("Create a website with name 'Reels'", async () => {
+        await test.step("Create a website with name 'GallerySlider'", async () => {
             await createWebsite.createWebsite(dynamicName);
         });
 
-        await test.step("Click on 'Reels' button", async () => {
-            await this.waitForElementAndClick(this.reelsBtn);
+        await test.step("Click on Gallery Slider' button", async () => {
+            await this.waitForElementAndClick(this.gallerySliderBtn);
         });
 
         await test.step("Click on 'Customization' tab", async () => {
@@ -88,6 +92,14 @@ class Reels {
             await this.waitForElementAndType(this.cardColor, '#704c60');
             await this.waitForElementAndClick(this.cardColorClose);
         });
+        await test.step("Set Icon  color to #704c60", async () => {
+            await this.waitForElementAndType(this.iconColor, '#f51818');
+            await this.waitForElementAndClick(this.cardColorClose);
+        });
+        await test.step("Set Author color to #704c60", async () => {
+            await this.waitForElementAndType(this.authorColor, '#5eed05');
+            await this.waitForElementAndClick(this.authorColorClose);
+        });
 
         await test.step("Enable autoslide feature", async () => {
             await this.moreActions.waitFor({ state: 'visible', timeout: 10000 });
@@ -100,11 +112,11 @@ class Reels {
             await this.save.waitFor({ state: 'visible', timeout: 10000 });
             await this.save.scrollIntoViewIfNeeded();
             await this.save.click();
-            
+
             await this.saveMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.saveMsg).toHaveText('Website updated successfully.');
         });
     }
 }
 
-export default Reels;
+export default GallerySlider;
