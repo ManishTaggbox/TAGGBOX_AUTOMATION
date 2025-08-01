@@ -1,13 +1,13 @@
 import { test, expect } from '../../publishfixtures.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
-import ModernCard from '../../../pageobjects/publish/website/theme/moderncard/moderncard.js';
-import ModernCardWebEmbed from '../../../pageobjects/publish/website/theme/moderncard/ModernCardWebEmbed.js';
+import GallerySlider from '../../../pageobjects/publish/website/theme/galleryslider/GallerySlider.js';
+import GallerySliderWebEmbed from '../../../pageobjects/publish/website/theme/galleryslider/GallerySliderWebEmbed.js';
 import DeleteWebsite from '../../../pageobjects/publish/website/theme/themeutils/DeleteWebsite.js';
-import CtaButton from '../../../pageobjects/publish/website/theme/ctabutton/CtaButton.js';
 
 
-const runModernCardTest = ({ tag, PageObject, method }) => {
+
+const runGallerySliderTest = ({ tag, PageObject, method }) => {
     test(tag, async ({ page, token, wallId }) => {
         await test.step('Inject token into local storage', async () => {
             await page.addInitScript(token => localStorage.setItem('token', token), token);
@@ -31,18 +31,19 @@ const runModernCardTest = ({ tag, PageObject, method }) => {
     });
 };
 
-const moderncard = [
+const gallerySlider = [
 
-//{tag: '@CtaButton Theme Created', PageObject: CtaButton,method: 'ctaButton'},
-{tag: '@ModernCard Theme Created', PageObject: ModernCard,method: 'modernCard'},
-{tag: '@ModernCardWebEmbed Theme Created', PageObject: ModernCardWebEmbed, method: 'modernCardWebEmbed'},
+
+{tag: '@GallerySlider Theme Created', PageObject: GallerySlider,method: 'gallerySlider'},
+{tag: '@GallerySliderWebEmbed Theme Created', PageObject: GallerySliderWebEmbed,method: 'gallerySliderWebEmbed'},
+
 {tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
 
 
    
 ];
 
-moderncard.forEach(runModernCardTest);
+gallerySlider.forEach(runGallerySliderTest);
 
 // Common teardown
 test.afterEach(async ({ page }) => {

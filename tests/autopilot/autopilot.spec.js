@@ -43,7 +43,7 @@ const runAutoPilotTest = ({ tag, PageObject, method }) => {
 // Feed types configuration
 const autopilot = [
 
-    { tag: '@INSTAGRAMHANDLE created', PageObject: INSTAGRAMHANDLE, method: 'instagramHandle' },
+    { tag: '@InstagramAutoPilot created', PageObject: INSTAGRAMHANDLE, method: 'instagramHandle' },
     { tag: '@PrivateNetworkPost created', PageObject: PrivateNetworkPost, method: 'privateNetworkPost' },
     { tag: '@VerifyPostIsPrivate created', PageObject: PrivateNetworkPost, method: 'verifyPostIsPrivate' },
     { tag: '@PublicNetworkPost created', PageObject: PublicNetworkPost, method: 'publicNetworkPost' },

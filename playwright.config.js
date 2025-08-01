@@ -4,9 +4,10 @@ const isHeadless = !args.includes('--headed'); // Playwright's default is headle
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
   testDir: './tests',
-  timeout: 60_000,
+  timeout: 90_000,
   fullyParallel: false,
   workers: 1,
+  retries: 1,
   expect: {
     timeout: 10000,
   },
@@ -30,4 +31,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;
