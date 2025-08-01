@@ -1,7 +1,12 @@
 {
+<<<<<<< HEAD
   "status": "failed",
   "failedTests": [
     "642ac7daf2c057ab041a-2da630c1162729535116",
     "642ac7daf2c057ab041a-8d455e559a068c809a8d"
   ]
+=======
+  "status": "passed",
+  "failedTests": []
+>>>>>>> 10ba03e398b1de903a7d213a2492dcc4bc2cd51f
 }

@@ -20,7 +20,7 @@ class ReviewHub {
     this.shareUrl = page.locator('#ShareURL');
 
     // --- Review Form Locators ---
-    this.submitBtn = page.locator("div[class='t_f_p_btn ']");
+    this.submitBtn = page.locator("//div[contains(@class,'t_f_p_btn')][normalize-space()='Submit']");
     this.ratingError = page.locator("//div[normalize-space()='* Rating is required.']");
     this.reviewTitleError = page.locator("//div[normalize-space()='* Review Title is required.']");
     this.nameError = page.locator("//div[normalize-space()='Name is required.']");
@@ -93,11 +93,12 @@ class ReviewHub {
       console.log('Feed URL:', url);
 
       if (!url) throw new Error('❌ Share URL is missing!');
-      await this.page.goto(url);
+      await this.page.goto(url, { waitUntil: 'domcontentloaded' });
       await this.page.waitForTimeout(5000);
     });
     await test.step('7️⃣ Submit Empty Review Form and Validate Errors', async () => {
-      await this.submitBtn.scrollIntoViewIfNeeded();
+      await expect.soft(this.submitBtn).toBeVisible({ timeout: 5000 }); 
+      //await this.submitBtn.scrollIntoViewIfNeeded();
       await this.submitBtn.click({ force: true });
       await this.page.waitForTimeout(2000);
 

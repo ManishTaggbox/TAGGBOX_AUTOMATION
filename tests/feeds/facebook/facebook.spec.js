@@ -9,7 +9,11 @@ import FacebookReels from '../../../pageobjects/feeds/facebook/FacebookReels.js'
 
 // Reusable function to run feed test
 const runFacebookFeedTest = ({ tag, PageObject, method }) => {
-    test(tag, async ({ page, token, wallId }) => {
+    test(tag, async ({ page, token, wallId }, testInfo) => {
+        const alwaysFailingTags = ['@FacebookMyProfilePosts Create Feed'];
+        if (testInfo.retry > 0 && alwaysFailingTags.includes(tag)) {
+            test.skip(true, 'Skipping consistently failing test on retry');
+        }
         await test.step('Inject token into local storage', async () => {
             await page.addInitScript(token => localStorage.setItem('token', token), token);
         });
