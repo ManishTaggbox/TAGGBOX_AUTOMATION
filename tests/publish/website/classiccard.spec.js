@@ -1,13 +1,13 @@
 import { test, expect } from '../../publishfixtures.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
-import Reels from '../../../pageobjects/publish/website/theme/reels/Reels.js';
-import ReelsWebEmbed from '../../../pageobjects/publish/website/theme/reels/ReelsWebEmbed.js';
+import ClassicCard from '../../../pageobjects/publish/website/theme/classiccard/ClassicCard.js';
+import ClassicCardWebEmbed from '../../../pageobjects/publish/website/theme/classiccard/ClassicCardWebEmbed.js';
 import DeleteWebsite from '../../../pageobjects/publish/website/theme/themeutils/DeleteWebsite.js';
 
 
 
-const runReelsTest = ({ tag, PageObject, method }) => {
+const runClassicCardTest = ({ tag, PageObject, method }) => {
     test(tag, async ({ page, token, wallId }) => {
         await test.step('Inject token into local storage', async () => {
             await page.addInitScript(token => localStorage.setItem('token', token), token);
@@ -31,14 +31,18 @@ const runReelsTest = ({ tag, PageObject, method }) => {
     });
 };
 
-const reels = [
-{tag: '@Reels Theme Created', PageObject: Reels,method: 'reels'},
-{tag: '@ReelsWebEmbed Theme Created', PageObject: ReelsWebEmbed,method: 'reelsWebEmbed'},
+const classicCard = [
+
+
+{tag: '@ClassicCard Theme Created', PageObject: ClassicCard,method: 'classicCard'},
+{tag: '@ClassicCardWebEmbed Theme Created', PageObject: ClassicCardWebEmbed,method: 'classicCardWebEmbed'},
 {tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
 
+
+   
 ];
 
-reels.forEach(runReelsTest);
+classicCard.forEach(runClassicCardTest);
 
 // Common teardown
 test.afterEach(async ({ page }) => {

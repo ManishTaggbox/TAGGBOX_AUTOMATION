@@ -1,13 +1,13 @@
 import { test, expect } from '../../publishfixtures.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
-import Reels from '../../../pageobjects/publish/website/theme/reels/Reels.js';
-import ReelsWebEmbed from '../../../pageobjects/publish/website/theme/reels/ReelsWebEmbed.js';
+import HorizontalSlider from '../../../pageobjects/publish/website/theme/horizontalslider/HorizontalSlider.js';
+import HorizontalSliderWebEmbed from '../../../pageobjects/publish/website/theme/horizontalslider/HorizontalSliderWebEmbed.js';
 import DeleteWebsite from '../../../pageobjects/publish/website/theme/themeutils/DeleteWebsite.js';
 
 
 
-const runReelsTest = ({ tag, PageObject, method }) => {
+const runHorizontalSliderTest = ({ tag, PageObject, method }) => {
     test(tag, async ({ page, token, wallId }) => {
         await test.step('Inject token into local storage', async () => {
             await page.addInitScript(token => localStorage.setItem('token', token), token);
@@ -31,14 +31,14 @@ const runReelsTest = ({ tag, PageObject, method }) => {
     });
 };
 
-const reels = [
-{tag: '@Reels Theme Created', PageObject: Reels,method: 'reels'},
-{tag: '@ReelsWebEmbed Theme Created', PageObject: ReelsWebEmbed,method: 'reelsWebEmbed'},
+const horizontalSlider = [
+{tag: '@HorizontalSlider Theme Created', PageObject: HorizontalSlider,method: 'horizontalSlider'},
+{tag: '@HorizontalSliderWebEmbed Theme Created', PageObject: HorizontalSliderWebEmbed,method: 'horizontalSliderWebEmbed'},
 {tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
 
 ];
 
-reels.forEach(runReelsTest);
+horizontalSlider.forEach(runHorizontalSliderTest);
 
 // Common teardown
 test.afterEach(async ({ page }) => {

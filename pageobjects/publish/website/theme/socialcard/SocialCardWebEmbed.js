@@ -2,16 +2,16 @@ import { test, expect } from '@playwright/test';
 import GenerateCode from '../themeutils/GenerateCode';
 import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 
-class ModernCardWebEmbed {
+class SocialCardWebEmbed {
   constructor(page) {
     this.page = page;
 
     // Core locators
-    this.firstCard = page.locator("//div[@class='tb_mc_post_wrap_in']").first();
-    this.instagramIcon = this.firstCard.locator(".tb-instagram-default.tb__icon.tb_ico_default");
-    this.authorName = this.firstCard.locator(".tb_mc_authorname");
-    this.authorHandle = this.firstCard.locator(".tb_mc_username");
-    this.heartIcon = this.firstCard.locator(".tb_social_action_ico__.tb__icon.tb-heart-outline");
+    this.firstCard = page.locator("//div[@class='tb_nc_post_wrap_in']").first();
+    this.instagramIcon = this.firstCard.locator("//div[@class='tb-instagram-default tb__icon tb_ico_default']");
+    this.authorName = this.firstCard.locator(".tb_nc_authorname");
+    this.authorHandle = this.firstCard.locator(".tb_nc_username");
+    this.heartIcon = this.firstCard.locator("//div[@class='tb_social_action_ico__ tb__icon tb-heart-outline']");
     this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
     this.modalPopup = page.locator(".tb_post_modal_modal_body");
     this.closePopup = page.locator(".tb_post_modal_close_btn");
@@ -45,24 +45,7 @@ class ModernCardWebEmbed {
     }
   }
 
-  async validateModalStyles(modalContent, modalPopup) {
-    const [modalStyles, popupStyles] = await Promise.all([
-      this.getComputedStyles(modalContent, ['fontSize', 'fontFamily', 'color']),
-      this.getComputedStyles(modalPopup, ['backgroundColor'])
-    ]);
-
-    console.log("Font size:", modalStyles.fontSize);
-    console.log("Font family:", modalStyles.fontFamily);
-    console.log("Font color:", modalStyles.color);
-    console.log("Popup background color:", popupStyles.backgroundColor);
-
-    expect.soft(modalStyles.fontSize).toBe('38px');
-    expect.soft(modalStyles.fontFamily.toLowerCase()).toContain('rochester');
-    expect.soft(modalStyles.color).toBe('rgb(204, 204, 170)');
-    expect.soft(popupStyles.backgroundColor).toBe('rgb(119, 0, 68)');
-  }
-
-  async modernCardWebEmbed() {
+  async socialCardWebEmbed() {
     await test.step('Generate embed code for Modern Card', async () => {
       const generateCode = new GenerateCode(this.page);
       await generateCode.generateCode();
@@ -83,16 +66,12 @@ class ModernCardWebEmbed {
       });
     });
 
-    await test.step('Check Instagram icon visibility', async () => {
-      await expect.soft(this.instagramIcon).toBeVisible();
-    });
-
     await test.step('Check author name styles', async () => {
       await expect.soft(this.authorName).toHaveText('raisr_sanchi');
       
       await this.validateFontStyles(this.authorName, {
         fontFamily: 'rochester',
-        color: 'rgb(43, 43, 43)'
+        color: 'rgb(85, 238, 238)'
       }, 'Author');
     });
 
@@ -101,7 +80,7 @@ class ModernCardWebEmbed {
       
       await this.validateFontStyles(this.authorHandle, {
         fontFamily: 'rochester',
-        color: 'rgb(43, 43, 43)'
+        color: 'rgb(85, 238, 238)'
       }, 'Handle font');
     });
 
@@ -127,14 +106,27 @@ class ModernCardWebEmbed {
       
       await expect.soft(this.modalContent).toBeVisible();
 
-      await this.validateModalStyles(this.modalContent, this.modalPopup);
+      const [modalStyles, popupStyles] = await Promise.all([
+        this.getComputedStyles(this.modalContent, ['fontSize', 'fontFamily', 'color']),
+        this.getComputedStyles(this.modalPopup, ['backgroundColor'])
+      ]);
+
+      console.log("Font size:", modalStyles.fontSize);
+      console.log("Font family:", modalStyles.fontFamily);
+      console.log("Font color:", modalStyles.color);
+      console.log("Popup background color:", popupStyles.backgroundColor);
+
+      expect.soft(modalStyles.fontSize).toBe('38px');
+      expect.soft(modalStyles.fontFamily.toLowerCase()).toContain('rochester');
+      expect.soft(modalStyles.color).toBe('rgb(204, 204, 170)');
+      expect.soft(popupStyles.backgroundColor).toBe('rgb(119, 0, 68)');
       
       await this.closePopup.click();
     });
 
     await test.step('Compare card count before and after clicking See More', async () => {
       const seeMoreBtn = this.page.locator('.tb_see_more_btn');
-      const cardLocator = this.page.locator("//div[@class='tb_mc_post_wrap_in']");
+      const cardLocator = this.page.locator("//div[@class='tb_nc_post_wrap_in']");
       
       const cardsBefore = await cardLocator.count();
       console.log("Card count before clicking 'See More':", cardsBefore);
@@ -149,8 +141,8 @@ class ModernCardWebEmbed {
       expect.soft(cardsBefore).not.toBe(cardsAfter);
     });
 
-    await this.page.waitForTimeout(5000); // Optional pause for visual inspection
+    await this.page.waitForTimeout(5000); 
   }
 }
 
-export default ModernCardWebEmbed;
+export default SocialCardWebEmbed;

@@ -2,19 +2,19 @@ import { test, expect } from '@playwright/test';
 import GenerateCode from '../themeutils/GenerateCode';
 import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 
-class ReelsWebEmbed {
+class ReelShopWebEmbed {
     constructor(page) {
         this.page = page;
-        this.firstCard = page.locator("//div[@class='tb_rt_post_in tb_icon_animate ']").first();
+        this.firstCard = page.locator("//div[@class='tb_rtp_post_in tb_icon_animate ']").first();
         this.instagramIcon = this.firstCard.locator(".tb-instagram-default.tb__icon.tb_ico_default");
         this.authorName = this.firstCard.locator(".tb_mc_authorname");
         this.authorHandle = this.firstCard.locator(".tb_mc_username");
-        this.heartIcon = this.firstCard.locator(".tb_social_action_ico__.tb__icon.tb-heart-outline");
         this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
         this.modalPopup = page.locator(".tb_post_modal_modal_body");
         this.closePopup = page.locator(".tb_post_modal_close_btn");
     }
 
+    // Helper method to get computed styles efficiently
     async getComputedStyles(element, properties) {
         return await element.evaluate((el, props) => {
             const styles = getComputedStyle(el);
@@ -43,7 +43,7 @@ class ReelsWebEmbed {
         expect.soft(popupStyles.backgroundColor).toBe('rgb(119, 0, 68)');
     }
 
-    async reelsWebEmbed() {
+    async reelShopWebEmbed() {
         await test.step('Generate embed code for Modern Card', async () => {
             const generateCode = new GenerateCode(this.page);
             await generateCode.generateCode();
@@ -59,16 +59,10 @@ class ReelsWebEmbed {
 
             console.log(`Top-Left: ${borderStyles.borderTopLeftRadius}, Top-Right: ${borderStyles.borderTopRightRadius}, Bottom-Right: ${borderStyles.borderBottomRightRadius}, Bottom-Left: ${borderStyles.borderBottomLeftRadius}`);
 
+           
             Object.values(borderStyles).forEach(radius => {
                 expect.soft(radius).toBe('27px');
             });
-        });
-
-        await test.step("Hover first card and check if Instagram icon is present", async () => {
-            await this.firstCard.hover();
-            const isVisible = await this.instagramIcon.isVisible();
-            console.log("Is Instagram icon visible after hover:", isVisible);
-            expect.soft(isVisible).toBe(true);
         });
 
         await test.step('Click card and validate popup styles', async () => {
@@ -90,4 +84,4 @@ class ReelsWebEmbed {
     }
 }
 
-export default ReelsWebEmbed;
+export default ReelShopWebEmbed;

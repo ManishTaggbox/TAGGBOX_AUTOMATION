@@ -1,13 +1,13 @@
 import { test, expect } from '../../publishfixtures.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
-import Reels from '../../../pageobjects/publish/website/theme/reels/Reels.js';
-import ReelsWebEmbed from '../../../pageobjects/publish/website/theme/reels/ReelsWebEmbed.js';
+import SocialCard from '../../../pageobjects/publish/website/theme/socialcard/SocialCard.js';
+import SocialCardWebEmbed from '../../../pageobjects/publish/website/theme/socialcard/SocialCardWebEmbed.js';
 import DeleteWebsite from '../../../pageobjects/publish/website/theme/themeutils/DeleteWebsite.js';
 
 
 
-const runReelsTest = ({ tag, PageObject, method }) => {
+const runSocialCardTest = ({ tag, PageObject, method }) => {
     test(tag, async ({ page, token, wallId }) => {
         await test.step('Inject token into local storage', async () => {
             await page.addInitScript(token => localStorage.setItem('token', token), token);
@@ -21,7 +21,7 @@ const runReelsTest = ({ tag, PageObject, method }) => {
 
         await test.step(`Run ${tag} feed creation flow`, async () => {
             const feedPage = new PageObject(page);
-             await feedPage[method]();  
+            await feedPage[method]();
         });
 
 
@@ -31,14 +31,14 @@ const runReelsTest = ({ tag, PageObject, method }) => {
     });
 };
 
-const reels = [
-{tag: '@Reels Theme Created', PageObject: Reels,method: 'reels'},
-{tag: '@ReelsWebEmbed Theme Created', PageObject: ReelsWebEmbed,method: 'reelsWebEmbed'},
-{tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
+const socialCard = [
+    { tag: '@SocialCard Theme Created', PageObject: SocialCard, method: 'socialCard' },
+    { tag: '@SocialCardWebEmbed Theme Created', PageObject: SocialCardWebEmbed, method: 'socialCardWebEmbed' },
+    { tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite, method: 'deleteWebsite' },
 
 ];
 
-reels.forEach(runReelsTest);
+socialCard.forEach(runSocialCardTest);
 
 // Common teardown
 test.afterEach(async ({ page }) => {
