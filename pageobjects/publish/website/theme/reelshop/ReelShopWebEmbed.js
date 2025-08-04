@@ -80,7 +80,7 @@ class ReelShopWebEmbed {
             await this.closePopup.click();
         });
 
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
     }
 }
 

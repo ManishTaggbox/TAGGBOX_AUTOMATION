@@ -141,7 +141,7 @@ class HorizontalSliderWebEmbed {
             console.log("Completed 3 next and 3 previous arrow clicks");
         });
 
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
     }
 
     async navigateSlider(arrowElement, count, direction) {

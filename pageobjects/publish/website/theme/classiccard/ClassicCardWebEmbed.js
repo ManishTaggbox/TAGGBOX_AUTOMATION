@@ -146,7 +146,7 @@ class ClassicCardWebEmbed {
       expect.soft(cardsBefore).not.toBe(cardsAfter);
     });
 
-    await this.page.waitForTimeout(10000); // Optional pause for visual inspection
+    await this.page.waitForTimeout(5000); // Optional pause for visual inspection
   }
 }
 
