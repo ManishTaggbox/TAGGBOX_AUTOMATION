@@ -15,6 +15,34 @@ class ReelsWebEmbed {
         this.closePopup = page.locator(".tb_post_modal_close_btn");
     }
 
+    async getComputedStyles(element, properties) {
+        return await element.evaluate((el, props) => {
+            const styles = getComputedStyle(el);
+            const result = {};
+            props.forEach(prop => {
+                result[prop] = styles[prop];
+            });
+            return result;
+        }, properties);
+    }
+
+    async validateModalStyles(modalContent, modalPopup) {
+        const [modalStyles, popupStyles] = await Promise.all([
+            this.getComputedStyles(modalContent, ['fontSize', 'fontFamily', 'color']),
+            this.getComputedStyles(modalPopup, ['backgroundColor'])
+        ]);
+
+        console.log("Font size:", modalStyles.fontSize);
+        console.log("Font family:", modalStyles.fontFamily);
+        console.log("Font color:", modalStyles.color);
+        console.log("Popup background color:", popupStyles.backgroundColor);
+
+        expect.soft(modalStyles.fontSize).toBe('38px');
+        expect.soft(modalStyles.fontFamily.toLowerCase()).toContain('rochester');
+        expect.soft(modalStyles.color).toBe('rgb(204, 204, 170)');
+        expect.soft(popupStyles.backgroundColor).toBe('rgb(119, 0, 68)');
+    }
+
     async reelsWebEmbed() {
         await test.step('Generate embed code for Modern Card', async () => {
             const generateCode = new GenerateCode(this.page);
@@ -22,17 +50,18 @@ class ReelsWebEmbed {
         });
 
         await test.step('Check card border-radius', async () => {
-            const topLeft = await this.firstCard.evaluate(el => getComputedStyle(el).borderTopLeftRadius);
-            const topRight = await this.firstCard.evaluate(el => getComputedStyle(el).borderTopRightRadius);
-            const bottomRight = await this.firstCard.evaluate(el => getComputedStyle(el).borderBottomRightRadius);
-            const bottomLeft = await this.firstCard.evaluate(el => getComputedStyle(el).borderBottomLeftRadius);
+            const borderStyles = await this.getComputedStyles(this.firstCard, [
+                'borderTopLeftRadius',
+                'borderTopRightRadius', 
+                'borderBottomRightRadius',
+                'borderBottomLeftRadius'
+            ]);
 
-            console.log(`Top-Left: ${topLeft}, Top-Right: ${topRight}, Bottom-Right: ${bottomRight}, Bottom-Left: ${bottomLeft}`);
+            console.log(`Top-Left: ${borderStyles.borderTopLeftRadius}, Top-Right: ${borderStyles.borderTopRightRadius}, Bottom-Right: ${borderStyles.borderBottomRightRadius}, Bottom-Left: ${borderStyles.borderBottomLeftRadius}`);
 
-            expect.soft(topLeft).toBe('27px');
-            expect.soft(topRight).toBe('27px');
-            expect.soft(bottomRight).toBe('27px');
-            expect.soft(bottomLeft).toBe('27px');
+            Object.values(borderStyles).forEach(radius => {
+                expect.soft(radius).toBe('27px');
+            });
         });
 
         await test.step("Hover first card and check if Instagram icon is present", async () => {
@@ -41,32 +70,21 @@ class ReelsWebEmbed {
             console.log("Is Instagram icon visible after hover:", isVisible);
             expect.soft(isVisible).toBe(true);
         });
+
         await test.step('Click card and validate popup styles', async () => {
             await this.firstCard.click();
+            
             await test.step('CTA Button Style ', async () => {
                 const ctaButtonWebEmbed = new CtaButtonWebEmbed(this.page);
                 await ctaButtonWebEmbed.ctaButtonWebEmbed();
             });
+            
             await expect.soft(this.modalContent).toBeVisible();
 
-            const fontSize = await this.modalContent.evaluate(el => getComputedStyle(el).fontSize);
-            console.log("Font size:", fontSize);
-            expect.soft(fontSize).toBe('38px');
-
-            const fontFamily = await this.modalContent.evaluate(el => getComputedStyle(el).fontFamily);
-            console.log("Font family:", fontFamily);
-            expect.soft(fontFamily.toLowerCase()).toContain('rochester');
-
-            const fontColor = await this.modalContent.evaluate(el => getComputedStyle(el).color);
-            console.log("Font color:", fontColor);
-            expect.soft(fontColor).toBe('rgb(204, 204, 170)');
-
-            const popupBgColor = await this.modalPopup.evaluate(el => getComputedStyle(el).backgroundColor);
-            console.log("Popup background color:", popupBgColor);
-            expect.soft(popupBgColor).toBe('rgb(119, 0, 68)');
+            await this.validateModalStyles(this.modalContent, this.modalPopup);
+            
             await this.closePopup.click();
         });
-
 
         await this.page.waitForTimeout(10000);
     }
