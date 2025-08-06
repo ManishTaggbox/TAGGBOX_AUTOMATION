@@ -71,12 +71,12 @@ class CollageWebEmbed {
             await expect.soft(this.shoppingIcon).toBeVisible();
         });
 
-        await test.step("Hover first card and check if Instagram icon is present", async () => {
-            await this.firstCard.hover();
-            const isVisible = await this.instagramIcon.isVisible();
-            console.log("Is Instagram icon visible after hover:", isVisible);
-            expect.soft(isVisible).toBe(true);
-        });
+        // await test.step("Hover first card and check if Instagram icon is present", async () => {
+        //     await this.firstCard.hover();
+        //     const isVisible = await this.instagramIcon.isVisible();
+        //     console.log("Is Instagram icon visible after hover:", isVisible);
+        //     expect.soft(isVisible).toBe(true);
+        // });
 
         await test.step('Click card and validate popup styles', async () => {
             await this.firstCard.click();

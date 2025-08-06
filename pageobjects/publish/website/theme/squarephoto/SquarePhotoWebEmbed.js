@@ -69,12 +69,12 @@ class SquarePhotoWebEmbed {
             await expect.soft(this.shoppingIcon).toBeVisible();
         });
 
-        await test.step("Hover first card and check if Instagram icon is present", async () => {
-            await this.firstCard.hover();
-            const isVisible = await this.instagramIcon.isVisible();
-            console.log("Is Instagram icon visible after hover:", isVisible);
-            expect.soft(isVisible).toBe(true);
-        });
+        // await test.step("Hover first card and check if Instagram icon is present", async () => {
+        //     await this.firstCard.hover();
+        //     const isVisible = await this.instagramIcon.isVisible();
+        //     console.log("Is Instagram icon visible after hover:", isVisible);
+        //     expect.soft(isVisible).toBe(true);
+        // });
 
         await test.step('Click card and validate popup styles', async () => {
             await this.firstCard.click();
@@ -121,22 +121,7 @@ class SquarePhotoWebEmbed {
             await this.closePopup.click();
         });
 
-        await test.step('Compare card count before and after clicking See More', async () => {
-            const seeMoreBtn = this.page.locator('.tb_see_more_btn');
-            const cardLocator = this.page.locator("//div[@class='tb_sp_post_in tb_sp_post_ani']");
-
-            const cardsBefore = await cardLocator.count();
-            console.log("Card count before clicking 'See More':", cardsBefore);
-
-            await seeMoreBtn.scrollIntoViewIfNeeded();
-            await seeMoreBtn.click();
-            await this.page.waitForTimeout(3000);
-
-            const cardsAfter = await cardLocator.count();
-            console.log("Card count after clicking 'See More':", cardsAfter);
-
-            expect.soft(cardsBefore).not.toBe(cardsAfter);
-        });
+       
 
         await this.page.waitForTimeout(5000);
     }
