@@ -6,7 +6,8 @@ class PostDelete
     {
         this.page = page;
         this.allPosts = page.locator('//a[text()="All posts"]/span');
-        this.post = page.locator('.content_img_ ');
+        // this.post = page.locator('.content_img_ ');
+        this.post = page.locator('.cursor-pointer.position-relative');  
         this.threeDotsOption = page.locator('//i[contains(@class,"fa-regular fa-ellipsis me-1")]');
         this.deleteOption = page.locator('//span[text()="Delete post"]');
         this.continueBtn = page.locator('//button[contains(@class,"swal2-confirm swal2-styled")]');

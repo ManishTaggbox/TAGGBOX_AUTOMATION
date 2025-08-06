@@ -11,6 +11,9 @@ import PostPinToTop from '../../pageobjects/moderation/postPinToTop.js';
 import PostHighlight from '../../pageobjects/moderation/postHighlight.js';
 import PostPrivatePublic from '../../pageobjects/moderation/postPrivatePublic.js';
 import PostDelete from '../../pageobjects/moderation/postDelete.js';
+import SelectedPostAction from '../../pageobjects/moderation/selectedPostAction.js';
+import CarousalPost from '../../pageobjects/moderation/carousalPost.js';
+import FeedFilter from '../../pageobjects/moderation/socialFeedFilter.js';
 
 
 const runModerationTest = ({ tag, PageObject, method }) => 
@@ -50,7 +53,7 @@ const moderation =
 [
     { tag: '@ModerationEditPost', PageObject: EditPosts, method: 'editPost' },
     { tag: '@ModerationAddPostTags', PageObject: AddTags, method: 'addTags' },
-    { tag: '@ModerationEditPostTags', PageObject: EditTags, method: 'editTags' },
+    { tag: '@ModerationPostTagsEdit', PageObject: EditTags, method: 'editTags' },
     { tag: '@ModerationDeletePostTags', PageObject: DeleteTags, method: 'deleteTags' },
     { tag: '@ModeratonTagProducts', PageObject: TagProduct, method: 'productTag' },
     { tag: '@ModeratonEditTaggedProduct', PageObject: EditProduct, method: 'editProducts' },
@@ -58,7 +61,12 @@ const moderation =
     { tag: '@ModerationPostPinToTop', PageObject: PostPinToTop, method: 'pinPost' },
     { tag: '@ModerationPostHighlight', PageObject: PostHighlight, method: 'highlightPost' },
     { tag: '@ModerationPostPrivatePublic', PageObject: PostPrivatePublic, method: 'privatePublicPost' },
-    
+
+
+    { tag: '@ModerationSelectedPostPrivate', PageObject: SelectedPostAction, method: 'postPrivate' },
+    { tag: '@ModerationCarousalPost', PageObject: CarousalPost, method: 'carousalPost' },
+    { tag: '@ModerationSocialFeedFilter', PageObject: FeedFilter, method: 'socialFeedFilter' },
+
     
     
     { tag: '@ModerationPostDelete', PageObject: PostDelete, method: 'deletePost' }

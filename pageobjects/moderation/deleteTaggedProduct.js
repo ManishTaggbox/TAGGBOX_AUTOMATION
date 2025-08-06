@@ -5,7 +5,8 @@ class DeleteProducts
     constructor(page) 
     {
         this.page = page;
-        this.cards = page.locator('.content_img_ ');  
+        // this.cards = page.locator('.content_img_ ');  
+        this.cards = page.locator('.cursor-pointer.position-relative');  
         this.deleteIcon = page.locator('//button[@aria-label="delete"]');
         this.toastMsg = page.locator('.Toastify__toast-body');
         this.crossIcon = page.locator('.btn-close');

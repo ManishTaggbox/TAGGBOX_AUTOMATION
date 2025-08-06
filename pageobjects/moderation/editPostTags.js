@@ -5,7 +5,8 @@ class EditPostTags
     constructor(page) 
     {
         this.page = page;
-        this.cards = page.locator('.content_img_ ');  
+        // this.cards = page.locator('.content_img_ ');  
+        this.cards = page.locator('.cursor-pointer.position-relative');  
         this.tagsOption = page.locator('//button[text()="Tags"]'); 
         this.tagsInput = page.locator('.selectpicker__input');
         this.createTag = page.locator('//div[contains(text(), "Create")]');

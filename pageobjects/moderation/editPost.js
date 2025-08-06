@@ -7,7 +7,8 @@ class EditPost
     constructor(page) 
     {
         this.page = page;
-        this.cards = page.locator('.content_img_ ');  
+        // this.cards = page.locator('.content_img_ ');  
+        this.cards = page.locator('.cursor-pointer.position-relative');  
         this.editIcon = page.locator('//button[text()="Edit Post"]'); 
         this.nameField = page.locator('#author_n_');
         this.handleField = page.locator('#author_h_');

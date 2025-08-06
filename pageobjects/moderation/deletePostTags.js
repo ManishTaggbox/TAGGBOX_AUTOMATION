@@ -5,7 +5,8 @@ class DeletePostTags
     constructor(page) 
     {
         this.page = page;
-        this.cards = page.locator('.content_img_ ');  
+        // this.cards = page.locator('.content_img_ '); 
+        this.cards = page.locator('.cursor-pointer.position-relative');   
         this.tagsOption = page.locator('//button[text()="Tags"]'); 
         this.deleteTag = page.locator('//span/button');
         this.saveBtn = page.locator('//button[text()="Save Changes"]');

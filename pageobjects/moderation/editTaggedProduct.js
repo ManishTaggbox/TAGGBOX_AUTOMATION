@@ -5,7 +5,8 @@ class EditProducts
     constructor(page) 
     {
         this.page = page;
-        this.cards = page.locator('.content_img_ ');  
+        // this.cards = page.locator('.content_img_ ');  
+        this.cards = page.locator('.cursor-pointer.position-relative');  
         this.deleteIcon = page.locator('//button[@aria-label="delete"]');
         this.searchBox = page.locator('#search_pro_'); 
         this.firstProduct = page.locator('#tag_products_0');
