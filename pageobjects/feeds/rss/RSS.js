@@ -12,6 +12,7 @@ class RSS {
 
     async rss() {
         await test.step('Step 1: Fill Rss Display Name', async () => {
+            await this.enterRssText.waitFor({ state: 'visible', timeout: 10000 });
             await this.enterRssText.fill(RSSDATA.RSSDISPLAYNAME);
             await this.page.waitForTimeout(2000);
         });

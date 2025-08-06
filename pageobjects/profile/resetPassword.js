@@ -16,6 +16,7 @@ class ResetPassword {
 
     async passwordReset() {
         await test.step("Step 1: Click on Reset Password button", async () => {
+            await this.resetBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.resetBtn.click();
         });
 

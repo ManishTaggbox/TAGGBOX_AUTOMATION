@@ -14,6 +14,7 @@ class GooglePlaces {
     async googlePlaces() {
 
         await test.step('Step 1: Fill GOOGLE Place  input with "GOOGLEPLACE"', async () => {
+            await this.typeAddress.waitFor({ state: 'visible', timeout: 10000 });
             await this.typeAddress.fill(GOOGLE.GOOGLEPLACE);
         });
 

@@ -16,6 +16,7 @@ class YelpBusinessName {
 
     async yelpBusinessName() {
         await test.step('Step 1: Click On businessname Url', async () => {
+            await this.businessname.waitFor({ state: 'visible', timeout: 10000 });
             await this.businessname.click({ force: true });
         });
 

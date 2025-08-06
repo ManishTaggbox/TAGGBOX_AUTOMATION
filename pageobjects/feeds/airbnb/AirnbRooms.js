@@ -11,6 +11,7 @@ class AirnbRooms {
 
   async airnbRooms() {
     await test.step('Step 1: Fill AIRNB Rooms Url', async () => {
+       await this.enterRoomText.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterRoomText.fill(AIRBNB.AIRBNBROOMS);
     });
 

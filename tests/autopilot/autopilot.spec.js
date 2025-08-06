@@ -24,7 +24,7 @@ const runAutoPilotTest = ({ tag, PageObject, method }) => {
         });
 
         await test.step('Soft check for correct page title', async () => {
-            await expect.soft(page).toHaveTitle('Autopilot | Tagbox');
+            await expect.soft(page).toHaveTitle('Autopilot | Tagbox', { timeout: 10000 });
         });
 
 

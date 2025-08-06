@@ -28,6 +28,7 @@ class EditProduct {
 
     async editProduct() {
         await test.step("Step 1: Click on the edit icon to open edit form", async () => {
+            await this.editIcon.first().waitFor({ state: 'visible', timeout: 10000 });
             await this.editIcon.first().click();
         });
 

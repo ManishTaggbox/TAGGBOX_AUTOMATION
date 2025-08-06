@@ -11,6 +11,7 @@ class TikTokHashtag {
 
   async tikTokHashtag() {
     await test.step('Step 1: Fill hashtag input with "nature"', async () => {
+      await this.enterHashTag.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterHashTag.fill(TIKTOK.TIKTOKHASHTAG);
     });
 

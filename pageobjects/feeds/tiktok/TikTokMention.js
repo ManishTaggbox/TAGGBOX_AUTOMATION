@@ -11,6 +11,7 @@ class TikTokMentions {
 
   async tikTokMentions() {
     await test.step('Step 1: Click mentions', async () => {
+      await this.mentions.waitFor({ state: 'visible', timeout: 10000 });
       await this.mentions.click({ force: true });
     });
 

@@ -11,6 +11,7 @@ class FacebookPageMentions {
 
   async facebookPageMentions() {
     await test.step('Step 1: Click On  pagementions', async () => {
+      await this.pagementions.waitFor({ state: 'visible', timeout: 10000 });
       await this.pagementions.click({ force: true });
     });
 

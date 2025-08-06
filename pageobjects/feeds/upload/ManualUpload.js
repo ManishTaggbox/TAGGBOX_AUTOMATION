@@ -52,6 +52,7 @@ class ManualUpload {
 
     async manualUpload() {
         await test.step('Click "Upload" tab', async () => {
+            await this.uploadTab.waitFor({ state: 'visible', timeout: 10000 });
             await this.uploadTab.click({ force: true });
         });
 

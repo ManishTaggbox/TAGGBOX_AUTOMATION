@@ -11,6 +11,7 @@ class PinterestHandle {
 
   async pinterestHandle() {
     await test.step('Step 1: Fill Handle input with "charlidamelio"', async () => {
+      await this.enterHandle.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterHandle.fill(PINTEREST.PINTERESTHANDLE);
     });
 

@@ -13,6 +13,7 @@ class ManageFeeds {
 
   async manageFeed() {
     await test.step("Step 1: Click 'Manage Feeds' button", async () => {
+      await this.manageFeedsBtn.waitFor({ state: 'visible', timeout: 10000 });
       await this.manageFeedsBtn.click();
       await this.page.waitForTimeout(2000);
     });

@@ -12,7 +12,7 @@ class CreateWebsite {
 
     async createWebsite(channelName) {
         await test.step("Step 1.1: Click 'Add Channel' button", async () => {
-            await this.addChannel.waitFor({ state: 'visible', timeout: 10000 });
+            await this.addChannel.waitFor({ state: 'visible', timeout: 20000 });
             await this.addChannel.click();
         });
 

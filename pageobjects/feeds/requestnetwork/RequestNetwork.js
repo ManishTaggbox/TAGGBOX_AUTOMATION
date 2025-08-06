@@ -35,6 +35,7 @@ class RequestNetwork {
 
     async requestNetwork() {
         await test.step('Click "Upload" tab', async () => {
+            await this.requestNetworkbtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.requestNetworkbtn.click({ force: true });
             await this.description.fill('This is a test description for Request Network feed.');
         });

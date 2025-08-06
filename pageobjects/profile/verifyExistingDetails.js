@@ -13,6 +13,7 @@ class VerifyDetails {
 
     async verifyDetails() {
         await test.step("Step 1: Verify name element is visible", async () => {
+            await this.name.waitFor({ state: 'visible', timeout: 10000 });
             await expect.soft(this.name).toBeVisible();
         });
 
