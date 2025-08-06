@@ -11,6 +11,7 @@ class SearchProduct {
 
     async searchProduct() {
         await test.step("Step 1: Search by product name - Enter 'Apple iPhone 12'", async () => {
+            await this.searchBox.waitFor({ state: 'visible', timeout: 10000 });
             await this.searchBox.fill('Apple iPhone 12');
         });
 

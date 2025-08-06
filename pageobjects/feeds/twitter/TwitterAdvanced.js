@@ -12,6 +12,7 @@ class TwitterAdvanced {
 
   async twitterAdvanced() {
       await test.step('Step 1: Click On  Handle', async () => {
+    await this.advanced.waitFor({ state: 'visible', timeout: 10000 });
       await this.advanced.click({ force: true });
     });
 

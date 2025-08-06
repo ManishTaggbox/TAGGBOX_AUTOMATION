@@ -30,35 +30,36 @@ class UploadCSVFile {
     }
 
 
-  async csvUpload() {
-    await test.step("Step 1: Click 'Manual Upload' option", async () => {
-        await this.manualUpload.click();
-    });
+    async csvUpload() {
+        await test.step("Step 1: Click 'Manual Upload' option", async () => {
+            await this.manualUpload.waitFor({ state: 'visible', timeout: 10000 });
+            await this.manualUpload.click();
+        });
 
-    await test.step("Step 2: Click 'Upload CSV File' option", async () => {
-        await this.uploadCSV.click();
-    });
+        await test.step("Step 2: Click 'Upload CSV File' option", async () => {
+            await this.uploadCSV.click();
+        });
 
-    await test.step("Step 3: Upload CSV file from specified path", async () => {
-        await this.uploadFile(this.browse, '../../videos/sample-products.csv');
-    });
+        await test.step("Step 3: Upload CSV file from specified path", async () => {
+            await this.uploadFile(this.browse, '../../videos/sample-products.csv');
+        });
 
-    await test.step("Step 4: Wait for file upload processing", async () => {
-        await this.page.waitForTimeout(10000);
-    });
+        await test.step("Step 4: Wait for file upload processing", async () => {
+            await this.page.waitForTimeout(10000);
+        });
 
-    await test.step("Step 5: Click 'Upload' button to import products", async () => {
-        await this.uploadBtn.click();
-    });
+        await test.step("Step 5: Click 'Upload' button to import products", async () => {
+            await this.uploadBtn.click();
+        });
 
-    await test.step("Step 6: Wait for import process to complete", async () => {
-        await this.page.waitForTimeout(5000);
-    });
+        await test.step("Step 6: Wait for import process to complete", async () => {
+            await this.page.waitForTimeout(5000);
+        });
 
-    await test.step("Step 7: Verify success message appears", async () => {
-        await expect.soft(this.successMsg).toHaveText('Product Import Successfully.');
-    });
-}
+        await test.step("Step 7: Verify success message appears", async () => {
+            await expect.soft(this.successMsg).toHaveText('Product Import Successfully.');
+        });
+    }
 }
 
 module.exports = UploadCSVFile;

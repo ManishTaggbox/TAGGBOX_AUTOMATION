@@ -15,6 +15,7 @@ class SlackChannelKeyword {
         });
 
         await test.step('Step 2: Verify "Create Feed" button is enabled', async () => {
+            await this.createFeedBtn.waitFor({ state: 'visible', timeout: 10000 });
             await expect(this.createFeedBtn).toBeEnabled();
         });
 

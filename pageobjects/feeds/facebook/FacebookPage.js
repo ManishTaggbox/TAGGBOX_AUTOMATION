@@ -14,6 +14,7 @@ class FacebookPage {
     async facebookPage() {
 
         await test.step('Step 1: Fill FACEBOOK PAGE and trigger suggestions', async () => {
+            await this.pageText.waitFor({ state: 'visible', timeout: 10000 });
             await this.pageText.fill(FACEBOOK.FACEBOOKPAGE);
             await this.pageText.press('Space');
         });

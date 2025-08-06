@@ -14,6 +14,7 @@ class YoutubeKeywords {
 
     async youtubeKeywords() {
         await test.step('Step 1: Click On keywords Url', async () => {
+            await this.keywords.waitFor({ state: 'visible', timeout: 10000 });
             await this.keywords.click({ force: true });
         });
 

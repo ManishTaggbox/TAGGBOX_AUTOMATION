@@ -12,6 +12,7 @@ class TwitterMention {
 
   async twitterMention() {
       await test.step('Step 1: Click On  Handle', async () => {
+    await this.mention.waitFor({ state: 'visible', timeout: 10000 });
       await this.mention.click({ force: true });
     });
 

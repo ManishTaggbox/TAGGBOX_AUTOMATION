@@ -50,6 +50,7 @@ class AddProduct {
 
     async addProduct() {
         await test.step("Step 1: Click on 'Manual Upload' option", async () => {
+            await this.manualUpload.waitFor({ state: 'visible', timeout: 10000 });
             await this.manualUpload.click();
         });
 

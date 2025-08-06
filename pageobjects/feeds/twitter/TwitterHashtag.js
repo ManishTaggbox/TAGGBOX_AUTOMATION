@@ -11,6 +11,7 @@ class TwitterHashtag {
 
   async twitterHashtag() {
     await test.step('Step 1: Fill hashtag input with "war"', async () => {
+      await this.enterHashTag.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterHashTag.fill(TWITTER.TWITTERHASHTAG);
     });
 

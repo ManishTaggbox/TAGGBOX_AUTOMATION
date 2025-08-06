@@ -11,6 +11,7 @@ class FlickrHashtag {
 
   async flickrHashtag() {
     await test.step('Step 1: Fill hashtag input with "beach"', async () => {
+      await this.enterHashTag.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterHashTag.fill(FLICKR.FLICKRHASHTAG);
     });
 

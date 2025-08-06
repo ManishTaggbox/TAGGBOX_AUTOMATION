@@ -12,6 +12,7 @@ class TikTOkPostUrl {
 
   async tikTOkPostUrl() {
       await test.step('Step 1: Click On  Handle', async () => {
+    await this.postUrl.waitFor({ state: 'visible', timeout: 10000 });
       await this.postUrl.click({ force: true });
     });
 

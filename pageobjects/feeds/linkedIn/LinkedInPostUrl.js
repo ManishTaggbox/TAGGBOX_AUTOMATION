@@ -13,6 +13,7 @@ class LinkedInPostUrl {
 
     async linkedInPostUrl() {
         await test.step('Step 1: Click On  Post Url', async () => {
+            await this.postUrl.waitFor({ state: 'visible', timeout: 10000 });
             await this.postUrl.click({ force: true });
         });
 

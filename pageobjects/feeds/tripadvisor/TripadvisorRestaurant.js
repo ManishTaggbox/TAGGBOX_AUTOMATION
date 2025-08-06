@@ -11,6 +11,7 @@ class TripadvisorRestaurant {
 
   async tripadvisorRestaurant() {
     await test.step('Step 1: Fill TRIP ADVISOR RESTAURANT Rooms Url', async () => {
+      await this.enterRestaurant.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterRestaurant.fill(TRIPADVISOR.TRIPADVISORRESTAURANT);
     });
 

@@ -35,6 +35,7 @@ class EditDetails {
 
     async editDetails() {
         await test.step("Step 1: Click on Edit Profile button", async () => {
+            await this.editBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.editBtn.click();
         });
 

@@ -26,7 +26,7 @@ class AddNewGallery {
 
     async addNewGallery() {
         await test.step("Step 1: Click Add New Gallery", async () => {
-            await this.addNewGalleryBtn.waitFor({ state: 'visible' });
+             await this.addNewGalleryBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.addNewGalleryBtn.click();
         });
 

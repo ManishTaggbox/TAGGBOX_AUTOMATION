@@ -24,9 +24,9 @@ class CollageWebEmbed {
             const styles = getComputedStyle(el);
             const result = {};
             props.forEach(prop => {
-                result[prop] = styles[prop];
+                result[prop] = styles[prop]; 
             });
-            return result;
+            return result;  
         }, properties);
     }
 

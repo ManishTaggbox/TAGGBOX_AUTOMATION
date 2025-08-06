@@ -13,6 +13,7 @@ class DeleteProduct {
 
     async deleteProduct() {
         await test.step("Step 1: Click on delete icon for single product", async () => {
+            await this.deleteIcon.first().waitFor({ state: 'visible', timeout: 10000 });
             await this.deleteIcon.first().click();
         });
 

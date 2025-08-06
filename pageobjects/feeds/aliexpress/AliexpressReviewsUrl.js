@@ -11,6 +11,7 @@ class AliexpressReviewsUrl {
 
   async aliexpressReviewsUrl() {
     await test.step('Step 1: Fill AMAZON PRODUCT URL', async () => {
+      await this.enterReviewsUrl.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterReviewsUrl.fill(AliExpress.AliExpressReviewsUrl);
     });
 

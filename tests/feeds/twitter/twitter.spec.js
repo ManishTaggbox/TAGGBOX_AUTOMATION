@@ -18,7 +18,7 @@ const runTwitterFeedTest = ({ tag, PageObject, method }) => {
     });
 
     await test.step('Soft check for correct page title', async () => {
-      await expect.soft(page).toHaveTitle('Add feed | Tagbox');
+      await expect.soft(page).toHaveTitle('Add feed | Tagbox', { timeout: 10000 });
     });
 
     await test.step(`Run ${tag} feed creation flow`, async () => {

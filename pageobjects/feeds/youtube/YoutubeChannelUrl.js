@@ -14,6 +14,7 @@ class YoutubeChannelUrl {
     async youtubeChannelUrl() {
 
         await test.step('Step 1: Fill YouTube Channel URL and trigger suggestions', async () => {
+            await this.channelUrl.waitFor({ state: 'visible', timeout: 10000 });
             await this.channelUrl.fill(YOUTUBE.YOUTUBECHANNELURL);
             await this.channelUrl.press('Space');
         });

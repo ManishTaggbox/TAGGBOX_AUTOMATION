@@ -14,6 +14,7 @@ class YoutubePlaylist {
 
     async youtubePlaylist() {
         await test.step('Step 1: Click On  playlist Url', async () => {
+            await this.playlist.waitFor({ state: 'visible', timeout: 10000 });
             await this.playlist.click({ force: true });
         });
 

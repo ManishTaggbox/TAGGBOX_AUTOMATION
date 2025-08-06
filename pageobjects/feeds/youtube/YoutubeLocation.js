@@ -15,6 +15,7 @@ class YoutubeLocation {
 
     async youtubeLocation() {
         await test.step('Step 1: Click On location Url', async () => {
+            await this.location.waitFor({ state: 'visible', timeout: 10000 });
             await this.location.click({ force: true });
         });
 
