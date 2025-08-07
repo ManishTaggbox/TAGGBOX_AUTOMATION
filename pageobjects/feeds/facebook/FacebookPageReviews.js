@@ -11,6 +11,7 @@ class FacebookPageReviews {
 
   async facebookPageReviews() {
     await test.step('Step 1: Click On  pagereviews', async () => {
+      await this.pagereviews.waitFor({ state: 'visible', timeout: 10000 });
       await this.pagereviews.click({ force: true });
     });
 

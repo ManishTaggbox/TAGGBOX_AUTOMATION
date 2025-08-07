@@ -14,6 +14,7 @@ class YoutubeShorts {
 
     async youtubeShorts() {
            await test.step('Step 1: Click On Shorts Url', async () => {
+            await this.shorts.waitFor({ state: 'visible', timeout: 10000 });
             await this.shorts.click({ force: true });
         });
 

@@ -12,6 +12,7 @@ class PinterestUserBoard {
 
   async pinterestUserBoard() {
       await test.step('Step 1: Click On  userboard', async () => {
+    await this.userboard.waitFor({ state: 'visible', timeout: 10000 });
       await this.userboard.click({ force: true });
     });
 

@@ -35,6 +35,7 @@ const reels = [
 {tag: '@Reels Theme Created', PageObject: Reels,method: 'reels'},
 {tag: '@ReelsWebEmbed Theme Created', PageObject: ReelsWebEmbed,method: 'reelsWebEmbed'},
 {tag: '@DeleteWebsite Theme Created', PageObject: DeleteWebsite,method: 'deleteWebsite'},
+
 ];
 
 reels.forEach(runReelsTest);

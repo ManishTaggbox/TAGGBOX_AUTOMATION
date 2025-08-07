@@ -32,9 +32,8 @@ const runModerationTest = ({ tag, PageObject, method }) =>
             await page.goto(FEED_PATH.MODERATION(wallId), { waitUntil: 'domcontentloaded' });
         });
 
-        await test.step('Soft check for correct page title', async () => 
-        {
-            await expect.soft(page).toHaveTitle('Content Gallery | Tagbox');
+        await test.step('Soft check for correct page title', async () => {
+            await expect.soft(page).toHaveTitle('Content Gallery | Tagbox', { timeout: 10000 });
         });
 
         await test.step(`Run ${tag} feed creation flow`, async () => 

@@ -11,6 +11,7 @@ class InstagramTaggedInstaLogin {
 
   async instagramTaggedInstaLogin() {
     await test.step('Step 1: Click On My Handle', async () => {
+      await this.tagged.waitFor({ state: 'visible', timeout: 10000 });
       await this.tagged.click({ force: true });
     });
 

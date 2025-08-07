@@ -59,6 +59,7 @@ class ReviewHub {
 
   async reviewHub() {
     await test.step('1️⃣ Fill Feed Title and Subtitle', async () => {
+      await this.feedTitle.waitFor({ state: 'visible', timeout: 10000 });
       await this.clearAndFill(this.feedTitle, 'Review Hub');
       await this.clearAndFill(this.feedSubtitle, 'Review Hub Subtitle');
     });

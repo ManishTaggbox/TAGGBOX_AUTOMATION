@@ -11,6 +11,7 @@ class InstagramHashTag {
 
   async instagramHashTag() {
     await test.step('Step 1: Fill hashtag input with "arnodya"', async () => {
+      await this.enterHashTag.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterHashTag.fill(INSTAGRAM.INSTAGRAMHASHTAG);
     });
 

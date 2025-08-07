@@ -11,6 +11,7 @@ class Bookingcom {
 
   async bookingcom() {
     await test.step('Step 1: Fill hotel Url', async () => {
+      await this.enterhotelUrl.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterhotelUrl.fill(BOOKINGCOM.BOOKINGCOMHOTELURL);
     });
 

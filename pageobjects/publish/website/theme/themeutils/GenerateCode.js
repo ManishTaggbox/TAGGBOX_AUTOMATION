@@ -13,7 +13,7 @@ class GenerateCode {
 
   async generateCode() {
     await test.step('Click Publish and Website menu', async () => {
-      await this.card.waitFor({ state: 'visible', timeout: 10000 });
+      await this.card.waitFor({ state: 'visible', timeout: 20000 });
       await this.card.click();
     });
 

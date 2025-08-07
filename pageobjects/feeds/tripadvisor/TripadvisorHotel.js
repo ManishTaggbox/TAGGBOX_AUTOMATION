@@ -12,6 +12,7 @@ class TripadvisorHotel {
 
   async tripadvisorHotel() {
       await test.step('Step 1: Click On  hotel', async () => {
+    await this.hotel.waitFor({ state: 'visible', timeout: 10000 });
       await this.hotel.click({ force: true });
     });
 

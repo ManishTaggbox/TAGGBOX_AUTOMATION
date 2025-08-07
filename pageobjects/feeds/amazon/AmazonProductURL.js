@@ -11,6 +11,7 @@ class AmazonProductURL {
 
   async amazonProductURL() {
     await test.step('Step 1: Fill AMAZON PRODUCT URL', async () => {
+      await this.enterProductUrl.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterProductUrl.fill(Amazon.AMAZONPRODUCTURL);
     });
 

@@ -11,6 +11,7 @@ class GoogleMyPlaces {
 
     async googleMyPlaces() {
         await test.step('Step 1: Click On  Post Url', async () => {
+            await this.myplaces.waitFor({ state: 'visible', timeout: 10000 });
             await this.myplaces.click({ force: true });
         });
 

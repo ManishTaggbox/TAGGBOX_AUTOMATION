@@ -11,6 +11,7 @@ class YelpBusinessPage {
 
   async yelpBusinessPage() {
     await test.step('Step 1: Fill YELP BUSINESS input with "Bussiness Name"', async () => {
+      await this.enterBusinessText.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterBusinessText.fill(YELP.YELPBUSINESSPAGE);
     });
 
