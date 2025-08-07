@@ -53,7 +53,7 @@ class AddPostTags
 
         await test.step("Step 6: Assert toast msg", async () => 
         {
-            await this.successMsg.waitFor({ state: 'visible' });
+            await this.successMsg.waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.successMsg).toHaveText('Tags updated successfully');
         });
 
@@ -64,10 +64,10 @@ class AddPostTags
 
         await test.step("Step 8: Assert added post tags in details tab", async () => 
         {
-            await this.addedTag1.waitFor({ state: 'visible' });
+            await this.addedTag1.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.addedTag1).toHaveText('TagA');
 
-            await this.addedTag2.waitFor({ state: 'visible' });
+            await this.addedTag2.waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.addedTag2).toHaveText('TagB');
         });
 
@@ -78,10 +78,10 @@ class AddPostTags
 
         await test.step("Step 10: Assert added post tags", async () => 
         {
-            await this.addedTags.first().waitFor({ state: 'visible' });
+            await this.addedTags.first().waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.addedTags.first()).toHaveText('TagA');
 
-            await this.addedTags.last().waitFor({ state: 'visible' });
+            await this.addedTags.last().waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.addedTags.last()).toHaveText('TagB');
         });
 

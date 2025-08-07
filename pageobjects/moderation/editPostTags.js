@@ -39,7 +39,7 @@ class EditPostTags
 
         await test.step("Step 4: Assert error toast msg", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Tag already exists');
             await this.page.waitForTimeout(5000); // Wait for toast msg to remove
         });
@@ -63,7 +63,7 @@ class EditPostTags
 
         await test.step("Step 8: Assert toast msg", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Tags updated successfully');
         });
 
@@ -74,7 +74,7 @@ class EditPostTags
 
         await test.step("Step 10: Assert added post tags in details tab", async () => 
         {
-            await this.tag1.waitFor({ state: 'visible' });
+            await this.tag1.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.tag1).toHaveText('Tag1');
         });
 
@@ -86,7 +86,7 @@ class EditPostTags
         await test.step("Step 12: Assert added post tags", async () => 
         {
             await this.page.waitForTimeout(5000); // Wait for page to load 
-            await this.addedTags.waitFor({ state: 'visible' });
+            await this.addedTags.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.addedTags).toHaveText('Tag1');
         });
     }
