@@ -28,7 +28,7 @@ class DeleteProducts
 
         await test.step("Step 4: Assert the toast msg for duplicate product tag", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Tagged Product Removed from the Posts Successfully');
             await this.page.waitForTimeout(5000); 
         });
@@ -40,12 +40,12 @@ class DeleteProducts
 
         await test.step("Step 8: Close the modal", async () => 
         {
-            await this.taggedProducts.waitFor({ state: 'hidden' });
+            await this.taggedProducts.waitFor({ state: 'hidden', timeout: 5000 });
         });
 
         await test.step("Step 8: Close the modal", async () => 
         {
-            await this.tagBtn.waitFor({ state: 'visible' });
+            await this.tagBtn.waitFor({ state: 'visible', timeout: 5000 });
         });           
     }
 }

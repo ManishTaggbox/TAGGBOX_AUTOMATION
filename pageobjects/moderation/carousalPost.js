@@ -66,7 +66,7 @@ class CarousalPost
         await this.page.waitForTimeout(5000);
 
         // Assert the error message after checking the tagged product
-        await this.errorMsg.waitFor({ state: 'visible' });
+        await this.errorMsg.waitFor({ state: 'visible', timeout: 10000 });
         await expect.soft(this.errorMsg).toHaveText('To apply this filter, please disable the Carousel feature first.'); 
         await this.page.waitForTimeout(10000);
 

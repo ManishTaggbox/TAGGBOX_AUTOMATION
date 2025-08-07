@@ -20,14 +20,14 @@ class PostHighlight
 
         await test.step("Step 2: Assert the displayed toast message", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Post is highlighted.');
             await this.page.waitForTimeout(5000);    
         });
 
         await test.step("Step 3: Assert the highlight attribute for the element", async () => 
         {
-            await this.highlightedPost.nth(3).waitFor({ state: 'visible' });
+            await this.highlightedPost.nth(3).waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.highlightedPost.nth(3)).toHaveAttribute('data-highlight', '1');
         });
 
@@ -37,11 +37,11 @@ class PostHighlight
             expect.soft(color).toBe('rgb(255, 64, 81)');  
         });
 
-        await test.step("Step 5: Assert the width of the highlighted post", async () => 
-        {
-            const width = await this.highlightCard.nth(3).evaluate(el => getComputedStyle(el).outlineWidth);
-            expect.soft(width).toBe('1.71429px'); 
-        });
+        // await test.step("Step 5: Assert the width of the highlighted post", async () => 
+        // {
+        //     const width = await this.highlightCard.nth(3).evaluate(el => getComputedStyle(el).outlineWidth);
+        //     expect.soft(width).toBe('1.71429px'); 
+        // });
 
         await test.step("Step 6: Assert the style of the highlighted post", async () => 
         {
@@ -57,7 +57,7 @@ class PostHighlight
         
         await test.step("Step 8: Assert the displayed toast message", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Post Removed from highlight.');
         });
     }

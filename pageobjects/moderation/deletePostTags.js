@@ -41,7 +41,7 @@ class DeletePostTags
 
         await test.step("Step 5: Assert toast msg", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Tags updated successfully');
         });
 
@@ -52,7 +52,7 @@ class DeletePostTags
 
         await test.step("Step 7: Assert deleted post tags in details tab", async () => 
         {
-            await this.tag1.waitFor({ state: 'hidden' });
+            await this.tag1.waitFor({ state: 'hidden' , timeout: 5000 });
         });
 
         await test.step("Step 8: Close the modal", async () => 
@@ -63,7 +63,7 @@ class DeletePostTags
         await test.step("Step 9: Assert deleted post tags", async () => 
         {
             await this.page.waitForTimeout(5000); // Wait for page to load 
-            await this.addedTags.waitFor({ state: 'hidden' });
+            await this.addedTags.waitFor({ state: 'hidden', timeout: 5000 });
         });
     }
 }
