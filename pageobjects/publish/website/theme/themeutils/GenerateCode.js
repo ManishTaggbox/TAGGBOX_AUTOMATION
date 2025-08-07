@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-// import { parse } from 'node-html-parser'; // Need to install via `npm i node-html-parser`
+ import { parse } from 'node-html-parser'; // Need to install via `npm i node-html-parser`
 
 class GenerateCode {
   constructor(page) {

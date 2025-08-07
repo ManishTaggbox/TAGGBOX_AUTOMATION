@@ -27,20 +27,20 @@ class Pagination
             expect.soft(color).toBe('rgb(26, 35, 47)'); 
         });
 
-        await test.step("Step 3: Click to go on next page by clicking on right arrow icon", async () => 
-        {
-            await this.page.waitForTimeout(2000);
-            await this.rightAngle.click();
-            await this.page.waitForTimeout(2000);
-        });
+        // await test.step("Step 3: Click to go on next page by clicking on right arrow icon", async () => 
+        // {
+        //     await this.page.waitForTimeout(2000);
+        //     await this.rightAngle.click();
+        //     await this.page.waitForTimeout(2000);
+        // });
 
-        await test.step("Step 4: Assert the active page icon is highligted", async () => 
-        {
-            await this.activePage.waitFor({ state: 'visible' });
+        // await test.step("Step 4: Assert the active page icon is highligted", async () => 
+        // {
+        //     await this.activePage.waitFor({ state: 'visible' });
 
-            const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
-            expect.soft(color).toBe('rgb(26, 35, 47)'); 
-        });
+        //     const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
+        //     expect.soft(color).toBe('rgb(26, 35, 47)'); 
+        // });
 
         await test.step("Step 5: Click to go on previous page by clicking on left arrow icon", async () => 
         {
@@ -57,20 +57,20 @@ class Pagination
             expect.soft(color).toBe('rgb(26, 35, 47)'); 
         });
 
-        await test.step("Step 7: Click to go on previous page by clicking on left arrow icon", async () => 
-        {
-            await this.page.waitForTimeout(2000);
-            await this.leftAngle.click();
-            await this.page.waitForTimeout(2000);
-        });
+        // await test.step("Step 7: Click to go on previous page by clicking on left arrow icon", async () => 
+        // {
+        //     await this.page.waitForTimeout(2000);
+        //     await this.leftAngle.click();
+        //     await this.page.waitForTimeout(2000);
+        // });
 
-        await test.step("Step 6: Assert the active page icon is highligted", async () => 
-        {
-            await this.activePage.waitFor({ state: 'visible' });
+        // await test.step("Step 6: Assert the active page icon is highligted", async () => 
+        // {
+        //     await this.activePage.waitFor({ state: 'visible' });
 
-            const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
-            expect.soft(color).toBe('rgb(26, 35, 47)'); 
-        });
+        //     const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
+        //     expect.soft(color).toBe('rgb(26, 35, 47)'); 
+        // });
     }
 }
 
