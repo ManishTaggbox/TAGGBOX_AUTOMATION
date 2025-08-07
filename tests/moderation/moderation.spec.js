@@ -16,6 +16,7 @@ import CarousalPost from '../../pageobjects/moderation/carousalPost.js';
 import FeedFilter from '../../pageobjects/moderation/socialFeedFilter.js';
 import Pagination from '../../pageobjects/moderation/pagination.js';
 import Search from '../../pageobjects/moderation/search.js';
+import ModerationPostTypeFilter from '../../pageobjects/moderation/PostTypeFilter.js';
 
 const runModerationTest = ({ tag, PageObject, method }) => 
 {
@@ -66,6 +67,7 @@ const moderation =
     { tag: '@ModerationCarousalPost', PageObject: CarousalPost, method: 'carousalPost' },
     { tag: '@ModerationSocialFeedFilter', PageObject: FeedFilter, method: 'socialFeedFilter' },
     { tag: '@ModerationPagination', PageObject: Pagination, method: 'pagination' },
+    { tag: '@ModerationPostTypeFilter', PageObject: ModerationPostTypeFilter, method: 'postTypeFilter' },
     { tag: '@ModerationPostDelete', PageObject: PostDelete, method: 'deletePost' }
 ];
 
