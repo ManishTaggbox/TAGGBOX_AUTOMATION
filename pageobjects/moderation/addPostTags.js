@@ -17,6 +17,7 @@ class AddPostTags
         this.addedTag1 = page.locator('(//span[text()="TagA"])[2]');
         this.addedTag2 = page.locator('(//span[text()="TagB"])[2]');
         this.crossIcon = page.locator('.btn-close');
+        this.filterIcon = page.locator('');
     }
 
     async addTags() 
@@ -83,6 +84,8 @@ class AddPostTags
             await this.addedTags.last().waitFor({ state: 'visible' });
             await expect.soft(this.addedTags.last()).toHaveText('TagB');
         });
+
+
     }
 }
 

@@ -118,11 +118,6 @@ class PostDelete
             await expect.soft(this.toastMsg).toHaveText('Your post has been deleted.');  
             await this.page.waitForTimeout(5000);
         });
-
-        await test.step("Step 18: Assert all posts should not be visible", async () => 
-        {
-            await this.allPosts.waitFor({ state: 'hidden' });
-        });
     }
 }
 

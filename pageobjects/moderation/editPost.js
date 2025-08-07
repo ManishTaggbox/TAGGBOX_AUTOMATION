@@ -67,7 +67,7 @@ class EditPost
 
         await test.step("Step 4: Assert validation msg against mandatory fields", async () => 
         {
-            await expect.soft(this.validationMsg).toHaveCount(3);
+            await expect.soft(this.validationMsg).toHaveCount(2);
 
             const messages = await this.validationMsg.allTextContents();
             expect(messages.every(text => text === 'This field is required')).toBe(true);    

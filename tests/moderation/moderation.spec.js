@@ -14,7 +14,8 @@ import PostDelete from '../../pageobjects/moderation/postDelete.js';
 import SelectedPostAction from '../../pageobjects/moderation/selectedPostAction.js';
 import CarousalPost from '../../pageobjects/moderation/carousalPost.js';
 import FeedFilter from '../../pageobjects/moderation/socialFeedFilter.js';
-
+import Pagination from '../../pageobjects/moderation/pagination.js';
+import Search from '../../pageobjects/moderation/search.js';
 
 const runModerationTest = ({ tag, PageObject, method }) => 
 {
@@ -53,6 +54,7 @@ const moderation =
 [
     { tag: '@ModerationEditPost', PageObject: EditPosts, method: 'editPost' },
     { tag: '@ModerationAddPostTags', PageObject: AddTags, method: 'addTags' },
+    { tag: '@ModerationSearch', PageObject: Search, method: 'searchOperation' },
     { tag: '@ModerationPostTagsEdit', PageObject: EditTags, method: 'editTags' },
     { tag: '@ModerationDeletePostTags', PageObject: DeleteTags, method: 'deleteTags' },
     { tag: '@ModeratonTagProducts', PageObject: TagProduct, method: 'productTag' },
@@ -61,14 +63,10 @@ const moderation =
     { tag: '@ModerationPostPinToTop', PageObject: PostPinToTop, method: 'pinPost' },
     { tag: '@ModerationPostHighlight', PageObject: PostHighlight, method: 'highlightPost' },
     { tag: '@ModerationPostPrivatePublic', PageObject: PostPrivatePublic, method: 'privatePublicPost' },
-
-
     { tag: '@ModerationSelectedPostPrivate', PageObject: SelectedPostAction, method: 'postPrivate' },
     { tag: '@ModerationCarousalPost', PageObject: CarousalPost, method: 'carousalPost' },
     { tag: '@ModerationSocialFeedFilter', PageObject: FeedFilter, method: 'socialFeedFilter' },
-
-    
-    
+    { tag: '@ModerationPagination', PageObject: Pagination, method: 'pagination' },
     { tag: '@ModerationPostDelete', PageObject: PostDelete, method: 'deletePost' }
 ];
 
