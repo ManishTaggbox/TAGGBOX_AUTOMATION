@@ -14,7 +14,7 @@ import PostDelete from '../../pageobjects/moderation/postDelete.js';
 import SelectedPostAction from '../../pageobjects/moderation/selectedPostAction.js';
 import CarousalPost from '../../pageobjects/moderation/carousalPost.js';
 import FeedFilter from '../../pageobjects/moderation/socialFeedFilter.js';
-import Pagination from '../../pageobjects/moderation/pagination.js';
+import Pagination from '../../pageobjects/moderation/Pagination.js';
 import Search from '../../pageobjects/moderation/search.js';
 import ModerationPostTypeFilter from '../../pageobjects/moderation/PostTypeFilter.js';
 

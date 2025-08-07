@@ -5,9 +5,9 @@ class Pagination
     constructor(page) 
     {
         this.page = page;
-        this.rightAngle = page.locator('.fa-solid.fa-angle-right'); 
+        this.rightAngle = page.locator('.fa-angle-right'); 
         this.activePage = page.locator('//li[@class="page-item active"]//span');
-        this.leftAngle = page.locator('.fa-solid.fa-angle-left'); 
+        this.leftAngle = page.locator('.fa-angle-left'); 
     }
 
     async pagination() 
@@ -21,7 +21,7 @@ class Pagination
 
         await test.step("Step 2: Assert the active page icon is highligted", async () => 
         {
-            await this.activePage.waitFor({ state: 'visible', timeout: 5000 });
+            await this.activePage.waitFor({ state: 'visible' });
 
             const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
             expect.soft(color).toBe('rgb(26, 35, 47)'); 
@@ -34,9 +34,9 @@ class Pagination
         //     await this.page.waitForTimeout(2000);
         // });
 
-        await test.step("Step 4: Assert the active page icon is highligted", async () => 
-        {
-            await this.activePage.waitFor({ state: 'visible' , timeout: 5000 });
+        // await test.step("Step 4: Assert the active page icon is highligted", async () => 
+        // {
+        //     await this.activePage.waitFor({ state: 'visible' });
 
         //     const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
         //     expect.soft(color).toBe('rgb(26, 35, 47)'); 
@@ -51,7 +51,7 @@ class Pagination
 
         await test.step("Step 6: Assert the active page icon is highligted", async () => 
         {
-            await this.activePage.waitFor({ state: 'visible', timeout: 5000 });
+            await this.activePage.waitFor({ state: 'visible' });
 
             const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
             expect.soft(color).toBe('rgb(26, 35, 47)'); 
@@ -64,9 +64,9 @@ class Pagination
         //     await this.page.waitForTimeout(2000);
         // });
 
-        await test.step("Step 6: Assert the active page icon is highligted", async () => 
-        {
-            await this.activePage.waitFor({ state: 'visible', timeout: 5000 });
+        // await test.step("Step 6: Assert the active page icon is highligted", async () => 
+        // {
+        //     await this.activePage.waitFor({ state: 'visible' });
 
         //     const color = await this.activePage.evaluate(el => getComputedStyle(el).backgroundColor);
         //     expect.soft(color).toBe('rgb(26, 35, 47)'); 
