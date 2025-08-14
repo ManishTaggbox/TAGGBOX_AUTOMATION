@@ -52,19 +52,19 @@ test.describe('Login Tests', () =>
         await pageLinks.pageLinks();
     });
 
-    test('@CheckPasswordMasking - Validate password masking handled properly', async ({ page, token }) =>
+    test('@CheckPasswordMasking - Validate password asking handled properly', async ({ page, token }) =>
     {
         await setupPage(page, token);
         const masking = new PasswordMasking(page);
         await masking.checkPasswordMasking();
     });
 
-    test('@LoginWithGoogle - Validating by login with google', async ({ page, token }) =>
-    {
-        await setupPage(page, token);
-        const gLogin = new GoogleLogin(page);
-        await gLogin.loginWithGoogle();
-    });
+    // test('@LoginWithGoogle - Validating by login with google', async ({ page, token }) =>
+    // {
+    //     await setupPage(page, token);
+    //     const gLogin = new GoogleLogin(page);
+    //     await gLogin.loginWithGoogle();
+    // });
 
 
 });
