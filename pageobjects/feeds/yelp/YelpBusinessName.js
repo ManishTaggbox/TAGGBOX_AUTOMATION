@@ -10,7 +10,7 @@ class YelpBusinessName {
         this.enterAddress = page.locator("//input[@placeholder='Type address']");
         this.channelList = page.locator("//*[text()='New Zealand']");
         this.enterKeywords = page.locator('#Business-Name-text');
-        this.selectKeywords = page.locator("(//p[contains(@class,'fw-bold fs-8 mb-0')][normalize-space()='The Smokehouse'])[2]");
+        this.selectKeywords = page.locator('//a[contains(@class, "dropdown-item")]//div[contains(@class, "d-flex") and contains(@class, "algin-items-center")]').first();
         this.createFeedBtn = page.locator('#create_feed');
     }
 
@@ -34,8 +34,17 @@ class YelpBusinessName {
             await this.enterKeywords.fill(YELP.YELPKEYWORDS);
             await this.enterKeywords.press('Space');
             await this.page.waitForTimeout(2000);
-             await this.enterKeywords.press('Space');
-            await this.selectKeywords.first().click();
+            await this.enterKeywords.press('Space');
+            // Wait for the dropdown under Business Name
+            const businessNameDropdown = this.page.locator(
+                '#Business-Name-text >> xpath=ancestor::div[contains(@class, "form-group")]//a[contains(@class, "dropdown-item")]'
+            ).first();
+
+            await businessNameDropdown.waitFor({ state: 'visible', timeout: 15000 });
+
+            await businessNameDropdown.click();
+
+
 
 
         });

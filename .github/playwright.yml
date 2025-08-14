@@ -1,0 +1,91 @@
+name: Playwright Tests & Deploy
+
+on:
+  push:
+    branches: [ main ] # or your branch name
+  workflow_dispatch: # allows manual trigger
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4️⃣ Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 5️⃣ Run Playwright tests
+      - name: Run Playwright Tests
+        run: |
+          npx playwright test tests/content tests/feeds tests/productcatalog tests/profile tests/publish/emailcampaign tests/publish/shoponbio tests/publish/website tests/moderation
+        continue-on-error: true  # so we can still deploy report if tests fail
+
+      # 6️⃣ Deploy to Netlify
+      - name: Deploy to Netlify
+        run: npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      # 7️⃣ Send Email Notification
+      - name: Send Email Notification
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "✅ SUCCESS | Taggbox Automation Report Deployed"
+          html_body: |
+            <html>
+              <body style="font-family: Arial, sans-serif; color: #333;">
+                <h2 style="color: #28a745;">✅ Automation Test Execution Successful</h2>
+                <p>Hello Team,</p>
+                <p>The latest <strong>Taggbox Automation Tests</strong> were executed successfully.</p>
+                <p style="margin: 20px 0;">
+                  🔗 <a href="https://taggboxautomation.netlify.app/" style="font-size: 16px; color: #007bff;">View Test Report</a>
+                </p>
+                <p>Best regards,<br><strong>Manish Somani</strong></p>
+              </body>
+            </html>
+          to: manish.s@taggbox.com,manish.s+1@taggbox.com
+          from: manish.s@taggbox.com
+
+      - name: Send Failure Email
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "❌ FAILURE | Taggbox Automation Report"
+          html_body: |
+            <html>
+              <body style="font-family: Arial, sans-serif; color: #333;">
+                <h2 style="color: #dc3545;">❌ Automation Test Execution</h2>
+                <p>Hello Team,</p>
+                <p>The <strong>Taggbox Automation Report</strong> encountered an error during execution.</p>
+                <p style="margin: 20px 0;">
+                  🔗 <a href="https://taggboxautomation.netlify.app/" style="font-size: 16px; color: #007bff;">View Test Report</a>
+                </p>
+                <p>Best regards,<br><strong>Manish Somani</strong></p>
+              </body>
+            </html>
+          to: manish.s@taggbox.com,manish.s+1@taggbox.com
+          from: manish.s@taggbox.com
