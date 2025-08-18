@@ -3,7 +3,7 @@ name: Playwright Tests & Deploy
 on:
   push:
     branches: [ master ]           # <-- This triggers the workflow on any push to 'master'
-  workflow_dispatch:               # <-- This allows manual triggering from the Actions tab
+  #workflow_dispatch:               # <-- This allows manual triggering from the Actions tab
 
 jobs:
   test-and-deploy:
