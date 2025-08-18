@@ -20,6 +20,8 @@ class AddPostTags
     }
 
     async addTags() 
+
+    // To chk commit
     {
         await test.step("Step 1: Click on first post", async () => 
         {
