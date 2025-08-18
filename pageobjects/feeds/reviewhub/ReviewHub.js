@@ -25,11 +25,11 @@ class ReviewHub {
     this.reviewTitleError = page.locator("//div[normalize-space()='* Review Title is required.']");
     this.nameError = page.locator("//div[normalize-space()='Name is required.']");
     this.emailError = page.locator("//div[normalize-space()='Email is required.']");
-    this.reviewTitleInput = page.locator("//input[@placeholder='Enter review title']");
-    this.reviewInput = page.locator("//textarea[@placeholder='Write your review here']");
+    this.reviewTitleInput = page.locator("//input[@placeholder='Enter review Title']");
+    this.reviewInput = page.locator("//textarea[@placeholder='Write your review here ']");
     this.star = page.locator("//div[@class='t_star_ico tb__icon tb-star-outline']");
-    this.reviewerName = page.locator("//input[@placeholder='Enter Your name']");
-    this.reviewerEmail = page.locator("//input[@placeholder='Enter you email']");
+    this.reviewerName = page.locator("//input[@placeholder='Enter Your Name']");
+    this.reviewerEmail = page.locator("//input[@placeholder='Enter Your Email']");
     this.reviewSuccessTitle = page.locator("//div[@class='t_s_title']");
     this.chooseFile = page.locator("//div[@class='uppy-DragDrop-label']");
 
@@ -110,7 +110,7 @@ class ReviewHub {
     });
 
     await test.step('8️⃣ Fill Review Form and Submit Successfully', async () => {
-      await this.reviewTitleInput.scrollIntoViewIfNeeded();
+     // await this.reviewTitleInput.scrollIntoViewIfNeeded();
       await this.star.nth(0).click();
       await this.star.nth(2).click(); // Selecting up to 3 stars
       await this.reviewTitleInput.fill('Taggbox');
