@@ -1,9 +1,8 @@
 name: Playwright Tests & Deploy
-
 on:
-  push:
-    branches: [ master ]           # <-- This triggers the workflow on any push to 'master'
-  workflow_dispatch:               # <-- This allows manual triggering from the Actions tab
+#  push:
+#    branches: [ master ]
+  workflow_dispatch: # allows manual trigger
 
 jobs:
   test-and-deploy:
@@ -34,11 +33,12 @@ jobs:
       # 6️⃣ Run Playwright tests
       - name: Run Playwright Tests
         run: |
-          npx playwright test squarephoto.spec.js
+          npx playwright test tests/content tests/feeds tests/productcatalog tests/profile tests/publish/emailcampaign tests/publish/shoponbio tests/publish/website tests/moderation tests/login
+                 
         continue-on-error: true  # so we can still deploy report if tests fail
 
       # 7️⃣ Deploy to Netlify
       - name: Deploy to Netlify
         run: npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"
         env:
-          NETLIFY_AUTH_TOKEN: nfp_AQZQLQ4RZXMmTz4U6c8aTVLcqaHUfZrB8079   # <-- Netlify personal access token is passed here
+          NETLIFY_AUTH_TOKEN: nfp_AQZQLQ4RZXMmTz4U6c8aTVLcqaHUfZrB8079
