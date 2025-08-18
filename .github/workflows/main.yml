@@ -1,9 +1,8 @@
 name: Playwright Tests & Deploy
-
 on:
-  push:
-    branches: [ master ]           # <-- This triggers the workflow on any push to 'master'
-  #workflow_dispatch:               # <-- This allows manual triggering from the Actions tab
+#  push:
+#    branches: [ master ]
+  workflow_dispatch: # allows manual trigger
 
 jobs:
   test-and-deploy:
@@ -41,4 +40,4 @@ jobs:
       - name: Deploy to Netlify
         run: npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"
         env:
-          NETLIFY_AUTH_TOKEN: nfp_AQZQLQ4RZXMmTz4U6c8aTVLcqaHUfZrB8079   # <-- Netlify personal access token is passed here
+          NETLIFY_AUTH_TOKEN: nfp_AQZQLQ4RZXMmTz4U6c8aTVLcqaHUfZrB8079
