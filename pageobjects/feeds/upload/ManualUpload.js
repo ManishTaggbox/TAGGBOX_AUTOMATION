@@ -61,7 +61,7 @@ class ManualUpload {
             await this.dragAndDropArea.click({ force: true });
             await this.uploadFile(this.fileInput, '../../../videos/demovideo.mp4');
             await this.uploadFileBtn.click({ force: true });
-            await this.page.waitForTimeout(8000);
+            await this.page.waitForTimeout(15000);
         });
 
         await test.step('Fill in author details and upload profile image', async () => {

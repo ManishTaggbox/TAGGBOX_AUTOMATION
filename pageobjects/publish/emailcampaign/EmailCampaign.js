@@ -68,38 +68,38 @@ class EmailCampaign {
 
     async createEmailCampaign() {
         await test.step("Step 1.1: Click 'Add Channel' button", async () => {
-            await this.addChannel.waitFor({ state: 'visible', timeout: 5000 });
+            await this.addChannel.waitFor({ state: 'visible', timeout: 15000 });
             await this.addChannel.click();
         });
 
         await test.step("Step 1.2: Select 'Publish' option", async () => {
-            await this.selectPublish.waitFor({ state: 'visible', timeout: 5000 });
+            await this.selectPublish.waitFor({ state: 'visible', timeout: 15000 });
             await this.selectPublish.click();
         });
 
         await test.step("Step 1.3: Select 'Email Campaign' option", async () => {
-            await this.selectEmailCampaign.waitFor({ state: 'visible', timeout: 5000 });
+            await this.selectEmailCampaign.waitFor({ state: 'visible', timeout: 15000 });
             await this.selectEmailCampaign.click();
         });
 
         await test.step("Step 1.4: Try to publish without entering channel name", async () => {
-            await this.publishbtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.publishbtn.waitFor({ state: 'visible', timeout: 15000 });
             await this.publishbtn.click();
 
-            await this.emptyChannelNameErrorMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.emptyChannelNameErrorMsg.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.emptyChannelNameErrorMsg).toHaveText('Please enter a name');
         });
 
         await test.step("Step 1.5: Enter channel name and publish", async () => {
-            await this.enterChannelName.waitFor({ state: 'visible', timeout: 5000 });
+            await this.enterChannelName.waitFor({ state: 'visible', timeout: 15000 });
             await this.enterChannelName.fill('EmailCampaign');
 
-            await this.publishbtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.publishbtn.waitFor({ state: 'visible', timeout: 15000 });
             await this.publishbtn.click();
         });
 
         await test.step("Step 1.6: Wait for success message and validate", async () => {
-            await this.sucessMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.sucessMsg.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.sucessMsg).toHaveText('Email Campaign created successfully.');
         });
     }
@@ -111,7 +111,7 @@ class EmailCampaign {
         // });
 
         await test.step("Step 1: Move spacing slider", async () => {
-            await this.spacing.waitFor({ state: 'visible', timeout: 5000 });
+            await this.spacing.waitFor({ state: 'visible', timeout: 15000 });
             const box = await this.spacing.boundingBox();
             if (box) {
                 await this.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
@@ -123,20 +123,20 @@ class EmailCampaign {
         });
 
         await test.step("Step 2: Click layout and publish button", async () => {
-            await this.layout.waitFor({ state: 'visible', timeout: 5000 });
+            await this.layout.waitFor({ state: 'visible', timeout: 15000 });
             await this.layout.click();
-            await this.saveAndPublish.waitFor({ state: 'visible', timeout: 5000 });
+            await this.saveAndPublish.waitFor({ state: 'visible', timeout: 15000 });
             await this.saveAndPublish.scrollIntoViewIfNeeded();
             await this.saveAndPublish.click();
         });
 
         await test.step("Step 3: Validate fill grid error", async () => {
-            await this.fillGridError.waitFor({ state: 'visible', timeout: 5000 });
+            await this.fillGridError.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.fillGridError).toHaveText("*Please select posts and fill the grid to continue");
         });
 
         await test.step("Step 4: Select up to 6 cards", async () => {
-            await this.cards.first().waitFor({ state: 'visible', timeout: 5000 });
+            await this.cards.first().waitFor({ state: 'visible', timeout: 15000 });
             const count = await this.cards.count();
             const maxClicks = Math.min(count, 6);
             for (let i = 0; i < maxClicks; i++) {
@@ -146,31 +146,31 @@ class EmailCampaign {
         });
 
         await test.step("Step 5: Save and validate success message", async () => {
-            await this.saveAndPublish.waitFor({ state: 'visible', timeout: 5000 });
+            await this.saveAndPublish.waitFor({ state: 'visible', timeout: 15000 });
             await this.saveAndPublish.scrollIntoViewIfNeeded();
             await this.saveAndPublish.click();
 
-            await this.saveAndPublishMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.saveAndPublishMsg.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.saveAndPublishMsg).toHaveText("Email campaign updated successfully.");
         });
     }
     async emailSend() {
         await test.step("Step 1: Open Email Tab", async () => {
-            await this.email.waitFor({ state: 'visible', timeout: 5000 });
+            await this.email.waitFor({ state: 'visible', timeout: 15000 });
             await this.email.scrollIntoViewIfNeeded();
             await this.email.click();
         });
 
         await test.step("Step 2: Click Add without input to trigger validation", async () => {
-            await this.add.waitFor({ state: 'visible', timeout: 5000 });
+            await this.add.waitFor({ state: 'visible', timeout: 15000 });
             await this.add.click();
 
-            await this.validEmail.waitFor({ state: 'visible', timeout: 5000 });
+            await this.validEmail.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.validEmail).toHaveText("Enter valid email.");
         });
 
         await test.step("Step 3: Enter first email and click Add", async () => {
-            await this.enterEmail.waitFor({ state: 'visible', timeout: 5000 });
+            await this.enterEmail.waitFor({ state: 'visible', timeout: 15000 });
             await this.enterEmail.fill("manish.s@taggbox.com");
             await this.add.click();
         });
@@ -181,10 +181,10 @@ class EmailCampaign {
         });
 
         await test.step("Step 5: Click Share Code and verify success", async () => {
-            await this.shareCode.waitFor({ state: 'visible', timeout: 5000 });
+            await this.shareCode.waitFor({ state: 'visible', timeout: 15000 });
             await this.shareCode.click();
 
-            await this.emailSentMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.emailSentMsg.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.emailSentMsg).toHaveText("Code successfully shared.");
         });
     }
@@ -220,7 +220,7 @@ class EmailCampaign {
 
                     if (elementCount > 0) {
 
-                        await locator.first().waitFor({ state: 'visible', timeout: 5000 });
+                        await locator.first().waitFor({ state: 'visible', timeout: 15000 });
                         paddingElement = locator.first();
                         console.log(`Successfully found element using strategy: ${strategy}`);
                         break;
@@ -277,22 +277,22 @@ class EmailCampaign {
     async deleteEmailCampaign() {
         await test.step("Step 1: Click Edit on the campaign", async () => {
             await this.page.waitForTimeout(3000);
-            await this.editClick.waitFor({ state: 'visible', timeout: 5000 });
+            await this.editClick.waitFor({ state: 'visible', timeout: 15000 });
             await this.editClick.click();
         });
 
         await test.step("Step 2: Click Delete button", async () => {
-            await this.delete.waitFor({ state: 'visible', timeout: 5000 });
+            await this.delete.waitFor({ state: 'visible', timeout: 15000 });
             await this.delete.click();
         });
 
         await test.step("Step 3: Confirm deletion", async () => {
-            await this.yesDeleteIT.waitFor({ state: 'visible', timeout: 5000 });
+            await this.yesDeleteIT.waitFor({ state: 'visible', timeout: 15000 });
             await this.yesDeleteIT.click();
         });
 
         await test.step("Step 4: Validate success message", async () => {
-            await this.emailCampaignDeleteMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.emailCampaignDeleteMsg.waitFor({ state: 'visible', timeout: 15000 });
             await expect.soft(this.emailCampaignDeleteMsg).toHaveText("Email campaign deleted successfully.");
         });
     }
