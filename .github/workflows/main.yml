@@ -38,4 +38,4 @@ jobs:
 
       # 7️⃣ Deploy to Netlify
       - name: Deploy to Netlify
-        run: netlify deploy --prod --dir=playwright-report --message "Test Deploy"
+        run: npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"
