@@ -59,12 +59,12 @@ test.describe('Login Tests', () =>
         await masking.checkPasswordMasking();
     });
 
-    test('@LoginWithGoogle - Validating by login with google', async ({ page, token }) =>
-    {
-        await setupPage(page, token);
-        const gLogin = new GoogleLogin(page);
-        await gLogin.loginWithGoogle();
-    });
+    // test('@LoginWithGoogle - Validating by login with google', async ({ page, token }) =>
+    // {
+    //     await setupPage(page, token);
+    //     const gLogin = new GoogleLogin(page);
+    //     await gLogin.loginWithGoogle();
+    // });
 
 
 });

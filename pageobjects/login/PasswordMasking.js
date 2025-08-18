@@ -6,7 +6,7 @@ class PasswordMasking
     {
         this.page = page;
         this.passField = page.locator('//input[@type="password"]');
-        this.loginBtn = page.locator('.btn-primary');
+        this.eyeBtn = page.locator('.fa-eye-slash');
     }
 
     async checkPasswordMasking() 
@@ -31,6 +31,21 @@ class PasswordMasking
   
             console.log('✅ Password field is masked properly');
         });
+
+        // await test.step("Step 4: Click on eye button", async () => 
+        // {
+        //     // assert visble also
+        //     await this.eyeBtn.click();
+        // });
+
+        // await test.step("Step 5: Assert password field's type is 'text' ", async () => 
+        // {
+        //     const typeAttribute = await this.passField.getAttribute('type');
+        //     expect.soft(typeAttribute).toBe('text');
+
+        //     console.log('✅ Eye button functionality is working fine');
+
+        // });
 
     
     }

@@ -1,22 +1,23 @@
 import { test, expect } from '../moderationfixtures.js';
 import { FEED_PATH } from '../../utils/constants.js';
-import EditPosts from '../../pageobjects/moderation/editPost.js';
-import AddTags from '../../pageobjects/moderation/addPostTags.js';
-import EditTags from '../../pageobjects/moderation/editPostTags.js';
-import DeleteTags from '../../pageobjects/moderation/deletePostTags.js';
-import TagProduct from '../../pageobjects/moderation/tagProducts.js';
-import EditProduct from '../../pageobjects/moderation/editTaggedProduct.js';
-import DeleteProduct from '../../pageobjects/moderation/deleteTaggedProduct.js';
-import PostPinToTop from '../../pageobjects/moderation/postPinToTop.js';
-import PostHighlight from '../../pageobjects/moderation/postHighlight.js';
-import PostPrivatePublic from '../../pageobjects/moderation/postPrivatePublic.js';
-import PostDelete from '../../pageobjects/moderation/postDelete.js';
-import SelectedPostAction from '../../pageobjects/moderation/selectedPostAction.js';
-import CarousalPost from '../../pageobjects/moderation/carousalPost.js';
-import FeedFilter from '../../pageobjects/moderation/socialFeedFilter.js';
+import EditPosts from '../../pageobjects/moderation/EditPost.js';
+import AddTags from '../../pageobjects/moderation/AddPostTags.js';
+import EditTags from '../../pageobjects/moderation/EditPostTags.js';
+import DeleteTags from '../../pageobjects/moderation/DeletePostTags.js';
+import TagProduct from '../../pageobjects/moderation/TagProducts.js';
+import EditProduct from '../../pageobjects/moderation/EditTaggedProduct.js';
+import DeleteProduct from '../../pageobjects/moderation/DeleteTaggedProduct.js';
+import PostPinToTop from '../../pageobjects/moderation/PostPinToTop.js';
+import PostHighlight from '../../pageobjects/moderation/PostHighlight.js';
+import PostPrivatePublic from '../../pageobjects/moderation/PostPrivatePublic.js';
+import PostDelete from '../../pageobjects/moderation/PostDelete.js';
+import SelectedPostAction from '../../pageobjects/moderation/SelectedPostAction.js';
+import CarousalPost from '../../pageobjects/moderation/CarousalPost.js';
+import FeedFilter from '../../pageobjects/moderation/SocialFeedFilter.js';
 import Pagination from '../../pageobjects/moderation/Pagination.js';
-import Search from '../../pageobjects/moderation/search.js';
+import Search from '../../pageobjects/moderation/Search.js';
 import ModerationPostTypeFilter from '../../pageobjects/moderation/PostTypeFilter.js';
+
 
 const runModerationTest = ({ tag, PageObject, method }) => 
 {
