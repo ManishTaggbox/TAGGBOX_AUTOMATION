@@ -1,7 +1,7 @@
 import { test, expect } from '../../publishfixtures.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
-import ModernCard from '../../../pageobjects/publish/website/theme/moderncard/moderncard.js';
+import ModernCard from '../../../pageobjects/publish/website/theme/moderncard/ModernCard.js';
 import ModernCardWebEmbed from '../../../pageobjects/publish/website/theme/moderncard/ModernCardWebEmbed.js';
 import DeleteWebsite from '../../../pageobjects/publish/website/theme/themeutils/DeleteWebsite.js';
 import CtaButton from '../../../pageobjects/publish/website/theme/ctabutton/CtaButton.js';
