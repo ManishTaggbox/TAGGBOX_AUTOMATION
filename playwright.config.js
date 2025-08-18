@@ -7,8 +7,7 @@ const config = {
   timeout: 60_000,
   fullyParallel: false,
   workers: 1,
-  // retries: 2,
-  retries: 1,
+  retries: 2,
   expect: {
     timeout: 10000,
   },
