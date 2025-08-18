@@ -1,5 +1,4 @@
 name: Playwright Tests & Deploy
-
 on:
   push:
     branches: [ master ]
@@ -8,7 +7,6 @@ on:
 jobs:
   test-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       # 1️⃣ Checkout the repository
       - name: Checkout code
@@ -23,6 +21,10 @@ jobs:
       # 3️⃣ Install dependencies
       - name: Install dependencies
         run: npm install
+
+      # ▶️ Fix Playwright permissions
+      - name: Fix Playwright permissions
+        run: chmod +x node_modules/.bin/playwright
 
       # 4️⃣ Install Playwright browsers
       - name: Install Playwright Browsers
