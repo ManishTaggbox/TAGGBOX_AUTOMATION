@@ -17,7 +17,7 @@ class EditProduct {
         this.tagInput = page.locator('#input_p_tag');
         this.toastMsg = page.locator('//div[text()="Product updated successfully"]');
         this.productName = page.locator('//span[text()="Test Product"]');
-        this.price = page.locator("//span[normalize-space()='£100']");
+        this.price = page.locator("(//span[contains(text(), '£100')])");
         this.discountPrice = page.locator('(//span[contains(text(), "10")])[2]');
         this.productUrl = page.locator('(//a[@title="Link"])[1]');
         this.productId = page.locator('//input[@value="PID12345"]');
