@@ -6,7 +6,6 @@ class PostDelete
     {
         this.page = page;
         this.allPosts = page.locator('//a[text()="All posts"]/span');
-        // this.post = page.locator('.content_img_ ');
         this.post = page.locator('.cursor-pointer.position-relative');  
         this.threeDotsOption = page.locator('//i[contains(@class,"fa-regular fa-ellipsis me-1")]');
         this.deleteOption = page.locator('//span[text()="Delete post"]');
@@ -19,7 +18,7 @@ class PostDelete
         this.deleteBtn = page.locator('//button[contains(@class,"btn-warning")]');    
     }
 
-    async deletePost() 
+    async postDelete() 
     {
         let initialAllPosts; 
         let afterAllPosts;
@@ -32,34 +31,39 @@ class PostDelete
 
         await test.step("Step 2: Click on first post", async () => 
         {
+            await this.post.first().waitFor({state: 'visible', timeout: 5000});
             await this.post.first().click();
             await this.page.waitForTimeout(5000);
         });
 
         await test.step("Step 3: Click on three dots", async () => 
         {
+            await this.threeDotsOption.waitFor({state: 'visible', timeout: 5000});
             await this.threeDotsOption.click();
         });
 
         await test.step("Step 4: Click on delete option", async () => 
         {
+            await this.deleteOption.waitFor({state: 'visible', timeout: 5000});
             await this.deleteOption.click();
         });
 
         await test.step("Step 5: Click to confirm the action", async () => 
         {
+            await this.continueBtn.waitFor({state: 'visible', timeout: 5000});
             await this.continueBtn.click();
         });
 
         await test.step("Step 6: Assert toast mesg to be displayed", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Your post has been deleted.');  
             await this.page.waitForTimeout(5000);
         });
 
         await test.step("Step 7: Click to confirm the action", async () => 
         {
+            await this.crossIcon.waitFor({state: 'visible', timeout: 5000});
             await this.crossIcon.last().click();
         });
 
@@ -71,22 +75,24 @@ class PostDelete
 
          await test.step("Step 9: Click on three dots icon for first post", async () => 
         {
+            await this.threeDotsIcon.first().waitFor({state: 'visible', timeout: 5000});
             await this.threeDotsIcon.first().click();
         });
 
         await test.step("Step 10: Click on delete option", async () => 
         {
+            await this.deleteIcon.waitFor({state: 'visible', timeout: 5000});
             await this.deleteIcon.click();
         });
 
         await test.step("Step 11: Click to confirm the action", async () => 
         {
+            await this.continueBtn.waitFor({state: 'visible', timeout: 5000});
             await this.continueBtn.click();
         });
 
         await test.step("Step 12: Assert toast mesg to be displayed", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
             await expect.soft(this.toastMsg).toHaveText('Your post has been deleted.');  
             await this.page.waitForTimeout(5000);
         });
@@ -99,22 +105,25 @@ class PostDelete
 
         await test.step("Step 14: Check the checkbox to select all posts", async () => 
         {
+            await this.allCheckbox.waitFor({state: 'visible', timeout: 5000});
             await this.allCheckbox.click();
         });
 
         await test.step("Step 15: Click on delete button", async () => 
         {
+            await this.deleteBtn.waitFor({state: 'visible', timeout: 5000});
             await this.deleteBtn.click();
         });
 
         await test.step("Step 16: Click to confirm the action", async () => 
         {
+            await this.continueBtn.waitFor({state: 'visible', timeout: 5000});
             await this.continueBtn.click();
         });
 
         await test.step("Step 17: Assert toast mesg to be displayed", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Your post has been deleted.');  
             await this.page.waitForTimeout(5000);
         });

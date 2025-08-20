@@ -43,6 +43,7 @@ class EditProduct {
         });
 
         await test.step("Step 3: Submit form with empty values to trigger validation", async () => {
+            await this.submit.waitFor({state: 'visible', timeout: 5000});
             await this.submit.click();
         });
 
@@ -95,6 +96,7 @@ class EditProduct {
         });
 
         await test.step("Step 16: Submit the updated product form", async () => {
+            await this.submit.waitFor({state: 'visible', timeout: 5000});
             await this.submit.click();
         });
 
@@ -103,6 +105,7 @@ class EditProduct {
         });
 
         await test.step("Step 18: Verify success toast message content", async () => {
+            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Product updated successfully');
             await this.page.waitForTimeout(5000);
         });

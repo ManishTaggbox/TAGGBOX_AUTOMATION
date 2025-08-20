@@ -1,33 +1,37 @@
 import { test, expect } from '../fixtures.js';
-import UploadCSVFile from '../../pageobjects/productcatalog/uploadCSVFile.js';
-import SearchProduct from '../../pageobjects/productcatalog/searchProduct.js';
-import EditProduct from '../../pageobjects/productcatalog/editProduct.js';
-import DeleteProduct from '../../pageobjects/productcatalog/deleteProduct.js';
-import AddProduct from '../../pageobjects/productcatalog/addProduct.js';
+import UploadCSVFile from '../../pageobjects/productcatalog/UploadCSVFile.js';
+import SearchProduct from '../../pageobjects/productcatalog/SearchProduct.js';
+import EditProduct from '../../pageobjects/productcatalog/EditProduct.js';
+import DeleteProduct from '../../pageobjects/productcatalog/DeleteProduct.js';
+import AddProduct from '../../pageobjects/productcatalog/AddProduct.js';
 
 const PRODUCT_CATALOG_URL = 'https://app.taggbox.com/content/products';
 
 // Helper function to setup authentication and navigate
-async function setupPage(page, token, url = PRODUCT_CATALOG_URL) {
+async function setupPage(page, token, url = PRODUCT_CATALOG_URL) 
+{
     await page.addInitScript(token => localStorage.setItem('token', token), token);
     await page.goto(url);
 }
 
-test.describe('Product Catalog Tests', () => {
-    
-    test('@UploadCSVFile - Upload products via CSV file', async ({ page, token }) => {
+test.describe('Product Catalog Tests', () =>
+{
+    test('@UploadCSVFile - Upload products via CSV file', async ({ page, token }) => 
+    {
         await setupPage(page, token);
         const uploadCSV = new UploadCSVFile(page);
-        await uploadCSV.csvUpload();
+        await uploadCSV.uploadCSVFile();
     });
 
-    test('@SearchProduct - Search products by name and SKU', async ({ page, token }) => {
+    test('@SearchProduct - Search products by name and SKU', async ({ page, token }) => 
+    {
         await setupPage(page, token);
         const searchProduct = new SearchProduct(page);
         await searchProduct.searchProduct();
     });
 
-    test('@EditProduct - Edit existing product details', async ({ page, token }) => {
+    test('@EditProduct - Edit existing product details', async ({ page, token }) => 
+    {
         await setupPage(page, token);
         const editProduct = new EditProduct(page);
         await editProduct.editProduct();

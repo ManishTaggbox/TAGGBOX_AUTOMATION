@@ -56,6 +56,7 @@ class EditDetails {
         });
 
         await test.step("Step 5: Click on Save Changes button without required fields", async () => {
+            await this.saveBtn.waitFor({state: 'visible', timeout: 5000});
             await this.saveBtn.click();
         });
 
@@ -72,10 +73,12 @@ class EditDetails {
         });
 
         await test.step("Step 9: Click on first arrow icon to open industry dropdown", async () => {
+            await this.arrowIcon.first().waitFor({state: 'visible', timeout: 5000});
             await this.arrowIcon.first().click();
         });
 
         await test.step("Step 10: Select 'E-Commerce' from industry dropdown", async () => {
+            await this.industryInput.waitFor({state: 'visible', timeout: 5000});
             await this.industryInput.click();
         });
 
@@ -84,10 +87,12 @@ class EditDetails {
         });
 
         await test.step("Step 12: Click on last arrow icon to open designation dropdown", async () => {
+            await this.arrowIcon.last().waitFor({state: 'visible', timeout: 5000});
             await this.arrowIcon.last().click();
         });
 
         await test.step("Step 13: Select 'Social Media Manager' from designation dropdown", async () => {
+            await this.designationInput.waitFor({state: 'visible', timeout: 5000});
             await this.designationInput.click();
         });
 
@@ -96,6 +101,7 @@ class EditDetails {
         // });
 
         await test.step("Step 15: Click on first edit icon to open profile picture upload", async () => {
+            await this.editIcon.first().waitFor({state: 'visible', timeout: 5000});
             await this.editIcon.first().click();
         });
 
@@ -108,6 +114,7 @@ class EditDetails {
         });
 
         await test.step("Step 18: Click on Save Changes button to submit form", async () => {
+            await this.saveBtn.waitFor({state: 'visible', timeout: 5000});
             await this.saveBtn.click();
         });
 
@@ -118,7 +125,6 @@ class EditDetails {
         await test.step("Step 20: Verify success message text is 'Profile Updated .'", async () => {
             await expect.soft(this.successMsg).toHaveText('Profile Updated .');
         });
-      
     }
 }
 

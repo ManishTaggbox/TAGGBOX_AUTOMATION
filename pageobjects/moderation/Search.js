@@ -7,7 +7,7 @@ class Search
         this.page = page;
         this.searchIcon = page.locator('//button[@aria-label="search"]');  
         this.searchInput = page.locator('#assets_search_input');
-        this.dropdownItem = page.locator('.dropdown-item');
+        this.search = page.locator('#inputCloseButton');
         this.filterBadge = page.locator('//div[contains(@class, "d-flex flex-wrap align-items-center")]//span');
         this.resetBtn = page.locator('//button[text()="Reset"]');
         this.filterIcon = page.locator('#filter_aside');
@@ -16,44 +16,51 @@ class Search
         this.crossIcon = page.locator('.fa-xmark');
     }
 
-    async searchOperation() 
+    async Search() 
     {
         await test.step("Step 1: Click on search icon", async () => 
         {
+            await this.searchIcon.first().waitFor({ state: 'visible', timeout: 5000 });
             await this.searchIcon.first().click();
         });
 
         await test.step("Step 2: Enter the search input", async () => 
         {
             await this.searchInput.fill('TagA');
-            await this.dropdownItem.click();
+            await this.search.waitFor({ state: 'visible', timeout: 5000 });
+            await this.search.click();
             await this.page.waitForTimeout(5000);
         });
 
         await test.step("Step 3: Assert the search result", async () => 
         {
-            await this.filterBadge.waitFor({ state: 'visible' });
+            await this.filterBadge.waitFor({ state: 'visible', timeout: 5000 });
         });
 
         await test.step("Step 4: Click to reset the serch result", async () => 
         {
+            await this.searchCross.first().waitFor({ state: 'visible', timeout: 5000 });
             await this.searchCross.first().click();
+            await this.resetBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.resetBtn.click();
         });
 
         await test.step("Step 5: Click to open filter overlay", async () => 
         {
+            await this.filterIcon.waitFor({ state: 'visible', timeout: 5000 });
             await this.filterIcon.click();
         });
 
         await test.step("Step 6: Enter the search input", async () => 
         {
             await this.searchBox.fill('TagA');
+            await this.dropdownItem.waitFor({ state: 'visible', timeout: 5000 });
             await this.dropdownItem.click();
         });
 
         await test.step("Step 7: Click to open filter overlay", async () => 
         {
+            await this.crossIcon.nth(1).waitFor({ state: 'visible', timeout: 5000 });
             await this.crossIcon.nth(1).click();
             await this.page.waitForTimeout(5000);
         });
@@ -65,6 +72,7 @@ class Search
 
         await test.step("Step 9: Click to reset the serch result", async () => 
         {
+            await this.resetBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.resetBtn.click();
         });
     }

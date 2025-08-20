@@ -18,6 +18,7 @@ class DeleteProduct {
         });
 
         await test.step("Step 2: Confirm deletion by clicking 'Yes, delete it!' button", async () => {
+            await this.confirmDeleteBtn.waitFor({state: 'visible', timeout: 5000});
             await this.confirmDeleteBtn.click();
         });
 
@@ -36,14 +37,17 @@ class DeleteProduct {
 
     async deleteMultipleProducts() {
         await test.step("Step 1: Select all products using select all checkbox", async () => {
+            await this.selectAllCheckbox.waitFor({state: 'visible', timeout: 5000});
             await this.selectAllCheckbox.click();
         });
 
         await test.step("Step 2: Click delete selected products button", async () => {
+            await this.deleteAllBtn.waitFor({state: 'visible', timeout: 5000});
             await this.deleteAllBtn.click();
         });
 
         await test.step("Step 3: Confirm bulk deletion by clicking 'Yes, delete it!' button", async () => {
+            await this.confirmDeleteBtn.waitFor({state: 'visible', timeout: 5000});
             await this.confirmDeleteBtn.click();
         });
 

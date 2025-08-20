@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-class FeedFilter 
+class SocialFeedFilter 
 {
     constructor(page) 
     {
@@ -20,6 +20,7 @@ class FeedFilter
         await test.step("Step 1: Click to open filter overlay", async () => 
         {
             await this.page.waitForTimeout(5000);
+            await this.filterIcon.waitFor({state: 'visible', timeout: 5000});
             await this.filterIcon.click();
         });
 
@@ -28,12 +29,15 @@ class FeedFilter
             feedText1 = await this.socialFeed.first().textContent();
             feedText2 = await this.socialFeed.last().textContent();
 
+            await this.checkboxes.first().waitFor({state: 'visible', timeout: 5000});
             await this.checkboxes.first().click();
+            await this.checkboxes.last().waitFor({state: 'visible', timeout: 5000});
             await this.checkboxes.last().click();
         });
 
         await test.step("Step 3: Click to close the overlay", async () => 
         {
+            await this.crossIcon.last().waitFor({state: 'visible', timeout: 5000});
             await this.crossIcon.last().click();
             await this.page.waitForTimeout(5000);
         });
@@ -43,12 +47,12 @@ class FeedFilter
             const filterText1 = await this.filterBadge.first().textContent();
             const filterText2 = await this.filterBadge.last().textContent();
 
-            await this.filterBadge.first().waitFor({ state: 'visible' });
-            await this.filterBadge.last().waitFor({ state: 'visible' });
+            await this.filterBadge.first().waitFor({state: 'visible', timeout: 5000 });
+            await this.filterBadge.last().waitFor({state: 'visible', timeout: 5000});
             await expect.soft(filterText1).toContain(feedText1);
             await expect.soft(filterText2).toContain(feedText2);
         });
     }
 }
 
-export default FeedFilter;
+export default SocialFeedFilter;

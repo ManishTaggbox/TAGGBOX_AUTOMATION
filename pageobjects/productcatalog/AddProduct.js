@@ -55,10 +55,12 @@ class AddProduct {
         });
 
         await test.step("Step 2: Click on 'Add Single Product' option", async () => {
+            await this.addSingleProduct.waitFor({state: 'visible', timeout: 5000});
             await this.addSingleProduct.click();
         });
 
         await test.step("Step 3: Submit form without filling required fields to trigger validation", async () => {
+            await this.submitBtn.waitFor({state: 'visible', timeout: 5000});
             await this.submitBtn.click();
         });
 
@@ -111,6 +113,7 @@ class AddProduct {
         });
 
         await test.step("Step 16: Click on upload image button", async () => {
+            await this.uploadImg.waitFor({state: 'visible', timeout: 5000});
             await this.uploadImg.click();
             await this.page.waitForTimeout(1000);
         });
@@ -121,6 +124,7 @@ class AddProduct {
         });
 
         await test.step("Step 18: Submit the product form to create new product", async () => {
+            await this.submitBtn.waitFor({state: 'visible', timeout: 5000});
             await this.submitBtn.click();
         });
 
@@ -165,10 +169,12 @@ class AddProduct {
         });
 
         await test.step("Step 29: Click on delete icon to remove the test product", async () => {
+            await this.deleteIcon.waitFor({state: 'visible', timeout: 5000});
             await this.deleteIcon.first().click();
         });
 
         await test.step("Step 30: Confirm product deletion", async () => {
+            await this.confirmDeleteBtn.waitFor({state: 'visible', timeout: 5000});
             await this.confirmDeleteBtn.click();
         });
 
@@ -177,6 +183,7 @@ class AddProduct {
         });
 
         await test.step("Step 32: Verify success toast message content", async () => {
+            await this.deleteSuccessMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.deleteSuccessMsg).toHaveText('Successfully Deleted !');
         });
     }

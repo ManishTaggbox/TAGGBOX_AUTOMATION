@@ -9,7 +9,7 @@ class LoginPageLinks
         this.links = page.locator('//a[@href]');
     }
 
-    async pageLinks() 
+    async loginPageLinks() 
     {
         await test.step("Step 1: Count the total number of links present on the login page", async () => 
         {

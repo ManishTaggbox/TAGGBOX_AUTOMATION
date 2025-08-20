@@ -10,10 +10,11 @@ class ValidCredentials
         this.loginBtn = page.locator('.btn-primary');
     }
 
-    async validData() 
+    async validCredentials() 
     {
         await test.step("Step 1: Enter valid email address", async () => 
         {
+
             await this.emailField.fill('');
             await this.emailField.fill('manish.s+51@taggbox.com');
         });
@@ -26,6 +27,7 @@ class ValidCredentials
 
         await test.step("Step 3: Click on the Login btn", async () => 
         {
+            await this.loginBtn.waitFor({state: 'visible', timeout: 5000});
             await this.loginBtn.click();
         });
 
