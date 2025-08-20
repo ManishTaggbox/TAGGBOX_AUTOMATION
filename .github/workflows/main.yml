@@ -1,7 +1,7 @@
 name: Playwright Tests & Deploy
 on:
-  push:
-    branches: [ master ]
+  # push:
+  #  branches: [ master ]
   workflow_dispatch: # allows manual trigger
 
 jobs:
