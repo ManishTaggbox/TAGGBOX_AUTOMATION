@@ -18,7 +18,7 @@ class SelectedPostAction
         this.publicBtn = page.locator('//button[contains(@class,"btn-success")]');
     }
 
-    async postPrivate() 
+    async selectedPostAction() 
     {
         await test.step("Step 1: Click on the first 5 posts checkboxes to select the posts", async () => 
         {
@@ -42,29 +42,32 @@ class SelectedPostAction
         await test.step("Step 3: Click on the 'Private' btn", async () => 
         {
             await expect(this.privateBtn).toBeVisible();
+            await this.privateBtn.waitFor({state: 'visible', timeout: 5000});
             await this.privateBtn.click();
         });
 
         await test.step("Step 4: Click for confirmation", async () => 
         {
+            await this.continueBtn.waitFor({state: 'visible', timeout: 5000});
             await this.continueBtn.click();
         });
 
         await test.step("Step 5: Assert the toast msg", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Selected posts are private now.'); 
             await this.page.waitForTimeout(5000);
         });
 
         await test.step("Step 6: Go to 'Private' tab", async () => 
         {
+            await this.privateTab.waitFor({state: 'visible', timeout: 5000});
             await this.privateTab.click();
         });
 
         await test.step("Step 7: Assert the count of private posts", async () => 
         {
-            await this.privatePostsCount.waitFor({ state: 'visible' });
+            await this.privatePostsCount.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.privatePostsCount).toHaveText('5');
         });
 
@@ -75,18 +78,21 @@ class SelectedPostAction
 
         await test.step("Step 9: Select all Posts and make them public", async () => 
         {
+            await this.selectAllCheckbox.waitFor({state: 'visible', timeout: 5000});
             await this.selectAllCheckbox.click();
+            await this.publicBtn.waitFor({state: 'visible', timeout: 5000});
             await this.publicBtn.click();
         });
 
         await test.step("Step 10: Click for confirmation", async () => 
         {
+            await this.continueBtn.waitFor({state: 'visible', timeout: 5000});
             await this.continueBtn.click();
         });
 
         await test.step("Step 11: Assert the toast msg", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible' });
+            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Selected posts are public now.'); 
             await this.page.waitForTimeout(5000);
         });

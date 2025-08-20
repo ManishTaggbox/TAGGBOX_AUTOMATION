@@ -1,6 +1,6 @@
 import { test, expect } from '../moderationfixtures.js';
 import { FEED_PATH } from '../../utils/constants.js';
-import LoginNullFields from '../../pageobjects/login/NullField.js';
+import NullFields from '../../pageobjects/login/NullField.js';
 import InvalidCredentials from '../../pageobjects/login/InvalidCredentials.js';
 import ValidCredentials from '../../pageobjects/login/ValidCredentials.js';
 import EmailCaseSensitivity from '../../pageobjects/login/EmailCaseSensitivity.js';
@@ -20,7 +20,7 @@ test.describe('Login Tests', () =>
     test('@NullField - Login with empty fields', async ({ page, token }) =>
     {
         await setupPage(page, token);
-        const nullField = new LoginNullFields(page);
+        const nullField = new NullFields(page);
         await nullField.nullField();
     });
 
@@ -28,35 +28,35 @@ test.describe('Login Tests', () =>
     {
         await setupPage(page, token);
         const invalidData = new InvalidCredentials(page);
-        await invalidData.invalidField();
+        await invalidData.invalidCredentials();
     });
 
     test('@ValidData - Login with valid credentials', async ({ page, token }) =>
     {
         await setupPage(page, token);
         const validData = new ValidCredentials(page);
-        await validData.validData();
+        await validData.validCredentials();
     });
 
     test('@EmailCaseSensitivity - Login with email in uppercase', async ({ page, token }) =>
     {
         await setupPage(page, token);
         const caseSensitivity = new EmailCaseSensitivity(page);
-        await caseSensitivity.emailCaseSensitive();
+        await caseSensitivity.emailCaseSensitivity();
     });
 
     test('@LoginPageLinks - Validate the URL present on login page', async ({ page, token }) =>
     {
         await setupPage(page, token);
         const pageLinks = new LoginPageLinks(page);
-        await pageLinks.pageLinks();
+        await pageLinks.loginPageLinks();
     });
 
     test('@CheckPasswordMasking - Validate password masking handled properly', async ({ page, token }) =>
     {
         await setupPage(page, token);
         const masking = new PasswordMasking(page);
-        await masking.checkPasswordMasking();
+        await masking.passwordMasking();
     });
 
     // test('@LoginWithGoogle - Validating by login with google', async ({ page, token }) =>

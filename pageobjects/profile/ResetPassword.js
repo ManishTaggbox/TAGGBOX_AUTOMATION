@@ -5,7 +5,7 @@ class ResetPassword {
     constructor(page) {
         this.page = page;
         this.resetBtn = page.locator('//button[text()="Reset Password"]');
-        this.updatBtn = page.locator('//button[text()="Update Password"]');
+        this.updateBtn = page.locator('//button[text()="Update Password"]');
         this.validationMsg = page.locator('//div[contains(text(), "Password must be at least")]');
         this.password = page.locator('//input[@name="password"]');
         this.passwordStrength = page.locator('//span[text()="Strong"]');
@@ -14,14 +14,15 @@ class ResetPassword {
         this.successMsg = page.locator('//div[text()="Password Updated Successfully"]');
     }
 
-    async passwordReset() {
+    async resetPassword() {
         await test.step("Step 1: Click on Reset Password button", async () => {
             await this.resetBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.resetBtn.click();
         });
 
         await test.step("Step 2: Click on Update Password button without filling fields", async () => {
-            await this.updatBtn.click();
+            await this.updateBtn.waitFor({state: 'visible', timeout: 5000});
+            await this.updateBtn.click();
         });
 
         await test.step("Step 3: Verify password validation message is visible", async () => {
@@ -53,7 +54,8 @@ class ResetPassword {
         });
 
         await test.step("Step 10: Click on Update Password button to submit", async () => {
-            await this.updatBtn.click();
+            await this.updateBtn.waitFor({state: 'visible', timeout: 5000});
+            await this.updateBtn.click();
         });
 
         await test.step("Step 11: Verify success message is visible", async () => {

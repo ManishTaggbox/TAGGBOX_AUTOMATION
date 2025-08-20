@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures.js';
-import VerifyExistingDetails from '../../pageobjects/profile/verifyExistingDetails.js';
-import EditDetails from '../../pageobjects/profile/editDetails.js';
-import ResetPassword from '../../pageobjects/profile/resetPassword.js';
+import VerifyExistingDetails from '../../pageobjects/profile/VerifyExistingDetails.js';
+import EditDetails from '../../pageobjects/profile/EditDetails.js';
+import ResetPassword from '../../pageobjects/profile/ResetPassword.js';
 
 // Constants
 const PROFILE_URL = 'https://app.taggbox.com/profile';
@@ -23,7 +23,7 @@ test.describe.serial('Profile Management Tests (Ordered by Priority)', () => {
         await setupProfilePage(page, token);
         
         const verify = new VerifyExistingDetails(page);
-        await verify.verifyDetails();
+        await verify.verifyExistingDetails();
     });
 
     test('@EditDetails - Edit and update user profile details', async ({ page, token }) => {
@@ -37,8 +37,7 @@ test.describe.serial('Profile Management Tests (Ordered by Priority)', () => {
         await setupProfilePage(page, token);
         
         const reset = new ResetPassword(page);
-        await reset.passwordReset();
+        await reset.resetPassword();
     });
-
 });
 

@@ -1,7 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-
-class VerifyDetails {
+class VerifyExistingDetails {
     constructor(page) {
         this.page = page;
         this.name = page.locator("//h6[normalize-space()='Manish Somani']");
@@ -11,7 +10,7 @@ class VerifyDetails {
         this.verifyTag = page.locator("//span[@class='badge badge-light-success']");
     }
 
-    async verifyDetails() {
+    async verifyExistingDetails() {
         await test.step("Step 1: Verify name element is visible", async () => {
             await this.name.waitFor({ state: 'visible', timeout: 10000 });
             await expect.soft(this.name).toBeVisible();
@@ -22,6 +21,7 @@ class VerifyDetails {
         });
 
         await test.step("Step 3: Verify email element is visible", async () => {
+            await this.email.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.email).toBeVisible();
         });
 
@@ -30,6 +30,7 @@ class VerifyDetails {
         });
 
         await test.step("Step 5: Verify full name element is visible", async () => {
+            await this.fullName.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.fullName).toBeVisible();
         });
 
@@ -38,6 +39,7 @@ class VerifyDetails {
         });
 
         await test.step("Step 7: Verify email address element is visible", async () => {
+            await this.emailAddress.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.emailAddress).toBeVisible();
         });
 
@@ -46,6 +48,7 @@ class VerifyDetails {
         });
 
         await test.step("Step 9: Verify verification tag is visible", async () => {
+            await this.verifyTag.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.verifyTag).toBeVisible();
         });
 
@@ -55,4 +58,4 @@ class VerifyDetails {
     }
 }
 
-module.exports = VerifyDetails;
+module.exports = VerifyExistingDetails;

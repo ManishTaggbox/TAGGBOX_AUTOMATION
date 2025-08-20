@@ -7,7 +7,6 @@ class EditPost
     constructor(page) 
     {
         this.page = page;
-        // this.cards = page.locator('.content_img_ ');  
         this.cards = page.locator('.cursor-pointer.position-relative');  
         this.editIcon = page.locator('//button[text()="Edit Post"]'); 
         this.nameField = page.locator('#author_n_');
@@ -50,11 +49,13 @@ class EditPost
     {
         await test.step("Step 1: Click on first post", async () => 
         {
+            await this.cards.first().waitFor({state: 'visible', timeout: 5000});
             await this.cards.first().click();
         });
 
         await test.step("Step 2: Click on edit icon", async () => 
         {
+            await this.editIcon.waitFor({state: 'visible', timeout: 5000});
             await this.editIcon.click();
         });
 
@@ -82,6 +83,7 @@ class EditPost
 
         await test.step("Step 6: Click to edit author profile", async () => 
         {
+            await this.profileEditIcon.waitFor({state: 'visible', timeout: 5000});
             await this.profileEditIcon.click();
         });
 
@@ -92,6 +94,7 @@ class EditPost
 
         await test.step("Step 8: Click to edit post profile", async () => 
         {
+            await this.imgEdit.waitFor({state: 'visible', timeout: 5000});
             await this.imgEdit.click();
         });
 
@@ -102,42 +105,48 @@ class EditPost
 
         await test.step("Step 10: Click on Upload btn", async () => 
         {
+            await this.uploadBtn.waitFor({state: 'visible', timeout: 5000});
             await this.uploadBtn.click();
             await this.page.waitForTimeout(5000); // Wait for upload to complete
         });
 
         await test.step("Step 11: Click to save changes", async () => 
         {
+            await this.saveBtn.waitFor({state: 'visible', timeout: 5000});
             await this.saveBtn.click();
         });
 
         await test.step("Step 12: Assert toast msg", async () => 
         {
-            await this.successMsg.waitFor({ state: 'visible' });
+            await this.successMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.successMsg).toHaveText('Post updated successfully');
         });
 
         await test.step("Step 13: Click on 'Details' tab", async () => 
         {
+            await this.detailsTab.waitFor({state: 'visible', timeout: 5000});
             await this.detailsTab.click();
         });
 
         await test.step("Step 14: Assert post details in details tab", async () => 
         {
-            await expect.soft(this.autherNameDetail).toHaveText('This one is dummy name');
-            //await expect.soft(this.autherHandleDetail).toHaveText('This one is dummy handle');   
+            await this.autherNameDetail.waitFor({state: 'visible', timeout: 5000});
+            await expect.soft(this.autherNameDetail).toHaveText('This one is dummy name');  
+            await this.contentDetail.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.contentDetail).toHaveText('This one is dummy content');      
         }); 
 
         await test.step("Step 15: Close the modal", async () => 
         {
+            await this.crossIcon.last().waitFor({state: 'visible', timeout: 5000});
             await this.crossIcon.last().click();
         });
 
         await test.step("Step 16: Assert post details", async () => 
         {
-            await expect.soft(this.autherName).toHaveText('This one is dummy name');
-            // await expect.soft(this.autherHandle.first()).toHaveText('This one is dummy handle');   
+            await this.autherName.waitFor({state: 'visible', timeout: 5000});
+            await expect.soft(this.autherName).toHaveText('This one is dummy name'); 
+            await this.postContent.first().waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.postContent.first()).toHaveText('This one is dummy content');      
         });    
     }

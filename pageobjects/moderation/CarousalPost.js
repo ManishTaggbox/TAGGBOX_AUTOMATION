@@ -51,29 +51,33 @@ class CarousalPost
         expect.soft(responseBody.responseMessage).toBe('Your Gallery Updated Successfully.!');
 
         
-        await this.toastMsg.waitFor({ state: 'visible' });
+        await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
         await expect.soft(this.toastMsg).toHaveText('Your Gallery Updated Successfully.!');
         await this.page.waitForTimeout(10000);
         
 
         // Open filter overlay
+        await this.filterIcon.waitFor({state: 'visible', timeout: 5000});
         await this.filterIcon.click();
         await this.page.waitForTimeout(5000);
 
 
         // check UGC tagged product 
+        await this.taggedCheckbox.waitFor({state: 'visible', timeout: 5000});
         await this.taggedCheckbox.click();
         await this.page.waitForTimeout(5000);
 
         // Assert the error message after checking the tagged product
-        await this.errorMsg.waitFor({ state: 'visible', timeout: 10000 });
+        await this.errorMsg.waitFor({state: 'visible', timeout: 10000});
         await expect.soft(this.errorMsg).toHaveText('To apply this filter, please disable the Carousel feature first.'); 
         await this.page.waitForTimeout(10000);
 
         // close filter overlay
+        await this.crossIcon.waitFor({state: 'visible', timeout: 5000});
         await this.crossIcon.click();
 
         // off crousal post
+        await this.carousalBtn.waitFor({state: 'visible', timeout: 5000});
         await this.carousalBtn.click();
     }
 }

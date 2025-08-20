@@ -9,7 +9,7 @@ class PasswordMasking
         this.eyeBtn = page.locator('.fa-eye-slash');
     }
 
-    async checkPasswordMasking() 
+    async passwordMasking() 
     {
         await test.step("Step 1: Assert password field's type is 'password' ", async () => 
         {
@@ -35,6 +35,7 @@ class PasswordMasking
         // await test.step("Step 4: Click on eye button", async () => 
         // {
         //     // assert visble also
+        //      
         //     await this.eyeBtn.click();
         // });
 

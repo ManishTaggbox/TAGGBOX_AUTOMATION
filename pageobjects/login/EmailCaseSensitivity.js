@@ -10,7 +10,7 @@ class EmailCaseSensitivity
         this.loginBtn = page.locator('.btn-primary');
     }
 
-    async emailCaseSensitive() 
+    async emailCaseSensitivity() 
     {
          await test.step("Step 1: Enter valid email address in uppercase", async () => 
         {
@@ -26,6 +26,7 @@ class EmailCaseSensitivity
 
         await test.step("Step 3: Click on the Login btn", async () => 
         {
+            await this.loginBtn.waitFor({state: 'visible', timeout: 5000});
             await this.loginBtn.click();
         });
 
