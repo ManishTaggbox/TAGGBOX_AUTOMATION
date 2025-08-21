@@ -7,6 +7,7 @@ class PasswordMasking
         this.page = page;
         this.passField = page.locator('//input[@type="password"]');
         this.eyeBtn = page.locator('.fa-eye-slash');
+        this.unmaskedPassField = page.locator('//input[@type="text"]');
     }
 
     async passwordMasking() 
@@ -19,7 +20,7 @@ class PasswordMasking
 
         await test.step("Step 2: Type a password and ensure the text is masked", async () => 
         {
-            await this.passField.fill('');
+            // await this.passField.fill('');
             await this.passField.fill('Test@123');
         });
 
@@ -27,28 +28,24 @@ class PasswordMasking
         {
             
             const visibleText = await this.passField.inputValue();
-            expect.soft(visibleText).toBe('Test@123'); // value stored internally
+            expect.soft(visibleText).toBe('Test@123');
   
             console.log('✅ Password field is masked properly');
         });
 
-        // await test.step("Step 4: Click on eye button", async () => 
-        // {
-        //     // assert visble also
-        //      
-        //     await this.eyeBtn.click();
-        // });
+        await test.step("Step 4: Click on eye button", async () => 
+        {
+            await this.eyeBtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.eyeBtn.click();
+        });
 
-        // await test.step("Step 5: Assert password field's type is 'text' ", async () => 
-        // {
-        //     const typeAttribute = await this.passField.getAttribute('type');
-        //     expect.soft(typeAttribute).toBe('text');
+        await test.step("Step 5: Assert password field's type is 'text' ", async () => 
+        {
+            const typeAttribute = await this.passField.getAttribute('type');
+            expect.soft(typeAttribute).toBe('text');
 
-        //     console.log('✅ Eye button functionality is working fine');
-
-        // });
-
-    
+            console.log('✅ Eye button functionality is working fine');
+        });
     }
 }
 
