@@ -2,10 +2,19 @@
 import { test as base, request } from '@playwright/test';
 import { APiUtils } from '../utils/APiUtils.js';
 
+const env = process.env.ENV || 'live'; // default to live if not provided
+
 const loginPayload = {
-  emailId: 'manish.s+51@taggbox.com',
-  password: 'Taggbox@123',
-  loginType: 'web',
+  live: {
+    emailId: 'manish.s+51@taggbox.com',
+    password: 'Taggbox@123',
+    loginType: 'web',
+  },
+  test: {
+    emailId: 'sushil+51@taggbox.com',
+    password: 'Taggbox@123',
+    loginType: 'web',
+  }
 };
 
 export const test = base.extend({
@@ -17,14 +26,14 @@ export const test = base.extend({
   token: [async ({ apiContext }, use) => {
     const apiUtils = new APiUtils(apiContext, loginPayload);
     const token = await apiUtils.getToken();
-    console.log("✅ Token received:", token);
+    console.log(`✅ [${env.toUpperCase()}] Token received:`, token);
     await use(token);
   }, { scope: 'worker' }],
 
   wallId: [async ({ apiContext, token }, use) => {
     const apiUtils = new APiUtils(apiContext, loginPayload);
     const wallId = await apiUtils.getWallId(token);
-    console.log("✅ Wall ID received:", wallId);
+    console.log(`✅ [${env.toUpperCase()}] Wall ID received:`, wallId);
     await use(wallId);
   }, { scope: 'worker' }],
 });
