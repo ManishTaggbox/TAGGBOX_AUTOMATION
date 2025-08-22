@@ -47,7 +47,7 @@ class EditPostTags
 
         await test.step("Step 5: Assert toast msg", async () => 
         {
-            await this.toastMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 2000 });
             await expect.soft(this.toastMsg).toHaveText('Tags updated successfully');
         });
 

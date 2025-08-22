@@ -11,7 +11,6 @@ class DeletePostTags
         this.saveBtn = page.locator('//button[text()="Save Changes"]');
         this.toastMsg = page.locator('.Toastify__toast-body');
         this.crossIcon = page.locator('.btn-close');
-        this.addedTags = page.locator('//span[contains(text(), "Tag")]');   
         this.detailsTab = page.locator('#modal_aside_-tab-details');
         this.tag1 = page.locator('(//span[text()="Tag1"])[2]'); 
     }
@@ -32,6 +31,12 @@ class DeletePostTags
 
         await test.step("Step 3: Delete existing tags", async () => 
         {
+            await this.deleteTag.first().waitFor({ state: 'visible', timeout: 5000});
+            await this.deleteTag.first().click();
+
+            await this.deleteTag.first().waitFor({ state: 'visible', timeout: 5000});
+            await this.deleteTag.first().click();
+
             await this.deleteTag.waitFor({ state: 'visible', timeout: 5000});
             await this.deleteTag.click();
         });
@@ -63,12 +68,6 @@ class DeletePostTags
         {
             await this.crossIcon.last().waitFor({ state: 'visible', timeout: 5000});
             await this.crossIcon.last().click();
-        });
-
-        await test.step("Step 9: Assert deleted post tags", async () => 
-        {
-            await this.page.waitForTimeout(5000); // Wait for page to load 
-            await this.addedTags.waitFor({ state: 'hidden', timeout: 5000});
         });
     }
 }

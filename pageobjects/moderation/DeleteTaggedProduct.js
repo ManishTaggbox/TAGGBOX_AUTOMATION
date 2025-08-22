@@ -29,6 +29,7 @@ class DeleteTaggedProduct
 
         await test.step("Step 4: Assert the toast msg for duplicate product tag", async () => 
         {
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg).toHaveText('Tagged Product Removed from the Posts Successfully');
             await this.page.waitForTimeout(5000); 
         });

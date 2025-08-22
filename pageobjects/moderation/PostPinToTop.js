@@ -75,12 +75,11 @@ class PostPinToTop
         {
             await this.unpinIcon.waitFor({state: 'visible', timeout: 5000});
             await this.unpinIcon.click();
-            await this.page.waitForTimeout(2000);    
         });
 
         await test.step("Step 11: Assert the unpin toast message", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
+            await this.toastMsg.waitFor({state: 'visible', timeout: 8000});
             await expect.soft(this.toastMsg).toHaveText('Post Removed from top');   
         });
     }

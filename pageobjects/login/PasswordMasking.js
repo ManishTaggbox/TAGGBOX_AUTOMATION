@@ -20,7 +20,6 @@ class PasswordMasking
 
         await test.step("Step 2: Type a password and ensure the text is masked", async () => 
         {
-            // await this.passField.fill('');
             await this.passField.fill('Test@123');
         });
 

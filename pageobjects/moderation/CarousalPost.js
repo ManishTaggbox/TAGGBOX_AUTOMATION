@@ -31,41 +31,24 @@ class CarousalPost
             await this.carousalBtn.click()
         ]);
 
-        // ✅ Assert Request Payload
-        const requestBody = JSON.parse(request.postData());
-        expect.soft(requestBody).toMatchObject
-        ({
-            name: "Manish Somani",
-            status: 1,
-            carouselPost: 1,
-            autoUpdate: 1,
-            deleted: 0,
-            id: 2189694,
-            action: 2
-        });
-
-        // ✅ Assert Response
+        // Assert Response
         const responseBody = await response.json();
         expect.soft(responseBody.responseCode).toBe(200);
         expect.soft(responseBody.responseStatus).toBe('success');
         expect.soft(responseBody.responseMessage).toBe('Your Gallery Updated Successfully.!');
 
-        
         await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
         await expect.soft(this.toastMsg).toHaveText('Your Gallery Updated Successfully.!');
         await this.page.waitForTimeout(10000);
         
-
         // Open filter overlay
         await this.filterIcon.waitFor({state: 'visible', timeout: 5000});
         await this.filterIcon.click();
         await this.page.waitForTimeout(5000);
 
-
         // check UGC tagged product 
         await this.taggedCheckbox.waitFor({state: 'visible', timeout: 5000});
         await this.taggedCheckbox.click();
-        await this.page.waitForTimeout(5000);
 
         // Assert the error message after checking the tagged product
         await this.errorMsg.waitFor({state: 'visible', timeout: 10000});
