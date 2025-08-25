@@ -32,7 +32,6 @@ class TagProducts
 
         await test.step("Step 3: Select first product from the dropdown list", async () => 
         {
-            await this.firstProduct.waitFor({ state: 'visible', timeout: 5000});
             await this.firstProduct.click();
         });
 

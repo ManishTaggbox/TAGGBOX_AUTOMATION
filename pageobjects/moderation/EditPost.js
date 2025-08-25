@@ -118,7 +118,6 @@ class EditPost
 
         await test.step("Step 12: Assert toast msg", async () => 
         {
-            await this.successMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.successMsg).toHaveText('Post updated successfully');
         });
 

@@ -57,7 +57,7 @@ class AddPostTags
 
         await test.step("Step 6: Assert toast msg", async () => 
         {
-            await this.successMsg.waitFor({ state: 'visible' , timeout: 5000 });
+            // await this.successMsg.waitFor({ state: 'visible' , timeout: 5000 });
             await expect.soft(this.successMsg).toHaveText('Tags updated successfully');
         });
 

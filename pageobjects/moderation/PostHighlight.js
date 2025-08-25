@@ -47,8 +47,7 @@ class PostHighlight
         await test.step("Step 7: Click to remove the post from highlight", async () => 
         {
             await this.highlightIcon.waitFor({state: 'visible', timeout: 5000});
-            await this.highlightIcon.click();
-            await this.page.waitForTimeout(2000);    
+            await this.highlightIcon.click();   
         });
         
         await test.step("Step 8: Assert the displayed toast message", async () => 

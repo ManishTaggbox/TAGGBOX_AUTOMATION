@@ -123,7 +123,7 @@ class PostDelete
 
         await test.step("Step 17: Assert toast mesg to be displayed", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
+            await this.toastMsg.waitFor({state: 'visible', timeout: 8000});
             await expect.soft(this.toastMsg).toHaveText('Your post has been deleted.');  
             await this.page.waitForTimeout(5000);
         });

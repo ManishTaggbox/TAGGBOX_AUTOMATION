@@ -6,7 +6,6 @@ import ValidCredentials from '../../pageobjects/login/ValidCredentials.js';
 import EmailCaseSensitivity from '../../pageobjects/login/EmailCaseSensitivity.js';
 import LoginPageLinks from '../../pageobjects/login/LoginPageLinks.js';
 import PasswordMasking from '../../pageobjects/login/PasswordMasking.js';
-import GoogleLogin from '../../pageobjects/login/GoogleLogin.js';
 
 const LOGIN_URL = 'https://app.taggbox.com/accounts/login';
 
@@ -58,13 +57,4 @@ test.describe('Login Tests', () =>
         const masking = new PasswordMasking(page);
         await masking.passwordMasking();
     });
-
-    // test('@LoginWithGoogle - Validating by login with google', async ({ page, token }) =>
-    // {
-    //     await setupPage(page, token);
-    //     const gLogin = new GoogleLogin(page);
-    //     await gLogin.loginWithGoogle();
-    // });
-
-
 });
