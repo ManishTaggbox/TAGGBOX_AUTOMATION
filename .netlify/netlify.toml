@@ -7,7 +7,7 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "D:\\TAGGBOX_AUTOMATION"
+publish = "D:\\Taggbox_Automation"
 publishOrigin = "default"
 
 [build.environment]
