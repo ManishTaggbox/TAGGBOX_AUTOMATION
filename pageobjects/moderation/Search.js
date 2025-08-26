@@ -14,7 +14,7 @@ class Search
         this.searchBox = page.locator('//input[@placeholder="Search"]');
         this.searchCross = page.locator('//button[@aria-label="search"]');
         this.crossIcon = page.locator('.fa-xmark');
-        this.dropdownItem = page.locator('//a[text()="TagA" and @class="dropdown-item"]');
+        this.dropdownItem = page.locator("//div[@class='w-100 dropdwon-height dropdown-menu show']");
     }
 
     async Search() 
@@ -55,7 +55,7 @@ class Search
         await test.step("Step 6: Enter the search input", async () => 
         {
             await this.searchBox.fill('TagA');
-            // await this.dropdownItem.waitFor({ state: 'visible', timeout: 5000 });
+            await this.dropdownItem.waitFor({ state: 'visible', timeout: 5000 });
             await this.dropdownItem.click();
         });
 
