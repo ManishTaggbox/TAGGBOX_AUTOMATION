@@ -6,7 +6,7 @@ class PostPinToTop
     {
         this.page = page;
         this.pinIcon = page.locator('(//i[contains(@class,"fa-thumbtack")])[4]'); 
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Post is pinned to top"]');
         this.filterIcon = page.locator('#filter_aside');
         this.pinFilter = page.locator('#pinFilter');
         this.crossIcon = page.locator('//i[@class="fa-regular fa-xmark "]');
@@ -14,6 +14,7 @@ class PostPinToTop
         this.pinPostBadge = page.locator('//span[text()="Pin Post"]');
         this.resetBtn = page.locator('//button[text()="Reset"]');
         this.unpinIcon = page.locator('(//i[contains(@class,"fa-thumbtack")])[1]');
+        this.unpinToastMsg = page.locator('//div[text()="Post Removed from top"]');
     }
 
     async postPinToTop() 
@@ -79,8 +80,8 @@ class PostPinToTop
 
         await test.step("Step 11: Assert the unpin toast message", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 8000});
-            await expect.soft(this.toastMsg).toHaveText('Post Removed from top');   
+            await this.unpinToastMsg.waitFor({state: 'visible', timeout: 8000});
+            await expect.soft(this.unpinToastMsg).toHaveText('Post Removed from top');   
         });
     }
 }

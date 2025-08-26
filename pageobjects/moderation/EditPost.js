@@ -14,7 +14,7 @@ class EditPost
         this.contentField = page.locator('#post_cont_');
         this.validationMsg = page.locator('.invalid-feedback');
         this.saveBtn = page.locator('//button[text()="Save Changes"]');
-        this.successMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Post updated successfully"]');
         this.autherName = page.locator('//a[contains(text(), "This one is dummy name")]');
         this.autherHandle = page.locator('//span[text()="@"]'); 
         this.postContent = page.locator('.gridpostContent ');
@@ -118,7 +118,7 @@ class EditPost
 
         await test.step("Step 12: Assert toast msg", async () => 
         {
-            await expect.soft(this.successMsg).toHaveText('Post updated successfully');
+            await expect.soft(this.toastMsg).toHaveText('Post updated successfully');
         });
 
         await test.step("Step 13: Click on 'Details' tab", async () => 

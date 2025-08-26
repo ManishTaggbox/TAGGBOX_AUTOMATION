@@ -7,7 +7,7 @@ class DeleteTaggedProduct
         this.page = page;
         this.cards = page.locator('.cursor-pointer.position-relative');  
         this.deleteIcon = page.locator('//button[@aria-label="delete"]');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Tagged Product Removed from the Posts Successfully"]');
         this.crossIcon = page.locator('.btn-close');
         this.taggedProducts = page.locator('//div[@role="article"]');
         this.tagBtn = page.locator('#tag_pd_0');

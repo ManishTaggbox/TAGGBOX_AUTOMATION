@@ -40,6 +40,8 @@ class PasswordMasking
 
         await test.step("Step 5: Assert password field's type is 'text' ", async () => 
         {
+            await this.passField.waitFor({ state: 'visible', timeout: 5000 });
+
             const typeAttribute = await this.passField.getAttribute('type');
             expect.soft(typeAttribute).toBe('text');
 

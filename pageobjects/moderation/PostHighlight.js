@@ -6,9 +6,10 @@ class PostHighlight
     {
         this.page = page;
         this.highlightIcon = page.locator('(//i[contains(@class,"fa-solid fa-star ")])[4]'); 
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Post is highlighted."]');
         this.highlightedPost = page.locator('.assetsItem');  
-        this.highlightCard = page.locator('//div[@class="border-0 card"]');    
+        this.highlightCard = page.locator('//div[@class="border-0 card"]');   
+        this.successMsg = page.locator('//div[text()="Post Removed from highlight."]'); 
     }
 
     async postHighlight() 
@@ -52,8 +53,7 @@ class PostHighlight
         
         await test.step("Step 8: Assert the displayed toast message", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
-            await expect.soft(this.toastMsg).toHaveText('Post Removed from highlight.');
+            await expect.soft(this.successMsg).toHaveText('Post Removed from highlight.');
         });
     }
 }

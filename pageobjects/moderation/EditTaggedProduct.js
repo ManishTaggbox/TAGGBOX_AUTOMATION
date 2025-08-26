@@ -9,7 +9,7 @@ class EditTaggedProduct
         this.deleteIcon = page.locator('//button[@aria-label="delete"]');
         this.searchBox = page.locator('#search_pro_'); 
         this.firstProduct = page.locator('#tag_products_0');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="This product already tagged on this post"]');
         this.crossIcon = page.locator('.btn-close');
         this.taggedProducts = page.locator('//div[@role="article"]');
         this.firstProduct = page.locator('#tag_products_0');    

@@ -12,7 +12,7 @@ class AddPostTags
         this.saveBtn = page.locator('//button[text()="Save Changes"]');
         this.addedTagA = page.locator('//span[text()="TagA"]');
         this.addedTagB = page.locator('//span[text()="TagB"]');
-        this.successMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Tags updated successfully"]');
         this.detailsTab = page.locator('#modal_aside_-tab-details');
         this.addedTag1 = page.locator('(//span[text()="TagA"])[2]');
         this.addedTag2 = page.locator('(//span[text()="TagB"])[2]');
@@ -57,8 +57,8 @@ class AddPostTags
 
         await test.step("Step 6: Assert toast msg", async () => 
         {
-            // await this.successMsg.waitFor({ state: 'visible' , timeout: 5000 });
-            await expect.soft(this.successMsg).toHaveText('Tags updated successfully');
+            await this.toastMsg.waitFor({ state: 'visible' , timeout: 5000 });
+            await expect.soft(this.toastMsg).toHaveText('Tags updated successfully');
         });
 
         await test.step("Step 7: Click on 'Details' tab", async () => 

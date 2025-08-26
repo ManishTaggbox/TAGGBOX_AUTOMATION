@@ -9,13 +9,14 @@ class SelectedPostAction
         this.selectAllLabel = page.locator('.form-check-label');
         this.privateBtn = page.locator('//button[contains(@class,"btn-danger")]'); 
         this.continueBtn = page.locator('//button[contains(@class,"swal2-confirm")]');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Selected posts are private now."]');
         this.privateTab = page.locator('//a[text()="Private"]');
         this.privatePostsCount = page.locator('//a[text()="Private"]//span');
         this.cards = page.locator('.cursor-pointer.position-relative');  
         this.privatePosts = page.locator('.btn-private');
         this.selectAllCheckbox = page.locator('#select_all_');
         this.publicBtn = page.locator('//button[contains(@class,"btn-success")]');
+        this.successMsg = page.locator('//div[text()="Selected posts are public now."]');
     }
 
     async selectedPostAction() 
@@ -92,8 +93,8 @@ class SelectedPostAction
 
         await test.step("Step 11: Assert the toast msg", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
-            await expect.soft(this.toastMsg).toHaveText('Selected posts are public now.'); 
+            await this.successMsg.waitFor({state: 'visible', timeout: 5000});
+            await expect.soft(this.successMsg).toHaveText('Selected posts are public now.'); 
             await this.page.waitForTimeout(5000);
         });
     }
