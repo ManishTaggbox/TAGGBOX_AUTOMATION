@@ -10,7 +10,7 @@ class TagProducts
         this.firstProduct = page.locator('#tag_products_0');
         this.secondProduct = page.locator('#tag_products_1');
         this.thirdProduct = page.locator('#tag_products_2');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Product tagged successfully"]');
         this.crossIcon = page.locator('.btn-close');
         this.taggedProducts = page.locator('//div[@role="article"]');
         this.addProduct = page.locator('//button[@aria-label="add"]');

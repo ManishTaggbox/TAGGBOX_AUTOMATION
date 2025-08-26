@@ -9,7 +9,7 @@ class DeletePostTags
         this.tagsOption = page.locator('//button[text()="Tags"]'); 
         this.deleteTag = page.locator('//span/button');
         this.saveBtn = page.locator('//button[text()="Save Changes"]');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Tags updated successfully"]');
         this.crossIcon = page.locator('.btn-close');
         this.detailsTab = page.locator('#modal_aside_-tab-details');
         this.tag1 = page.locator('(//span[text()="Tag1"])[2]'); 

@@ -6,10 +6,10 @@ class CarousalPost
     {
         this.page = page;
         this.carousalBtn = page.locator('#carousalStatus');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Your Gallery Updated Successfully.!"]');
         this.filterIcon = page.locator('#filter_aside');
         this.taggedCheckbox = page.locator('#tagProduct');
-        this.errorMsg = page.locator('.Toastify__toast-body');
+        this.errorMsg = page.locator('//div[text()="To apply this filter, please disable the Carousel feature first."]');
         this.crossIcon = page.locator('.fa-xmark');
     }
 

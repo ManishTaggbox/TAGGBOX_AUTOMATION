@@ -6,7 +6,7 @@ class PostPrivatePublic
     {
         this.page = page;
         this.privateBtn = page.locator('//button[text()="Private"]'); 
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Post is Private now"]');
         this.privatePostsCount = page.locator('//a[text()="Private"]//span');
         this.privateTab = page.locator('//a[text()="Private"]');
         this.allPostsTab = page.locator('//a[text()="All posts"]');
@@ -17,6 +17,8 @@ class PostPrivatePublic
         this.publicPostsCount = page.locator('//a[text()="Public"]//span');
         this.publicTab = page.locator('//a[text()="Public"]');
         this.publicBtn = page.locator('//button[text()="Public"]');
+        this.successMsg = page.locator('//div[text()="Selected posts are private now."]');
+        this.tooltip = page.locator('//div[text()="Selected posts are public now."]');
     }
 
     async postPrivatePublic() 
@@ -27,9 +29,8 @@ class PostPrivatePublic
             await this.privateBtn.first().click();   
         });
 
-        await test.step("Step 2: Assert toast mesg to be displayed", async () => 
+        await test.step("Step 2: Assert toast msg to be displayed", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Post is Private now');  
             await this.page.waitForTimeout(5000);
         });
@@ -84,8 +85,7 @@ class PostPrivatePublic
 
         await test.step("Step 11: Assert the toast msg", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
-            await expect.soft(this.toastMsg).toHaveText('Selected posts are private now.'); 
+            await expect.soft(this.successMsg).toHaveText('Selected posts are private now.'); 
             await this.page.waitForTimeout(5000);
         });
 
@@ -127,8 +127,7 @@ class PostPrivatePublic
 
         await test.step("Step 18: Assert toast msg", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
-            await expect.soft(this.toastMsg).toHaveText('Selected posts are public now.'); 
+            await expect.soft(this.tooltip).toHaveText('Selected posts are public now.'); 
             await this.page.waitForTimeout(5000);
         });
 

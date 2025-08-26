@@ -9,7 +9,7 @@ class EditPostTags
         this.tagsOption = page.locator('//button[text()="Tags"]'); 
         this.tagsInput = page.locator('.selectpicker__input');
         this.createTag = page.locator('//div[contains(text(), "Create")]');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Tags updated successfully"]');
         this.deleteTag = page.locator('//span/button');
         this.saveBtn = page.locator('//button[text()="Save Changes"]');
         this.detailsTab = page.locator('#modal_aside_-tab-details');

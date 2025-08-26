@@ -10,7 +10,7 @@ class PostDelete
         this.threeDotsOption = page.locator('//i[contains(@class,"fa-regular fa-ellipsis me-1")]');
         this.deleteOption = page.locator('//span[text()="Delete post"]');
         this.continueBtn = page.locator('//button[contains(@class,"swal2-confirm swal2-styled")]');
-        this.toastMsg = page.locator('.Toastify__toast-body');
+        this.toastMsg = page.locator('//div[text()="Your post has been deleted."]');
         this.crossIcon = page.locator('.btn-close');
         this.threeDotsIcon = page.locator('//i[contains(@class,"fa-regular fa-ellipsis")]');
         this.deleteIcon = page.locator('//a[text()="Delete post"]');
