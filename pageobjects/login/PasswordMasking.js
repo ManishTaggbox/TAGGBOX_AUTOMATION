@@ -5,7 +5,7 @@ class PasswordMasking
     constructor(page) 
     {
         this.page = page;
-        this.passField = page.locator('//input[@type="password"]');
+        this.passField = page.locator("//input[@placeholder='Password']");
         this.eyeBtn = page.locator('.fa-eye-slash');
         this.unmaskedPassField = page.locator('//input[@type="text"]');
     }
