@@ -9,14 +9,16 @@ class Intercom
         // Intercom iframe reference
         this.frame = page.frameLocator('iframe[name="intercom-messenger-frame"]');
 
-        // All locators should come from the frame
+        // Frame locators
         this.chatNowBtn = page.locator('//button[text()="Chat Now"]');    
         this.findTimeBtn = this.frame.locator('//button[text()="Find a time"]');
         this.calenderTitle = this.frame.locator('//h1[text()="Product Demo - Customer Success Team"]');
         this.backBtn = this.frame.locator('//button[@aria-label="go back"]');
-        this.msgOption = this.frame.locator('//button[@data-testid="messages"]');
-        this.msgSendBtn = this.frame.locator('//button[@data-testid="send-a-message-button"]');
+        this.msgSendBtn = this.frame.locator('//div[text()="Send us a message"]');
         this.textArea = this.frame.locator('//textarea[@placeholder="Message…"]');
+        this.closeIcon = this.frame.locator('//div[@data-testid="close-button"]');
+
+        this.chatIcon = page.locator('//div[@data-testid="launcher-minimize-icon"]');
     }
 
     async intercom() 
@@ -45,23 +47,13 @@ class Intercom
 
         await test.step("Step 4: Assert calender displayed to book a demo call", async () => 
         {
-            await this.calenderTitle.waitFor({ state: 'visible', timeout: 15000 });
-
             await this.backBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.backBtn.click();            
             
             console.log("Calender is displayed to book a demo call");
         }); 
 
-        await test.step("Step 5: Assert calender displayed to book a demo call", async () => 
-        {
-            await this.msgOption.waitFor({ state: 'visible', timeout: 5000 });
-            await this.msgOption.click();            
-            
-            console.log("Clicked to message option");
-        }); 
-
-        await test.step("Step 6: Assert displayed message section", async () => 
+        await test.step("Step 5: Assert displayed message section", async () => 
         {
             await this.msgSendBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.msgSendBtn.click();         
@@ -71,6 +63,14 @@ class Intercom
             
             console.log("Message section is displayed");
         }); 
+
+        await test.step("Step 6: Close the chat section", async () => 
+        {
+            await this.closeIcon.waitFor({ state: 'visible', timeout: 5000 });
+            await this.closeIcon.click();         
+            
+            console.log("Chat section closed successfuly");
+        });
     }    
 }
 
