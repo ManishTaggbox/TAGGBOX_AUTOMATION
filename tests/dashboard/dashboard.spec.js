@@ -4,7 +4,10 @@ import { FEED_PATH } from '../../utils/constants.js';
 import Gallery from '../../pageobjects/dashboard/Gallery.js';
 import Channel from '../../pageobjects/dashboard/Channel.js';
 import DashboardPageLinks from '../../pageobjects/dashboard/DashboardPageLinks.js';
-import Intercom from '../../pageobjects/dashboard/Intercom.js'
+import Intercom from '../../pageobjects/dashboard/Intercom.js';
+import RecentPosts from '../../pageobjects/dashboard/RecentPosts.js';
+import MostActiveCreators from '../../pageobjects/dashboard/MostActiveCreators.js';
+import Reputation from '../../pageobjects/dashboard/Reputation.js';
 
 const DASHBOARD_URL = 'https://app.taggbox.com/home';
 
@@ -17,42 +20,65 @@ async function setupPage(page, token, url = DASHBOARD_URL)
 
 test.describe('Dashboard Tests', () =>
 {
-    test('@AddChannelWithNoGallery - Adding channel with no gallery present', async ({ page, token }) => 
+    test('@HomeAddChannelWithNoGallery - Adding channel with no gallery present', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const channel = new Channel(page);
         await channel.addChannelWithNoGallery();
     });
 
-    test('@DashboardPageLinksCheck - Checking page links present on the home page', async ({ page, token }) => 
+    test('@HomePageLinksCheck - Checking page links present on the home page', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const links = new DashboardPageLinks(page);
         await links.dashboardPageLinks();
     });
 
-    test('@IntercomCheck - Checking if intercom is working properly', async ({ page, token }) => 
+    test('@HomeIntercomCheck - Checking if intercom is working properly', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const intercom = new Intercom(page);
         await intercom.intercom();
     });
 
-    test('@AddGallery - Adding new gallery', async ({ page, token }) => 
+    test('@HomeAddGallery - Adding new gallery', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const gallery = new Gallery(page);
         await gallery.addGallery();
     });
 
-    test('@AddChannel - Adding new channel', async ({ page, token }) => 
+    test('@HomeRecentPosts - Checking data for "Recent Posts" section', async ({ page, token }) => 
+    {
+        await setupPage(page, token);
+        const recentPosts = new RecentPosts(page);
+        await recentPosts.recentPosts();
+    });
+
+    test('@HomeMostActiveCreators - Checking data for "Most Active Creators" section', async ({ page, token }) => 
+    {
+        await setupPage(page, token);
+        const activeCreators = new MostActiveCreators(page);
+        await activeCreators.activeCreators();
+    });
+
+    test('@HomeReputation - Checking data for "Reputation" section', async ({ page, token }) => 
+    {
+        await setupPage(page, token);
+        const reputation = new Reputation(page);
+        await reputation.reputationData();
+    });
+
+    // Delete created feed here
+
+    test('@HomeAddChannel - Adding new channel', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const channel = new Channel(page);
         await channel.addChannel();
     });
 
-    test('@DeleteGallery - Deleting existing gallery', async ({ page, token }) => 
+    test('@HomeDeleteGallery - Deleting existing gallery', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const gallery = new Gallery(page);
