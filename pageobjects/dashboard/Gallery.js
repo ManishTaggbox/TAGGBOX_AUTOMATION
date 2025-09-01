@@ -63,7 +63,7 @@ class AddGallery
 
             await this.saveBtn.click();
             
-            console.log("Entered gallery name as Shristy`s Gallery");
+            console.log("Entered gallery name as Taggbox`s Gallery");
         });
 
         await test.step("Step 6: Assert the toast msg", async () => 
