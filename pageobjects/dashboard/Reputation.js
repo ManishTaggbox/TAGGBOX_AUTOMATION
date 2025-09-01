@@ -6,6 +6,7 @@ class Reputation
 {
     constructor(page) 
     {
+        // Dashboard Page Locators
         this.page = page;
         this.reputationTab = page.locator('//a[text()="Reputation"]');
         this.createFeedBtn = page.locator('//button[text()="Create Review Feed!"]');
@@ -15,6 +16,13 @@ class Reputation
         this.feedBtn = page.locator('#create_feed');
         this.homeMenu = page.locator('//span[text()="Home"]');
         this.ratingView = page.locator('.rating-breakdown');
+
+        // Delete feed locators
+        this.editBtn = page.locator('//button[text()="Edit"]');
+        this.manageFeedsMenu = page.locator('//span[text()="Manage Feeds"]');
+        this.deleteFeedBtn = page.locator('//button[@data-id="delete"]');
+        this.deleteConfirmBtn = page.locator('//button[text()="Yes"]');
+        
     }
 
     async reputationData() 
@@ -85,6 +93,67 @@ class Reputation
             console.log("✅ Data verified for 'Reputation' tab");
         });
     }
+
+    // Delete created feed here
+    async deleteFeed() 
+    {
+        await test.step("Step 1: Navigate to 'Home' page", async () => 
+        {
+            await this.homeMenu.waitFor({ state: 'visible', timeout: 5000 });
+            await this.homeMenu.click();
+            
+            console.log("✅ Clicked to 'Home' menu");
+        });
+
+        await test.step("Step 2: Click to 'Edit' btn", async () => 
+        {
+            await this.editBtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.editBtn.click();
+            
+            console.log("✅ Clicked to 'Home' menu");
+        });
+
+        await test.step("Step 3: Click to 'Manage feeds' menu", async () => 
+        {
+            await this.manageFeedsMenu.waitFor({ state: 'visible', timeout: 5000 });
+            await this.manageFeedsMenu.click();
+            
+            console.log("✅ Clicked to 'Manage Feed' menu");
+        });
+
+        await test.step("Step 4: Click to 'delete' icon for created feed", async () => 
+        {
+            await this.deleteFeedBtn.first().waitFor({ state: 'visible', timeout: 5000 });
+            await this.deleteFeedBtn.first().click();
+
+            await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.deleteConfirmBtn.click();
+
+            await this.page.waitForTimeout(5000);
+            
+            console.log("✅ First feed is deleted");
+
+            await this.deleteFeedBtn.first().waitFor({ state: 'visible', timeout: 5000 });
+            await this.deleteFeedBtn.first().click();
+
+            await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.deleteConfirmBtn.click();
+
+            await this.page.waitForTimeout(5000);
+            
+            console.log("✅ Second feed is deleted");
+
+            await this.deleteFeedBtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.deleteFeedBtn.click();
+
+            await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
+            await this.deleteConfirmBtn.click();
+
+            await this.page.waitForTimeout(5000);
+            
+            console.log("✅ Third feed is deleted");
+        });
+    }    
 }
 
 export default Reputation;

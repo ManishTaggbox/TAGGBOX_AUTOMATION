@@ -132,11 +132,11 @@ class AddGallery
             console.log("Clicked to 'Home' menu option");
         });
 
-        await test.step("Step 6: Assert 'Content Collect' is displayed when no gallery is present", async () => 
+        await test.step("Step 6: Assert 'Collect Content' is displayed when no gallery is present", async () => 
         {
             await this.contentBtn.waitFor({ state: 'visible', timeout: 5000 });
             
-            console.log("'Content Gallery' button is displayed when no gallery is present");
+            console.log("'Collect Content' button is displayed when no gallery is present");
         });
     }
 }
