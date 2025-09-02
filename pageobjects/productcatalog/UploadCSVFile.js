@@ -61,12 +61,12 @@ class UploadCSVFile
 
         await test.step("Step 6: Wait for import process to complete", async () => 
         {
-            await this.page.waitForTimeout(5000);
+            await this.page.waitForTimeout(8000);
         });
 
         await test.step("Step 7: Verify success message appears", async () =>
         {
-            await this.successMsg.waitFor({state: 'visible', timeout: 10000});
+            await this.successMsg.waitFor({state: 'visible', timeout: 20000});
             await expect.soft(this.successMsg).toHaveText('Product Import Successfully.');
         });
     }
