@@ -2,6 +2,12 @@
 <<<<<<< HEAD
   "status": "failed",
   "failedTests": [
+    "c34829621fa3532cfe3f-c23a2ecc00cf5a579d33"
+  ]
+=======
+<<<<<<< HEAD
+  "status": "failed",
+  "failedTests": [
     "c34829621fa3532cfe3f-2ffa76c4979b4761a72c",
     "c34829621fa3532cfe3f-73cfbaec54b8bd39c20f"
   ]
@@ -9,4 +15,5 @@
   "status": "passed",
   "failedTests": []
 >>>>>>> 7f4bb0280d19a00e85f3b80e8ccb4f095babd1d9
-}
+>>>>>>> master
+} 
