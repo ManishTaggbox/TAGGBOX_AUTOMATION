@@ -1,6 +1,6 @@
 export const GALLERY = 
 {
-  GALLERYNAME: 'Shristy`s Gallery'
+  GALLERYNAME: 'Taggbox`s Gallery'
 };
 
 export const CHANNEL = 
