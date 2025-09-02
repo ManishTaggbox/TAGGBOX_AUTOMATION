@@ -67,9 +67,10 @@ test.describe('Dashboard Tests', () =>
         await setupPage(page, token);
         const reputation = new Reputation(page);
         await reputation.reputationData();
-    });
 
-    // Delete created feed here
+        // Delete created feed here
+        await reputation.deleteFeed();
+    });
 
     test('@HomeAddChannel - Adding new channel', async ({ page, token }) => 
     {
