@@ -18,6 +18,7 @@ import SocialFeedFilter from '../../pageobjects/moderation/SocialFeedFilter.js';
 import Pagination from '../../pageobjects/moderation/Pagination.js';
 import Search from '../../pageobjects/moderation/Search.js';
 import PostTypeFilter from '../../pageobjects/moderation/PostTypeFilter.js';
+import ChangeOrder from '../../pageobjects/moderation/ChangeOrder.js';
 
 async function setupModeration(page, token, wallId)
 {
@@ -147,6 +148,13 @@ test.describe('Moderation Tests', () =>
     await setupModeration(page, token, wallId);
     const deletePost = new PostDelete(page);
     await deletePost.postDelete();
+  });
+
+  test('@ModerationChangeOrder - Change post order for pinned posts', async ({ page, token, wallId }) =>
+  {
+    await setupModeration(page, token, wallId);
+    const changeOrder = new ChangeOrder(page);
+    await changeOrder.changeOrder();
   });
 });
 
