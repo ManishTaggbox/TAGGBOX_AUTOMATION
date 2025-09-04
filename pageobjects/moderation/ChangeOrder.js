@@ -13,6 +13,7 @@ class ChangeOrder
         this.doneBtn = page.locator('//button[text()="Done"]');
         this.toastMsg = page.locator('//div[text()="Post Pin Order change Sucessfully"]');
         this.closeBtn = page.locator('//button[@class="btn-close"]');      
+        this.unpinIcon = page.locator("//span[@class='w-18px f-center fs-8 me-2 cursor-pointer text-primary']");
     }
 
     async changeOrder() 
@@ -95,11 +96,11 @@ class ChangeOrder
 
         await test.step("Step 8: Click to unpin pinned posts", async () => 
         {
-            for(let i=0; i<=1; i++)
-            {
-                await this.pinIcon.nth(i).waitFor({state: 'visible', timeout: 5000});
-                await this.pinIcon.nth(i).click();  
-                console.log(`Post ${i+1} pinned`);
+            for(let i=1; i>=0; i--)
+  {
+                await this.unpinIcon.nth(i).waitFor({state: 'visible', timeout: 5000});
+                await this.unpinIcon.nth(i).click();  
+                console.log(`Post ${i+1} unpin`);
                 await this.page.waitForTimeout(2000);    
             }
         });
