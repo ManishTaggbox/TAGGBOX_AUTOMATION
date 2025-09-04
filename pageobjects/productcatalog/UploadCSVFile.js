@@ -59,11 +59,6 @@ class UploadCSVFile
             await this.uploadBtn.click();
         });
 
-        await test.step("Step 6: Wait for import process to complete", async () => 
-        {
-            await this.page.waitForTimeout(8000);
-        });
-
         await test.step("Step 7: Verify success message appears", async () =>
         {
             await this.successMsg.waitFor({state: 'visible', timeout: 20000});
