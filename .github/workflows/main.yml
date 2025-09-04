@@ -33,7 +33,7 @@ jobs:
       # 6️⃣ Run Playwright tests
       - name: Run Playwright Tests
         run: |
-          npx playwright test tests/content tests/feeds tests/productcatalog tests/profile tests/publish/emailcampaign tests/publish/shoponbio tests/publish/website tests/moderation tests/login
+          npx playwright test tests/content tests/feeds tests/productcatalog tests/profile tests/publish/emailcampaign tests/publish/shoponbio tests/publish/website tests/moderation tests/login tests/dashboard
         env:
           ENV: live
         continue-on-error: true  # so we can still deploy report if tests fail
