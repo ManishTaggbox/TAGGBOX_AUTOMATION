@@ -125,7 +125,7 @@ class PostTypeFilter
             expect.soft(count).toBeGreaterThan(0);
         });
 
-        await test.step("Step 12: Reset the filter", async () => 
+        await test.step("Step 18: Reset the filter", async () => 
         {
             await this.resetBtn.waitFor({state: 'visible', timeout: 5000});
             await this.resetBtn.click();
