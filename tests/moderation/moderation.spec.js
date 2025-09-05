@@ -19,6 +19,8 @@ import Pagination from '../../pageobjects/moderation/Pagination.js';
 import Search from '../../pageobjects/moderation/Search.js';
 import PostTypeFilter from '../../pageobjects/moderation/PostTypeFilter.js';
 import ChangeOrder from '../../pageobjects/moderation/ChangeOrder.js';
+import ViewPost from '../../pageobjects/moderation/ViewPost.js';
+import TagProductWithSearch from '../../pageobjects/moderation/TagProductWithSearch.js';
 
 async function setupModeration(page, token, wallId)
 {
@@ -144,6 +146,14 @@ test.describe('Moderation Tests', () =>
     await typeFilter.postTypeFilter();
   });
 
+  // For now adding TagProduct With Search here
+  test('@ModerationTagProductWithSearch - Tag products with searching multiple tags', async ({ page, token, wallId }) =>
+  {
+    await setupModeration(page, token, wallId);
+    const tag = new TagProductWithSearch(page);
+    await tag.tagProductWithSearch();
+  });
+
   test('@ModerationPostDelete - Delete post', async ({ page, token, wallId }) => {
     await setupModeration(page, token, wallId);
     const deletePost = new PostDelete(page);
@@ -155,6 +165,13 @@ test.describe('Moderation Tests', () =>
     await setupModeration(page, token, wallId);
     const changeOrder = new ChangeOrder(page);
     await changeOrder.changeOrder();
+  });
+
+  test('@ModerationViewPost - Check View Posts option', async ({ page, token, wallId }) =>
+  {
+    await setupModeration(page, token, wallId);
+    const viewPost = new ViewPost(page);
+    await viewPost.viewPost();
   });
 });
 
