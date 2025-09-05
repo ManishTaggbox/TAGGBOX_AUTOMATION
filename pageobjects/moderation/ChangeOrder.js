@@ -18,7 +18,7 @@ class ChangeOrder
 
     async changeOrder() 
     {
-        await test.step("Step 1: Click on PinToTop icon for three posts", async () => 
+        await test.step("Step 1: Click on PinToTop icon for two posts", async () => 
         {
             for(let i=0; i<=1; i++)
             {
@@ -26,6 +26,8 @@ class ChangeOrder
                 await this.pinIcon.nth(i).click();  
                 console.log(`Post ${i+1} pinned`);
                 await this.page.waitForTimeout(2000);    
+
+                console.log("✅ Clicked to PinToTop icon for first two posts");
             }
         });
 
@@ -34,7 +36,7 @@ class ChangeOrder
             await this.threeDotsIcon.nth(0).waitFor({state: 'visible', timeout: 5000});
             await this.threeDotsIcon.nth(0).click();   
 
-            console.log("Clicked on three dot icon of first pinned post");
+            console.log("✅ Clicked on three dot icon of first pinned post");
         });
 
         await test.step("Step 3: Click to option 'Change Order'", async () => 
@@ -44,7 +46,7 @@ class ChangeOrder
             
             await this.page.waitForTimeout(5000);
 
-            console.log("Clicked on 'Change Order' option");
+            console.log("✅ Clicked on 'Change Order' option");
         });
 
         await test.step("Step 4: Drag & Drop the element", async () => 
@@ -66,7 +68,7 @@ class ChangeOrder
             await this.page.mouse.up(); // release
             }
 
-            console.log("Element dragged manually with mouse simulation!");
+            console.log("✅ Element dragged manually with mouse simulation!");
 
             await this.page.waitForTimeout(5000);
         });
@@ -76,7 +78,7 @@ class ChangeOrder
             await this.doneBtn.waitFor({state: 'visible', timeout: 5000});
             await this.doneBtn.click();   
 
-            console.log("Clicked on 'Done' button");
+            console.log("✅ Clicked on 'Done' button");
         });
 
         await test.step("Step 6: Assert the displayed toast message", async () => 
@@ -84,6 +86,8 @@ class ChangeOrder
             await this.toastMsg.waitFor({state: 'visible', timeout: 5000});
             await expect.soft(this.toastMsg).toHaveText('Post Pin Order change Sucessfully');
             await this.page.waitForTimeout(5000);    
+
+            console.log("✅ Asserted toast message");
         });
 
         await test.step("Step 7: Click to 'Close' button to close the popup", async () => 
@@ -91,18 +95,20 @@ class ChangeOrder
             await this.closeBtn.waitFor({state: 'visible', timeout: 5000});
             await this.closeBtn.click();   
 
-            console.log("Clicked to close the popup");
+            console.log("✅ Clicked to close the popup");
         });
 
         await test.step("Step 8: Click to unpin pinned posts", async () => 
         {
             for(let i=1; i>=0; i--)
-  {
+            {
                 await this.unpinIcon.nth(i).waitFor({state: 'visible', timeout: 5000});
                 await this.unpinIcon.nth(i).click();  
                 console.log(`Post ${i+1} unpin`);
                 await this.page.waitForTimeout(2000);    
             }
+
+            console.log("✅ Clicked to unpin first two posts");
         });
     }
 }
