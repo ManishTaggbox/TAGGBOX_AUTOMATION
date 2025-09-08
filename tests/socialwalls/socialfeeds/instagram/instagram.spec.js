@@ -1,6 +1,9 @@
 import { test, expect } from '../../socialwallsfixtures/fixtures.js';
 import { FEED_PATH } from '../../utils/constant.js';
 import InstagramHashTagPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramHashTag.js';
+import InstagramMyHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramMyHandle.js';
+import InstagramHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramHandle.js';
+import InstagramStoriesPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramStories.js';
 
 const APP_URL = 'https://app.socialwalls.com/';
 
@@ -36,6 +39,9 @@ const runInstagramFeedTest = ({ tag, PageObject, method }) => {
 
 const instagramFeeds = [
   { tag: '@SocialWallsInstagramHashTag Create Feed', PageObject: InstagramHashTagPage, method: 'instagramHashTag' },
+  { tag: '@SocialWallsInstagramMyHandle Create Feed', PageObject: InstagramMyHandlePage, method: 'instagramMyHandle' },
+  { tag: '@SocialWallsInstagramHandle Create Feed', PageObject: InstagramHandlePage, method: 'instagramHandle' },
+  { tag: '@SocialWallsInstagramStories Create Feed', PageObject: InstagramStoriesPage, method: 'instagramStories' },
 ];
 
 instagramFeeds.forEach(runInstagramFeedTest);
