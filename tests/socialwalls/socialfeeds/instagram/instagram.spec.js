@@ -4,6 +4,10 @@ import InstagramHashTagPage from '../../../../pageobjects/socialwalls/socialfeed
 import InstagramMyHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramMyHandle.js';
 import InstagramHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramHandle.js';
 import InstagramStoriesPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramStories.js';
+import InstagramMentionsPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramMentions.js';
+import InstagramTaggedInstaLoginPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramTaggedInstaLogin.js';
+import InstagramTaggedFBLoginPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramTaggedFBLogin.js';
+import InstagramVideosPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramVideos.js';
 
 const APP_URL = 'https://app.socialwalls.com/';
 
@@ -42,6 +46,10 @@ const instagramFeeds = [
   { tag: '@SocialWallsInstagramMyHandle Create Feed', PageObject: InstagramMyHandlePage, method: 'instagramMyHandle' },
   { tag: '@SocialWallsInstagramHandle Create Feed', PageObject: InstagramHandlePage, method: 'instagramHandle' },
   { tag: '@SocialWallsInstagramStories Create Feed', PageObject: InstagramStoriesPage, method: 'instagramStories' },
+  { tag: '@SocialWallsInstagramMentions Create Feed', PageObject: InstagramMentionsPage, method: 'instagramMentions' },
+  { tag: '@SocialWallsInstagramTaggedInsta Create Feed', PageObject: InstagramTaggedInstaLoginPage, method: 'instagramTaggedInstaLogin' },
+  { tag: '@SocialWallsInstagramTaggedFB Create Feed', PageObject: InstagramTaggedFBLoginPage, method: 'instagramTaggedFBLogin' },
+  { tag: '@SocialWallsInstagramVideos Create Feed', PageObject: InstagramVideosPage, method: 'instagramVideos' },
 ];
 
 instagramFeeds.forEach(runInstagramFeedTest);
