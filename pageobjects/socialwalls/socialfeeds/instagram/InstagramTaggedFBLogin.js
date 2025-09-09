@@ -1,20 +1,19 @@
 import { test, expect } from '@playwright/test';
 import { INSTAGRAM } from '../../utils/Constant.js';
-const ManageFeeds = require('../../socialfeeds/managefeeds/ManageFeeds.js');
+const ManageFeeds = require('../managefeeds/ManageFeeds.js');
 
-class InstagramHandle 
+class InstagramTaggedFBLogin
 {
     constructor(page) 
     {
         this.page = page;
         this.instagram = page.locator("//li[contains(@class,'instagram-business')]//button[contains(@type,'button')]");
-        this.handleTab = page.locator('#CreateFeedTab-tab-handle');
-        this.handleField = page.locator('#insta_handle');
+        this.taggedTab = page.locator('#CreateFeedTab-tab-taggedfb');
         this.createFeedBtn = page.locator('#create_feed');
         this.toastMsg = page.locator('//div[text()="Congratulations! You have successfully created feed."]');
     }
 
-    async instagramHandle() 
+    async instagramTaggedFBLogin() 
     {
         await test.step('Step 1: Open Social Feeds page', async () => 
         {
@@ -39,33 +38,25 @@ class InstagramHandle
         {
             await this.page.waitForTimeout(2000);
 
-            console.log('✅ Waited for 2 seconds to load Instagram Handle UI');
+            console.log('✅ Waited for 2 seconds to load Instagram Tagged UI');
         });
 
-        await test.step('Step 4: Click the "Handle" tab', async () => 
+        await test.step('Step 4: Click on "Tagged(FB Login)" tab', async () => 
         {
-            await this.handleTab.waitFor({ state: 'visible', timeout: 10000 });
-            await this.handleTab.click();
+            await this.taggedTab.waitFor({ state: 'visible', timeout: 10000 });
+            await this.taggedTab.click();
 
-            console.log('✅ Clicked on "Handle" tab');
+            console.log('✅ Clicked on "Tagged(FB Login)" tab');
         });
 
-        await test.step('Step 5: Wait for #insta_handle input, then fill', async () => 
-        {
-            await this.handleField.waitFor({ state: 'visible', timeout: 10000 });
-            await this.handleField.fill(INSTAGRAM.INSTAGRAMHANDLE);
-
-            console.log(`✅ Filled insta handle input with: ${INSTAGRAM.INSTAGRAMHANDLE}`);
-        });
-
-        await test.step('Step 6: Verify "Create Feed" button is enabled', async () => 
+        await test.step('Step 5: Verify "Create Feed" button is enabled', async () => 
         {
             await expect.soft(this.createFeedBtn).toBeEnabled();
 
             console.log('✅ "Create Feed" button is enabled');
         });
 
-        await test.step('Step 7: Click the "Create Feed" button', async () => 
+        await test.step('Step 6: Click the "Create Feed" button', async () => 
         {
             await this.createFeedBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.createFeedBtn.click();
@@ -73,7 +64,7 @@ class InstagramHandle
             console.log('✅ Clicked on "Create Feed" button');
         });
 
-        await test.step('Step 8: Assert the toast msg', async () => 
+        await test.step('Step 7: Assert the toast msg', async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.toastMsg).toBeVisible();
@@ -82,14 +73,14 @@ class InstagramHandle
             console.log('✅ Validated the toast message');
         });
 
-        await test.step('Step 9: Wait 25 seconds for Content Gallery to load', async () => 
+        await test.step('Step 8: Wait 25 seconds for Content Gallery to load', async () => 
         {
             await this.page.waitForTimeout(25000);
 
             console.log('✅ Waited for 25 seconds to load Content Gallery');
         });
 
-        await test.step('Step 10: Proceed with feed management if Content Gallery is loaded', async () => 
+        await test.step('Step 9: Proceed with feed management if Content Gallery is loaded', async () => 
         {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
@@ -102,4 +93,4 @@ class InstagramHandle
     }
 }
 
-export default InstagramHandle;
+export default InstagramTaggedFBLogin;

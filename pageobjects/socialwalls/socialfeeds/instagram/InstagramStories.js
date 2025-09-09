@@ -10,6 +10,7 @@ class InstagramStories
         this.instagram = page.locator("//li[contains(@class,'instagram-business')]//button[contains(@type,'button')]");
         this.storiesTab = page.locator('#CreateFeedTab-tab-stories');
         this.createFeedBtn = page.locator('#create_feed');
+        this.toastMsg = page.locator('//div[text()="Congratulations! You have successfully created feed."]');
     }
 
     async instagramStories() 
@@ -63,14 +64,23 @@ class InstagramStories
             console.log('✅ Clicked on "Create Feed" button');
         });
 
-        await test.step('Step 7: Wait 25 seconds for Content Gallery to load', async () => 
+        await test.step('Step 7: Assert the toast msg', async () => 
+        {
+            await this.toastMsg.waitFor({ state: 'visible', timeout: 20000 });
+            await expect.soft(this.toastMsg).toBeVisible();
+            await expect.soft(this.toastMsg).toHaveText('Congratulations! You have successfully created feed.');
+
+            console.log('✅ Validated the toast message');
+        });
+
+        await test.step('Step 8: Wait 25 seconds for Content Gallery to load', async () => 
         {
             await this.page.waitForTimeout(25000);
 
             console.log('✅ Waited for 25 seconds to load Content Gallery');
         });
 
-        await test.step('Step 8: Proceed with feed management if Content Gallery is loaded', async () => 
+        await test.step('Step 9: Proceed with feed management if Content Gallery is loaded', async () => 
         {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
