@@ -70,7 +70,7 @@ export const AIRBNB = {
 
 
 export const TRIPADVISOR = {
-  TRIPADVISORRESTAURANT: 'https://www.tripadvisor.in/Attraction_Review-g304555-d317345-Reviews-Hawa_Mahal_Palace_of_Wind-Jaipur_Jaipur_District_Rajasthan.html',
+  TRIPADVISORRESTAURANT: 'https://www.tripadvisor.in/Restaurant_Review-g304555-d25183700-Reviews-Sura_Cocktails_Cuisine-Jaipur_Jaipur_District_Rajasthan.html',
   TRIPADVISORHOTEL: 'https://www.tripadvisor.in/Hotel_Review-g304555-d304847-Reviews-Jai_Mahal_Palace-Jaipur_Jaipur_District_Rajasthan.html'
 };
 
