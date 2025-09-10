@@ -13,6 +13,7 @@ const runFacebookFeedTest = ({ tag, PageObject, method }) => {
       await page.evaluate(token => {
         localStorage.setItem('access_token', token);
       }, token);
+        await this.page.waitForTimeout(3000);
       console.log('✅ Token injected into localStorage');
     });
 
