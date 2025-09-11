@@ -15,7 +15,7 @@ class TiktokHashtag {
         await test.step('Step 1: Open Social Feeds page', async () => {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
-                await manageFeeds.openSocialFeeds();
+                await manageFeeds.openSocialFeeds();    
             }
             catch (error) {
                 console.warn('⚠️ Social Feeds page did not load properly');
