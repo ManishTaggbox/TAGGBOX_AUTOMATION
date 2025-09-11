@@ -2,19 +2,20 @@ import { test, expect } from '@playwright/test';
 import { FACEBOOK } from '../../utils/Constant.js';
 const ManageFeeds = require('../managefeeds/ManageFeeds.js');
 
-class FacebookPage
+class FacebookMyProfilePosts
 {
     constructor(page) 
     {
         this.page = page;
         this.facebook = page.locator("//li[contains(@class,'facebook')]//button[contains(@type,'button')]");
+        this.myProfilePostsTab = page.locator("//button/span[text()='My Profile Posts']"); 
         this.createFeedBtn = page.locator('#create_feed');
         this.pageField = page.locator('#Page-text');
         this.dropdownOption = page.locator('//div[@class="handlelist"]//li').first();
         this.toastMsg = page.locator('//div[text()="Congratulations! You have successfully created feed."]');
     }
 
-    async facebookPage() 
+    async facebookMyProfile() 
     {
         await test.step('Step 1: Open Social Feeds page', async () => 
         {
@@ -42,22 +43,19 @@ class FacebookPage
             console.log('✅ Waited for 2 seconds to load Facebook UI');
         });     
 
-        await test.step('Step 4: Verify "Create Feed" button is enabled', async () => 
+        await test.step('Step 4: Click to "My Profile Posts" tab' , async () => 
+        {
+            await this.myProfilePostsTab.waitFor({ state: 'visible', timeout: 10000 });
+            await this.myProfilePostsTab.click();
+
+            console.log('✅ Clicked on "My Profile Posts" tab');
+        });
+
+        await test.step('Step 5: Verify "Create Feed" button is enabled', async () => 
         {
             await expect.soft(this.createFeedBtn).toBeEnabled();
 
             console.log('✅ "Create Feed" button is enabled');
-        });
-
-        await test.step('Step 5: Wait for facebook_page input, then fill', async () => 
-        {
-            await this.pageField.waitFor({ state: 'visible', timeout: 10000 });
-            await this.pageField.fill(FACEBOOK.FACEBOOKPAGE);
-
-            await this.dropdownOption.waitFor({ state: 'visible', timeout: 10000 });
-            await this.dropdownOption.click();
-
-            console.log(`✅ Filled facebook page input with: ${FACEBOOK.FACEBOOKPAGE}`);
         });
 
         await test.step('Step 6: Click the "Create Feed" button', async () => 
@@ -97,4 +95,4 @@ class FacebookPage
     }
 }
 
-export default FacebookPage;
+export default FacebookMyProfilePosts;

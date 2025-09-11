@@ -2,19 +2,19 @@ import { test, expect } from '@playwright/test';
 import { FACEBOOK } from '../../utils/Constant.js';
 const ManageFeeds = require('../managefeeds/ManageFeeds.js');
 
-class FacebookPage
+class FacebookSingleAlbum
 {
     constructor(page) 
     {
         this.page = page;
         this.facebook = page.locator("//li[contains(@class,'facebook')]//button[contains(@type,'button')]");
+        this.albumnsTab = page.locator("#CreateFeedTab-tab-Albums"); 
         this.createFeedBtn = page.locator('#create_feed');
-        this.pageField = page.locator('#Page-text');
-        this.dropdownOption = page.locator('//div[@class="handlelist"]//li').first();
+        this.urlField = page.locator('#Albums-text');
         this.toastMsg = page.locator('//div[text()="Congratulations! You have successfully created feed."]');
     }
 
-    async facebookPage() 
+    async FacebookSingleAlbum() 
     {
         await test.step('Step 1: Open Social Feeds page', async () => 
         {
@@ -42,22 +42,27 @@ class FacebookPage
             console.log('✅ Waited for 2 seconds to load Facebook UI');
         });     
 
-        await test.step('Step 4: Verify "Create Feed" button is enabled', async () => 
+        await test.step('Step 4: Click to "Albumns" tab' , async () => 
+        {
+            await this.albumnsTab.waitFor({ state: 'visible', timeout: 10000 });
+            await this.albumnsTab.click();
+
+            console.log('✅ Clicked on "Albumns" tab');
+        });
+
+        await test.step('Step 5: Wait for facebook_url input, then fill', async () => 
+        {
+            await this.urlField.waitFor({ state: 'visible', timeout: 10000 });
+            await this.urlField.fill(FACEBOOK.FACEBOOKSINGLEALBUM);
+
+            console.log(`✅ Filled facebook page input with: ${FACEBOOK.FACEBOOKSINGLEALBUM}`);
+        });
+
+        await test.step('Step 6: Verify "Create Feed" button is enabled', async () => 
         {
             await expect.soft(this.createFeedBtn).toBeEnabled();
 
             console.log('✅ "Create Feed" button is enabled');
-        });
-
-        await test.step('Step 5: Wait for facebook_page input, then fill', async () => 
-        {
-            await this.pageField.waitFor({ state: 'visible', timeout: 10000 });
-            await this.pageField.fill(FACEBOOK.FACEBOOKPAGE);
-
-            await this.dropdownOption.waitFor({ state: 'visible', timeout: 10000 });
-            await this.dropdownOption.click();
-
-            console.log(`✅ Filled facebook page input with: ${FACEBOOK.FACEBOOKPAGE}`);
         });
 
         await test.step('Step 6: Click the "Create Feed" button', async () => 
@@ -97,4 +102,4 @@ class FacebookPage
     }
 }
 
-export default FacebookPage;
+export default FacebookSingleAlbum;
