@@ -2,10 +2,8 @@ import { test, expect } from '@playwright/test';
 import { TWITTER } from '../../utils/Constant.js';
 const ManageFeeds = require('../managefeeds/ManageFeeds.js');
 
-class TwitterMention
-{
-    constructor(page) 
-    {
+class TwitterMention {
+    constructor(page) {
         this.page = page;
         this.twitter = page.locator("//li[contains(@class,'twitter')]//button[contains(@type,'button')]");
         this.createFeedBtn = page.locator('#create_feed');
@@ -14,10 +12,8 @@ class TwitterMention
         this.toastMsg = page.locator('//div[text()="Congratulations! You have successfully created feed."]');
     }
 
-    async twitterMentions() 
-    {
-        await test.step('Step 1: Open Social Feeds page', async () => 
-        {
+    async twitterMentions() {
+        await test.step('Step 1: Open Social Feeds page', async () => {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
                 await manageFeeds.openSocialFeeds();
@@ -27,54 +23,50 @@ class TwitterMention
             }
         });
 
-        await test.step('Step 2: Wait for Twitter button, then click', async () => 
-        {
+        await test.step('Step 2: Wait for Twitter button, then click', async () => {
             await this.twitter.waitFor({ state: 'visible', timeout: 10000 });
             await this.twitter.click();
 
             console.log('✅ Clicked on Twitter button');
         });
 
-        await test.step('Step 3: Wait 2 seconds for UI update', async () => 
-        {
+        await test.step('Step 3: Wait 2 seconds for UI update', async () => {
             await this.page.waitForTimeout(2000);
 
             console.log('✅ Waited for 2 seconds to load Twitter UI');
-        });     
+        });
 
-        await test.step('Step 4: Click to "Mentions" tab', async () => 
-        {
+        await test.step('Step 4: Click to "Mentions" tab', async () => {
             await this.mentionsTab.waitFor({ state: 'visible', timeout: 10000 });
             await this.mentionsTab.click();
 
             console.log('✅ Clicked on "Mentions" tab');
         });
 
-        await test.step('Step 5: Verify "Create Feed" button is enabled', async () => 
-        {
-            await expect.soft(this.createFeedBtn).toBeEnabled();
-
-            console.log('✅ "Create Feed" button is enabled');
-        });
-
-        await test.step('Step 6: Wait for twitter_mentions input, then fill', async () => 
-        {
+        await test.step('Step 6: Wait for twitter_mentions input, then fill', async () => {
             await this.mentionsField.waitFor({ state: 'visible', timeout: 10000 });
             await this.mentionsField.fill(TWITTER.TWITTERMENTION);
 
             console.log(`✅ Filled twitter mention input with: ${TWITTER.TWITTERMENTION}`);
         });
+        await test.step('Step 3: Wait 2 seconds for UI update', async () => {
+            await this.page.waitForTimeout(2000);
 
-        await test.step('Step 7: Click the "Create Feed" button', async () => 
-        {
+            console.log('✅ Waited for 2 seconds to load Twitter UI');
+        });
+        await test.step('Step 5: Verify "Create Feed" button is enabled', async () => {
+            await expect.soft(this.createFeedBtn).toBeEnabled();
+
+            console.log('✅ "Create Feed" button is enabled');
+        });
+        await test.step('Step 7: Click the "Create Feed" button', async () => {
             await this.createFeedBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.createFeedBtn.click();
 
             console.log('✅ Clicked on "Create Feed" button');
         });
 
-        await test.step('Step 8: Assert the toast msg', async () => 
-        {
+        await test.step('Step 8: Assert the toast msg', async () => {
             await this.toastMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.toastMsg).toBeVisible();
             await expect.soft(this.toastMsg).toHaveText('Congratulations! You have successfully created feed.');
@@ -82,15 +74,13 @@ class TwitterMention
             console.log('✅ Validated the toast message');
         });
 
-        await test.step('Step 9: Wait 25 seconds for Content Gallery to load', async () => 
-        {
-            await this.page.waitForTimeout(25000);
+        await test.step('Step 9: Wait 25 seconds for Content Gallery to load', async () => {
+            await this.page.waitForTimeout(15000);
 
             console.log('✅ Waited for 25 seconds to load Content Gallery');
         });
 
-        await test.step('Step 10: Proceed with feed management if Content Gallery is loaded', async () => 
-        {
+        await test.step('Step 10: Proceed with feed management if Content Gallery is loaded', async () => {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
                 await manageFeeds.manageFeed();
