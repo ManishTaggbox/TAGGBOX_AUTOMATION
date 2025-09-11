@@ -42,5 +42,4 @@ jobs:
       - name: Deploy to Netlify
         run: npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"
         env:
-        
           NETLIFY_AUTH_TOKEN: nfp_kS6fu8zzrmu6YRZkEsSLZW8xoej4fCWaa4b9
