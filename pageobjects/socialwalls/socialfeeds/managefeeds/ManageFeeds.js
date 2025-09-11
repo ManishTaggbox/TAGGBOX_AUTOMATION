@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,16 +9,15 @@ console.log(`🔧 Environment from .env: ${env}`);
 const loginPayload = {
   live: {
     emailId: 'manish.s+51@taggbox.com',
-    password: 'Taggbox@123',
-    countryCode: 'IN',
+    password: 'Taggbox@123'
+
   },
   test: {
     emailId: 'Shristy+51@taggbox.com',
-    password: 'Taggbox@123',
-    countryCode: 'IN',
+    password: 'Taggbox@123'
+
   }
 };
-
 
 class ManageFeeds {
   constructor(page) {
@@ -36,9 +35,10 @@ class ManageFeeds {
     this.myWalls = page.locator("//span[normalize-space()='My Walls']");
   }
 
-async openSocialFeeds() {
+  async openSocialFeeds() {
+
     const credentials = loginPayload[env];
-    
+
     await test.step('Step 1: Fill email field', async () => {
       await this.email.waitFor({ state: 'visible', timeout: 10000 });
       await this.email.fill(credentials.emailId);
@@ -48,7 +48,6 @@ async openSocialFeeds() {
       await this.password.waitFor({ state: 'visible', timeout: 10000 });
       await this.password.fill(credentials.password);
     });
-
     await test.step('Step 3: Click login button', async () => {
       await this.loginBtn.waitFor({ state: 'visible', timeout: 10000 });
       await this.loginBtn.click();
@@ -136,4 +135,4 @@ async openSocialFeeds() {
     });
   }
 }
-module.exports = ManageFeeds;
+export default ManageFeeds;

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { INSTAGRAM } from '../../utils/Constant.js';
-const ManageFeeds = require('../../socialfeeds/managefeeds/ManageFeeds.js');
+import ManageFeeds from '../../socialfeeds/managefeeds/ManageFeeds.js';
 
 class InstagramHashTag {
   constructor(page) {

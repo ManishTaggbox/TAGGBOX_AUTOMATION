@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { TIKTOK } from '../../utils/Constant.js';
-const ManageFeeds = require('../managefeeds/ManageFeeds.js');
+import ManageFeeds from '../../socialfeeds/managefeeds/ManageFeeds.js';
 
 class TiktokMyHandle {
     constructor(page) {
