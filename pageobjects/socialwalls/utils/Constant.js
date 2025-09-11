@@ -106,7 +106,9 @@ export const TWITTER = {
 };
 
 export const FACEBOOK = {
-  FACEBOOKPAGE: 'nature'
+  FACEBOOKPAGE: 'nature',
+  FACEBOOKSINGLEALBUM: 'https://www.facebook.com/media/set/?set=a.638015155026866&type=3',
+  FACEBOOKPAGEALBUMS: 'https://www.facebook.com/icc'
 
 };
 

@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import FacebookPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookPage.js';
+import FacebookMyProfilePostsPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookMyProfilePosts.js';
+import FacebookSingleAlbumPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookSingleAlbum.js';
 
 const APP_URL = 'https://app.socialwalls.com/';
 
@@ -17,10 +19,10 @@ const runFacebookFeedTest = ({ tag, PageObject, method }) => {
       await feedPage[method]();
     });
 
-    // Wait for content gallery to load fully
-    await test.step('Wait for content gallery to fully load', async () => {
-      await page.waitForLoadState('load', { timeout: 60000 });
-    });
+    // // Wait for content gallery to load fully
+    // await test.step('Wait for content gallery to fully load', async () => {
+    //   await page.waitForLoadState('load', { timeout: 60000 });
+    // });
   });
 };
 
