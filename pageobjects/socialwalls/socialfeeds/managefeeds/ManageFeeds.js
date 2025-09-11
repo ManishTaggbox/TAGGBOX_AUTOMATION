@@ -1,23 +1,5 @@
 import { test, expect } from '@playwright/test';
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-const env = process.env.ENV || 'live';
-console.log(`🔧 Environment from .env: ${env}`);
-
-const loginPayload = {
-  live: {
-    emailId: 'manish.s+51@taggbox.com',
-    password: 'Taggbox@123'
-
-  },
-  test: {
-    emailId: 'Shristy+51@taggbox.com',
-    password: 'Taggbox@123'
-
-  }
-};
 
 class ManageFeeds {
   constructor(page) {
@@ -37,16 +19,14 @@ class ManageFeeds {
 
   async openSocialFeeds() {
 
-    const credentials = loginPayload[env];
-
     await test.step('Step 1: Fill email field', async () => {
       await this.email.waitFor({ state: 'visible', timeout: 10000 });
-      await this.email.fill(credentials.emailId);
+      await this.email.fill('manish.s+51@taggbox.com');
     });
 
     await test.step('Step 2: Fill password field', async () => {
       await this.password.waitFor({ state: 'visible', timeout: 10000 });
-      await this.password.fill(credentials.password);
+      await this.password.fill('Taggbox@123');
     });
     await test.step('Step 3: Click login button', async () => {
       await this.loginBtn.waitFor({ state: 'visible', timeout: 10000 });
