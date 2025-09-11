@@ -1,5 +1,4 @@
-import { test, expect } from '../../socialwallsfixtures/fixtures.js';
-import { FEED_PATH } from '../../utils/constant.js';
+import { test, expect } from '@playwright/test';
 import TwitterHashtagPage from '../../../../pageobjects/socialwalls/socialfeeds/twitter/TwitterHashtag.js';
 import TwitterHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/twitter/TwitterHandle.js';
 import TwitterMentionPage from '../../../../pageobjects/socialwalls/socialfeeds/twitter/TwitterMention.js';
@@ -8,24 +7,14 @@ import TwitterAdvancedPage from '../../../../pageobjects/socialwalls/socialfeeds
 const APP_URL = 'https://app.socialwalls.com/';
 
 const runTwitterFeedTest = ({ tag, PageObject, method }) => {
-  test(tag, async ({ page, token }) => {
+  test(tag, async ({ page }) => {
 
-    // Navigate once to app URL and inject access_token only
     await test.step('Navigate and inject token into localStorage', async () => {
       await page.goto(APP_URL, { waitUntil: 'domcontentloaded' });
-      await page.evaluate(token => {
-        localStorage.setItem('access_token', token);
-      }, token);
-        await this.page.waitForTimeout(3000);
-      console.log('✅ Token injected into localStorage');
+      
+      console.log('✅ Page loaded:', APP_URL);
     });
-
-    // Proceed to the Feed page
-    await test.step('Navigate to Add Feed page', async () => {
-      await page.goto(FEED_PATH.HOME, { waitUntil: 'domcontentloaded' });
-    });
-
-    // Run feed creation flow
+  
     await test.step(`Run ${tag} feed creation flow`, async () => {
       const feedPage = new PageObject(page);
       await feedPage[method]();
@@ -37,7 +26,6 @@ const runTwitterFeedTest = ({ tag, PageObject, method }) => {
     });
   });
 };
-
 const TwitterFeeds = [
   { tag: '@SocialWallsTwitterHashtag Create Feed', PageObject: TwitterHashtagPage, method: 'twitterHashtag' },
   { tag: '@SocialWallsTwitterHandle Create Feed', PageObject: TwitterHandlePage, method: 'twitterHandle' },

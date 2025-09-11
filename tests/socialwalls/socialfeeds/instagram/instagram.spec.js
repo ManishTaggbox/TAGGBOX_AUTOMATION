@@ -1,5 +1,4 @@
-import { test, expect } from '../../socialwallsfixtures/fixtures.js';
-import { FEED_PATH } from '../../utils/constant.js';
+import { test, expect } from '@playwright/test';
 import InstagramHashTagPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramHashTag.js';
 import InstagramMyHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramMyHandle.js';
 import InstagramHandlePage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramHandle.js';
@@ -8,28 +7,17 @@ import InstagramMentionsPage from '../../../../pageobjects/socialwalls/socialfee
 import InstagramTaggedInstaLoginPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramTaggedInstaLogin.js';
 import InstagramTaggedFBLoginPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramTaggedFBLogin.js';
 import InstagramVideosPage from '../../../../pageobjects/socialwalls/socialfeeds/instagram/InstagramVideos.js';
-
 const APP_URL = 'https://app.socialwalls.com/';
 
 const runInstagramFeedTest = ({ tag, PageObject, method }) => {
-  test(tag, async ({ page, token }) => {
+  test(tag, async ({ page }) => {
 
-    // Navigate once to app URL and inject access_token only
     await test.step('Navigate and inject token into localStorage', async () => {
       await page.goto(APP_URL, { waitUntil: 'domcontentloaded' });
-      await page.evaluate(token => {
-        localStorage.setItem('access_token', token);
-      }, token);
-        await this.page.waitForTimeout(3000);
-      console.log('✅ Token injected into localStorage');
+      
+      console.log('✅ Page loaded:', APP_URL);
     });
-
-    // Proceed to the Feed page
-    await test.step('Navigate to Add Feed page', async () => {
-      await page.goto(FEED_PATH.HOME, { waitUntil: 'domcontentloaded' });
-    });
-
-    // Run feed creation flow
+  
     await test.step(`Run ${tag} feed creation flow`, async () => {
       const feedPage = new PageObject(page);
       await feedPage[method]();
@@ -55,9 +43,15 @@ const instagramFeeds = [
 
 instagramFeeds.forEach(runInstagramFeedTest);
 
+// Simple cleanup
 test.afterEach(async ({ page }) => {
-  console.log('🧹 Running teardown...');
-  await page.evaluate(() => localStorage.clear());
-  await page.close();
-  console.log('✅ Teardown complete.');
+  try {
+    await page.evaluate(() => {
+      localStorage.clear();
+      sessionStorage.clear();
+    });
+    await page.context().clearCookies();
+  } catch (error) {
+    // Ignore cleanup errors
+  }
 });
