@@ -1,4 +1,24 @@
 const { test, expect } = require('@playwright/test');
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const env = process.env.ENV || 'live';
+console.log(`🔧 Environment from .env: ${env}`);
+
+const loginPayload = {
+  live: {
+    emailId: 'manish.s+51@taggbox.com',
+    password: 'Taggbox@123',
+    countryCode: 'IN',
+  },
+  test: {
+    emailId: 'Shristy+51@taggbox.com',
+    password: 'Taggbox@123',
+    countryCode: 'IN',
+  }
+};
+
 
 class ManageFeeds {
   constructor(page) {
@@ -10,24 +30,51 @@ class ManageFeeds {
     this.countPost = page.locator("p[class='text-dark m-0 text-nowrap'] strong").first();
     this.confirmYesBtn = page.locator("button[aria-label='Yes']");
     this.successMsg = page.locator("//div[contains(text(),'Feed Deleted successfully')]");
+    this.email = page.locator('#AccountEmail');
+    this.password = page.locator('#AccountPassword');
+    this.loginBtn = page.locator("button[type='submit']");
+    this.myWalls = page.locator("//span[normalize-space()='My Walls']");
   }
 
-  async openSocialFeeds() {
-    await test.step('Step 1: Wait for edit icon to be visible, then click', async () => {
+async openSocialFeeds() {
+    const credentials = loginPayload[env];
+    
+    await test.step('Step 1: Fill email field', async () => {
+      await this.email.waitFor({ state: 'visible', timeout: 10000 });
+      await this.email.fill(credentials.emailId);
+    });
+
+    await test.step('Step 2: Fill password field', async () => {
+      await this.password.waitFor({ state: 'visible', timeout: 10000 });
+      await this.password.fill(credentials.password);
+    });
+
+    await test.step('Step 3: Click login button', async () => {
+      await this.loginBtn.waitFor({ state: 'visible', timeout: 10000 });
+      await this.loginBtn.click();
+    });
+
+    await test.step('Step 4: Navigate to My Walls', async () => {
+      await this.myWalls.waitFor({ state: 'visible', timeout: 10000 });
+      await this.myWalls.click();
+    });
+
+    await test.step('Step 5: Click edit icon', async () => {
       await this.edit.waitFor({ state: 'visible', timeout: 10000 });
       await this.edit.click();
     });
 
-    await test.step('Step 2: Wait for Social Feeds menu to be visible, then click', async () => {
+    await test.step('Step 6: Navigate to Social Feeds', async () => {
       await this.socialFeeds.waitFor({ state: 'visible', timeout: 10000 });
       await this.socialFeeds.click();
     });
 
-    await test.step('Step 3: Wait for Add Feed button, then click', async () => {
+    await test.step('Step 7: Click Add Feed button', async () => {
       await this.addFeed.waitFor({ state: 'visible', timeout: 10000 });
       await this.addFeed.click();
     });
   }
+
 
   async manageFeed() {
     await test.step("Step 1: Click 'socialFeeds' button", async () => {
