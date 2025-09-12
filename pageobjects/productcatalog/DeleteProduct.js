@@ -32,6 +32,9 @@ class DeleteProduct {
 
         await test.step("Step 5: Verify the deleted product is no longer visible", async () => {
             await expect.soft(this.productName).not.toBeVisible();
+
+            // Wait for "Delete Product" toast message to disappear
+            await this.page.waitForTimeout(5000);
         });
     }
 
