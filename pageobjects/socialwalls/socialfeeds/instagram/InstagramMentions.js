@@ -1,11 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { INSTAGRAM } from '../../utils/Constant.js';
-const ManageFeeds = require('../../socialfeeds/managefeeds/ManageFeeds.js');
+import ManageFeeds from '../../socialfeeds/managefeeds/ManageFeeds.js';
 
-class InstagramMentions
-{
-    constructor(page) 
-    {
+class InstagramMentions {
+    constructor(page) {
         this.page = page;
         this.instagram = page.locator("//li[contains(@class,'instagram-business')]//button[contains(@type,'button')]");
         this.mentionsTab = page.locator('#CreateFeedTab-tab-mentions');
@@ -13,10 +11,8 @@ class InstagramMentions
         this.toastMsg = page.locator('//div[text()="Congratulations! You have successfully created feed."]');
     }
 
-    async instagramMentions() 
-    {
-        await test.step('Step 1: Open Social Feeds page', async () => 
-        {
+    async instagramMentions() {
+        await test.step('Step 1: Open Social Feeds page', async () => {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
                 await manageFeeds.openSocialFeeds();
@@ -26,46 +22,45 @@ class InstagramMentions
             }
         });
 
-        await test.step('Step 2: Wait for Instagram button, then click', async () => 
-        {
+        await test.step('Step 2: Wait for Instagram button, then click', async () => {
             await this.instagram.waitFor({ state: 'visible', timeout: 10000 });
             await this.instagram.click();
 
             console.log('✅ Clicked on Instagram button');
         });
 
-        await test.step('Step 3: Wait 2 seconds for UI update', async () => 
-        {
+        await test.step('Step 3: Wait 2 seconds for UI update', async () => {
             await this.page.waitForTimeout(2000);
 
             console.log('✅ Waited for 2 seconds to load Instagram Mentions UI');
         });
 
-        await test.step('Step 4: Click on "Mentions" tab', async () => 
-        {
+        await test.step('Step 4: Click on "Mentions" tab', async () => {
             await this.mentionsTab.waitFor({ state: 'visible', timeout: 10000 });
             await this.mentionsTab.click();
 
             console.log('✅ Clicked on "Mentions" tab');
         });
+        await test.step('Step 3: Wait 2 seconds for UI update', async () => {
+            await this.page.waitForTimeout(2000);
 
-        await test.step('Step 5: Verify "Create Feed" button is enabled', async () => 
-        {
+            console.log('✅ Waited for 2 seconds to load Instagram Mentions UI');
+        });
+
+        await test.step('Step 5: Verify "Create Feed" button is enabled', async () => {
             await expect.soft(this.createFeedBtn).toBeEnabled();
 
             console.log('✅ "Create Feed" button is enabled');
         });
 
-        await test.step('Step 6: Click the "Create Feed" button', async () => 
-        {
+        await test.step('Step 6: Click the "Create Feed" button', async () => {
             await this.createFeedBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.createFeedBtn.click();
 
             console.log('✅ Clicked on "Create Feed" button');
         });
 
-        await test.step('Step 7: Assert the toast msg', async () => 
-        {
+        await test.step('Step 7: Assert the toast msg', async () => {
             await this.toastMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.toastMsg).toBeVisible();
             await expect.soft(this.toastMsg).toHaveText('Congratulations! You have successfully created feed.');
@@ -73,15 +68,13 @@ class InstagramMentions
             console.log('✅ Validated the toast message');
         });
 
-        await test.step('Step 8: Wait 25 seconds for Content Gallery to load', async () => 
-        {
-            await this.page.waitForTimeout(25000);
+        await test.step('Step 8: Wait 25 seconds for Content Gallery to load', async () => {
+            await this.page.waitForTimeout(10000);
 
             console.log('✅ Waited for 25 seconds to load Content Gallery');
         });
 
-        await test.step('Step 9: Proceed with feed management if Content Gallery is loaded', async () => 
-        {
+        await test.step('Step 9: Proceed with feed management if Content Gallery is loaded', async () => {
             try {
                 const manageFeeds = new ManageFeeds(this.page);
                 await manageFeeds.manageFeed();

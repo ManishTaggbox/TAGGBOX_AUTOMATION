@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { INSTAGRAM } from '../../utils/Constant.js';
-const ManageFeeds = require('../../socialfeeds/managefeeds/ManageFeeds.js');
+import ManageFeeds from '../../socialfeeds/managefeeds/ManageFeeds.js';
 
 class InstagramHandle 
 {
@@ -58,14 +58,21 @@ class InstagramHandle
             console.log(`✅ Filled insta handle input with: ${INSTAGRAM.INSTAGRAMHANDLE}`);
         });
 
-        await test.step('Step 6: Verify "Create Feed" button is enabled', async () => 
+         await test.step('Step 6: Wait 2 seconds for UI update', async () => 
+        {
+            await this.page.waitForTimeout(2000);
+
+            console.log('✅ Waited for 2 seconds to load Instagram Handle UI');
+        });
+
+        await test.step('Step 7: Verify "Create Feed" button is enabled', async () => 
         {
             await expect.soft(this.createFeedBtn).toBeEnabled();
 
             console.log('✅ "Create Feed" button is enabled');
         });
 
-        await test.step('Step 7: Click the "Create Feed" button', async () => 
+        await test.step('Step 8: Click the "Create Feed" button', async () => 
         {
             await this.createFeedBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.createFeedBtn.click();
@@ -73,7 +80,7 @@ class InstagramHandle
             console.log('✅ Clicked on "Create Feed" button');
         });
 
-        await test.step('Step 8: Assert the toast msg', async () => 
+        await test.step('Step 9: Assert the toast msg', async () => 
         {
             await this.toastMsg.waitFor({ state: 'visible', timeout: 20000 });
             await expect.soft(this.toastMsg).toBeVisible();
@@ -82,14 +89,14 @@ class InstagramHandle
             console.log('✅ Validated the toast message');
         });
 
-        await test.step('Step 9: Wait 25 seconds for Content Gallery to load', async () => 
+        await test.step('Step 10: Wait 25 seconds for Content Gallery to load', async () => 
         {
-            await this.page.waitForTimeout(25000);
+            await this.page.waitForTimeout(15000);
 
-            console.log('✅ Waited for 25 seconds to load Content Gallery');
+            console.log('✅ Waited for 15 seconds to load Content Gallery');
         });
 
-        await test.step('Step 10: Proceed with feed management if Content Gallery is loaded', async () => 
+        await test.step('Step 11: Proceed with feed management if Content Gallery is loaded', async () => 
         {
             try {
                 const manageFeeds = new ManageFeeds(this.page);

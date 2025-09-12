@@ -19,15 +19,17 @@ const runFacebookFeedTest = ({ tag, PageObject, method }) => {
       await feedPage[method]();
     });
 
-    // // Wait for content gallery to load fully
-    // await test.step('Wait for content gallery to fully load', async () => {
-    //   await page.waitForLoadState('load', { timeout: 60000 });
-    // });
+    // Wait for content gallery to load fully
+    await test.step('Wait for content gallery to fully load', async () => {
+      await page.waitForLoadState('load', { timeout: 60000 });
+    });
   });
 };
 
 const FacebookFeeds = [
   { tag: '@SocialWallsFacebookPage Create Feed', PageObject: FacebookPage, method: 'facebookPage'},
+  { tag: '@SocialWallsFacebookMyProfilePosts Create Feed', PageObject: FacebookMyProfilePostsPage, method: 'facebookMyProfilePosts'},
+  { tag: '@SocialWallsFacebookSingleAlbum Create Feed', PageObject: FacebookSingleAlbumPage, method: 'facebookSingleAlbum'}
 ];
 
 FacebookFeeds.forEach(runFacebookFeedTest);
