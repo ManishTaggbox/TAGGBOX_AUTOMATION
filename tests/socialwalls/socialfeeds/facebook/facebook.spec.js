@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 import FacebookPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookPage.js';
 import FacebookMyProfilePostsPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookMyProfilePosts.js';
 import FacebookSingleAlbumPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookSingleAlbum.js';
+import FacebookPageAlbumsPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookPageAlbums.js';
+import FacebookPageReviewsPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookPageReviews.js';
+import FacebookPageMentionsPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookPageMentions.js';
+import FacebookHashtagPage from '../../../../pageobjects/socialwalls/socialfeeds/facebook/FacebookHashtag.js';
 
 const APP_URL = 'https://app.socialwalls.com/';
 
@@ -29,7 +33,11 @@ const runFacebookFeedTest = ({ tag, PageObject, method }) => {
 const FacebookFeeds = [
   { tag: '@SocialWallsFacebookPage Create Feed', PageObject: FacebookPage, method: 'facebookPage'},
   { tag: '@SocialWallsFacebookMyProfilePosts Create Feed', PageObject: FacebookMyProfilePostsPage, method: 'facebookMyProfilePosts'},
-  { tag: '@SocialWallsFacebookSingleAlbum Create Feed', PageObject: FacebookSingleAlbumPage, method: 'facebookSingleAlbum'}
+  { tag: '@SocialWallsFacebookSingleAlbum Create Feed', PageObject: FacebookSingleAlbumPage, method: 'facebookSingleAlbum'},
+  { tag: '@SocialWallsFacebookPageAlbums Create Feed', PageObject: FacebookPageAlbumsPage, method: 'facebookPageAlbums'},
+  { tag: '@SocialWallsFacebookPageReviews Create Feed', PageObject: FacebookPageReviewsPage, method: 'facebookPageReviews'},
+  { tag: '@SocialWallsFacebookPageMentions Create Feed', PageObject: FacebookPageMentionsPage, method: 'facebookPageMentions'},
+  { tag: '@SocialWallsFacebookHashtag Create Feed', PageObject: FacebookHashtagPage, method: 'facebookHashtag'},
 ];
 
 FacebookFeeds.forEach(runFacebookFeedTest);

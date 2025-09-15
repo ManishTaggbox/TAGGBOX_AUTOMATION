@@ -108,7 +108,8 @@ export const TWITTER = {
 export const FACEBOOK = {
   FACEBOOKPAGE: 'nature',
   FACEBOOKSINGLEALBUM: 'https://www.facebook.com/media/set/?set=a.638015155026866&type=3',
-  FACEBOOKPAGEALBUMS: 'https://www.facebook.com/icc'
+  FACEBOOKPAGEALBUMS: 'https://www.facebook.com/icc',
+  FACEBOOKHASHTAG: 'mountains'
 
 };
 
