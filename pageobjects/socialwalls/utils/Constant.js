@@ -121,6 +121,10 @@ export const BLUESKY = {
   BLUESKYHANDLE: 'shristy123.bsky.social',
 };
 
+export const SLACK = {
+  SLACKKEYWORD: 'test',
+};
+
 export const AUTOPILOTASSIGNTAG = {
   ASSIGNTAG: 'Taggbox'
 
