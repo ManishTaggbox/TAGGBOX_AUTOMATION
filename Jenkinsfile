@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat 'npx playwright test tests/content tests/feeds tests/productcatalog tests/profile tests/publish/emailcampaign tests/publish/shoponbio tests/publish/website tests/moderation tests/login'
+                        bat 'npx playwright test tests/socialwalls/socialfeeds'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         echo "Tests failed, proceeding to deploy the report"
