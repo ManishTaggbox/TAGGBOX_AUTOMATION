@@ -14,7 +14,7 @@ const config = {
   reporter: [['html']],
   use: {
     browserName: 'chromium',
-    headless: isHeadless,
+    headless: isHeadless, 
     baseURL: 'https://app.taggbox.com',
     actionTimeout: 0,
     navigationTimeout: 30000,

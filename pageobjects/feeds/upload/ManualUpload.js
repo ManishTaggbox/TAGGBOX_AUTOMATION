@@ -43,6 +43,7 @@ class ManualUpload {
 
     async deletePost() {
         await test.step('Delete the uploaded post and verify success message', async () => {
+            await this.page.waitForTimeout(5000);
             await this.moreActions.click({ force: true });
             await this.deleteBtn.click({ force: true });
             await this.confirmDeleteBtn.click({ force: true });
@@ -61,7 +62,7 @@ class ManualUpload {
             await this.dragAndDropArea.click({ force: true });
             await this.uploadFile(this.fileInput, '../../../videos/demovideo.mp4');
             await this.uploadFileBtn.click({ force: true });
-            await this.page.waitForTimeout(15000);
+            await this.page.waitForTimeout(20000);
         });
 
         await test.step('Fill in author details and upload profile image', async () => {
