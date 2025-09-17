@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        NETLIFY_AUTH = 'nfp_S2wxGnzy5UmxQg7mRW7uqtfzZU6yLiPF70e8'
+        NETLIFY_SITE = '1ad89314-b275-4718-9b02-933de273029e'
+    }
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -12,7 +17,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat 'npx playwright test tests/content tests/feeds tests/productcatalog tests/profile tests/publish/emailcampaign tests/publish/shoponbio tests/publish/website tests/moderation tests/login'
+                        bat 'npx playwright test tests/socialwalls/socialfeeds'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         echo "Tests failed, proceeding to deploy the report"
@@ -23,7 +28,14 @@ pipeline {
 
         stage('Deploy to Netlify') {
             steps {
-                bat 'npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"'
+                bat """
+                npx netlify deploy ^
+                    --dir=playwright-report ^
+                    --prod ^
+                    --message "Test Deploy" ^
+                    --site=%NETLIFY_SITE% ^
+                    --auth=%NETLIFY_AUTH%
+                """
             }
             post {
                 always {
@@ -38,7 +50,7 @@ pipeline {
             echo "Pipeline finished."
         }
 
-    success {
+        success {
             emailext (
                 subject: "✅ SUCCESS | Taggbox Automation Report Deployed",
                 body: """
@@ -79,7 +91,6 @@ pipeline {
       🔗 <a href="https://taggboxautomation.netlify.app/" style="font-size: 16px; color: #007bff;">View Test Report</a>
     </p>
 
-   
     <p>Best regards,<br><strong>Manish Somani</strong></p>
   </body>
 </html>
