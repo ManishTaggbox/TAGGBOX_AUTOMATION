@@ -1,4 +1,23 @@
 import { test, expect } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const env = process.env.ENV || 'live';
+console.log(`🔧 Environment from .env: ${env}`);
+
+const loginPayload = {
+  live: {
+    emailId: 'manish.s+51@taggbox.com',
+    password: 'Taggbox@123',
+    loginType: 'web',
+  },
+  test: {
+    emailId: 'Shristy+51@taggbox.com',
+    password: 'Taggbox@123',
+    loginType: 'web',
+  }
+};
 
 
 class ManageFeeds {
@@ -15,18 +34,20 @@ class ManageFeeds {
     this.password = page.locator('#AccountPassword');
     this.loginBtn = page.locator("button[type='submit']");
     this.myWalls = page.locator("//span[normalize-space()='My Walls']");
+     // Set credentials based on ENV
+    this.credentials = loginPayload[env];
   }
 
   async openSocialFeeds() {
 
     await test.step('Step 1: Fill email field', async () => {
       await this.email.waitFor({ state: 'visible', timeout: 10000 });
-      await this.email.fill('manish.s+51@taggbox.com'); // Update email
+      await this.email.fill(this.credentials.emailId); 
     });
 
     await test.step('Step 2: Fill password field', async () => {
       await this.password.waitFor({ state: 'visible', timeout: 10000 });
-      await this.password.fill('Taggbox@123');
+      await this.password.fill(this.credentials.password);
     });
     await test.step('Step 3: Click login button', async () => {
       await this.loginBtn.waitFor({ state: 'visible', timeout: 10000 });

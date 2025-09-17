@@ -2,7 +2,10 @@
   "name": "taggbox_automation",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+ "scripts": {
+    "deploy-report": "netlify deploy --dir=playwright-report --site=1ad89314-b275-4718-9b02-933de273029e --auth=nfp_S2wxGnzy5UmxQg7mRW7uqtfzZU6yLiPF70e8",
+    "deploy-report:prod": "netlify deploy --dir=playwright-report --site=1ad89314-b275-4718-9b02-933de273029e --auth=nfp_S2wxGnzy5UmxQg7mRW7uqtfzZU6yLiPF70e8 --prod"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
