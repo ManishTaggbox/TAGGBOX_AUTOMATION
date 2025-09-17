@@ -25,33 +25,47 @@ class LinkedInPostUrl {
         await test.step('Step 2: Wait for LinkedIn button, then click', async () => {
             await this.linkedIn.waitFor({ state: 'visible', timeout: 10000 });
             await this.linkedIn.click();
+
+            console.log('LinkedIn button clicked');
         });
 
         await test.step('Step 3: Click to "PostUrl" tab', async () => {
             await this.postUrlTab.waitFor({ state: 'visible', timeout: 10000 });
             await this.postUrlTab.click();
+
+            console.log('PostUrl tab clicked');
         });
 
         await test.step('Step 4: Wait for linkedin post url input, then fill', async () => {
             await this.urlField.waitFor({ state: 'visible', timeout: 10000 });
             await this.urlField.fill(LINKEDIN.LINKEDINPOSTURL);
+
+            console.log('LinkedIn post url entered');
         });
 
         await test.step('Step 5: Wait 2 seconds for UI update', async () => {
             await this.page.waitForTimeout(2000);
+
+            console.log('Waited 2 seconds for UI update');
         });
 
         await test.step('Step 6: Verify "Create Feed" button is enabled', async () => {
             await expect.soft(this.createFeedBtn.nth(3)).toBeEnabled();
+
+            console.log('"Create Feed" button is enabled');
         });
 
         await test.step('Step 6: Click the "Create Feed" button', async () => {
             await this.createFeedBtn.nth(3).waitFor({ state: 'visible', timeout: 10000 });
             await this.createFeedBtn.nth(3).click();
+
+            console.log('"Create Feed" button clicked');
         });
 
-        await test.step('Step 7: Wait 25 seconds for Content Gallery to load', async () => {
-            await this.page.waitForTimeout(25000);
+        await test.step('Step 7: Wait 15 seconds for Content Gallery to load', async () => {
+            await this.page.waitForTimeout(15000);
+
+            console.log('Waited 15 seconds for Content Gallery to load');
         });
 
         await test.step('Step 8: Proceed with feed management if Content Gallery is loaded', async () => {

@@ -110,28 +110,31 @@ class Reputation {
         });
 
         await test.step("Step 4: Click to 'delete' icon for created feed", async () => {
-            // Get total count of delete icons (feeds available)
-            let feedCount = await this.deleteFeedBtn.count();
+            let count = 1;
 
-            if (feedCount === 0) {
-                console.log("⚠️ No feeds exist to delete");
-                return;
-            }
+            while (true) {
+                const deleteButtons = this.page.locator("//button[@aria-label='delete']");
+                const isVisible = await deleteButtons.first().isVisible();
 
-            // Loop until no feeds left
-            while (feedCount > 0) {
-                await this.deleteFeedBtn.first().waitFor({ state: 'visible', timeout: 5000 });
-                await this.deleteFeedBtn.first().click();
+                if (!isVisible) break;
 
-                await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
+                console.log(`🗑️ Deleting feed #${count}`);
+
+                // Click the first visible delete button
+                await deleteButtons.first().click();
                 await this.deleteConfirmBtn.click();
 
-                await this.page.waitForTimeout(3000); // small wait for UI update
+                // Optional short wait for DOM to update
+                await this.page.waitForTimeout(3000);
 
-                await this.homeMenu.waitFor({ state: 'visible', timeout: 5000 });
-                await this.homeMenu.click();
+                count++;
             }
-            console.log("✅ All feeds are deleted successfully");
+
+            if (count === 1) {
+                console.log("ℹ️ No feeds found to delete.");
+            } else {
+                console.log(`✅ All feeds deleted (${count - 1} in total).`);
+            }
         });
     }
 }

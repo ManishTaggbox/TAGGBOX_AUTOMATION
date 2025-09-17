@@ -116,6 +116,11 @@ export const FACEBOOK = {
 
 };
 
+export const BLUESKY = {
+  BLUESKYHASHTAG: 'TechNews',
+  BLUESKYHANDLE: 'shristy123.bsky.social',
+};
+
 export const AUTOPILOTASSIGNTAG = {
   ASSIGNTAG: 'Taggbox'
 

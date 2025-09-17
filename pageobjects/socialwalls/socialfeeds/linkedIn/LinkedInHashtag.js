@@ -25,33 +25,47 @@ class LinkedInHashtag {
         await test.step('Step 2: Wait for LinkedIn button, then click', async () => {
             await this.linkedIn.waitFor({ state: 'visible', timeout: 10000 });
             await this.linkedIn.click();
+
+            console.log('Clicked on LinkedIn button');
         });
 
         await test.step('Step 3: Click to "Hashtag" tab', async () => {
             await this.hashtagTab.waitFor({ state: 'visible', timeout: 10000 });
             await this.hashtagTab.click();
+
+            console.log('Clicked on Hashtag tab');
         });
 
         await test.step('Step 4: Wait for linkedin hashtag input, then fill', async () => {
             await this.hashtagField.waitFor({ state: 'visible', timeout: 10000 });
             await this.hashtagField.fill(LINKEDIN.LINKEDINHASHTAG);
+
+            console.log(`Filled hashtag: ${LINKEDIN.LINKEDINHASHTAG}`);
         });
 
         await test.step('Step 5: Wait 2 seconds for UI update', async () => {
             await this.page.waitForTimeout(2000);
+
+            console.log('Waited 2 seconds for UI update');
         });
 
         await test.step('Step 5: Verify "Create Feed" button is enabled', async () => {
             await expect.soft(this.createFeedBtn.nth(2)).toBeEnabled();
+
+            console.log('"Create Feed" button is enabled');
         });
 
         await test.step('Step 6: Click the "Create Feed" button', async () => {
             await this.createFeedBtn.nth(2).waitFor({ state: 'visible', timeout: 10000 });
             await this.createFeedBtn.nth(2).click();
+
+            console.log('Clicked on "Create Feed" button');
         });
 
-        await test.step('Step 7: Wait 25 seconds for Content Gallery to load', async () => {
-            await this.page.waitForTimeout(25000);
+        await test.step('Step 7: Wait 15 seconds for Content Gallery to load', async () => {
+            await this.page.waitForTimeout(15000);
+
+            console.log('Waited 15 seconds for Content Gallery to load');
         });
 
         await test.step('Step 8: Proceed with feed management if Content Gallery is loaded', async () => {

@@ -21,7 +21,7 @@ class ManageFeeds {
 
     await test.step('Step 1: Fill email field', async () => {
       await this.email.waitFor({ state: 'visible', timeout: 10000 });
-      await this.email.fill('manish.s+51@taggbox.com');
+      await this.email.fill('Shristy+51@taggbox.com'); // Update email
     });
 
     await test.step('Step 2: Fill password field', async () => {
