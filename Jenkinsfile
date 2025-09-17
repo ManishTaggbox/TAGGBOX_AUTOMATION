@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat 'npx playwright test -g "@SocialWallsInstagramHandle"'
+                        bat 'npx playwright test tests/socialwalls/socialfeeds'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         echo "Tests failed, proceeding to deploy the report"
