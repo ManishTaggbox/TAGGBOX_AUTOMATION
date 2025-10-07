@@ -23,7 +23,7 @@ const runFacebookFeedTest = ({ tag, PageObject, method }) => {
         });
 
         await test.step('Soft check for correct page title', async () => {
-            await expect.soft(page).toHaveTitle('Add feed | Tagbox', { timeout: 10000 });
+            await expect.soft(page).toHaveTitle('Add feed | Taggbox', { timeout: 10000 });
         });
 
         await test.step(`Run ${tag} feed creation flow`, async () => {
