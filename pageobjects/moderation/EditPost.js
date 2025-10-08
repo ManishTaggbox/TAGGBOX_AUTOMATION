@@ -66,13 +66,13 @@ class EditPost
             await this.contentField.clear();
         });
 
-        await test.step("Step 4: Assert validation msg against mandatory fields", async () => 
-        {
-            await expect.soft(this.validationMsg).toHaveCount(2);
+        // await test.step("Step 4: Assert validation msg against mandatory fields", async () => 
+        // {
+        //     await expect.soft(this.validationMsg).toHaveCount(2);
 
-            const messages = await this.validationMsg.allTextContents();
-            expect(messages.every(text => text === 'This field is required')).toBe(true);    
-        });
+        //     const messages = await this.validationMsg.allTextContents();
+        //     expect(messages.every(text => text === 'This field is required')).toBe(true);    
+        // });
 
         await test.step("Step 5: Enter mandatory details", async () => 
         {

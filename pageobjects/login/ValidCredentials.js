@@ -36,7 +36,7 @@ class ValidCredentials
             await expect.soft(this.page).toHaveURL('https://app.taggbox.com/home');
             console.log('✅ Current URL after login:', await this.page.url());
 
-            await expect.soft(this.page).toHaveTitle('Dashboard | Tagbox');
+            await expect.soft(this.page).toHaveTitle('Dashboard | Taggbox');
             console.log('✅ Current page title after login:', await this.page.title());
         });
     }

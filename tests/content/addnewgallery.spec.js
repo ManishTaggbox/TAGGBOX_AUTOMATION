@@ -21,8 +21,5 @@ test.describe('Add New Gallery  Tests', () => {
         const addNewGallery = new AddNewGallery(page);
         await addNewGallery.addNewGallery();
     });
-
-   
-
 });
 
