@@ -28,7 +28,7 @@ async function setupModeration(page, token, wallId)
   await page.addInitScript(wallId => localStorage.setItem('wallId', wallId), wallId);
 
   await page.goto(FEED_PATH.MODERATION(wallId), { waitUntil: 'domcontentloaded' });
-  await expect.soft(page).toHaveTitle('Content Gallery | Tagbox', { timeout: 10000 });
+  await expect.soft(page).toHaveTitle('Content Gallery | Taggbox', { timeout: 10000 });
   await page.waitForLoadState('load', { timeout: 60000 });
 }
 
@@ -146,7 +146,6 @@ test.describe('Moderation Tests', () =>
     await typeFilter.postTypeFilter();
   });
 
-  // For now adding TagProduct With Search here
   test('@ModerationTagProductWithSearch - Tag products with searching multiple tags', async ({ page, token, wallId }) =>
   {
     await setupModeration(page, token, wallId);
