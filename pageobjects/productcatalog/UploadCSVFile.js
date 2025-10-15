@@ -8,7 +8,7 @@ class UploadCSVFile
     {
         this.page = page;
         this.manualUpload = page.locator('//h5[text()="Manual Upload"]');
-        this.uploadCSV = page.locator('//h5[text()="Upload CSV File"]');
+        this.uploadCSV = page.locator('#m-download_btn');
         this.browse = page.locator('//input[@type="file"]');
         this.uploadBtn = page.locator('#import_btn');
         this.successMsg = page.locator("//div[contains(text(),'Product Import Successfully.')]");

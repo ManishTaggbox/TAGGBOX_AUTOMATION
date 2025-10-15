@@ -8,7 +8,7 @@ class Channel
     {
         // Add Channel With No Gallery
         this.page = page;
-        this.addChannelBtn = page.locator('//button[text()="Add Channel"]');
+        this.addChannelBtn = page.locator('//button[text()="Add Channel"]').last();
         this.errorMsg = page.locator('//div[text()="Please create a Content Gallery before setting up your website."]');
 
         // Add Channel

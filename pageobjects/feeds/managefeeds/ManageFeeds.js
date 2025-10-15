@@ -6,7 +6,7 @@ class ManageFeeds {
     this.page = page;
     this.manageFeedsBtn = page.locator("//span[normalize-space()='Manage Feeds']");
     this.countPost = page.locator("//p[@class='fs-8 fw-semibold mb-0']").first();
-    this.deleteBtn = page.locator("//button[@aria-label='delete']");
+    this.deleteBtn = page.locator("//button[@data-id='delete']");
     this.confirmYesBtn = page.locator("//button[normalize-space()='Yes']");
     this.successMsg = page.locator("//div[contains(text(),'Feeds Deleted Succesfully.')]");
   }
