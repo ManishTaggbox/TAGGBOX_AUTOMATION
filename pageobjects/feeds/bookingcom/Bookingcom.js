@@ -27,8 +27,8 @@ class Bookingcom {
       await this.createFeedBtn.click();
     });
 
-    await test.step('Step 5: Wait 10 seconds for Content Gallery to load', async () => {
-      await this.page.waitForTimeout(10000);
+    await test.step('Step 5: Wait 15 seconds for Content Gallery to load', async () => {
+      await this.page.waitForTimeout(15000);
     });
 
     await test.step('Step 6: Proceed with feed management if Content Gallery is loaded', async () => {

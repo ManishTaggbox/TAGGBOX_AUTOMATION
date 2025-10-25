@@ -16,7 +16,7 @@ class Channel
         this.validationMsg = page.locator('//span[@class="invalid-feedback"]');
         this.channelNameField = page.locator('#g_name');
         this.toastMsg = page.locator('//div[text()="Website created successfully."]');
-        this.homeMenu = page.locator('//span[text()="Home"]');
+        this.homeMenu = page.locator('#home_menu');
         this.channelTable = page.locator('//tbody//tr').last();        
     }
 

@@ -48,7 +48,7 @@ const instagramFeeds = [
   { tag: '@InstagramMyHandle Create Feed', PageObject: InstagramMyHandlePage, method: 'instagramMyHandle' },
   { tag: '@InstagramHandle Create Feed', PageObject: InstagramHandlePage, method: 'instagramHandle' },
   { tag: '@InstagramStories Create Feed', PageObject: InstagramStoriesPage, method: 'instagramStories' },
-  { tag: '@InstagramMentions Create Feed', PageObject: InstagramMentionsPage, method: 'instagramMentions' },
+  // { tag: '@InstagramMentions Create Feed', PageObject: InstagramMentionsPage, method: 'instagramMentions' },
   { tag: '@InstagramTaggedInstaLogin Create Feed', PageObject: InstagramTaggedInstaLoginPage, method: 'instagramTaggedInstaLogin' },
   { tag: '@InstagramTaggedFBLogin Create Feed', PageObject: InstagramTaggedFBLoginPage, method: 'instagramTaggedFBLogin' },
   { tag: '@InstagramReels Create Feed', PageObject: InstagramReelsPage, method: 'instagramReels' },

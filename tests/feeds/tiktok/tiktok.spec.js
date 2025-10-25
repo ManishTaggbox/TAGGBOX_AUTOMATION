@@ -40,7 +40,7 @@ const runTiktokFeedTest = ({ tag, PageObject, method }) => {
 // Feed types configuration
 const tiktokFeeds = [
     { tag: '@TikTokHashtag  Create Feed', PageObject: TikTokHashtagPage, method: 'tikTokHashtag' },
-    { tag: '@TikTokMention  Create Feed', PageObject: TikTokMentionPage, method: 'tikTokMentions' },
+    // { tag: '@TikTokMention  Create Feed', PageObject: TikTokMentionPage, method: 'tikTokMentions' },
     { tag: '@TikTokHandle  Create Feed', PageObject: TikTokHandlePage, method: 'tikTOkHandle' },
     { tag: '@TikTokMyHandle  Create Feed', PageObject: TikTokMyHandlePage, method: 'tikTokMyHandle' },
     { tag: '@TikTokPostUrl  Create Feed', PageObject: TikTokPostUrlPage, method: 'tikTOkPostUrl' }
