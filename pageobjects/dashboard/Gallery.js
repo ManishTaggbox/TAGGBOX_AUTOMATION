@@ -22,7 +22,7 @@ class AddGallery
         this.viewAllBtn = page.locator('//a[@href="/content"]'); 
         this.threeDotsIcon = page.locator("//button[@class='arrow_disabled dropdown-toggle border-0 d-inline-flex py-1 px-3 dropdown-toggle btn btn-secondary']");
         this.deleteOption = page.locator('//a[text()="Delete"]');
-        this.deleteConfirmBtn = page.locator('//button[text()="Yes, Delete it"]');
+        this.deleteConfirmBtn = page.locator('//button[@aria-label="delete_yes"]');
     }
 
     async addGallery() 
@@ -120,6 +120,8 @@ class AddGallery
         {
             await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.deleteConfirmBtn.click();
+
+            await this.page.waitForTimeout(2000);
             
             console.log("Clicked to confirmed delete");
         });
