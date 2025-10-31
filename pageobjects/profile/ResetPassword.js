@@ -4,13 +4,13 @@ const { test, expect } = require('@playwright/test');
 class ResetPassword {
     constructor(page) {
         this.page = page;
-        this.resetBtn = page.locator('//button[text()="Reset Password"]');
+        this.resetBtn = page.locator('#reset_password');
         this.updateBtn = page.locator('//button[text()="Update Password"]');
         this.validationMsg = page.locator('//div[contains(text(), "Password must be at least")]');
         this.password = page.locator('//input[@name="password"]');
         this.passwordStrength = page.locator('//span[text()="Strong"]');
         this.confirmPassword = page.locator('//input[@name="cpassword"]');
-        this.validation = page.locator('//div[text()="Password does not match."]');
+        this.validation = page.locator('//div[text()="Password does not match"]');
         this.successMsg = page.locator('//div[text()="Password Updated Successfully"]');
     }
 

@@ -7,7 +7,7 @@ class ValidCredentials
         this.page = page;
         this.emailField = page.locator('//input[@type="email"]');
         this.passField = page.locator('//input[@type="password"]');
-        this.loginBtn = page.locator('.btn-primary');
+        this.loginBtn = page.locator('.btn-primary').first();
     }
 
     async validCredentials() 

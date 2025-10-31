@@ -4,10 +4,10 @@ class VerifyExistingDetails {
     constructor(page) {
         this.page = page;
         this.name = page.locator("//h6[normalize-space()='Manish Somani']");
-        this.email = page.locator("//p[@class='d-flex align-items-center text-decoration-none text-hover-primary mb-2 fw-medium']");
-        this.fullName = page.locator("//span[normalize-space()='Manish Somani']");
-        this.emailAddress = page.locator("//span[contains(@class,'fw-bold fs-8 me-2')]");
-        this.verifyTag = page.locator("//span[@class='badge badge-light-success']");
+        this.emailAddress = page.locator(".profile_email");
+        this.fullName = page.locator(".profile_name").last();
+        //this.emailAddress = page.locator(".profile_email").last();
+        this.verifyTag = page.locator(".badge-light-success");
     }
 
     async verifyExistingDetails() {
@@ -21,12 +21,12 @@ class VerifyExistingDetails {
         });
 
         await test.step("Step 3: Verify email element is visible", async () => {
-            await this.email.waitFor({state: 'visible', timeout: 5000});
-            await expect.soft(this.email).toBeVisible();
+            await this.emailAddress.first().waitFor({state: 'visible', timeout: 5000});
+            await expect.soft(this.emailAddress.first()).toBeVisible();
         });
 
         await test.step("Step 4: Verify email text is 'manish.s+51@taggbox.com'", async () => {
-            await expect.soft(this.email).toHaveText('manish.s+51@taggbox.com');
+            await expect.soft(this.emailAddress.first()).toHaveText('manish.s+51@taggbox.com');
         });
 
         await test.step("Step 5: Verify full name element is visible", async () => {
@@ -39,12 +39,12 @@ class VerifyExistingDetails {
         });
 
         await test.step("Step 7: Verify email address element is visible", async () => {
-            await this.emailAddress.waitFor({state: 'visible', timeout: 5000});
-            await expect.soft(this.emailAddress).toBeVisible();
+            await this.emailAddress.last().waitFor({state: 'visible', timeout: 5000});
+            await expect.soft(this.emailAddress.last()).toBeVisible();
         });
 
         await test.step("Step 8: Verify email address text is 'manish.s+51@taggbox.com'", async () => {
-            await expect.soft(this.emailAddress).toHaveText('manish.s+51@taggbox.com');
+            await expect.soft(this.emailAddress.last()).toHaveText('manish.s+51@taggbox.com');
         });
 
         await test.step("Step 9: Verify verification tag is visible", async () => {

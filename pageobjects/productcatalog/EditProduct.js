@@ -12,7 +12,7 @@ class EditProduct {
         this.pIdInput = page.locator('#input_p_id');
         this.categoryInput = page.locator('#input_p_cat');
         this.submit = page.locator('#product_save_');
-        this.productNameValidation = page.locator('//div[text()="Product name is required."]');
+        this.productNameValidation = page.locator('//div[text()="Product name is required"]');
         this.productUrlValidation = page.locator('//div[text()="Please enter valid url."]');
         this.tagInput = page.locator('#input_p_tag');
         this.toastMsg = page.locator('//div[text()="Product updated successfully"]');

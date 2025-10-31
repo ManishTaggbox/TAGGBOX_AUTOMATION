@@ -5,7 +5,7 @@ class NullField
     constructor(page) 
     {
         this.page = page;
-        this.loginBtn = page.locator('.btn-primary');
+        this.loginBtn = page.locator('.btn-primary').first();
         this.validationMsg = page.locator('.invalid-feedback');
         this.emailField = page.locator('//input[@type="email"]');
         this.passField = page.locator('//input[@type="password"]');
