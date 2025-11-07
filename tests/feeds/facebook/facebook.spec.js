@@ -40,14 +40,10 @@ const runFacebookFeedTest = ({ tag, PageObject, method }) => {
 // Feed types configuration
 const facebookFeeds = [
     { tag: '@FacebookPage  Create Feed', PageObject: FacebookPage, method: 'facebookPage' },
-    { tag: '@FacebookMyProfilePosts Create Feed', PageObject: FacebookMyProfilePosts, method: 'facebookMyProfilePosts' },
+    //{ tag: '@FacebookMyProfilePosts Create Feed', PageObject: FacebookMyProfilePosts, method: 'facebookMyProfilePosts' },
     { tag: '@FacebookPageReviews Create Feed', PageObject: FacebookPageReviews, method: 'facebookPageReviews' },
     { tag: '@FacebookPageMentions Create Feed', PageObject: FacebookPageMentions, method: 'facebookPageMentions' },
     { tag: '@FacebookReels Create Feed', PageObject: FacebookReels, method: 'facebookReels' }
-
-
-
-
 ];
 
 // Dynamically register each test

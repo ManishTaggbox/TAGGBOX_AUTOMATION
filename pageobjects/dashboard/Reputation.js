@@ -63,7 +63,7 @@ class Reputation
             await this.feedBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.feedBtn.click();
 
-            await this.page.waitForTimeout(10000);
+            await this.page.waitForTimeout(20000);
 
             console.log("✅ Feed is created with Google Review");
         });

@@ -5,7 +5,7 @@ class PostPinToTop
     constructor(page) 
     {
         this.page = page;
-        this.pinIcon = page.locator('(//i[contains(@class,"fa-thumbtack")])[4]'); 
+        this.pinIcon = page.locator('(//i[contains(@class,"fa-thumbtack ")])[4]'); 
         this.toastMsg = page.locator('//div[text()="Post is pinned to top"]');
         this.filterIcon = page.locator('#filter_aside');
         this.pinFilter = page.locator('#pinFilter');

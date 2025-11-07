@@ -35,9 +35,6 @@ const runGoogleFeedTest = ({ tag, PageObject, method }) => {
 const googleFeeds = [
   { tag: '@GooglePlaces  Create Feed', PageObject: GooglePlacesPage, method: 'googlePlaces' },
   { tag: '@GoogleMyPlaces  Create Feed', PageObject: GoogleMyPlacesPage, method: 'googleMyPlaces' }
- 
- 
- 
 ];
 
 // Dynamically register each test

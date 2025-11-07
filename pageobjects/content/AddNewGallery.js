@@ -14,7 +14,7 @@ class AddNewGallery {
         this.update = page.locator('#con_update_btn');
         this.updateMsg = page.locator("//div[contains(text(),'Your Gallery Updated Successfully.!')]");
         this.deleteGallery = page.locator("//a[normalize-space()='Delete']");
-        this.yesDeleteGallery = page.locator("//button[normalize-space()='Yes, Delete it']");
+        this.yesDeleteGallery = page.locator("//button[@aria-label='delete_yes']");
         this.deletedMsg = page.locator("//div[contains(text(),'Your Gallery Deleted Successfully.!')]");
     }
 
@@ -52,7 +52,7 @@ class AddNewGallery {
         });
 
         await test.step("Step 6: Validate page title", async () => {
-            await expect(this.page).toHaveTitle('Add feed | Tagbox', { timeout: 5000 });
+            await expect(this.page).toHaveTitle('Add feed | Taggbox', { timeout: 5000 });
         });
 
         await test.step("Step 7: Navigate to Content Gallery", async () => {
