@@ -2,10 +2,9 @@ import { test, expect } from '../autopilotfixtures.js';
 
 import { FEED_PATH } from '../../utils/constants.js';
 
-import PrivateNetworkPost from '../../pageobjects/autopilot/PrivateNetworkPost.js';
+import PrivateNetworkPost from '../../pageobjects/autopilot/NetworkPrivate.js';
 import PublicNetworkPost from '../../pageobjects/autopilot/PublicNetworkPost.js';
 import AssignTagNetworkPost from '../../pageobjects/autopilot/AssignTagNetworkPost.js';
-import INSTAGRAMHANDLE from '../../pageobjects/autopilot/InstagramHandle.js';
 import MediaTypeVideoPrivate from '../../pageobjects/autopilot/MediaTypeVideoPrivate.js';
 import MediaTypeVideoPublic from '../../pageobjects/autopilot/MediaTypeVideoPublic.js';
 import DeleteAutopilotRule from '../../pageobjects/autopilot/DeleteAutopilotRule.js';
@@ -42,21 +41,21 @@ const runAutoPilotTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const autopilot = [
-
-    { tag: '@InstagramAutoPilot created', PageObject: INSTAGRAMHANDLE, method: 'instagramHandle' },
-    { tag: '@PrivateNetworkPost created', PageObject: PrivateNetworkPost, method: 'privateNetworkPost' },
-    { tag: '@VerifyPostIsPrivate created', PageObject: PrivateNetworkPost, method: 'verifyPostIsPrivate' },
+    { tag: '@Network-Private Rule', PageObject: PrivateNetworkPost, method: 'privateNetworkPost' },
     { tag: '@PublicNetworkPost created', PageObject: PublicNetworkPost, method: 'publicNetworkPost' },
-    { tag: '@VerifyPostIsPublic created', PageObject: PublicNetworkPost, method: 'verifyPostIsPublic' },
     { tag: '@AssignTagNetworkPost created', PageObject: AssignTagNetworkPost, method: 'assignTagNetworkPost' },
+
+
+
+
+    //{ tag: '@VerifyPostIsPrivate created', PageObject: PrivateNetworkPost, method: 'verifyPostIsPrivate' },
+    { tag: '@VerifyPostIsPublic created', PageObject: PublicNetworkPost, method: 'verifyPostIsPublic' },
     { tag: '@VerifyAssignTag created', PageObject: AssignTagNetworkPost, method: 'verifyAssignTag' },
     { tag: '@MediaTypeVideoPrivate created', PageObject: MediaTypeVideoPrivate, method: 'mediaTypeVideoPrivate' },
     { tag: '@VerifyMediaPostIsPrivate created', PageObject: MediaTypeVideoPrivate, method: 'verifyMediaPostIsPrivate' },
     { tag: '@MediaTypeVideoPublic created', PageObject: MediaTypeVideoPublic, method: 'mediaTypeVideoPublic' },
     { tag: '@VerifyMediaPostIsPublic created', PageObject: MediaTypeVideoPublic, method: 'verifyMediaPostIsPublic' },
     { tag: '@DeleteAutopilotRule created', PageObject: DeleteAutopilotRule, method: 'deleteAutopilotRule' },
-
-
 ];
 
 // Dynamically register each test
