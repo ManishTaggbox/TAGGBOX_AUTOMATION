@@ -11,7 +11,7 @@ class PostPinToTop
         this.pinFilter = page.locator('#pinFilter');
         this.crossIcon = page.locator('//i[@class="fa-regular fa-xmark "]');
         this.postCard = page.locator('.content_img_ ');  
-        this.pinPostBadge = page.locator('//span[text()="Pin Post"]');
+        this.pinPostBadge = page.locator('//span[text()="Pinned to top"]');
         this.resetBtn = page.locator('//button[text()="Reset"]');
         this.unpinIcon = page.locator('(//i[contains(@class,"fa-thumbtack")])[1]');
         this.unpinToastMsg = page.locator('//div[text()="Post Removed from top"]');
@@ -59,7 +59,7 @@ class PostPinToTop
         await test.step("Step 7: Assert the pin post badge", async () => 
         {
             await this.pinPostBadge.waitFor({state: 'visible', timeout: 5000 });
-            await expect.soft(this.pinPostBadge).toHaveText('Pin Post');
+            await expect.soft(this.pinPostBadge).toHaveText('Pinned to top');
         });
 
         await test.step("Step 8: Assert the Reset button is displayed", async () => 
