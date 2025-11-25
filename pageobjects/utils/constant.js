@@ -108,6 +108,13 @@ export const FACEBOOK =
   FACEBOOKPAGE: 'nature'
 };
 
+export const REDDIT = 
+{
+  REDDITCOMMUNITY: 'TBCommunity',
+  REDDITHANDLE: 'plainorbit',
+  REDDITKEYWORDS: 'mountains'
+};
+
 export const AUTOPILOTASSIGNTAG = 
 {
   ASSIGNTAG: 'Taggbox'
