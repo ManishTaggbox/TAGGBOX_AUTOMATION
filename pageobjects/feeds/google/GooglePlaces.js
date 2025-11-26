@@ -40,7 +40,7 @@ class GooglePlaces {
         });
 
         await test.step('Step 7: Wait 25 seconds for Content Gallery to load', async () => {
-            await this.page.waitForTimeout(10000);
+            await this.page.waitForTimeout(25000);
         });
 
         await test.step('Step 8: Proceed with feed management if Content Gallery is loaded', async () => {
