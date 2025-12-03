@@ -12,12 +12,12 @@ class InstagramOnlyReels {
     }
 
     async instagramOnlyReels() {
-        await test.step('Step 1: Click On  Handle', async () => {
+        await test.step('Step 1: Click on handle tab', async () => {
             await this.handle.waitFor({ state: 'visible', timeout: 10000 });
             await this.handle.click({ force: true });
         });
 
-        await test.step('Step 2: Fill handle input with "vantara"', async () => {
+        await test.step('Step 2: Fill handle input with "lenskart"', async () => {
             await this.enterHandle.fill(INSTAGRAM.INSTAGRAMHANDLE);
         });
 

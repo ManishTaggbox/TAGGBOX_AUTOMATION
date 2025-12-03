@@ -10,7 +10,7 @@ class InstagramMentions {
   }
 
   async instagramMentions() {
-    await test.step('Step 1: Click On  mentions', async () => {
+    await test.step('Step 1: Click on mentions tab', async () => {
       await this.mentions.waitFor({ state: 'visible', timeout: 10000 });
       await this.mentions.click({ force: true });
     });

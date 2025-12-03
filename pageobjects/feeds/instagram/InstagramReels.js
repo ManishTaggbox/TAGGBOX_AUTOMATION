@@ -10,7 +10,7 @@ class InstagramReels {
   }
 
   async instagramReels() {
-    await test.step('Step 1: Click On My Handle', async () => {
+    await test.step('Step 1: Click on Reels tab', async () => {
       await this.reels.waitFor({ state: 'visible', timeout: 10000 });
       await this.reels.click({ force: true });
     });

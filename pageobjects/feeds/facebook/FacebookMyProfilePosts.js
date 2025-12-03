@@ -10,7 +10,7 @@ class FacebookMyProfilePosts {
   }
 
   async facebookMyProfilePosts() {
-    await test.step('Step 1: Click On  myProfilePosts', async () => {
+    await test.step('Step 1: Click on My Profile Posts', async () => {
       await this.myProfilePosts.waitFor({ state: 'visible', timeout: 10000 });
       await this.myProfilePosts.click({ force: true });
     });

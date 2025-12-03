@@ -13,7 +13,7 @@ class GooglePlaces {
 
     async googlePlaces() {
 
-        await test.step('Step 1: Fill GOOGLE Place  input with "GOOGLEPLACE"', async () => {
+        await test.step('Step 1: Fill Google Places input', async () => {
             await this.typeAddress.waitFor({ state: 'visible', timeout: 10000 });
             await this.typeAddress.fill(GOOGLE.GOOGLEPLACE);
         });
@@ -29,7 +29,6 @@ class GooglePlaces {
         await test.step('Step 4: Wait 2 seconds for UI update', async () => {
             await this.page.waitForTimeout(2000);
         });
-
 
         await test.step('Step 5: Verify "Create Feed" button is enabled', async () => {
             await expect(this.createFeedBtn).toBeEnabled();
