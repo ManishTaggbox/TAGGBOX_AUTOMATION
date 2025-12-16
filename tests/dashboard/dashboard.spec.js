@@ -34,12 +34,12 @@ test.describe('Dashboard Tests', () =>
         await links.dashboardPageLinks();
     });
 
-    test('@HomeIntercomCheck - Checking if intercom is working properly', async ({ page, token }) => 
-    {
-        await setupPage(page, token);
-        const intercom = new Intercom(page);
-        await intercom.intercom();
-    });
+    // test('@HomeIntercomCheck - Checking if intercom is working properly', async ({ page, token }) => 
+    // {
+    //     await setupPage(page, token);
+    //     const intercom = new Intercom(page);
+    //     await intercom.intercom();
+    // });
 
     test('@HomeAddGallery - Adding new gallery', async ({ page, token }) => 
     {

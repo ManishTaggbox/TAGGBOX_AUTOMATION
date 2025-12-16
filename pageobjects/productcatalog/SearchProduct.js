@@ -9,6 +9,8 @@ class SearchProduct
         this.productSearchResult = page.locator('//span[text()="Apple iPhone 12"]');
         this.searchClear = page.locator('#search_spinner');
         this.skuSearchResult = page.locator('//span[text()="YX3901"]');
+        this.dropdownArrow = page.locator('.css-8mmkcg');
+        this.skuOption = page.locator('//div[text()="SKU"]');
     }
 
     async searchProduct() 
@@ -40,22 +42,34 @@ class SearchProduct
             await this.searchClear.click();
         });
 
-        await test.step("Step 6: Search by SKU - Enter 'YX3901'", async () => 
+        await test.step("Step 6: Click to open dropdown", async () => 
+        {
+            await this.dropdownArrow.waitFor({state: 'visible', timeout: 5000});
+            await this.dropdownArrow.click();
+        });
+
+        await test.step("Step 7: Click to select 'SKU' option from dropdown", async () => 
+        {
+            await this.skuOption.waitFor({state: 'visible', timeout: 5000});
+            await this.skuOption.click();
+        });
+
+        await test.step("Step 8: Search by SKU - Enter 'YX3901'", async () => 
         {
             await this.searchBox.fill('YX3901');
         });
 
-        await test.step("Step 7: Wait for SKU search results to load", async () => 
+        await test.step("Step 9: Wait for SKU search results to load", async () => 
         {
             await this.page.waitForTimeout(2000);
         });
 
-        await test.step("Step 8: Verify SKU search result is visible", async () => 
+        await test.step("Step 10: Verify SKU search result is visible", async () => 
         {
             await expect.soft(this.skuSearchResult).toBeVisible();
         });
 
-        await test.step("Step 9: Verify SKU matches in search results", async () => 
+        await test.step("Step 11: Verify SKU matches in search results", async () => 
         {
             await expect.soft(this.skuSearchResult).toHaveText('YX3901');
         });

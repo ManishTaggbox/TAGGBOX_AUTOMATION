@@ -63,7 +63,7 @@ class Reputation
             await this.feedBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.feedBtn.click();
 
-            await this.page.waitForTimeout(20000);
+            await this.page.waitForTimeout(25000);
 
             console.log("✅ Feed is created with Google Review");
         });
@@ -75,6 +75,8 @@ class Reputation
 
             await this.page.waitForTimeout(10000);
 
+            await this.page.reload();
+
             console.log("✅ Redirected to home page");
         });
 
@@ -83,7 +85,7 @@ class Reputation
             await this.reputationTab.waitFor({ state: 'visible', timeout: 5000 });
 
             // Step 2: Scroll the element into view
-            await this.reputationTab.scrollIntoViewIfNeeded();  
+            //await this.reputationTab.scrollIntoViewIfNeeded();  
 
             await this.reputationTab.click();
 

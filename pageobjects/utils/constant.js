@@ -28,7 +28,7 @@ export const YOUTUBE =
 export const TIKTOK = 
 {
   TIKTOKHASHTAG: 'PersonalGrowth',
-  TIKTOKHANDLE: 'charlidamelio',
+  TIKTOKHANDLE: 'lenskart',
   TiKTOKPOSTURL: 'https://www.tiktok.com/@soccermusicatv/video/7415705450974301458'
 };
 
