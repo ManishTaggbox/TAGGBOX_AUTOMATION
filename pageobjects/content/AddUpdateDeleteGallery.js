@@ -31,7 +31,7 @@ class AddNewGallery
     {
         await test.step("Step 1: Click Add New Gallery", async () => 
         {
-             await this.addNewGalleryBtn.waitFor({ state: 'visible', timeout: 10000 });
+            await this.addNewGalleryBtn.waitFor({ state: 'visible', timeout: 10000 });
             await this.addNewGalleryBtn.click();
         });
 
@@ -48,14 +48,14 @@ class AddNewGallery
 
         await test.step("Step 4: Try with duplicate name", async () => 
         {
-            await this.clearAndFillGalleryName('Manish Somani');
+            await this.clearAndFillGalleryName('Shristy Sharma');
             await this.save.click();
             await expect(this.invalidError).toHaveText('Gallery name already exists.', { timeout: 5000 });
         });
 
         await test.step("Step 5: Try with unique name", async () => 
         {
-            await this.clearAndFillGalleryName('Manish');
+            await this.clearAndFillGalleryName('Shristy');
             await this.save.click();
             await expect(this.successMsg).toBeVisible({ timeout: 7000 });
         });
@@ -76,7 +76,7 @@ class AddNewGallery
             await this.options.click();
             await this.rename.waitFor({ state: 'visible' });
             await this.rename.click();
-            await this.clearAndFillGalleryName('Manish Taggbox');
+            await this.clearAndFillGalleryName('Shristy Taggbox');
             await this.update.click();
             await expect(this.updateMsg).toBeVisible({ timeout: 7000 });
         });
