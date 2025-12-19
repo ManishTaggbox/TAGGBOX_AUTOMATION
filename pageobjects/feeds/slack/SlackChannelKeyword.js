@@ -7,8 +7,8 @@ class SlackChannelKeyword
     {
         this.page = page;
         this.createFeedBtn = page.locator('#create_feed');
-        // this.dropdown = page.locator('//button[@data-id="connect_btn"]');
-        // this.channelName = page.locator('//p[text()="social-service"]');
+        this.dropdown = page.locator('//button[@data-id="connect_btn"]');
+        this.channelName = page.locator('//p[text()="general3232222456"]');
     }
 
     async slackChannelKeyword() 
@@ -23,8 +23,8 @@ class SlackChannelKeyword
             await this.createFeedBtn.waitFor({ state: 'visible', timeout: 10000 });
             await expect(this.createFeedBtn).toBeEnabled();
 
-            // await this.dropdown.click();
-            // await this.channelName.click();
+            await this.dropdown.click();
+            await this.channelName.click();
         });
 
         await test.step('Step 3: Click the "Create Feed" button', async () => 

@@ -20,13 +20,13 @@ class ValidCredentials
         await test.step("Step 2: Enter valid email address", async () => 
         {
             await this.emailField.fill('');
-            await this.emailField.fill('manish.s+51@taggbox.com');
+            await this.emailField.fill('shristy+01@taggbox.com');
         });
 
         await test.step("Step 3: Enter valid password", async () => 
         {
             await this.passField.fill('');
-            await this.passField.fill('Taggbox@123');
+            await this.passField.fill('Test@123');
         });
 
         await test.step("Step 4: Click on the Login btn", async () => 

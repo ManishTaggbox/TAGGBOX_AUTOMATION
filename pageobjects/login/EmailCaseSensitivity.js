@@ -20,13 +20,13 @@ class EmailCaseSensitivity
          await test.step("Step 2: Enter valid email address in uppercase", async () => 
         {
             await this.emailField.fill('');
-            await this.emailField.fill('MANISH.S+51@TAGGBOX.COM');
+            await this.emailField.fill('SHRISTY+01@TAGGBOX.COM');
         });
 
         await test.step("Step 3: Enter valid password", async () => 
         {
             await this.passField.fill('');
-            await this.passField.fill('Taggbox@123');
+            await this.passField.fill('Test@123');
         });
 
         await test.step("Step 4: Click on the Login btn", async () => 
