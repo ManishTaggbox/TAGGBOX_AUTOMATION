@@ -21,6 +21,7 @@ class EditPost
         this.profileEditIcon = page.locator('//button[@aria-label="edit"]');
         this.browse = page.locator('(//input[@type="file"])[1]');
         this.imgEdit = page.locator('(//i[@class="fa-solid fa-pen "])[2]');
+        this.browseFiles = page.locator('(//button[text()="browse files"])[2]');
         this.uploadBtn = page.locator('//button[@aria-label="Upload 1 file"]');
         this.detailsTab = page.locator('#modal_aside_-tab-details');
         this.autherNameDetail = page.locator('//p[contains(text(), "This one is dummy name")]');
