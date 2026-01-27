@@ -60,7 +60,7 @@ class AddGallery
         await test.step("Step 5: Enter gallery name", async () => 
         {
             await this.galleryNameField.fill(GALLERY.GALLERYNAME);
-
+            await this.saveBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.saveBtn.click();
             
             console.log("Entered gallery name as Taggbox`s Gallery");
@@ -121,7 +121,7 @@ class AddGallery
             await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.deleteConfirmBtn.click();
 
-            await this.page.waitForTimeout(2000);
+            await this.page.waitForTimeout(5000);
             
             console.log("Clicked to confirmed delete");
         });

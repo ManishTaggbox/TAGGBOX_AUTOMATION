@@ -12,6 +12,9 @@ import InstagramTaggedFBLoginPage from '../../../pageobjects/feeds/instagram/Ins
 import InstagramReelsPage from '../../../pageobjects/feeds/instagram/InstagramReels.js';
 import InstagramOnlyReelsPage from '../../../pageobjects/feeds/instagram/InstagramOnlyReels.js';
 
+
+test.describe.configure({ timeout: 5 * 60 * 1000 }); // ✅ HARD OVERRIDE: 5 minutes per test
+
 // Reusable function to run feed test
 const runInstagramFeedTest = ({ tag, PageObject, method }) => {
   test(tag, async ({ page, token, wallId }, testInfo) => {

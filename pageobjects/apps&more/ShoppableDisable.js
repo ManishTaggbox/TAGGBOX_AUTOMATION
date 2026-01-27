@@ -65,16 +65,14 @@ class ShoppableDisable
             console.log("✅ Clicked on three dot icon of first pinned post");
         });
 
-        await test.step("Step7: Assert 'Add CTA' menu is displayed", async () => 
+        await test.step("Step 7: Assert 'Add CTA' menu is displayed", async () => 
         {
             await this.addCTAButton.waitFor({ state: 'visible', timeout: 5000 });
             await expect(this.addCTAButton).toBeVisible();
             
             console.log("✅ 'Add CTA' menu is displayed");
         });
-
-    }
-    
+    }    
 }
 
 export default ShoppableDisable;
