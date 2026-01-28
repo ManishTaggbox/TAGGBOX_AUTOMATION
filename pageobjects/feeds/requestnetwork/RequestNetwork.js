@@ -13,8 +13,7 @@ class RequestNetwork {
         this.fileInput = page.locator('input[type="file"]').first();
         this.uploadFileBtn = page.locator("//button[normalize-space()='Upload 1 file']");
         this.submitBtn = page.locator('#r_f_submit');
-        this.successMessage = page.locator("//div[contains(text(),'Request shared successfully')]");
-
+        this.successMessage = page.locator("//div[contains(text(),'Feature Request Sent Successfully')]");
     }
 
 
@@ -55,7 +54,7 @@ class RequestNetwork {
             await this.submitBtn.click();
         });
         await test.step('Soft verify success message', async () => {
-            await expect.soft(this.successMessage).toHaveText('Request shared successfully');
+            await expect.soft(this.successMessage).toHaveText('Feature Request Sent Successfully');
         });
 
     }

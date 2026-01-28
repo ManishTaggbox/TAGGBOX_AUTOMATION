@@ -8,7 +8,7 @@ class AddProduct {
         this.manualUpload = page.locator('//h5[text()="Manual Upload"]');
         this.addSingleProduct = page.locator('//h5[text()="Add Single Product"]');
         this.submitBtn = page.locator('#product_save_');
-        this.productNameValidation = page.locator('//div[text()="Product name is required."]');
+        this.productNameValidation = page.locator('//div[text()="Product name is required"]');
         this.productUrlValidation = page.locator('//div[text()="Please enter valid url."]');
         this.productNameInput = page.locator('#pro_name');
         this.priceInput = page.locator('#input_price');
@@ -30,7 +30,7 @@ class AddProduct {
         this.sku = page.locator('//span[text()="SKU56789"]');
         this.tag = page.locator('//span[text()="TagA"]');
         this.deleteIcon = page.locator('#action-trash-can');
-        this.confirmDeleteBtn = page.locator('//button[text()="Yes, delete it!"]');
+        this.confirmDeleteBtn = page.locator('//button[@aria-label="delete_yes"]');
         this.deleteSuccessMsg = page.locator('//div[text()="Successfully Deleted !"]');
     }
 
@@ -69,7 +69,7 @@ class AddProduct {
         });
 
         await test.step("Step 5: Verify product name validation error message", async () => {
-            await expect.soft(this.productNameValidation).toHaveText('Product name is required.');
+            await expect.soft(this.productNameValidation).toHaveText('Product name is required');
         });
 
         await test.step("Step 6: Verify product URL validation error is visible", async () => {

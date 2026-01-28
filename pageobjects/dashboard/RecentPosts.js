@@ -151,57 +151,6 @@ class RecentPosts
             
             console.log("✅ Navigated to 'Collected' tab successfully");
         });
-
-        // await test.step("Step 15: Verify by clicking on 'Add Feed Now' button to create review hub feed", async () => 
-        // {
-        //     await this.addFeedBtn.waitFor({ state: 'visible', timeout: 5000 });
-        //     await this.addFeedBtn.click();
-            
-        //     console.log("✅ Clicked to 'Add Feed Now' btn to create Review Hub feed");
-        // });
-
-        // await test.step("Step 16: Create feed with Review Hub", async () => 
-        // {
-        //     await this.reviewHubIcon.waitFor({ state: 'visible', timeout: 5000 });
-        //     await this.reviewHubIcon.click();
-
-        //     const reviewFeed = new ReviewHub(this.page);
-        //     await reviewFeed.reviewHub();
-        //     await reviewFeed.fillReviewForm();
-
-        //     await this.page.waitForTimeout(5000);
-
-        //     console.log("✅ Feed is created with ReviewHub");
-
-            
-        // });
-
-        // // Need to run & chk
-        // await test.step("Step 17: Navigating back to home page", async () => 
-        // {
-        //     await this.homeMenu.waitFor({ state: 'visible', timeout: 5000 });
-        //     await this.homeMenu.click();
-
-        //     await this.page.waitForTimeout(10000);
-            
-        //     console.log("✅ Redirected to home page");
-        // });
-
-        // await test.step("Step 18: Assert the 'Collected' tab is clickable", async () => 
-        // {
-        //     await this.collectedTab.waitFor({ state: 'visible', timeout: 5000 });
-        //     await this.collectedTab.click();
-            
-        //     console.log("✅ Navigated to 'Collected' tab successfully");
-        // });
-
-        // await test.step("Step 19: Assert recent posts are displayed for 'Collected' tab", async () => 
-        // {
-        //     const count = await this.postCard.count();
-        //     expect.soft(count).toBeGreaterThan(0);
-
-        //     console.log(`✅ Total posts found in 'Recent Posts - Collected' tab: ${count}`);
-        // });
     }     
 }
 

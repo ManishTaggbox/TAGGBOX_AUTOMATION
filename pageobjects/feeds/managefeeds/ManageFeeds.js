@@ -4,10 +4,10 @@ class ManageFeeds {
 
   constructor(page) {
     this.page = page;
-    this.manageFeedsBtn = page.locator("//span[normalize-space()='Manage Feeds']");
+    this.manageFeedsBtn = page.locator("#manage_feed");
     this.countPost = page.locator("//p[@class='fs-8 fw-semibold mb-0']").first();
-    this.deleteBtn = page.locator("//button[@aria-label='delete']");
-    this.confirmYesBtn = page.locator("//button[normalize-space()='Yes']");
+    this.deleteBtn = page.locator("//button[@data-id='delete']");
+    this.confirmYesBtn = page.locator("//button[@aria-label='delete_yes']");
     this.successMsg = page.locator("//div[contains(text(),'Feeds Deleted Succesfully.')]");
   }
 

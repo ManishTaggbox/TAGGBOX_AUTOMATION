@@ -11,6 +11,7 @@ class PostDelete
         this.deleteOption = page.locator('//span[text()="Delete post"]');
         this.continueBtn = page.locator('//button[contains(@class,"swal2-confirm swal2-styled")]');
         this.toastMsg = page.locator('//div[text()="Your post has been deleted."]');
+        this.allDeleteToastMsg = page.locator('//div[text()="Selected posts are deleted now"]');
         this.crossIcon = page.locator('.btn-close');
         this.threeDotsIcon = page.locator('//i[contains(@class,"fa-regular fa-ellipsis")]');
         this.deleteIcon = page.locator('//a[text()="Delete post"]');
@@ -123,8 +124,8 @@ class PostDelete
 
         await test.step("Step 17: Assert toast mesg to be displayed", async () => 
         {
-            await this.toastMsg.waitFor({state: 'visible', timeout: 8000});
-            await expect.soft(this.toastMsg).toHaveText('Your post has been deleted.');  
+            await this.allDeleteToastMsg.waitFor({state: 'visible', timeout: 8000});
+            await expect.soft(this.allDeleteToastMsg).toHaveText('Selected posts are deleted now');  
             await this.page.waitForTimeout(5000);
         });
     }

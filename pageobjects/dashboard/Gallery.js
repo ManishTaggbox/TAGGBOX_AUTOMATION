@@ -10,7 +10,7 @@ class AddGallery
         // Add Gallery
         this.page = page;
         this.contentBtn  = page.locator('//button[text()="Collect Content"]');
-        this.addGalleryBtn = page.locator('//button[text()=" Add Gallery"]');
+        this.addGalleryBtn = page.locator('//button[text()="Add Gallery"]');
         this.saveBtn = page.locator('#con_save_btn');
         this.validationMsg = page.locator('//span[@class="invalid-feedback"]');
         this.galleryNameField = page.locator('#g_name');
@@ -22,7 +22,7 @@ class AddGallery
         this.viewAllBtn = page.locator('//a[@href="/content"]'); 
         this.threeDotsIcon = page.locator("//button[@class='arrow_disabled dropdown-toggle border-0 d-inline-flex py-1 px-3 dropdown-toggle btn btn-secondary']");
         this.deleteOption = page.locator('//a[text()="Delete"]');
-        this.deleteConfirmBtn = page.locator('//button[text()="Yes, Delete it"]');
+        this.deleteConfirmBtn = page.locator('//button[@aria-label="delete_yes"]');
     }
 
     async addGallery() 
@@ -60,7 +60,7 @@ class AddGallery
         await test.step("Step 5: Enter gallery name", async () => 
         {
             await this.galleryNameField.fill(GALLERY.GALLERYNAME);
-
+            await this.saveBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.saveBtn.click();
             
             console.log("Entered gallery name as Taggbox`s Gallery");
@@ -120,6 +120,8 @@ class AddGallery
         {
             await this.deleteConfirmBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.deleteConfirmBtn.click();
+
+            await this.page.waitForTimeout(5000);
             
             console.log("Clicked to confirmed delete");
         });

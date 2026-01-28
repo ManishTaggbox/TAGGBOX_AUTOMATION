@@ -31,7 +31,7 @@ const runBookingcomFeedTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const bookingcomFeeds = [
-  { tag: '@BookingcomHotelUrl  Create Feed', PageObject: BookingcomHotelUrlPage, method: 'bookingcom' }
+  { tag: '@BookingcomHotelUrl Create Feed', PageObject: BookingcomHotelUrlPage, method: 'bookingcom' }
  
 ];
 

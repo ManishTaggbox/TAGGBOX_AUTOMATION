@@ -9,7 +9,7 @@ class YoutubeLocation {
         this.location = page.locator("//a[@data-name='location']");
         this.enterAddress = page.locator("//input[@placeholder='Type address']");
         this.channelList = page.locator("//*[text()='Jaipur, Rajasthan, India']");
-        this.enterKeywords = page.locator("//input[@placeholder='Enter keywords']");
+        this.enterKeywords = page.locator("//input[@placeholder='Enter Keywords']").last();
         this.createFeedBtn = page.locator('#create_feed');
     }
 

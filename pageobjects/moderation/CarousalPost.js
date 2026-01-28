@@ -55,9 +55,11 @@ class CarousalPost
         await expect.soft(this.errorMsg).toHaveText('To apply this filter, please disable the Carousel feature first.'); 
         await this.page.waitForTimeout(10000);
 
-        // close filter overlay
-        await this.crossIcon.waitFor({state: 'visible', timeout: 5000});
-        await this.crossIcon.click();
+        // close filter overlay by clicking on filter option
+        // await this.crossIcon.waitFor({state: 'visible', timeout: 5000});
+        // await this.crossIcon.click();
+        await this.filterIcon.waitFor({state: 'visible', timeout: 5000});
+        await this.filterIcon.click();
 
         // off crousal post
         await this.carousalBtn.waitFor({state: 'visible', timeout: 5000});

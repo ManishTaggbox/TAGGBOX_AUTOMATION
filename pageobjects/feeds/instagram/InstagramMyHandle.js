@@ -10,7 +10,7 @@ class InstagramMyHandle {
   }
 
   async instagramMyHandle() {
-    await test.step('Step 1: Click On My Handle', async () => {
+    await test.step('Step 1: Click on My Handle', async () => {
       await this.myHandle.waitFor({ state: 'visible', timeout: 10000 });
       await this.myHandle.click({ force: true });
     });

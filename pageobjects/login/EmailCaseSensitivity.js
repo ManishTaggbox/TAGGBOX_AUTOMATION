@@ -7,30 +7,35 @@ class EmailCaseSensitivity
         this.page = page;
         this.emailField = page.locator('//input[@type="email"]');
         this.passField = page.locator('//input[@type="password"]');
-        this.loginBtn = page.locator('.btn-primary');
+        this.loginBtn = page.locator('.btn-primary').first();
     }
 
     async emailCaseSensitivity() 
     {
-         await test.step("Step 1: Enter valid email address in uppercase", async () => 
+        await test.step('Step 1: Wait 5 seconds for UI update', async () => 
+        {
+            await this.page.waitForTimeout(5000);
+        });  
+
+         await test.step("Step 2: Enter valid email address in uppercase", async () => 
         {
             await this.emailField.fill('');
-            await this.emailField.fill('MANISH.S+51@TAGGBOX.COM');
+            await this.emailField.fill('SHRISTY+01@TAGGBOX.COM');
         });
 
-        await test.step("Step 2: Enter valid password", async () => 
+        await test.step("Step 3: Enter valid password", async () => 
         {
             await this.passField.fill('');
-            await this.passField.fill('Taggbox@123');
+            await this.passField.fill('Test@123');
         });
 
-        await test.step("Step 3: Click on the Login btn", async () => 
+        await test.step("Step 4: Click on the Login btn", async () => 
         {
             await this.loginBtn.waitFor({state: 'visible', timeout: 5000});
             await this.loginBtn.click();
         });
 
-        await test.step("Step 4: Assert the page url and title of the page post login", async () => 
+        await test.step("Step 5: Assert the page url and title of the page post login", async () => 
         {
             await expect.soft(this.page).toHaveURL('https://app.taggbox.com/home');
             console.log('✅ Current URL after login:', await this.page.url());

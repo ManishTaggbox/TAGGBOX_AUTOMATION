@@ -11,7 +11,7 @@ class FlickrHandle {
   }
 
   async flickrHandle() {
-      await test.step('Step 1: Click On  Handle', async () => {
+      await test.step('Step 1: Click on handle', async () => {
       await this.handle.waitFor({ state: 'visible', timeout: 10000 });
       await this.handle.click({ force: true });
     });
