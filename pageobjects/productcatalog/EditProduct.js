@@ -52,7 +52,7 @@ class EditProduct {
         });
 
         await test.step("Step 5: Verify product name validation error message", async () => {
-            await expect.soft(this.productNameValidation).toHaveText('Product name is required.');
+            await expect.soft(this.productNameValidation).toHaveText('Product name is required');
         });
 
         await test.step("Step 6: Verify product URL validation error is visible", async () => {

@@ -56,37 +56,3 @@ test.describe('Product Catalog Tests', () =>
         await addProduct.addProduct();
     });
 });
-
-// Alternative approach with beforeEach hook for common setup
-// test.describe.alternative('Product Catalog Tests - Alternative Setup', () => {
-    
-//     test.beforeEach(async ({ page, token }) => {
-//         await setupPage(page, token);
-//     });
-
-//     test('@UploadCSVFile', async ({ page }) => {
-//         const uploadCSV = new UploadCSVFile(page);
-//         await uploadCSV.csvUpload();
-//     });
-
-//     test('@SearchProduct', async ({ page }) => {
-//         const searchProduct = new SearchProduct(page);
-//         await searchProduct.searchProduct();
-//     });
-
-//     test('@EditProduct', async ({ page }) => {
-//         const editProduct = new EditProduct(page);
-//         await editProduct.editProduct();
-//     });
-
-//     test('@DeleteSingleAndMultipleProducts', async ({ page }) => {
-//         const deleteProduct = new DeleteProduct(page);
-//         await deleteProduct.deleteProduct();
-//         await deleteProduct.deleteMultipleProducts();
-//     });
-
-//     test('@AddProduct', async ({ page }) => {
-//         const addProduct = new AddProduct(page);
-//         await addProduct.addProduct();
-//     });
-// });

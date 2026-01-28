@@ -4,7 +4,7 @@ class DeleteProduct {
     constructor(page) {
         this.page = page;
         this.deleteIcon = page.locator('#action-trash-can');
-        this.confirmDeleteBtn = page.locator('//button[text()="Yes, delete it!"]');
+        this.confirmDeleteBtn = page.locator('//button[text()="Delete"]');
         this.toastMsg = page.locator('//div[text()="Successfully Deleted !"]');
         this.productName = page.locator('//span[text()="Test Product"]');
         this.selectAllCheckbox = page.locator('#check_all_pro');
