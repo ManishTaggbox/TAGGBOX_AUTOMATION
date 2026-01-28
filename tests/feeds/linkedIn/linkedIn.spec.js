@@ -32,7 +32,7 @@ const runLinkedInFeedTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const linkedInFeeds = [
-  { tag: '@LinkedInCompamnyPage  Create Feed', PageObject: LinkedInHashTagPage, method: 'linkedInCompanyPage' },
+  { tag: '@LinkedInCompanyPage  Create Feed', PageObject: LinkedInHashTagPage, method: 'linkedInCompanyPage' },
   { tag: '@LinkedInPostUrl  Create Feed', PageObject: LinkedInPostUrlPage, method: 'linkedInPostUrl' }
  
 ];

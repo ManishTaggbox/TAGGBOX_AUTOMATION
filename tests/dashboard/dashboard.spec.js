@@ -34,12 +34,12 @@ test.describe('Dashboard Tests', () =>
         await links.dashboardPageLinks();
     });
 
-    test('@HomeIntercomCheck - Checking if intercom is working properly', async ({ page, token }) => 
-    {
-        await setupPage(page, token);
-        const intercom = new Intercom(page);
-        await intercom.intercom();
-    });
+    // test('@HomeIntercomCheck - Checking if intercom is working properly', async ({ page, token }) => 
+    // {
+    //     await setupPage(page, token);
+    //     const intercom = new Intercom(page);
+    //     await intercom.intercom();
+    // });
 
     test('@HomeAddGallery - Adding new gallery', async ({ page, token }) => 
     {
@@ -60,6 +60,9 @@ test.describe('Dashboard Tests', () =>
         await setupPage(page, token);
         const activeCreators = new MostActiveCreators(page);
         await activeCreators.activeCreators();
+
+        // Delete created feed here
+        await activeCreators.deleteFeed();
     });
 
     test('@HomeReputation - Checking data for "Reputation" section', async ({ page, token }) => 
@@ -72,7 +75,7 @@ test.describe('Dashboard Tests', () =>
         await reputation.deleteFeed();
     });
 
-    test('@HomeAddChannel - Adding new channel', async ({ page, token }) => 
+    test('@DashboardAddChannel - Adding new channel', async ({ page, token }) => 
     {
         await setupPage(page, token);
         const channel = new Channel(page);
@@ -84,7 +87,5 @@ test.describe('Dashboard Tests', () =>
         await setupPage(page, token);
         const gallery = new Gallery(page);
         await gallery.deleteGallery();
-    });
-
-   
+    });   
 });

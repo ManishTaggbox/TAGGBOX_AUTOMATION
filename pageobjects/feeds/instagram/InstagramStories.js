@@ -10,7 +10,7 @@ class InstagramStories {
   }
 
   async instagramStories() {
-    await test.step('Step 1: Click On Stories', async () => {
+    await test.step('Step 1: Click on stories tab', async () => {
       await this.stories.waitFor({ state: 'visible', timeout: 10000 });
       await this.stories.click({ force: true });
     });

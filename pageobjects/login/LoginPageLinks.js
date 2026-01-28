@@ -11,13 +11,18 @@ class LoginPageLinks
 
     async loginPageLinks() 
     {
-        await test.step("Step 1: Count the total number of links present on the login page", async () => 
+        await test.step('Step 1: Wait 5 seconds for UI update', async () => 
+        {
+            await this.page.waitForTimeout(5000);
+        }); 
+
+        await test.step("Step 2: Count the total number of links present on the login page", async () => 
         {
             const count = await this.links.count();
             console.log(`🔍 Found ${count} links on login page`);
         });
 
-        await test.step("Step 2: Assert the href and text for each link", async () =>
+        await test.step("Step 3: Assert the href and text for each link", async () =>
         {
             const count = await this.links.count();
             for (let i = 0; i < count; i++) 

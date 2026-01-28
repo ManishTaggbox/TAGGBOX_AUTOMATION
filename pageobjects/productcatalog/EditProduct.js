@@ -12,7 +12,7 @@ class EditProduct {
         this.pIdInput = page.locator('#input_p_id');
         this.categoryInput = page.locator('#input_p_cat');
         this.submit = page.locator('#product_save_');
-        this.productNameValidation = page.locator('//div[text()="Product name is required."]');
+        this.productNameValidation = page.locator('//div[text()="Product name is required"]');
         this.productUrlValidation = page.locator('//div[text()="Please enter valid url."]');
         this.tagInput = page.locator('#input_p_tag');
         this.toastMsg = page.locator('//div[text()="Product updated successfully"]');
@@ -115,11 +115,13 @@ class EditProduct {
         });
 
         await test.step("Step 20: Validate updated product price is displayed", async () => {
-            await expect.soft(this.price).toContainText('100');
+            //await expect.soft(this.price).toContainText('$100');
+            await expect.soft(this.price).toContainText('£100');
         });
 
         await test.step("Step 21: Validate updated discount price is displayed", async () => {
-            await expect.soft(this.discountPrice).toContainText('10');
+            //await expect.soft(this.discountPrice).toContainText('$10');
+            await expect.soft(this.discountPrice).toContainText('£10');
         });
 
         await test.step("Step 22: Validate updated product URL attribute", async () => {

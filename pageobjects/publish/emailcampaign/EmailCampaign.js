@@ -36,11 +36,7 @@ class EmailCampaign {
         this.editClick = page.locator("//i[@class='fa-regular fa-ellipsis-vertical me-0']");
         this.delete = page.locator("//a[normalize-space()='Delete']");
         this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, Delete it']")
-        this.emailCampaignDeleteMsg = page.locator("//div[contains(text(),'Email campaign deleted successfully.')]")
-
-
-
-
+        this.emailCampaignDeleteMsg = page.locator("//div[contains(text(),'Email campaign deleted successfully.')]");
     }
 
     async emailCampaign() {

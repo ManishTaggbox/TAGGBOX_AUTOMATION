@@ -10,7 +10,7 @@ class GoogleMyPlaces {
     }
 
     async googleMyPlaces() {
-        await test.step('Step 1: Click On  Post Url', async () => {
+        await test.step('Step 1: Click on My Places', async () => {
             await this.myplaces.waitFor({ state: 'visible', timeout: 10000 });
             await this.myplaces.click({ force: true });
         });
@@ -27,8 +27,8 @@ class GoogleMyPlaces {
             await this.createFeedBtn.click();
         });
 
-        await test.step('Step 5: Wait 25 seconds for Content Gallery to load', async () => {
-            await this.page.waitForTimeout(10000);
+        await test.step('Step 5: Wait 15 seconds for Content Gallery to load', async () => {
+            await this.page.waitForTimeout(15000);
         });
 
         await test.step('Step 6: Proceed with feed management if Content Gallery is loaded', async () => {

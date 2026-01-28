@@ -35,7 +35,7 @@ const runAmazonFeedTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const amazonFeeds = [
-  { tag: '@AmazonProductURL  Create Feed', PageObject: AmazonProductURLPage, method: 'amazonProductURL' }
+  { tag: '@AmazonProductURL Create Feed', PageObject: AmazonProductURLPage, method: 'amazonProductURL' }
 
 ];
 

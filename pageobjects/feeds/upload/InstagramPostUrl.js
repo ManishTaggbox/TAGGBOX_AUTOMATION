@@ -10,7 +10,7 @@ class InstagramPostUrl {
     this.createFeedBtn = page.locator('#create_feed');
     this.moreActions = page.locator('.fa-regular.fa-ellipsis');
     this.deleteBtn = page.locator("//a[normalize-space()='Delete post']");
-    this.confirmDeleteBtn = page.locator("//button[normalize-space()='Yes, delete it!']");
+    this.confirmDeleteBtn = page.locator("//button[@aria-label='delete_yes']");
     this.deleteMsg = page.locator("//div[contains(text(),'Your post has been deleted.')]");
   }
 

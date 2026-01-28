@@ -153,11 +153,11 @@ test.describe('Moderation Tests', () =>
     await tag.tagProductWithSearch();
   });
 
-  test('@ModerationPostDelete - Delete post', async ({ page, token, wallId }) => {
-    await setupModeration(page, token, wallId);
-    const deletePost = new PostDelete(page);
-    await deletePost.postDelete();
-  });
+  // test('@ModerationPostDelete - Delete post', async ({ page, token, wallId }) => {
+  //   await setupModeration(page, token, wallId);
+  //   const deletePost = new PostDelete(page);
+  //   await deletePost.postDelete();
+  // });
 
   test('@ModerationChangeOrder - Change post order for pinned posts', async ({ page, token, wallId }) =>
   {
@@ -172,6 +172,13 @@ test.describe('Moderation Tests', () =>
     const viewPost = new ViewPost(page);
     await viewPost.viewPost();
   });
+
+  test('@ModerationPostDelete - Delete post', async ({ page, token, wallId }) => {
+    await setupModeration(page, token, wallId);
+    const deletePost = new PostDelete(page);
+    await deletePost.postDelete();
+  });
+
 });
 
 // Common teardown

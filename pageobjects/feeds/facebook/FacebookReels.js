@@ -10,7 +10,7 @@ class FacebookReels {
   }
 
   async facebookReels() {
-    await test.step('Step 1: Click On  reels', async () => {
+    await test.step('Step 1: Click on Reels', async () => {
       await this.reels.waitFor({ state: 'visible', timeout: 10000 });
       await this.reels.click({ force: true });
     });

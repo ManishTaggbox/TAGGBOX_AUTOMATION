@@ -10,7 +10,7 @@ class AmazonProductURL {
   }
 
   async amazonProductURL() {
-    await test.step('Step 1: Fill AMAZON PRODUCT URL', async () => {
+    await test.step('Step 1: Fill Amazon Product Url', async () => {
       await this.enterProductUrl.waitFor({ state: 'visible', timeout: 10000 });
       await this.enterProductUrl.fill(Amazon.AMAZONPRODUCTURL);
     });
@@ -27,8 +27,8 @@ class AmazonProductURL {
       await this.createFeedBtn.click();
     });
 
-    await test.step('Step 5: Wait 10 seconds for Content Gallery to load', async () => {
-      await this.page.waitForTimeout(10000);
+    await test.step('Step 5: Wait 20 seconds for Content Gallery to load', async () => {
+      await this.page.waitForTimeout(20000);
     });
 
     await test.step('Step 6: Proceed with feed management if Content Gallery is loaded', async () => {

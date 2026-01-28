@@ -1,4 +1,4 @@
-import { test, expect } from '../moderationfixtures.js';
+import { test, expect } from '../fixtures.js';
 import { FEED_PATH } from '../../utils/constants.js';
 import NullFields from '../../pageobjects/login/NullField.js';
 import InvalidCredentials from '../../pageobjects/login/InvalidCredentials.js';

@@ -31,7 +31,7 @@ const runSlackChannelKeywordTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const slackChannelKeywordFeeds = [
-  { tag: '@SlackChannelKeyword  Create Feed', PageObject: SlackChannelKeywordPage, method: 'slackChannelKeyword' },
+  { tag: '@SlackChannelKeyword Create Feed', PageObject: SlackChannelKeywordPage, method: 'slackChannelKeyword' },
   
 ];
 

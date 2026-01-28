@@ -4,13 +4,13 @@ const { test, expect } = require('@playwright/test');
 class ResetPassword {
     constructor(page) {
         this.page = page;
-        this.resetBtn = page.locator('//button[text()="Reset Password"]');
+        this.resetBtn = page.locator('#reset_password');
         this.updateBtn = page.locator('//button[text()="Update Password"]');
         this.validationMsg = page.locator('//div[contains(text(), "Password must be at least")]');
         this.password = page.locator('//input[@name="password"]');
         this.passwordStrength = page.locator('//span[text()="Strong"]');
         this.confirmPassword = page.locator('//input[@name="cpassword"]');
-        this.validation = page.locator('//div[text()="Password does not match."]');
+        this.validation = page.locator('//div[text()="Password does not match"]');
         this.successMsg = page.locator('//div[text()="Password Updated Successfully"]');
     }
 
@@ -29,8 +29,8 @@ class ResetPassword {
             await expect.soft(this.validationMsg).toBeVisible();
         });
 
-        await test.step("Step 4: Fill password field with 'Taggbox@123'", async () => {
-            await this.password.fill('Taggbox@123');
+        await test.step("Step 4: Fill password field with 'Test@123'", async () => {
+            await this.password.fill('Test@123');
         });
 
         await test.step("Step 5: Verify password strength indicator shows 'Strong'", async () => {
@@ -49,8 +49,8 @@ class ResetPassword {
             await this.confirmPassword.clear();
         });
 
-        await test.step("Step 9: Fill confirm password field with matching password 'Taggbox@123'", async () => {
-            await this.confirmPassword.fill('Taggbox@123');
+        await test.step("Step 9: Fill confirm password field with matching password 'Test@123'", async () => {
+            await this.confirmPassword.fill('Test@123');
         });
 
         await test.step("Step 10: Click on Update Password button to submit", async () => {

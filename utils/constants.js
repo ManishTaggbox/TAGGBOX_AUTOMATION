@@ -24,6 +24,7 @@ export const FEED_PATH = {
   TWITTER: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/1`,
   FACEBOOK: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/3`,
   REVIEWHUB: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/29`,
+  REDDIT: (wallId) => `https://app.taggbox.com/content/addfeed/${wallId}/47`,
   MODERATION: (wallId) => `https://app.taggbox.com/content/moderation/${wallId}/`,
   AUTOPILOT:   `https://app.taggbox.com/autopilot/`,
   PUBLISH: `https://app.taggbox.com/publish`,

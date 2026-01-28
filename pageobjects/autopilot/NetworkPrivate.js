@@ -1,7 +1,9 @@
 const { test, expect } = require('@playwright/test');
 
-class PrivateNetworkPost {
-    constructor(page) {
+class PrivateNetworkPost 
+{
+    constructor(page) 
+    {
         this.page = page;
         this.enterRuleName = page.locator("input[placeholder='Enter rule name']");
         this.addTrigger = page.locator('#rule-dd');
@@ -21,15 +23,17 @@ class PrivateNetworkPost {
         this.privateMsg = page.locator("//h2[contains(text(),'🔒 Whoa, Everything’s Private!')]")
     }
 
-    async privateNetworkPost() {
-
-        await test.step('Fill rule name', async () => {
+    async privateNetworkPost() 
+    {
+        await test.step('Fill rule name', async () => 
+        {
             await this.page.waitForTimeout(4000);
             await this.enterRuleName.waitFor({ state: 'visible' });
             await this.enterRuleName.fill('Rule 1');
         });
 
-        await test.step('Add Trigger - Network', async () => {
+        await test.step('Add Trigger - Network', async () => 
+        {
             await this.addTrigger.waitFor({ state: 'visible' });
             await this.addTrigger.click();
 
@@ -47,7 +51,8 @@ class PrivateNetworkPost {
 
         });
 
-        await test.step('Add Action - Private', async () => {
+        await test.step('Add Action - Private', async () => 
+        {
             await this.addAction.waitFor({ state: 'visible' });
             await this.addAction.click();
 
@@ -55,12 +60,14 @@ class PrivateNetworkPost {
             await this.private.click();
         });
 
-        await test.step('Click Create Rule button', async () => {
+        await test.step('Click Create Rule button', async () => 
+        {
             await this.createRule.waitFor({ state: 'visible' });
             await this.createRule.click();
         });
 
-        await test.step('Verify success message is visible', async () => {
+        await test.step('Verify success message is visible', async () => 
+        {
             await expect(this.ruleCreatedMsg).toHaveText(
                 'AutoPilot rule has been added successfully. Posts will be evaluated accordingly.',
                 { timeout: 5000 }
@@ -68,28 +75,30 @@ class PrivateNetworkPost {
         });
     }
 
+    async verifyPostIsPrivate() 
+    {
+        await test.step('Close preview modal', async () => 
+        {
+            await this.page.waitForTimeout(4000);
+            await this.closeIcon.waitFor({ state: 'visible' });
+            await this.closeIcon.click();
+        });
 
-  async verifyPostIsPrivate() {
-    await test.step('Close preview modal', async () => {
-        await this.page.waitForTimeout(4000);
-        await this.closeIcon.waitFor({ state: 'visible' });
-        await this.closeIcon.click();
-    });
+        await test.step('Click on Public tab', async () => 
+        {
+            await this.public.waitFor({ state: 'visible' });
+            await this.public.click();
+        });
 
-    await test.step('Click on Public tab', async () => {
-        await this.public.waitFor({ state: 'visible' });
-        await this.public.click();
-    });
-
-    await test.step('Verify private message appears', async () => {
-        await this.privateMsg.waitFor({ state: 'visible', timeout: 5000 });
-        await expect(this.privateMsg).toHaveText(
+        await test.step('Verify private message appears', async () => 
+        {
+            await this.privateMsg.waitFor({ state: 'visible', timeout: 5000 });
+            await expect(this.privateMsg).toHaveText(
             '🔒 Whoa, Everything’s Private!',
             { timeout: 5000 }
         );
-    });
-}
-
+     });
+    }
 }
 
 module.exports = PrivateNetworkPost;
