@@ -111,16 +111,16 @@ class EditPost
         //     await this.page.waitForTimeout(5000); // Wait for upload to complete
         // });
 
-        // await test.step("Step 11: Click to save changes", async () => 
-        // {
-        //     await this.saveBtn.waitFor({state: 'visible', timeout: 5000});
-        //     await this.saveBtn.click();
-        // });
+        await test.step("Step 11: Click to save changes", async () => 
+        {
+            await this.saveBtn.waitFor({state: 'visible', timeout: 5000});
+            await this.saveBtn.click();
+        });
 
-        // await test.step("Step 12: Assert toast msg", async () => 
-        // {
-        //     await expect.soft(this.toastMsg).toHaveText('Post updated successfully');
-        // });
+        await test.step("Step 12: Assert toast msg", async () => 
+        {
+            await expect.soft(this.toastMsg).toHaveText('Post updated successfully');
+        });
 
         await test.step("Step 13: Click on 'Details' tab", async () => 
         {
