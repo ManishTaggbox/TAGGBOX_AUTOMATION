@@ -62,7 +62,14 @@ class RecentPosts
             console.log("✅ Redirected to home page");
         });
 
-        await test.step("Step 4: Assert recent posts are displayed for 'All' tab", async () => 
+        await test.step("Step 4: Click to reload the application", async () => 
+        {
+            await this.page.reload();
+            
+            console.log("✅ Page reloaded successfully");
+        });
+
+        await test.step("Step 5: Assert recent posts are displayed for 'All' tab", async () => 
         {
             const count = await this.postCard.count();
             expect.soft(count).toBeGreaterThan(0);
@@ -70,7 +77,7 @@ class RecentPosts
             console.log(`✅ Total posts found in 'Recent Posts - All' tab: ${count}`);
         });
 
-        await test.step("Step 5: Click to make first post 'Private'", async () => 
+        await test.step("Step 6: Click to make first post 'Private'", async () => 
         {
             await this.privateBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.privateBtn.click();
@@ -78,7 +85,7 @@ class RecentPosts
             console.log("✅ Marked the first post as private");
         });
 
-        await test.step("Step 6: Assert the toast msg", async () => 
+        await test.step("Step 7: Assert the toast msg", async () => 
         {
             await this.toastMsg1.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg1).toHaveText("Post is Private now");
@@ -86,7 +93,7 @@ class RecentPosts
             console.log("✅ Toast msg displayed properly");
         });
 
-        await test.step("Step 7: Click to make first post 'Public'", async () => 
+        await test.step("Step 8: Click to make first post 'Public'", async () => 
         {
             await this.publicBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.publicBtn.click();
@@ -94,7 +101,7 @@ class RecentPosts
             console.log("✅ Marked the first post as public");
         });
 
-        await test.step("Step 8: Assert the toast msg", async () => 
+        await test.step("Step 9: Assert the toast msg", async () => 
         {
             await this.toastMsg2.waitFor({ state: 'visible', timeout: 5000 });
             await expect.soft(this.toastMsg2).toHaveText("Post is Public now");
@@ -102,7 +109,7 @@ class RecentPosts
             console.log("✅ Toast msg displayed properly");
         });
 
-        await test.step("Step 9: Click to open first post", async () => 
+        await test.step("Step 10: Click to open first post", async () => 
         {
             await this.postCard.first().waitFor({ state: 'visible', timeout: 5000 });
             await this.postCard.first().click();
@@ -110,7 +117,7 @@ class RecentPosts
             console.log("✅ Clicked to open the first post");
         });
 
-        await test.step("Step 10: Click to 'Go to Moderation' btn present in the post", async () => 
+        await test.step("Step 11: Click to 'Go to Moderation' btn present in the post", async () => 
         {
             await this.moderationBtn.waitFor({ state: 'visible', timeout: 5000 });
             await this.moderationBtn.click();
@@ -118,7 +125,7 @@ class RecentPosts
             console.log("✅ Clicked to 'Go to Moderation' btn");
         });
 
-        await test.step("Step 11: Navigating back to home page", async () => 
+        await test.step("Step 12: Navigating back to home page", async () => 
         {
             await this.homeMenu.waitFor({ state: 'visible', timeout: 5000 });
             await this.homeMenu.click();
@@ -128,7 +135,7 @@ class RecentPosts
             console.log("✅ Redirected to home page");
         });
 
-        await test.step("Step 12: Assert the 'Aggregated' tab is clickable", async () => 
+        await test.step("Step 13: Assert the 'Aggregated' tab is clickable", async () => 
         {
             await this.aggregatedTab.waitFor({ state: 'visible', timeout: 5000 });
             await this.aggregatedTab.click();
@@ -136,7 +143,7 @@ class RecentPosts
             console.log("✅ Navigated to 'Aggregated' tab successfully");
         });
 
-        await test.step("Step 13: Assert recent posts are displayed for 'Aggregated' tab", async () => 
+        await test.step("Step 14: Assert recent posts are displayed for 'Aggregated' tab", async () => 
         {
             const count = await this.postCard.count();
             expect.soft(count).toBeGreaterThan(0);
@@ -144,7 +151,7 @@ class RecentPosts
             console.log(`✅ Total posts found in 'Recent Posts - Aggregated' tab: ${count}`);
         });
 
-        await test.step("Step 14: Assert the 'Collected' tab is clickable", async () => 
+        await test.step("Step 15: Assert the 'Collected' tab is clickable", async () => 
         {
             await this.collectedTab.waitFor({ state: 'visible', timeout: 5000 });
             await this.collectedTab.click();
