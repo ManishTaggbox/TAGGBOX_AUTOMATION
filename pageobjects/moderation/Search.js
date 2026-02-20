@@ -14,7 +14,7 @@ class Search
         this.searchBox = page.locator('//input[@placeholder="Search"]');
         this.searchCross = page.locator('//button[@aria-label="search"]');
         this.crossIcon = page.locator('.fa-xmark');
-        this.dropdownItem = page.locator("//div[@class='w-100 dropdwon-height dropdown-menu show']");
+        this.dropdownItem = page.locator(".dropdown-item");
     }
 
     async Search() 
@@ -59,7 +59,7 @@ class Search
             await this.dropdownItem.click();
         });
 
-        await test.step("Step 7: Click to open filter overlay", async () => 
+        await test.step("Step 7: Click to close filter overlay", async () => 
         {
             await this.crossIcon.nth(1).waitFor({ state: 'visible', timeout: 5000 });
             await this.crossIcon.nth(1).click();
