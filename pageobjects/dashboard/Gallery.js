@@ -9,7 +9,8 @@ class AddGallery
     {
         // Add Gallery
         this.page = page;
-        this.contentBtn  = page.locator('//button[text()="Collect Content"]');
+        // this.contentBtn  = page.locator('//button[text()="Collect Content"]');
+        this.contentBtn  = page.locator('//button[text()="Create Gallery"]');
         this.addGalleryBtn = page.locator('//button[text()="Add Gallery"]');
         this.saveBtn = page.locator('#con_save_btn');
         this.validationMsg = page.locator('//span[@class="invalid-feedback"]');

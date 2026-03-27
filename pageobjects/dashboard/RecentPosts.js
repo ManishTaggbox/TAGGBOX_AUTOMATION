@@ -9,7 +9,8 @@ class RecentPosts
     {
         this.page = page;
 
-        this.addFeedBtn = page.locator('//button[text()="Add Feed Now"]');
+        // this.addFeedBtn = page.locator('//button[text()="Add Feed Now"]');
+        this.addFeedBtn = page.locator('//button[text()="Add Your First Feed"]');
         this.flickrIcon = page.locator('//span[text()="Flickr"]');
         this.hashtagField = page.locator('#Hashtag-text');
         this.createFeedBtn = page.locator('#create_feed'); 
