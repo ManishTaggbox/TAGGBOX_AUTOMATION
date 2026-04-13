@@ -13,12 +13,12 @@ const loginPayload = {
     // emailId: 'manish.s+51@taggbox.com',
     // password: 'Taggbox@123',
     // loginType: 'web',
-    emailId: 'shristy+01@taggbox.com',
-    password: 'Test@123',
+    emailId: 'manish.s+51@taggbox.com',
+    password: 'Taggbox@123',
     loginType: 'web',
   },
   test: {
-    emailId: 'Shristy+51@taggbox.com',
+    emailId: 'manish.s+51@taggbox.com',
     password: 'Taggbox@123',
     loginType: 'web',
   }
