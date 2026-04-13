@@ -5,7 +5,7 @@ const fs = require('fs');
 class Shoponbio {
     constructor(page) {
         this.page = page;
-        this.addChannel = page.locator('.my-3.btn.btn-primary.btn-md');
+        this.addChannel = page.locator("//button[@aria-label='Add Channel']");
         this.selectPublish = page.locator("(//button[@id='rule-action'])[1]");
         this.selectShoponbio = page.locator("//span[normalize-space()='Shopon bio']");
         this.publishbtn = page.locator('#web_save_btn')
@@ -23,9 +23,9 @@ class Shoponbio {
         this.url = page.locator("//a[@id='shopon_url']");
 
          //delete
-        this.editClick = page.locator("//i[@class='fa-regular fa-ellipsis-vertical me-0']");
+        this.editClick = page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]");
         this.delete = page.locator("//a[normalize-space()='Delete']");
-        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, Delete it']")
+        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']")
         this.shoponbioDeleteMsg = page.locator("//div[contains(text(),'Shopon deleted successfully.')]")
 
 }

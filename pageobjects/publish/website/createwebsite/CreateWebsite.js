@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 class CreateWebsite {
     constructor(page) {
         this.page = page;
-        this.addChannel = page.locator('.my-3.btn.btn-primary.btn-md');
+        this.addChannel = page.locator("//button[@aria-label='Add Channel']");
         this.publishbtn = page.locator('#web_save_btn');
         this.emptyChannelNameErrorMsg = page.locator('.invalid-feedback');
         this.enterChannelName = page.locator('#g_name');

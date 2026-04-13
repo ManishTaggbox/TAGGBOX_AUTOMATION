@@ -9,14 +9,12 @@ console.log(`🔧 Environment from .env: ${env}`);
 
 const loginPayload = {
   live: {
-    // emailId: 'manish.s+52@taggbox.com',
-    // password: 'Taggbox@123',
-    emailId: 'shristy+02@taggbox.com',
-    password: 'Test@123',
-    loginType: 'web',
+       emailId: 'manish.s+52@taggbox.com',
+       password: 'Taggbox@123',
+       loginType: 'web',
   },
   test: {
-    emailId: 'Shristy+52@taggbox.com',
+    emailId: 'manish.s+52@taggbox.com',
     password: 'Taggbox@123',
     loginType: 'web',
   }

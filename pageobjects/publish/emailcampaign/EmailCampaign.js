@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 class EmailCampaign {
     constructor(page) {
         this.page = page;
-        this.addChannel = page.locator('.my-3.btn.btn-primary.btn-md');
+        this.addChannel = page.locator("//button[@aria-label='Add Channel']");
         this.selectPublish = page.locator("(//button[@id='rule-action'])[1]");
         this.selectEmailCampaign = page.locator("//span[normalize-space()='Email Campaign']");
         this.publishbtn = page.locator('#web_save_btn')
@@ -17,7 +17,7 @@ class EmailCampaign {
         this.layout = page.locator("//p[normalize-space()='2X3 Grid']");
         this.saveAndPublish = page.locator("//button[@id='mail_save_btn']");
         this.fillGridError = page.locator('#mail_select_e');
-        this.cards = page.locator("//div[@class='position-relative mb-1 cursor-pointer mail_media_'] ");
+        this.cards = page.locator("//div[@class='bg-gray-200 overflow-hidden position-relative']");
         this.saveAndPublishMsg = page.locator("//div[contains(text(),'Email campaign updated successfully.')]");
 
         //Email 
@@ -26,16 +26,16 @@ class EmailCampaign {
         this.validEmail = page.locator("//div[@class='invalid-feedback d-block']");
         this.enterEmail = page.locator("//input[@placeholder='example@example.com']");
         this.shareCode = page.locator("//button[normalize-space()='Share Code']");
-        this.emailSentMsg = page.locator("//div[contains(text(),'Code successfully shared.')]");
+        this.emailSentMsg = page.locator("//div[contains(text(),'Code Successfully shared.')]");
 
         //Preview 
         this.previewbtn = page.locator("//a[@id='left-tabs-example-tab-preview']");
         this.padding = page.locator("//span[contains(@class, 'media_col')]");
 
         //delete
-        this.editClick = page.locator("//i[@class='fa-regular fa-ellipsis-vertical me-0']");
+        this.editClick = page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]");
         this.delete = page.locator("//a[normalize-space()='Delete']");
-        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, Delete it']")
+        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']")
         this.emailCampaignDeleteMsg = page.locator("//div[contains(text(),'Email campaign deleted successfully.')]");
     }
 
@@ -172,7 +172,7 @@ class EmailCampaign {
         });
 
         await test.step("Step 4: Enter second email and click Add", async () => {
-            await this.enterEmail.fill("manish.s+1@taggbox.com");
+            await this.enterEmail.fill("shubham@taggbox.com");
             await this.add.click();
         });
 
@@ -181,7 +181,7 @@ class EmailCampaign {
             await this.shareCode.click();
 
             await this.emailSentMsg.waitFor({ state: 'visible', timeout: 15000 });
-            await expect.soft(this.emailSentMsg).toHaveText("Code successfully shared.");
+            await expect.soft(this.emailSentMsg).toHaveText("Code Successfully shared.");
         });
     }
 

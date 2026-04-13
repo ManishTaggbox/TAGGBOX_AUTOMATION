@@ -5,9 +5,9 @@ class DeleteWebsite {
         this.page = page;
      
         //delete
-        this.editClick = page.locator("//i[@class='fa-regular fa-ellipsis-vertical me-0']");
+        this.editClick = page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]");
         this.delete = page.locator("//a[normalize-space()='Delete']");
-        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, Delete it']")
+        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']")
         this.websiteDeleteMsg = page.locator("//div[contains(text(),'Website deleted successfully.')]")
 
  }

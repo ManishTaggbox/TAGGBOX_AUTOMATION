@@ -1,12 +1,6 @@
 {
-<<<<<<< HEAD
-  "status": "passed",
-  "failedTests": []
-=======
-  "status": "failed",
+  "status": "interrupted",
   "failedTests": [
-    "8767c4ea303bf575d377-f2bf4dba46e96b10164b"
-    "5d12de07132fb0e7abc2-168894cde3da774e4e95"
+    "ce97b1b548e15e2d4935-393adc5e1332ff8ecdc0"
   ]
->>>>>>> 5ce7dd68e25a2ad96d7c51710cb9221585f048ad
 }

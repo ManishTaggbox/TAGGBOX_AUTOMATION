@@ -13,7 +13,7 @@ class PrivateNetworkPost
         this.closeNetwork = page.getByText('Choose the required network');
         this.addAction = page.locator('#rule-action');
         this.private = page.locator("//span[normalize-space()='Private']");
-        this.createRule = page.locator("//button[normalize-space()='Create rule']");
+        this.createRule = page.locator("div[class='block-center d-flex align-items-center justify-content-between w-100'] button[type='button']");
         this.ruleCreatedMsg = page.locator("//div[contains(text(),'AutoPilot rule has been added successfully. Posts will be evaluated accordingly.')]");
 
         //VerifyAutoPilot Locator 

@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 class GenerateCode {
   constructor(page) {
     this.page = page;
-    this.card = page.locator("//div[@class='flex-column f-center px-3 py-0 card-body']");
+    this.card = page.locator("(//div[@id='undefined_btn_'])[1]");
     this.generateCodebtn = page.locator('#discardSetting');
     this.embedCode = page.locator("//code[@id='embed_code_']");
     this.resultString = '';
