@@ -9,7 +9,8 @@ class AddGallery
     {
         // Add Gallery
         this.page = page;
-        this.contentBtn  = page.locator('//button[text()="Collect Content"]');
+        // this.contentBtn  = page.locator('//button[text()="Collect Content"]');
+        this.contentBtn  = page.locator('//button[text()="Create Gallery"]');
         this.addGalleryBtn = page.locator('//button[text()="Add Gallery"]');
         this.saveBtn = page.locator('#con_save_btn');
         this.validationMsg = page.locator('//span[@class="invalid-feedback"]');
@@ -80,6 +81,10 @@ class AddGallery
             await this.homeMenu.click();
             
             console.log("Clicked to 'Home' menu option");
+
+            await this.page.reload();
+
+            console.log("Page reloaded");
         });
 
         await test.step("Step 8: Assert created gallery displayed in gallery section", async () => 
@@ -124,6 +129,7 @@ class AddGallery
             await this.page.waitForTimeout(5000);
             
             console.log("Clicked to confirmed delete");
+
         });
 
         await test.step("Step 5: Click to 'Home' menu", async () => 
@@ -132,6 +138,10 @@ class AddGallery
             await this.homeMenu.click();
             
             console.log("Clicked to 'Home' menu option");
+
+            await this.page.reload();
+
+            console.log("Page reloaded");
         });
 
         await test.step("Step 6: Assert 'Collect Content' is displayed when no gallery is present", async () => 
