@@ -14,7 +14,7 @@ class Search
         this.searchBox = page.locator('//input[@placeholder="Search"]');
         this.searchCross = page.locator('//button[@aria-label="search"]');
         this.crossIcon = page.locator('.fa-xmark');
-        this.dropdownItem = page.locator('//a[text()="Tag A"]');
+        this.dropdownItem = page.locator("(//a[normalize-space()='TagA'])[1]");
     }
 
     async Search() 
