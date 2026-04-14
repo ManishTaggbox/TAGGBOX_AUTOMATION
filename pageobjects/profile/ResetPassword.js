@@ -29,16 +29,16 @@ class ResetPassword {
             await expect.soft(this.validationMsg).toBeVisible();
         });
 
-        await test.step("Step 4: Fill password field with 'Test@123'", async () => {
-            await this.password.fill('Test@123');
+        await test.step("Step 4: Fill password field with 'Taggbox@123'", async () => {
+            await this.password.fill('Taggbox@123');
         });
 
         await test.step("Step 5: Verify password strength indicator shows 'Strong'", async () => {
             await expect.soft(this.passwordStrength).toBeVisible();
         });
 
-        await test.step("Step 6: Fill confirm password field with 'Test@Taggbox'", async () => {
-            await this.confirmPassword.fill('Test@Taggbox');
+        await test.step("Step 6: Fill confirm password field with 'Taggbox@123'", async () => {
+            await this.confirmPassword.fill('Taggbx@123');
         });
 
         await test.step("Step 7: Verify password mismatch validation message is visible", async () => {
@@ -49,8 +49,8 @@ class ResetPassword {
             await this.confirmPassword.clear();
         });
 
-        await test.step("Step 9: Fill confirm password field with matching password 'Test@123'", async () => {
-            await this.confirmPassword.fill('Test@123');
+        await test.step("Step 9: Fill confirm password field with matching password 'Taggbox@123'", async () => {
+            await this.confirmPassword.fill('Taggbox@123');
         });
 
         await test.step("Step 10: Click on Update Password button to submit", async () => {
