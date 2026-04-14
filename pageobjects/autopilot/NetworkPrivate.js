@@ -20,7 +20,9 @@ class PrivateNetworkPost
 
         this.closeIcon = page.locator('.fa-regular.fa-xmark.cursor-pointer.fs-3');
         this.public = page.locator(".nav-link[data-rr-ui-event-key='public']");
-        this.privateMsg = page.locator("//h2[contains(text(),'🔒 Whoa, Everything’s Private!')]")
+        this.privateMsg = page.locator("//h2[contains(text(),'🔒 Whoa, Everything’s Private!')]");
+
+        this.acccpet = page.locator("//button[normalize-space()='Accept']");
     }
 
     async privateNetworkPost() 
@@ -62,6 +64,8 @@ class PrivateNetworkPost
 
         await test.step('Click Create Rule button', async () => 
         {
+            await this.acccpet.waitFor({ state: 'visible' });
+            await this.acccpet.click();
             await this.createRule.waitFor({ state: 'visible' });
             await this.createRule.click();
         });
@@ -73,6 +77,8 @@ class PrivateNetworkPost
                 { timeout: 5000 }
             );
         });
+
+       await this.verifyPostIsPrivate();
     }
 
     async verifyPostIsPrivate() 
@@ -87,6 +93,7 @@ class PrivateNetworkPost
         await test.step('Click on Public tab', async () => 
         {
             await this.public.waitFor({ state: 'visible' });
+            await this.page.waitForTimeout(4000);
             await this.public.click();
         });
 

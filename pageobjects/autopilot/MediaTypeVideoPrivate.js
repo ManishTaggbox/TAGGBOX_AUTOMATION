@@ -10,7 +10,7 @@ class MediaTypeVideoPrivate {
         this.mediaType = page.locator("//p[normalize-space()='Media type']");
         this.selectMediaType = page.locator("//p[normalize-space()='Select Media Type']");
         this.video = page.locator("//p[normalize-space()='Video']");
-        this.closeMediaType = page.getByText('Choose the type of media');
+        this.closeMediaType = page.getByText('Choose the required Media Type');
         this.addAction = page.locator('#rule-action');
         this.private = page.locator("//span[normalize-space()='Private']");
         this.createRule = page.locator("//button[normalize-space()='Create rule']");
@@ -24,7 +24,9 @@ class MediaTypeVideoPrivate {
         this.privateMsg = page.locator("//h2[contains(text(),'🔒 Whoa, Everything’s Private!')]");
 
         // Reusable locator
-        this.cardLocator = page.locator("//div[@class='border-0 card']");
+        this.cardLocator = page.locator("//div[@class='border-0 card']"); 
+
+        this.acccpet = page.locator("//button[normalize-space()='Accept']");
     }
 
     async mediaTypeVideoPrivate() {
@@ -48,12 +50,16 @@ class MediaTypeVideoPrivate {
         });
 
         await test.step('Click "Create Rule" and verify success message', async () => {
+            await this.acccpet.waitFor({ state: 'visible' });
+            await this.acccpet.click();
             await this.createRule.click();
             await expect.soft(this.ruleCreatedMsg).toHaveText(
                 'AutoPilot rule has been added successfully. Posts will be evaluated accordingly.',
                 { timeout: 5000 }
             );
         });
+
+        await this.verifyMediaPostIsPrivate();
     }
 
     async verifyMediaPostIsPrivate() {

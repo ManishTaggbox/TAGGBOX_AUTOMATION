@@ -40,8 +40,8 @@ const config = {
         : ['--start-maximized'],
     },
     viewport: null,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    screenshot: 'on',
+    video: 'on',
   },
 };
 

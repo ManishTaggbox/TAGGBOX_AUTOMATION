@@ -8,6 +8,7 @@ import AssignTagNetworkPost from '../../pageobjects/autopilot/AssignTagNetworkPo
 import MediaTypeVideoPrivate from '../../pageobjects/autopilot/MediaTypeVideoPrivate.js';
 import MediaTypeVideoPublic from '../../pageobjects/autopilot/MediaTypeVideoPublic.js';
 import DeleteAutopilotRule from '../../pageobjects/autopilot/DeleteAutopilotRule.js';
+import InstagramHandle from '../../pageobjects/autopilot/InstagramHandle.js';
 
 // Reusable function to run feed test
 const runAutoPilotTest = ({ tag, PageObject, method }) => {
@@ -41,20 +42,12 @@ const runAutoPilotTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const autopilot = [
+    { tag: '@InstagramHandle created', PageObject: InstagramHandle, method: 'instagramHandle' },
     { tag: '@Network-Private Rule', PageObject: PrivateNetworkPost, method: 'privateNetworkPost' },
     { tag: '@PublicNetworkPost created', PageObject: PublicNetworkPost, method: 'publicNetworkPost' },
     { tag: '@AssignTagNetworkPost created', PageObject: AssignTagNetworkPost, method: 'assignTagNetworkPost' },
-
-
-
-
-    //{ tag: '@VerifyPostIsPrivate created', PageObject: PrivateNetworkPost, method: 'verifyPostIsPrivate' },
-    { tag: '@VerifyPostIsPublic created', PageObject: PublicNetworkPost, method: 'verifyPostIsPublic' },
-    { tag: '@VerifyAssignTag created', PageObject: AssignTagNetworkPost, method: 'verifyAssignTag' },
     { tag: '@MediaTypeVideoPrivate created', PageObject: MediaTypeVideoPrivate, method: 'mediaTypeVideoPrivate' },
-    { tag: '@VerifyMediaPostIsPrivate created', PageObject: MediaTypeVideoPrivate, method: 'verifyMediaPostIsPrivate' },
     { tag: '@MediaTypeVideoPublic created', PageObject: MediaTypeVideoPublic, method: 'mediaTypeVideoPublic' },
-    { tag: '@VerifyMediaPostIsPublic created', PageObject: MediaTypeVideoPublic, method: 'verifyMediaPostIsPublic' },
     { tag: '@DeleteAutopilotRule created', PageObject: DeleteAutopilotRule, method: 'deleteAutopilotRule' },
 ];
 

@@ -16,7 +16,9 @@ class MediaTypeVideoPublic {
 
         this.closeIcon = page.locator('.fa-regular.fa-xmark.cursor-pointer.fs-3');
         this.private = page.locator(".nav-link[data-rr-ui-event-key='private']");
-        this.privateMsg = page.locator("//h2[normalize-space()='No Posts Yet!']")
+        this.privateMsg = page.locator("//h2[normalize-space()='No Posts Yet!']") 
+
+         this.acccpet = page.locator("//button[normalize-space()='Accept']");
 
     }
 
@@ -41,6 +43,8 @@ class MediaTypeVideoPublic {
         });
 
         await test.step('Click Update Rule button', async () => {
+            await this.acccpet.waitFor({ state: 'visible' });
+            await this.acccpet.click();
             await this.updatePlan.waitFor({ state: 'visible' });
             await this.updatePlan.click();
         });
@@ -52,6 +56,8 @@ class MediaTypeVideoPublic {
                 { timeout: 5000 }
             );
         });
+
+            await this.verifyMediaPostIsPublic();
     }
 
     async verifyMediaPostIsPublic() {

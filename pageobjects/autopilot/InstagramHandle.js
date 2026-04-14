@@ -10,7 +10,7 @@ class InstagramHandle {
 
         //VerifyAutoPilot Locator 
 
-        this.addFedd = page.locator("//span[normalize-space()='Add Feed']");
+        this.addFedd = page.locator("//li[@id='add_feed']");
         this.instagram = page.locator("//span[normalize-space()='Instagram']")
     }
 
