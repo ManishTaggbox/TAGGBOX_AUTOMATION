@@ -7,7 +7,7 @@ class RequestNetwork {
         this.page = page;
 
         // Locators
-        this.requestNetworkbtn = page.locator("button[class='custom-req-network border-0 px-2 btn btn-secondary']");
+        this.requestNetworkbtn = page.locator("button[class='custom-req-network btn btn-secondary']");
         this.description = page.locator('#r_f_desc');
         this.uploadFilebtn1 = page.locator("#sugg_doc");
         this.fileInput = page.locator('input[type="file"]').first();

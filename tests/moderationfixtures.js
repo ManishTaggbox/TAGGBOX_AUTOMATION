@@ -1,5 +1,6 @@
 import { test as base, request } from '@playwright/test';
 import { APiUtils } from '../utils/APiUtils.js';
+import { TestUtils } from '../utils/TestUtils.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,23 +10,24 @@ console.log(`🔧 Environment from .env: ${env}`);
 
 const loginPayload = {
   live: {
-    // emailId: 'manish.s+52@taggbox.com',
-    // password: 'Taggbox@123',
-    emailId: 'shristy+02@taggbox.com',
-    password: 'Test@123',
+    emailId: 'manish.s+52@taggbox.com',
+    password: 'Taggbox@123',
     loginType: 'web',
   },
   test: {
-    emailId: 'Shristy+52@taggbox.com',
+    emailId: 'manish.s+52@taggbox.com',
     password: 'Taggbox@123',
     loginType: 'web',
   }
 };
 
-// THIS IS THE KEY FIX: Select the specific environment payload
-const currentLoginPayload = loginPayload[env];
-console.log(`🔧 Using login payload for ${env}:`, JSON.stringify(currentLoginPayload, null, 2));
-
+// ✅ Select the correct utility class based on environment
+const getUtils = (apiContext) => {
+  if (env === 'test') {
+    return new TestUtils(apiContext, loginPayload[env]);
+  }
+  return new APiUtils(apiContext, loginPayload[env]);
+};
 
 export const test = base.extend({
   apiContext: [async ({ }, use) => {
@@ -34,16 +36,16 @@ export const test = base.extend({
   }, { scope: 'worker' }],
 
   token: [async ({ apiContext }, use) => {
-    const apiUtils = new APiUtils(apiContext, loginPayload[env]);
-    const token = await apiUtils.getToken();
-    console.log("✅ Token received:", token);
+    const utils = getUtils(apiContext); // ✅ picks correct class
+    const token = await utils.getToken();
+    console.log(`✅ [${env.toUpperCase()}] Token received:`, token);
     await use(token);
   }, { scope: 'worker' }],
 
   wallId: [async ({ apiContext, token }, use) => {
-    const apiUtils = new APiUtils(apiContext, loginPayload[env]);
-    const wallId = await apiUtils.getWallId(token);
-    console.log("✅ Wall ID received:", wallId);
+    const utils = getUtils(apiContext); // ✅ picks correct class
+    const wallId = await utils.getWallId(token);
+    console.log(`✅ [${env.toUpperCase()}] Wall ID received:`, wallId);
     await use(wallId);
   }, { scope: 'worker' }],
 });

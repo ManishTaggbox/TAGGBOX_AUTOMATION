@@ -13,14 +13,16 @@ class PrivateNetworkPost
         this.closeNetwork = page.getByText('Choose the required network');
         this.addAction = page.locator('#rule-action');
         this.private = page.locator("//span[normalize-space()='Private']");
-        this.createRule = page.locator("//button[normalize-space()='Create rule']");
+        this.createRule = page.locator("div[class='block-center d-flex align-items-center justify-content-between w-100'] button[type='button']");
         this.ruleCreatedMsg = page.locator("//div[contains(text(),'AutoPilot rule has been added successfully. Posts will be evaluated accordingly.')]");
 
         //VerifyAutoPilot Locator 
 
         this.closeIcon = page.locator('.fa-regular.fa-xmark.cursor-pointer.fs-3');
         this.public = page.locator(".nav-link[data-rr-ui-event-key='public']");
-        this.privateMsg = page.locator("//h2[contains(text(),'🔒 Whoa, Everything’s Private!')]")
+        this.privateMsg = page.locator("//h2[contains(text(),'🔒 Whoa, Everything’s Private!')]");
+
+        this.acccpet = page.locator("//button[normalize-space()='Accept']");
     }
 
     async privateNetworkPost() 
@@ -62,6 +64,8 @@ class PrivateNetworkPost
 
         await test.step('Click Create Rule button', async () => 
         {
+            await this.acccpet.waitFor({ state: 'visible' });
+            await this.acccpet.click();
             await this.createRule.waitFor({ state: 'visible' });
             await this.createRule.click();
         });
@@ -73,6 +77,8 @@ class PrivateNetworkPost
                 { timeout: 5000 }
             );
         });
+
+       await this.verifyPostIsPrivate();
     }
 
     async verifyPostIsPrivate() 
@@ -87,6 +93,7 @@ class PrivateNetworkPost
         await test.step('Click on Public tab', async () => 
         {
             await this.public.waitFor({ state: 'visible' });
+            await this.page.waitForTimeout(4000);
             await this.public.click();
         });
 

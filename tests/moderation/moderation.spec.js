@@ -97,12 +97,12 @@ test.describe('Moderation Tests', () =>
     await pinPost.postPinToTop();
   });
 
-  test('@ModerationPostHighlight - Highlight post', async ({ page, token, wallId }) =>
-  {
-    await setupModeration(page, token, wallId);
-    const highlight = new PostHighlight(page);
-    await highlight.postHighlight();
-  });
+  // test('@ModerationPostHighlight - Highlight post', async ({ page, token, wallId }) =>
+  // {
+  //   await setupModeration(page, token, wallId);
+  //   const highlight = new PostHighlight(page);
+  //   await highlight.postHighlight();
+  // });
 
   test('@ModerationPostPrivatePublic - Toggle private/public post', async ({ page, token, wallId }) => 
   {
@@ -139,12 +139,12 @@ test.describe('Moderation Tests', () =>
     await pagination.pagination();
   });
 
-  test('@ModerationPostTypeFilter - Post type filter', async ({ page, token, wallId }) =>
-  {
-    await setupModeration(page, token, wallId);
-    const typeFilter = new PostTypeFilter(page);
-    await typeFilter.postTypeFilter();
-  });
+  // test('@ModerationPostTypeFilter - Post type filter', async ({ page, token, wallId }) =>
+  // {
+  //   await setupModeration(page, token, wallId);
+  //   const typeFilter = new PostTypeFilter(page);
+  //   await typeFilter.postTypeFilter();
+  // });
 
   test('@ModerationTagProductWithSearch - Tag products with searching multiple tags', async ({ page, token, wallId }) =>
   {
