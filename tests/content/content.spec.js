@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures.js';
+import {test51 as test, expect } from '../taggboxfixture.js';
 import AddNewGallery from '../../pageobjects/content/AddUpdateDeleteGallery.js';
 
 // Constants

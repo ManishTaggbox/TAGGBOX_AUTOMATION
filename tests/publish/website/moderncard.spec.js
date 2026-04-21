@@ -1,4 +1,4 @@
-import { test, expect } from '../../publishfixtures.js';
+import { test54 as test, expect } from '../../taggboxfixture.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
 import ModernCard from '../../../pageobjects/publish/website/theme/moderncard/ModernCard.js';

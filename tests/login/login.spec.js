@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures.js';
+import {test51 as test, expect } from '../taggboxfixture.js';
 import { FEED_PATH } from '../../utils/constants.js';
 import NullFields from '../../pageobjects/login/NullField.js';
 import InvalidCredentials from '../../pageobjects/login/InvalidCredentials.js';

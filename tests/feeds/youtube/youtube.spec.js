@@ -1,4 +1,4 @@
-import { test, expect } from '../../fixtures.js';
+import {test51 as test, expect } from '../../taggboxfixture.js';
 import { FEED_PATH } from '../../../utils/constants.js';
 
 import YoutubeChannelUrlPage from '../../../pageobjects/feeds/youtube/YoutubeChannelUrl.js';

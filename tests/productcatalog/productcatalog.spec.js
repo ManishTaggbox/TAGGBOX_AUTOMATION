@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures.js';
+import {test51 as test, expect } from '../taggboxfixture.js';
 import UploadCSVFile from '../../pageobjects/productcatalog/UploadCSVFile.js';
 import SearchProduct from '../../pageobjects/productcatalog/SearchProduct.js';
 import EditProduct from '../../pageobjects/productcatalog/EditProduct.js';
