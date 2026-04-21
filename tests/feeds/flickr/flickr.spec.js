@@ -1,4 +1,4 @@
-import { test, expect } from '../../fixtures.js';
+import {test51 as test, expect } from '../../taggboxfixture.js';
 import { FEED_PATH } from '../../../utils/constants.js';
 
 import FlickrHashtagPage from '../../../pageobjects/feeds/flickr/FlickrHashtag.js';

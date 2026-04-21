@@ -1,4 +1,4 @@
-import { test, expect } from '../moderationfixtures.js';
+import {test52 as test, expect } from '../taggboxfixture.js';
 import { FEED_PATH } from '../../utils/constants.js';
 
 import EditPost from '../../pageobjects/moderation/EditPost.js';

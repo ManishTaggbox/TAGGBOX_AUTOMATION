@@ -1,4 +1,4 @@
-import { test, expect } from '../../publishfixtures.js';
+import { test54 as test, expect } from '../../taggboxfixture.js';
 
 import { FEED_PATH } from '../../../utils/constants.js';
 import WidgetTheme from '../../../pageobjects/publish/website/theme/widgettheme/WidgetTheme.js';
