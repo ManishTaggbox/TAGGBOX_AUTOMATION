@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures.js';
+import { test51 as test, expect } from '../taggboxfixture.js';
 import VerifyExistingDetails from '../../pageobjects/profile/VerifyExistingDetails.js';
 import EditDetails from '../../pageobjects/profile/EditDetails.js';
 import ResetPassword from '../../pageobjects/profile/ResetPassword.js';
