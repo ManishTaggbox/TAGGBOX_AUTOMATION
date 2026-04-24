@@ -1,6 +1,7 @@
 const http = require('http');
 const { exec } = require('child_process');
 const path = require('path');
+const fs = require('fs');
 
 const PORT = 3333;
 
@@ -15,12 +16,29 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Serve the HTML UI at /
+  if (req.method === 'GET' && (req.url === '/' || req.url === '/index.html')) {
+    const htmlPath = path.join(__dirname, 'test-ui.html');
+    fs.readFile(htmlPath, (err, data) => {
+      if (err) {
+        res.writeHead(404);
+        res.end('test-ui.html not found. Make sure it is in the same folder as run-tests.js');
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(data);
+    });
+    return;
+  }
+
+  // Health check
   if (req.method === 'GET' && req.url === '/ping') {
     res.writeHead(200);
     res.end('pong');
     return;
   }
 
+  // Run a test
   if (req.method === 'POST' && req.url === '/run') {
     let body = '';
     req.on('data', chunk => (body += chunk));
@@ -40,10 +58,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      // No SPEC_FILE - let playwright.config.js handle testDir
-      // Just grep by test name (no escaping needed, @ is not a regex special char)
       const cmd = `npx playwright test --grep "${tag}" --headed --reporter=list`;
-
       console.log(`\n Running: ${cmd}\n`);
 
       res.writeHead(200, {
@@ -53,7 +68,6 @@ const server = http.createServer((req, res) => {
       });
 
       const proc = exec(cmd, { cwd: __dirname });
-
       proc.stdout.on('data', d => { process.stdout.write(d); res.write(d); });
       proc.stderr.on('data', d => { process.stderr.write(d); res.write(d); });
       proc.on('close', code => {
@@ -68,7 +82,8 @@ const server = http.createServer((req, res) => {
   res.end('not found');
 });
 
-server.listen(PORT, () => {
-  console.log(`\n Playwright Test Runner ready at http://localhost:${PORT}`);
-  console.log(`   Open test-ui.html in your browser and click any test to run it.\n`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n Playwright Test Runner ready!`);
+  console.log(` Local:  http://localhost:${PORT}`);
+  console.log(` Share your ngrok URL with teammates to give them access.\n`);
 });
