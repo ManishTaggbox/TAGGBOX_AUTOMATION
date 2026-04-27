@@ -113,7 +113,7 @@ class ModernCardWebEmbed {
 
       await newPage.waitForLoadState();
       console.log("New tab opened with URL:", newPage.url());
-      expect.soft(newPage.url()).toBe('https://www.instagram.com/reel/C58VV9nofbx/');
+      expect.soft(newPage.url()).toBe('https://www.instagram.com/raisr_sanchi/');
       await newPage.close();
     });
 
