@@ -1,13 +1,13 @@
-import { test, expect } from '../shoppablefixtures.js';
+import { test56 as test, expect } from '../taggboxfixture.js';
 import { FEED_PATH } from '../../utils/constants.js';
 
-import ShoppableDisable from '../../pageobjects/apps&more/ShoppableDisable.js';
-import ShoppableEnable from '../../pageobjects/apps&more/ShoppableEnable.js';
+import ShoppableDisable from '../../pageobjects/appsmore/ShoppableDisable.js';
+import ShoppableEnable from '../../pageobjects/appsmore/ShoppableEnable.js';
 
-const APP_URL = 'https://app.taggbox.com/home';
+const DASHBOARD_URL = FEED_PATH.DASHBOARD_URL;
 
 // Helper function to setup authentication and navigate
-async function setupPage(page, token, url = APP_URL)
+async function setupPage(page, token, url = DASHBOARD_URL)
 {
     await page.addInitScript(token => localStorage.setItem('token', token), token);
     await page.goto(url);
