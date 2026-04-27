@@ -1,4 +1,4 @@
-import { test, expect } from '../dashboardfixtures.js';
+import { test55 as test, expect } from '../taggboxfixture.js';
 import { FEED_PATH } from '../../utils/constants.js';
 
 import Gallery from '../../pageobjects/dashboard/Gallery.js';
@@ -9,7 +9,7 @@ import RecentPosts from '../../pageobjects/dashboard/RecentPosts.js';
 import MostActiveCreators from '../../pageobjects/dashboard/MostActiveCreators.js';
 import Reputation from '../../pageobjects/dashboard/Reputation.js';
 
-const DASHBOARD_URL = 'https://app.taggbox.com/home';
+const DASHBOARD_URL = FEED_PATH.DASHBOARD_URL;
 
 // Helper function to setup authentication and navigate
 async function setupPage(page, token, url = DASHBOARD_URL)

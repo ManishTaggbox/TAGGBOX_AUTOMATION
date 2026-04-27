@@ -26,6 +26,10 @@ const accounts = {
     live: { emailId: 'manish.s+54@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
     test: { emailId: 'manish.s+54@taggbox.com',  password: 'Taggbox@123', loginType: 'web' },
   },
+  55: {
+    live: { emailId: 'manish.s+55@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
+    test: { emailId: 'manish.s+55@taggbox.com',  password: 'Taggbox@123', loginType: 'web' },
+  },
 };
 
 // ✅ Factory: picks correct utility class based on env
@@ -64,5 +68,6 @@ export const test51 = base.extend(buildFixtures(51));
 export const test52 = base.extend(buildFixtures(52));
 export const test53 = base.extend(buildFixtures(53));
 export const test54 = base.extend(buildFixtures(54));
+export const test55 = base.extend(buildFixtures(55));
 
 export const expect = base.expect;
