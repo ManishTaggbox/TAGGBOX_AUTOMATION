@@ -2,9 +2,10 @@ import { test51 as test, expect } from '../taggboxfixture.js';
 import VerifyExistingDetails from '../../pageobjects/profile/VerifyExistingDetails.js';
 import EditDetails from '../../pageobjects/profile/EditDetails.js';
 import ResetPassword from '../../pageobjects/profile/ResetPassword.js';
+import { FEED_PATH } from '../../utils/constants.js';       
 
 // Constants
-const PROFILE_URL = 'https://app.taggbox.com/profile';
+const PROFILE_URL = FEED_PATH.PROFILE_URL;
 
 // Helper function for common setup
 async function setupProfilePage(page, token) {

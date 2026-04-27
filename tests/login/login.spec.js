@@ -7,7 +7,8 @@ import EmailCaseSensitivity from '../../pageobjects/login/EmailCaseSensitivity.j
 import LoginPageLinks from '../../pageobjects/login/LoginPageLinks.js';
 import PasswordMasking from '../../pageobjects/login/PasswordMasking.js';
 
-const LOGIN_URL = 'https://app.taggbox.com/accounts/login';
+
+const LOGIN_URL = FEED_PATH.LOGIN_URL;
 
 async function setupPage(page, token, url = LOGIN_URL) 
 {

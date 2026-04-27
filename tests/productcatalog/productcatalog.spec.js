@@ -4,8 +4,9 @@ import SearchProduct from '../../pageobjects/productcatalog/SearchProduct.js';
 import EditProduct from '../../pageobjects/productcatalog/EditProduct.js';
 import DeleteProduct from '../../pageobjects/productcatalog/DeleteProduct.js';
 import AddProduct from '../../pageobjects/productcatalog/AddProduct.js';
+import { FEED_PATH } from '../../utils/constants.js';
 
-const PRODUCT_CATALOG_URL = 'https://app.taggbox.com/content/products';
+const PRODUCT_CATALOG_URL = FEED_PATH.PRODUCT_CATALOG_URL;
 
 // Helper function to setup authentication and navigate
 async function setupPage(page, token, url = PRODUCT_CATALOG_URL) 

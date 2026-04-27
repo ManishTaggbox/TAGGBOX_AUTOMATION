@@ -39,7 +39,7 @@ class InvalidCredentials
         await test.step("Step 5: Assert the validation msg", async () => 
         {
             await this.validationMsg.waitFor({state: 'visible', timeout: 10000});
-            await expect.soft(this.validationMsg).toHaveText('Password does not match !');
+            await expect.soft(this.validationMsg).toHaveText('Email Id not found !');
             console.log('✅ Validation message for invalid Email and Password is:', this.validationMsg.innerText());
         });
     }

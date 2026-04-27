@@ -1,8 +1,9 @@
 import { test51 as test, expect } from '../taggboxfixture.js';
 import Price from '../../pageobjects/price/Price.js';
+import { FEED_PATH } from '../../utils/constants.js';   
 
 // Constants
-const PRICE_URL = 'https://app.taggbox.com/transactions';
+const PRICE_URL = FEED_PATH.PRICE_URL;
 
 // Helper function for common setup
 async function setupPricePage(page, token) {
