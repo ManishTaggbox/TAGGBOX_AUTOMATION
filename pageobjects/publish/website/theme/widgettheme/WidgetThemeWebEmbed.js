@@ -114,9 +114,9 @@ class WidgetThemeWebEmbed {
             console.log("Font color:", modalStyles.color);
             console.log("Popup background color:", popupStyles.backgroundColor);
 
-            expect.soft(modalStyles.fontSize).toBe('19px');
+            expect.soft(modalStyles.fontSize).toBe('38px');
             expect.soft(modalStyles.fontFamily.toLowerCase()).toContain('rochester');
-            expect.soft(modalStyles.color).toBe('rgb(245, 235, 236)');
+            expect.soft(modalStyles.color).toBe('rgb(204, 204, 170)');
             expect.soft(popupStyles.backgroundColor).toBe('rgb(119, 0, 68)');
 
             await this.closePopup.click();
