@@ -20,7 +20,7 @@ const runReelsTest = ({ tag, PageObject, method }) => {
         });
 
         await test.step(`Run ${tag} feed creation flow`, async () => {
-            const feedPage = new PageObject(page);z
+            const feedPage = new PageObject(page);
              await feedPage[method]();  
         });
 

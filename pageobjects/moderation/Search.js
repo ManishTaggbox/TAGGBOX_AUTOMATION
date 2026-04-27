@@ -14,7 +14,7 @@ class Search
         this.searchBox = page.locator('//input[@placeholder="Search"]');
         this.searchCross = page.locator('//button[@aria-label="search"]');
         this.crossIcon = page.locator('.fa-xmark');
-        this.dropdownItem = page.locator("(//a[normalize-space()='TagA'])[1]");
+        this.dropdownItem = page.locator("a.dropdown-item:visible", { hasText: 'TagA' });
     }
 
     async Search() 
@@ -52,11 +52,21 @@ class Search
             await this.filterIcon.click();
         });
 
-        await test.step("Step 6: Enter the search input", async () => 
+       await test.step("Step 6: Enter the search input in filter overlay", async () => 
         {
+            await this.searchBox.waitFor({ state: 'visible', timeout: 5000 });
             await this.searchBox.fill('TagA');
-            await this.dropdownItem.waitFor({ state: 'visible', timeout: 5000 });
-            await this.dropdownItem.click();
+
+            await this.page.waitForTimeout(1000);
+
+            await this.page.waitForFunction(() => {
+                const items = document.querySelectorAll('a.dropdown-item');
+                return Array.from(items).some(el => 
+                    el.textContent.trim() === 'TagA' && el.offsetParent !== null
+                );
+            }, { timeout: 10000 });
+
+            await this.dropdownItem.first().click();
         });
 
         await test.step("Step 7: Click to close filter overlay", async () => 

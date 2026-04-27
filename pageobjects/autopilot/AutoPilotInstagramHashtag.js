@@ -1,11 +1,10 @@
 const { test, expect } = require('@playwright/test');
 import { INSTAGRAM } from '../utils/constant.js';
 
-class InstagramHandle {
+class AutoPilotInstagramHashtag {
     constructor(page) {
         this.page = page;
-        this.handle = page.locator("//a[@data-name='handle']");
-        this.enterHandle = page.locator("//input[@id='handle-text']");
+        this.enterHashtag = page.locator('#hashtag-text');
         this.createFeedBtn = page.locator('#create_feed');
 
         //VerifyAutoPilot Locator 
@@ -14,20 +13,17 @@ class InstagramHandle {
         this.instagram = page.locator("//span[normalize-space()='Instagram']")
     }
 
-    async instagramHandle() {
-        await test.step('Add Feed Instagram Handle AutoPilot', async () => {
+    async autoPilotInstagramHashtag() {
+        await test.step('Add Feed Instagram Hashtag AutoPilot', async () => {
             await this.page.waitForTimeout(5000);
             await this.addFedd.waitFor({ state: 'visible' });
             await this.addFedd.click();
             await this.instagram.waitFor({ state: 'visible' });
             await this.instagram.click();
         });
-        await test.step('Step 1: Click On  Handle', async () => {
-            await this.handle.click({ force: true });
-        });
-
+      
         await test.step('Step 2: Fill handle input with "vantara"', async () => {
-            await this.enterHandle.fill(INSTAGRAM.INSTAGRAMHANDLE);
+            await this.enterHashtag.fill(INSTAGRAM.INSTAGRAMHASHTAG);
         });
 
         await test.step('Step 3: Wait 2 seconds for UI update', async () => {
@@ -48,4 +44,4 @@ class InstagramHandle {
     }
 }
 
-module.exports = InstagramHandle;
+module.exports = AutoPilotInstagramHashtag;

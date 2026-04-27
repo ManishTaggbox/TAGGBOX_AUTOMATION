@@ -31,5 +31,6 @@ export const FEED_PATH = {
   PRODUCT_CATALOG_URL: '/content/products',
   PROFILE_URL: '/profile',
   PRICE_URL: '/transactions',
-  LOGIN_URL: '/accounts/login'
+  LOGIN_URL: '/accounts/login',
+  DASHBOARD_URL: '/home',
 };

@@ -8,7 +8,7 @@ import AssignTagNetworkPost from '../../pageobjects/autopilot/AssignTagNetworkPo
 import MediaTypeVideoPrivate from '../../pageobjects/autopilot/MediaTypeVideoPrivate.js';
 import MediaTypeVideoPublic from '../../pageobjects/autopilot/MediaTypeVideoPublic.js';
 import DeleteAutopilotRule from '../../pageobjects/autopilot/DeleteAutopilotRule.js';
-import InstagramHandle from '../../pageobjects/autopilot/InstagramHandle.js';
+import AutopilotInstagramHashtag from '../../pageobjects/autopilot/AutoPilotInstagramHashtag.js';
 
 // Reusable function to run feed test
 const runAutoPilotTest = ({ tag, PageObject, method }) => {
@@ -42,7 +42,7 @@ const runAutoPilotTest = ({ tag, PageObject, method }) => {
 
 // Feed types configuration
 const autopilot = [
-    { tag: '@InstagramHandle created', PageObject: InstagramHandle, method: 'instagramHandle' },
+    { tag: '@AutopilotInstagramHashtag created', PageObject: AutopilotInstagramHashtag, method: 'autoPilotInstagramHashtag'},
     { tag: '@Network-Private Rule', PageObject: PrivateNetworkPost, method: 'privateNetworkPost' },
     { tag: '@PublicNetworkPost created', PageObject: PublicNetworkPost, method: 'publicNetworkPost' },
     { tag: '@AssignTagNetworkPost created', PageObject: AssignTagNetworkPost, method: 'assignTagNetworkPost' },

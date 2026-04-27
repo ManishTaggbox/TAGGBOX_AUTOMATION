@@ -7,7 +7,7 @@ class ModernCard {
         this.modernCardBtn = page.locator("//p[normalize-space()='Modern Card']");
         this.customization = page.locator("//a[@data-rr-ui-event-key='customization']");
         this.cardToggle = page.locator("(//input[@id='inherit_'])[1]");
-        this.fontFamily = page.locator("//span[@class='sGFfonte-Inter']");
+        this.fontFamily = page.locator("//span[@class='sGFfonte-Open Sans']");
         this.selectRochester = page.locator("(//span[contains(@class,'sGFfonte-Rochester')][normalize-space()='Rochester'])[1]");
         this.fontColor = page.locator("//input[@id='font_color']");
         this.fontColorClose = page.locator("//label[@for='font_color']");
@@ -58,7 +58,7 @@ class ModernCard {
 
         await test.step("Click on 'Customization' tab", async () => {
             await this.waitForElementAndClick(this.customization);
-            await this.page.waitForTimeout(5000); // Allow UI to stabilize
+            await this.page.waitForTimeout(8000); // Allow UI to stabilize
         });
 
         await test.step("Toggle card style", async () => {
