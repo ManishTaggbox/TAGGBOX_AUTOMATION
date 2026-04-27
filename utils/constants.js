@@ -28,4 +28,8 @@ export const FEED_PATH = {
   MODERATION: (wallId) => `/content/moderation/${wallId}/`,
   AUTOPILOT: `/autopilot/`,
   PUBLISH: `/publish`,
+  PRODUCT_CATALOG_URL: '/content/products',
+  PROFILE_URL: '/profile',
+  PRICE_URL: '/transactions',
+  LOGIN_URL: '/accounts/login'
 };
