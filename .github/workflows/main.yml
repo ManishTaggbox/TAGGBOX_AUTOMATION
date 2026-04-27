@@ -42,7 +42,7 @@ jobs:
 
       # 6️⃣ Run Playwright tests
       - name: Run Playwright Tests
-        run: npx playwright test tests/feeds tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard tests/autopilot tests/appsmore 
+        run: npx playwright test tests/feeds tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard tests/autopilot tests/appsmore tests/price
         env:
           ENV: live                   # ✅ moved here, under env (not inside run)
         continue-on-error: true
