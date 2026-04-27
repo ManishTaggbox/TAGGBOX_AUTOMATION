@@ -78,6 +78,7 @@
   header h1 span {
     background: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -502,11 +503,11 @@ let stats = { pass: 0, fail: 0, running: 0 };
 function renderList() {
   const container = document.getElementById('test-list');
   const badgeMap = {
-    idle:    ['badge-idle', 'IDLE'],
-    running: ['badge-running', '● RUN'],
-    passed:  ['badge-passed', '✓ PASS'],
-    failed:  ['badge-failed', '✗ FAIL'],
-    skipped: ['badge-skipped', '⟳ SKIP'],
+    idle:    ['badge-idle', 'IDLE'],   
+    running: ['badge-running', '● RUN'],  
+    passed:  ['badge-passed', '✓ PASS'],    
+    failed:  ['badge-failed', '✗ FAIL'],    
+    skipped: ['badge-skipped', '⟳ SKIP'],    
   };
 
   // Group tests

@@ -9,7 +9,7 @@ console.log(`🔧 Playwright Config - Environment: ${env}`);
 
 const baseURLMap = {
   live: 'https://app.taggbox.com',
-  test: 'https://test.taggbox.com',
+  test: 'https://staging-app.taggbox.com/',
 };
 
 const baseURL = baseURLMap[env];
