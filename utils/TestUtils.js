@@ -7,13 +7,13 @@ class TestUtils {
     }
 
     async getToken() {
-        const loginResponse = await this.apiContext.post("https://staging.taggbox.com/api/v1/user/login", {
+        const loginResponse = await this.apiContext.post("https://staging-apis.taggbox.com/app/user/login", {
             data: this.loginPayLoad,
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Origin": "https://test.taggbox.com",
-                "Referer": "https://test.taggbox.com/",
+                "Origin": "https://staging-app.taggbox.com",
+                "Referer": "https://staging-app.taggbox.com/",
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
             },
         });
@@ -42,14 +42,14 @@ class TestUtils {
         }
 
         for (let attempt = 1; attempt <= retries; attempt++) {
-            const wallResponse = await this.apiContext.get('https://staging.taggbox.com/api/v1/dashboard/loadhome', {
+            const wallResponse = await this.apiContext.get('https://staging-apis.taggbox.com/app/dashboard/loadhome', {
                 headers: {
                     // FIX: Use backticks for template literal in Authorization header
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Origin": "https://test.taggbox.com",
-                    "Referer": "https://test.taggbox.com/",
+                    "Origin": "https://staging-app.taggbox.com",
+                    "Referer": "https://staging-app.taggbox.com/",
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                 },
             });
