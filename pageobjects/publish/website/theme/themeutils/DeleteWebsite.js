@@ -3,14 +3,13 @@ import { test, expect } from '@playwright/test';
 class DeleteWebsite {
     constructor(page) {
         this.page = page;
-     
         //delete
-        this.editClick = page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]");
-        this.delete = page.locator("//a[normalize-space()='Delete']");
         this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']")
         this.websiteDeleteMsg = page.locator("//div[contains(text(),'Website deleted successfully.')]")
-
  }
+
+    get editClick() { return this.page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]"); }
+    get delete() { return this.page.locator("//a[normalize-space()='Delete']"); }
 
    async deleteWebsite() {
         await test.step("Step 1: Click Edit on the Website", async () => {

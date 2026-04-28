@@ -5,9 +5,9 @@ import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 class GallerySliderWebEmbed {
     constructor(page) {
         this.page = page;
-        this.firstCard = page.locator("//div[@class='tb_cst_post_in tb_cst_media_post']").first();
-       
     }
+
+    get firstCard() { return this.page.locator("//div[@class='tb_cst_post_in tb_cst_media_post']").first(); }
 
     async gallerySliderWebEmbed() {
         await test.step('Generate embed code for Modern Card', async () => {

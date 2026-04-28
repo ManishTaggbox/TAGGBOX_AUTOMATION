@@ -5,17 +5,17 @@ import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 class SocialCardWebEmbed {
   constructor(page) {
     this.page = page;
-
-    // Core locators
-    this.firstCard = page.locator("//div[@class='tb_nc_post_wrap_in']").first();
-    this.instagramIcon = this.firstCard.locator("//div[@class='tb-instagram-default tb__icon tb_ico_default']");
-    this.authorName = this.firstCard.locator(".tb_nc_authorname");
-    this.authorHandle = this.firstCard.locator(".tb_nc_username");
-    this.heartIcon = this.firstCard.locator("//div[@class='tb_social_action_ico__ tb__icon tb-heart-outline']");
-    this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
-    this.modalPopup = page.locator(".tb_post_modal_modal_body");
-    this.closePopup = page.locator(".tb_post_modal_close_btn");
   }
+
+  // Core locators
+  get firstCard() { return this.page.locator("//div[@class='tb_nc_post_wrap_in']").first(); }
+  get instagramIcon() { return this.firstCard.locator("//div[@class='tb-instagram-default tb__icon tb_ico_default']"); }
+  get authorName() { return this.firstCard.locator(".tb_nc_authorname"); }
+  get authorHandle() { return this.firstCard.locator(".tb_nc_username"); }
+  get heartIcon() { return this.firstCard.locator("//div[@class='tb_social_action_ico__ tb__icon tb-heart-outline']"); }
+  get modalContent() { return this.page.locator(".tb_post_modal_content.tb-cTBfont-regular"); }
+  get modalPopup() { return this.page.locator(".tb_post_modal_modal_body"); }
+  get closePopup() { return this.page.locator(".tb_post_modal_close_btn"); }
 
   async getComputedStyles(element, properties) {
     return await element.evaluate((el, props) => {

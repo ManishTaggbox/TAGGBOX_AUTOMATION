@@ -5,31 +5,29 @@ import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 class CollageWebEmbed {
     constructor(page) {
         this.page = page;
-
-        // Core locators
-        this.firstCard = page.locator("//div[@class='tb_gt_post_in tb_gt_post_ani']").first();
-        this.shoppingIcon = this.firstCard.locator("//div[@class='tb_shop_ico tb__icon tb-bag']");
-        this.instagramIcon = this.firstCard.locator("//div[@class='tb_gt_social__ico tb__icon tb-instagram']");
-        this.authorName = page.locator("//a[normalize-space()='raisr_sanchi']");
-        this.authorHandle = page.locator("//div[@class='tb_post_modal_author_handlename tb-cTBfont-']");
-        this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
-        this.modalPopup = page.locator(".tb_post_modal_modal_body");
-        this.closePopup = page.locator(".tb_post_modal_close_btn");
-        this.nextArrow = page.locator("//div[@aria-label='Next slide']");
-        this.prevArrow = page.locator("//div[@aria-label='Go to last slide']");
     }
 
+    get firstCard() { return this.page.locator("//div[@class='tb_gt_post_in tb_gt_post_ani']").first(); }
+    get shoppingIcon() { return this.firstCard.locator("//div[@class='tb_shop_ico tb__icon tb-bag']"); }
+    get instagramIcon() { return this.firstCard.locator("//div[@class='tb_gt_social__ico tb__icon tb-instagram']"); }
+    get authorName() { return this.page.locator("//a[normalize-space()='raisr_sanchi']"); }
+    get authorHandle() { return this.page.locator("//div[@class='tb_post_modal_author_handlename tb-cTBfont-']"); }
+    get modalContent() { return this.page.locator(".tb_post_modal_content.tb-cTBfont-regular"); }
+    get modalPopup() { return this.page.locator(".tb_post_modal_modal_body"); }
+    get closePopup() { return this.page.locator(".tb_post_modal_close_btn"); }
+    get nextArrow() { return this.page.locator("//div[@aria-label='Next slide']"); }
+    get prevArrow() { return this.page.locator("//div[@aria-label='Go to last slide']"); }
+
     async getComputedStyles(element, properties) {
+        await this.page.waitForLoadState('domcontentloaded');
         return await element.evaluate((el, props) => {
             const styles = getComputedStyle(el);
             const result = {};
-            props.forEach(prop => {
-                result[prop] = styles[prop]; 
-            });
-            return result;  
+            props.forEach(prop => { result[prop] = styles[prop]; });
+            return result;
         }, properties);
     }
-
+    
     async validateFontStyles(element, expectedStyles, description) {
         const styleProps = ['fontFamily', 'color'];
         if (expectedStyles.fontSize) styleProps.push('fontSize');

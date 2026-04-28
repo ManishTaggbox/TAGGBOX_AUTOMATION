@@ -5,31 +5,29 @@ const fs = require('fs');
 class Shoponbio {
     constructor(page) {
         this.page = page;
-        this.addChannel = page.locator("//button[@aria-label='Add Channel']");
-        this.selectPublish = page.locator("(//button[@id='rule-action'])[1]");
-        this.selectShoponbio = page.locator("//span[normalize-space()='Shopon bio']");
-        this.publishbtn = page.locator('#web_save_btn')
-        this.emptyChannelNameErrorMsg = page.locator('.invalid-feedback');
-        this.enterChannelName = page.locator('#g_name');
-        this.sucessMsg = page.locator("//div[contains(text(),'Shopon created successfully.')]");
+        this.publishbtn = page.locator('#web_save_btn');
+        this.saveMsg = page.locator("//div[contains(text(),'Shopon updated successfully.')]");
+        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']");
+        this.shoponbioDeleteMsg = page.locator("//div[contains(text(),'Shopon deleted successfully.')]");
+    }
 
-        //Edit 
-        this.image = page.locator('.f-center.position-absolute.rounded-circle.h-20px.w-20px.p-0.fs-10.btn.btn-primary');
-        this.fileInput = page.locator('input[type="file"]').first();
-        this.bio = page.locator('#shopon_desc');
-        this.dark = page.locator("label[aria-label='Dark Mode']");
-        this.save = page.locator('#save_bio_btn');
-        this.saveMsg = page.locator("//div[contains(text(),'Shopon updated successfully.')]")
-        this.url = page.locator("//a[@id='shopon_url']");
+    // ✅ Getters — constructor ke bahar, class ke andar
+    get addChannel() { return this.page.locator("//button[@aria-label='Add Channel']"); }
+    get selectPublish() { return this.page.locator("(//button[@id='rule-action'])[1]"); }
+    get selectShoponbio() { return this.page.locator("//span[normalize-space()='Shopon bio']"); }
+    get emptyChannelNameErrorMsg() { return this.page.locator('.invalid-feedback'); }
+    get enterChannelName() { return this.page.locator('#g_name'); }
+    get sucessMsg() { return this.page.locator("//div[contains(text(),'Shopon created successfully.')]"); }
+    get image() { return this.page.locator('.f-center.position-absolute.rounded-circle.h-20px.w-20px.p-0.fs-10.btn.btn-primary'); }
+    get fileInput() { return this.page.locator('input[type="file"]').first(); }
+    get bio() { return this.page.locator('#shopon_desc'); }
+    get dark() { return this.page.locator("label[aria-label='Dark Mode']"); }
+    get save() { return this.page.locator('#save_bio_btn'); }
+    get url() { return this.page.locator("//a[@id='shopon_url']"); }
+    get editClick() { return this.page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]"); }
+    get delete() { return this.page.locator("//a[normalize-space()='Delete']"); }
 
-         //delete
-        this.editClick = page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]");
-        this.delete = page.locator("//a[normalize-space()='Delete']");
-        this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']")
-        this.shoponbioDeleteMsg = page.locator("//div[contains(text(),'Shopon deleted successfully.')]")
-
-}
-
+    // ✅ getAbsolutePath sahi jagah hai
     getAbsolutePath(relativePath) {
         const fullPath = path.resolve(__dirname, relativePath);
         if (!fs.existsSync(fullPath)) {
@@ -37,6 +35,7 @@ class Shoponbio {
         }
         return fullPath;
     }
+
 
     async uploadFile(input, filePath) {
         const fullPath = this.getAbsolutePath(filePath);

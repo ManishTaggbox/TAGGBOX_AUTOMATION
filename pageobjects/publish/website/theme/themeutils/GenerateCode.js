@@ -4,12 +4,13 @@ import { expect, test } from '@playwright/test';
 class GenerateCode {
   constructor(page) {
     this.page = page;
-    this.card = page.locator("(//div[@id='undefined_btn_'])[1]");
-    this.generateCodebtn = page.locator('#discardSetting');
-    this.embedCode = page.locator("//code[@id='embed_code_']");
     this.resultString = '';
     this.url = '';
   }
+
+    get card() { return this.page.locator("(//div[@id='undefined_btn_'])[1]"); }
+    get generateCodebtn() { return this.page.locator('#discardSetting'); }
+    get embedCode() { return this.page.locator("//code[@id='embed_code_']"); }
 
   async generateCode() {
     await test.step('Click Publish and Website menu', async () => {
@@ -41,8 +42,11 @@ class GenerateCode {
       this.url = `https://widget.taggbox.com/${this.widgetId}?website=true`;
       console.log('Navigating to:', this.url);
       await this.page.goto(this.url, { waitUntil: 'load' });
-      await this.page.waitForTimeout(3000);
-    });
+      await this.page.waitForTimeout(3000); 
+      await this.page.waitForLoadState('load');
+
+
+        });
   }
 }
 
