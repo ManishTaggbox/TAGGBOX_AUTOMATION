@@ -7,32 +7,33 @@ dotenv.config();
 
 const env = process.env.ENV || 'live';
 console.log(`🔧 Environment from .env: ${env}`);
+const password = process.env.ACCOUNT_PASSWORD;
+const loginType = process.env.LOGIN_TYPE || 'web';
 
-// ✅ All accounts in one place
 const accounts = {
   51: {
-    live: { emailId: 'manish.s+51@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
-    test: { emailId: 'manish.s+51@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
+    live: { emailId: process.env.ACCOUNT_51_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_51_EMAIL, password, loginType },
   },
   52: {
-    live: { emailId: 'manish.s+52@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
-    test: { emailId: 'manish.s+52@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
+    live: { emailId: process.env.ACCOUNT_52_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_52_EMAIL, password, loginType },
   },
   53: {
-    live: { emailId: 'manish.s+53@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
-    test: { emailId: 'manish.s+53@taggbox.com',  password: 'Taggbox@123', loginType: 'web' },
+    live: { emailId: process.env.ACCOUNT_53_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_53_EMAIL, password, loginType },
   },
   54: {
-    live: { emailId: 'manish.s+54@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
-    test: { emailId: 'manish.s+54@taggbox.com',  password: 'Taggbox@123', loginType: 'web' },
+    live: { emailId: process.env.ACCOUNT_54_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_54_EMAIL, password, loginType },
   },
   55: {
-    live: { emailId: 'manish.s+55@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
-    test: { emailId: 'manish.s+55@taggbox.com',  password: 'Taggbox@123', loginType: 'web' },
+    live: { emailId: process.env.ACCOUNT_55_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_55_EMAIL, password, loginType },
   },
   56: {
-    live: { emailId: 'manish.s+56@taggbox.com', password: 'Taggbox@123', loginType: 'web' },
-    test: { emailId: 'manish.s+56@taggbox.com',  password: 'Taggbox@123', loginType: 'web' },
+    live: { emailId: process.env.ACCOUNT_56_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_56_EMAIL, password, loginType },
   },
 };
 
