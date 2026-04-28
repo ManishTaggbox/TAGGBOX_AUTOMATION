@@ -44,6 +44,7 @@ jobs:
       - name: Run Playwright Tests
         run: npx playwright test tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard tests/autopilot 
         env:
+         CI: true
          ENV: ${{ secrets.ENV }}
          ACCOUNT_PASSWORD: ${{ secrets.ACCOUNT_PASSWORD }}
          ACCOUNT_51_EMAIL: ${{ secrets.ACCOUNT_51_EMAIL }}
