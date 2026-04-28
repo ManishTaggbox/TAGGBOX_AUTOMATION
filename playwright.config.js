@@ -21,7 +21,7 @@ const config = {
   testDir: './tests',
   timeout: 60_000,
   fullyParallel: false,
-  workers: isCI ? 4 : 1,        
+  workers: isCI ? 3 : 1,        
   retries: isCI ? 1 : 0,
   expect: {
     timeout: 10000,
