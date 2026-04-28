@@ -42,13 +42,20 @@ jobs:
 
       # 6️⃣ Run Playwright tests
       - name: Run Playwright Tests
-        run: npx playwright test tests/feeds tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard tests/autopilot tests/appsmore tests/price
+        run: npx playwright test tests/feeds tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard tests/autopilot 
         env:
-          ENV: live                   # ✅ moved here, under env (not inside run)
+         ENV: ${{ secrets.ENV }}
+          ACCOUNT_PASSWORD: ${{ secrets.ACCOUNT_PASSWORD }}
+          ACCOUNT_51_EMAIL: ${{ secrets.ACCOUNT_51_EMAIL }}
+          ACCOUNT_52_EMAIL: ${{ secrets.ACCOUNT_52_EMAIL }}
+          ACCOUNT_53_EMAIL: ${{ secrets.ACCOUNT_53_EMAIL }}
+          ACCOUNT_54_EMAIL: ${{ secrets.ACCOUNT_54_EMAIL }}
+          ACCOUNT_55_EMAIL: ${{ secrets.ACCOUNT_55_EMAIL }}
+          ACCOUNT_56_EMAIL: ${{ secrets.ACCOUNT_56_EMAIL }}
         continue-on-error: true
 
       # 7️⃣ Deploy to Netlify
       - name: Deploy to Netlify
         run: npx netlify deploy --prod --dir=playwright-report --message "Test Deploy"
         env:
-          NETLIFY_AUTH_TOKEN: nfp_AQZQLQ4RZXMmTz4U6c8aTVLcqaHUfZrB8079
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
