@@ -45,13 +45,13 @@ jobs:
         run: npx playwright test tests/productcatalog 
         env:
          ENV: ${{ secrets.ENV }}
-          ACCOUNT_PASSWORD: ${{ secrets.ACCOUNT_PASSWORD }}
-          ACCOUNT_51_EMAIL: ${{ secrets.ACCOUNT_51_EMAIL }}
-          ACCOUNT_52_EMAIL: ${{ secrets.ACCOUNT_52_EMAIL }}
-          ACCOUNT_53_EMAIL: ${{ secrets.ACCOUNT_53_EMAIL }}
-          ACCOUNT_54_EMAIL: ${{ secrets.ACCOUNT_54_EMAIL }}
-          ACCOUNT_55_EMAIL: ${{ secrets.ACCOUNT_55_EMAIL }}
-          ACCOUNT_56_EMAIL: ${{ secrets.ACCOUNT_56_EMAIL }}
+         ACCOUNT_PASSWORD: ${{ secrets.ACCOUNT_PASSWORD }}
+         ACCOUNT_51_EMAIL: ${{ secrets.ACCOUNT_51_EMAIL }}
+         ACCOUNT_52_EMAIL: ${{ secrets.ACCOUNT_52_EMAIL }}
+         ACCOUNT_53_EMAIL: ${{ secrets.ACCOUNT_53_EMAIL }}
+         ACCOUNT_54_EMAIL: ${{ secrets.ACCOUNT_54_EMAIL }}
+         ACCOUNT_55_EMAIL: ${{ secrets.ACCOUNT_55_EMAIL }}
+         ACCOUNT_56_EMAIL: ${{ secrets.ACCOUNT_56_EMAIL }}
         continue-on-error: true
 
       # 7️⃣ Deploy to Netlify
