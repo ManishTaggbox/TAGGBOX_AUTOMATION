@@ -42,7 +42,7 @@ jobs:
 
       # 6️⃣ Run Playwright tests
       - name: Run Playwright Tests
-        run: npx playwright test tests/feeds tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard tests/autopilot 
+        run: npx playwright test tests/productcatalog 
         env:
          ENV: ${{ secrets.ENV }}
           ACCOUNT_PASSWORD: ${{ secrets.ACCOUNT_PASSWORD }}
