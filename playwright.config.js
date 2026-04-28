@@ -14,14 +14,15 @@ const baseURLMap = {
 
 const baseURL = baseURLMap[env];
 console.log(`🔧 Playwright Config - Base URL: ${baseURL}`);
+const isCI = !!process.env.CI;
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
   testDir: './tests',
   timeout: 60_000,
   fullyParallel: false,
-  workers: 1,
-  retries: 1,
+  workers: isCI ? 3 : 1,        
+  retries: isCI ? 1 : 0,
   expect: {
     timeout: 10000,
   },
