@@ -3,21 +3,24 @@ import GenerateCode from '../themeutils/GenerateCode';
 import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 
 class ModernCardWebEmbed {
-  constructor(page) {
-    this.page = page;
+    constructor(page) {
+        this.page = page;
+    }
 
-    // Core locators
-    this.firstCard = page.locator("//div[@class='tb_mc_post_wrap_in']").first();
-    this.instagramIcon = this.firstCard.locator(".tb-instagram-default.tb__icon.tb_ico_default");
-    this.authorName = this.firstCard.locator(".tb_mc_authorname");
-    this.authorHandle = this.firstCard.locator(".tb_mc_username");
-    this.heartIcon = this.firstCard.locator(".tb_social_action_ico__.tb__icon.tb-heart-outline");
-    this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
-    this.modalPopup = page.locator(".tb_post_modal_modal_body");
-    this.closePopup = page.locator(".tb_post_modal_close_btn");
-  }
+    // ✅ Getters for locators - har baar fresh locator milega, stale element se bachne ke liye
+    get firstCard() { return this.page.locator("//div[@class='tb_mc_post_wrap_in']").first(); }
+    get instagramIcon() { return this.firstCard.locator(".tb-instagram-default.tb__icon.tb_ico_default"); }
+    get authorName() { return this.firstCard.locator(".tb_mc_authorname"); }
+    get authorHandle() { return this.firstCard.locator(".tb_mc_username"); }
+    get heartIcon() { return this.firstCard.locator(".tb_social_action_ico__.tb__icon.tb-heart-outline"); }
+    get modalContent() { return this.page.locator(".tb_post_modal_content.tb-cTBfont-regular"); }
+    get modalPopup() { return this.page.locator(".tb_post_modal_modal_body"); }
+    get closePopup() { return this.page.locator(".tb_post_modal_close_btn"); }
 
   async getComputedStyles(element, properties) {
+    // ✅ Page alive hai check karo
+    await this.page.waitForLoadState('domcontentloaded');
+
     return await element.evaluate((el, props) => {
       const styles = getComputedStyle(el);
       const result = {};
@@ -31,9 +34,9 @@ class ModernCardWebEmbed {
   async validateFontStyles(element, expectedStyles, description) {
     const styleProps = ['fontFamily', 'color'];
     if (expectedStyles.fontSize) styleProps.push('fontSize');
-    
+
     const styles = await this.getComputedStyles(element, styleProps);
-    
+
     console.log(`${description} font-family:`, styles.fontFamily);
     console.log(`${description} color:`, styles.color);
     if (styles.fontSize) console.log(`${description} size:`, styles.fontSize);
@@ -71,7 +74,7 @@ class ModernCardWebEmbed {
     await test.step('Check card border-radius', async () => {
       const borderStyles = await this.getComputedStyles(this.firstCard, [
         'borderTopLeftRadius',
-        'borderTopRightRadius', 
+        'borderTopRightRadius',
         'borderBottomRightRadius',
         'borderBottomLeftRadius'
       ]);
@@ -89,7 +92,7 @@ class ModernCardWebEmbed {
 
     await test.step('Check author name styles', async () => {
       await expect.soft(this.authorName).toHaveText('raisr_sanchi');
-      
+
       await this.validateFontStyles(this.authorName, {
         fontFamily: 'rochester',
         color: 'rgb(43, 43, 43)'
@@ -98,7 +101,7 @@ class ModernCardWebEmbed {
 
     await test.step('Check author handle styles', async () => {
       await expect.soft(this.authorHandle).toHaveText('@raisr_sanchi');
-      
+
       await this.validateFontStyles(this.authorHandle, {
         fontFamily: 'rochester',
         color: 'rgb(43, 43, 43)'
@@ -113,39 +116,41 @@ class ModernCardWebEmbed {
 
       await newPage.waitForLoadState();
       console.log("New tab opened with URL:", newPage.url());
-    //  expect.soft(newPage.url()).toBe('https://www.instagram.com/raisr_sanchi/');
       await newPage.close();
-    });
 
+      
+      await this.page.bringToFront();
+      await this.page.waitForLoadState('domcontentloaded');
+    });
     await test.step('Click card and validate popup styles', async () => {
       await this.firstCard.click();
-      
+
       await test.step('CTA Button Style ', async () => {
         const ctaButtonWebEmbed = new CtaButtonWebEmbed(this.page);
         await ctaButtonWebEmbed.ctaButtonWebEmbed();
       });
-      
+
       await expect.soft(this.modalContent).toBeVisible();
 
       await this.validateModalStyles(this.modalContent, this.modalPopup);
-      
+
       await this.closePopup.click();
     });
 
     await test.step('Compare card count before and after clicking See More', async () => {
       const seeMoreBtn = this.page.locator('.tb_see_more_btn');
       const cardLocator = this.page.locator("//div[@class='tb_mc_post_wrap_in']");
-      
+
       const cardsBefore = await cardLocator.count();
       console.log("Card count before clicking 'See More':", cardsBefore);
-      
+
       await seeMoreBtn.scrollIntoViewIfNeeded();
       await seeMoreBtn.click();
       await this.page.waitForTimeout(3000);
-      
+
       const cardsAfter = await cardLocator.count();
       console.log("Card count after clicking 'See More':", cardsAfter);
-      
+
       expect.soft(cardsBefore).not.toBe(cardsAfter);
     });
 

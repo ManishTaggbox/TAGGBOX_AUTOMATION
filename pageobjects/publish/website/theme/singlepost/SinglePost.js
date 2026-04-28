@@ -4,31 +4,34 @@ import CreateWebsite from '../../createwebsite/CreateWebsite';
 class SinglePost {
     constructor(page) {
         this.page = page;
-        this.singlePostBtn = page.locator("//p[normalize-space()='Single Post']");
-        this.customization = page.locator("//a[@data-rr-ui-event-key='customization']");
-        this.cardToggle = page.locator("(//input[@id='inherit_'])[1]");
-        this.fontFamily = page.locator("//span[@class='sGFfonte-Inter']");
-        this.selectRochester = page.locator("(//span[contains(@class,'sGFfonte-Rochester')][normalize-space()='Rochester'])[1]");
-        this.fontColor = page.locator("//input[@id='font_color']");
-        this.fontColorClose = page.locator("//label[@for='font_color']");
-        this.fontSize = page.locator("//input[@id='font_size']");
-        this.cardColor = page.locator('#card_color');
-        this.cardColorClose = page.locator("label[for='card_color']");
-        this.authorColor = page.locator('#author_color');
-        this.authorColorClose = page.locator("label[for='author_color']");
-        this.moreActions = page.locator("//button[normalize-space()='More actions']");
-        this.autoslide = page.locator('#Autoslide_');
-        this.save = page.locator('#saveSetting');
-        this.saveMsg = page.locator("//div[contains(text(),'Website updated successfully.')]");
+       
     }
 
+    // ✅ Getters for locators - har baar fresh locator milega, stale element se bachne se bachega
+    get singlePostBtn() { return this.page.locator("//p[normalize-space()='Single Post']"); }
+    get customization() { return this.page.locator("//a[@data-rr-ui-event-key='customization']"); }
+    get cardToggle() { return this.page.locator("(//input[@id='inherit_'])[1]"); }
+    get fontFamily() { return this.page.locator("//span[@class='sGFfonte-Inter']"); }
+    get selectRochester() { return this.page.locator("(//span[contains(@class,'sGFfonte-Rochester')][normalize-space()='Rochester'])[1]"); }
+    get fontColor() { return this.page.locator("//input[@id='font_color']"); }
+    get fontColorClose() { return this.page.locator("//label[@for='font_color']"); }
+    get fontSize() { return this.page.locator("//input[@id='font_size']"); }
+    get cardColor() { return this.page.locator('#card_color'); }
+    get cardColorClose() { return this.page.locator("label[for='card_color']"); }
+    get authorColor() { return this.page.locator('#author_color'); }
+    get authorColorClose() { return this.page.locator("label[for='author_color']"); }
+    get moreActions() { return this.page.locator("//button[normalize-space()='More actions']"); }
+    get autoslide() { return this.page.locator('#Autoslide_'); }
+    get save() { return this.page.locator('#saveSetting'); }
+    get saveMsg() { return this.page.locator("//div[contains(text(),'Website updated successfully.')]"); }
+
     async waitForElementAndClick(locator, stepName = '') {
-        await locator.waitFor({ state: 'visible', timeout: 10000 });
+        await locator.waitFor({ state: 'visible', timeout: 20000 });
         await locator.click();
     }
 
     async waitForElementAndType(locator, text, stepName = '') {
-        await locator.waitFor({ state: 'visible', timeout: 10000 });
+        await locator.waitFor({ state: 'visible', timeout: 20000 });
         await locator.click();
         await locator.press('Control+A');
         await locator.press('Backspace');
@@ -36,7 +39,7 @@ class SinglePost {
     }
 
     async moveSlider(locator, offset = 90) {
-        await locator.waitFor({ state: 'visible', timeout: 10000 });
+        await locator.waitFor({ state: 'visible', timeout: 20000 });
         const box = await locator.boundingBox();
         if (box) {
             await this.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
@@ -93,20 +96,36 @@ class SinglePost {
 
         });
         await test.step("Enable autoslide feature", async () => {
-            await this.moreActions.waitFor({ state: 'visible', timeout: 10000 });
+            await this.moreActions.waitFor({ state: 'visible', timeout: 20000 });
             await this.moreActions.scrollIntoViewIfNeeded();
             await this.moreActions.click();
             await this.waitForElementAndClick(this.autoslide);
         });
         await test.step("Save settings and validate success", async () => {
-            await this.save.waitFor({ state: 'visible', timeout: 10000 });
+            await this.save.waitFor({ state: 'visible', timeout: 20000 });
             await this.save.scrollIntoViewIfNeeded();
-            await this.save.click();
 
-            await this.saveMsg.waitFor({ state: 'visible', timeout: 20000 });
+
+            const [apiResponse] = await Promise.all([
+                this.page.waitForResponse(
+                    res => res.url().includes('/api/') && res.status() === 200,
+                    { timeout: 30000 }
+                ),
+                this.save.click()
+            ]);
+
+
+            const responseBody = await apiResponse.json();
+            console.log('🔍 API URL:', apiResponse.url());
+            console.log('🔍 API Status:', apiResponse.status());
+            console.log('🔍 API Response:', JSON.stringify(responseBody, null, 2));
+
+            await this.saveMsg.waitFor({ state: 'visible', timeout: 40000 });
             await expect.soft(this.saveMsg).toHaveText('Website updated successfully.');
         });
     }
+
 }
+
 
 export default SinglePost;

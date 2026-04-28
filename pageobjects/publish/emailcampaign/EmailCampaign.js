@@ -3,41 +3,38 @@ import { test, expect } from '@playwright/test';
 class EmailCampaign {
     constructor(page) {
         this.page = page;
-        this.addChannel = page.locator("//button[@aria-label='Add Channel']");
-        this.selectPublish = page.locator("(//button[@id='rule-action'])[1]");
-        this.selectEmailCampaign = page.locator("//span[normalize-space()='Email Campaign']");
         this.publishbtn = page.locator('#web_save_btn')
-        this.emptyChannelNameErrorMsg = page.locator('.invalid-feedback');
-        this.enterChannelName = page.locator('#g_name');
-        this.sucessMsg = page.locator("//div[contains(text(),'Email Campaign created successfully.')]");
-
         // Edit Email Campaign 
-        this.edit = page.locator('.flex-column.f-center.px-3.py-0.card-body');
-        this.spacing = page.locator("//input[@id='mail_range']");
-        this.layout = page.locator("//p[normalize-space()='2X3 Grid']");
-        this.saveAndPublish = page.locator("//button[@id='mail_save_btn']");
-        this.fillGridError = page.locator('#mail_select_e');
-        this.cards = page.locator("//div[@class='bg-gray-200 overflow-hidden position-relative']");
-        this.saveAndPublishMsg = page.locator("//div[contains(text(),'Email campaign updated successfully.')]");
-
         //Email 
-        this.email = page.locator("//button[@class='text-gray-700 fs-6 GetShareCode btn btn-link']");
-        this.add = page.locator("//button[normalize-space()='Add']");
-        this.validEmail = page.locator("//div[@class='invalid-feedback d-block']");
-        this.enterEmail = page.locator("//input[@placeholder='example@example.com']");
-        this.shareCode = page.locator("//button[normalize-space()='Share Code']");
-        this.emailSentMsg = page.locator("//div[contains(text(),'Code Successfully shared.')]");
-
         //Preview 
-        this.previewbtn = page.locator("//a[@id='left-tabs-example-tab-preview']");
-        this.padding = page.locator("//span[contains(@class, 'media_col')]");
-
         //delete
-        this.editClick = page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]");
-        this.delete = page.locator("//a[normalize-space()='Delete']");
         this.yesDeleteIT = page.locator("//button[normalize-space()='Yes, delete it!']")
-        this.emailCampaignDeleteMsg = page.locator("//div[contains(text(),'Email campaign deleted successfully.')]");
     }
+
+    get addChannel() { return this.page.locator("//button[@aria-label='Add Channel']"); }
+    get selectPublish() { return this.page.locator("(//button[@id='rule-action'])[1]"); }
+    get selectEmailCampaign() { return this.page.locator("//span[normalize-space()='Email Campaign']"); }
+    get emptyChannelNameErrorMsg() { return this.page.locator('.invalid-feedback'); }
+    get enterChannelName() { return this.page.locator('#g_name'); }
+    get sucessMsg() { return this.page.locator("//div[contains(text(),'Email Campaign created successfully.')]"); }
+    get edit() { return this.page.locator('.flex-column.f-center.px-3.py-0.card-body'); }
+    get spacing() { return this.page.locator("//input[@id='mail_range']"); }
+    get layout() { return this.page.locator("//p[normalize-space()='2X3 Grid']"); }
+    get saveAndPublish() { return this.page.locator("//button[@id='mail_save_btn']"); }
+    get fillGridError() { return this.page.locator('#mail_select_e'); }
+    get cards() { return this.page.locator("//div[@class='bg-gray-200 overflow-hidden position-relative']"); }
+    get saveAndPublishMsg() { return this.page.locator("//div[contains(text(),'Email campaign updated successfully.')]"); }
+    get email() { return this.page.locator("//button[@class='text-gray-700 fs-6 GetShareCode btn btn-link']"); }
+    get add() { return this.page.locator("//button[normalize-space()='Add']"); }
+    get validEmail() { return this.page.locator("//div[@class='invalid-feedback d-block']"); }
+    get enterEmail() { return this.page.locator("//input[@placeholder='example@example.com']"); }
+    get shareCode() { return this.page.locator("//button[normalize-space()='Share Code']"); }
+    get emailSentMsg() { return this.page.locator("//div[contains(text(),'Code Successfully shared.')]"); }
+    get previewbtn() { return this.page.locator("//a[@id='left-tabs-example-tab-preview']"); }
+    get padding() { return this.page.locator("//span[contains(@class, 'media_col')]"); }
+    get editClick() { return this.page.locator("(//i[@class='fa-regular fa-ellipsis-vertical me-0'])[1]"); }
+    get delete() { return this.page.locator("//a[normalize-space()='Delete']"); }
+    get emailCampaignDeleteMsg() { return this.page.locator("//div[contains(text(),'Email campaign deleted successfully.')]"); }
 
     async emailCampaign() {
         await test.step("Step 1: Create Email Campaign", async () => {

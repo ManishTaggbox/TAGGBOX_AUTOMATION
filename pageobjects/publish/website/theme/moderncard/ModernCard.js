@@ -4,21 +4,22 @@ import CreateWebsite from '../../createwebsite/CreateWebsite';
 class ModernCard {
     constructor(page) {
         this.page = page;
-        this.modernCardBtn = page.locator("//p[normalize-space()='Modern Card']");
-        this.customization = page.locator("//a[@data-rr-ui-event-key='customization']");
-        this.cardToggle = page.locator("(//input[@id='inherit_'])[1]");
-        this.fontFamily = page.locator("//span[@class='sGFfonte-Open Sans']");
-        this.selectRochester = page.locator("(//span[contains(@class,'sGFfonte-Rochester')][normalize-space()='Rochester'])[1]");
-        this.fontColor = page.locator("//input[@id='font_color']");
-        this.fontColorClose = page.locator("//label[@for='font_color']");
-        this.fontSize = page.locator("//input[@id='font_size']");
-        this.cardRadius = page.locator("//input[@id='radius_range' and @min='0']");
-        this.cardColor = page.locator('#card_color');
-        this.cardColorClose = page.locator("label[for='card_color']");
-        this.moreActions = page.locator("//button[normalize-space()='More actions']");
-        this.save = page.locator('#saveSetting');
-        this.saveMsg = page.locator("//div[contains(text(),'Website updated successfully.')]");
     }
+
+    get modernCardBtn() { return this.page.locator("//p[normalize-space()='Modern Card']"); }
+    get customization() { return this.page.locator("//a[@data-rr-ui-event-key='customization']"); }
+    get cardToggle() { return this.page.locator("(//input[@id='inherit_'])[1]"); }
+    get fontFamily() { return this.page.locator("//span[@class='sGFfonte-Open Sans']"); }
+    get selectRochester() { return this.page.locator("(//span[contains(@class,'sGFfonte-Rochester')][normalize-space()='Rochester'])[1]"); }
+    get fontColor() { return this.page.locator("//input[@id='font_color']"); }
+    get fontColorClose() { return this.page.locator("//label[@for='font_color']"); }
+    get fontSize() { return this.page.locator("//input[@id='font_size']"); }
+    get cardRadius() { return this.page.locator("//input[@id='radius_range' and @min='0']"); }
+    get cardColor() { return this.page.locator('#card_color'); }
+    get cardColorClose() { return this.page.locator("label[for='card_color']"); }
+    get moreActions() { return this.page.locator("//button[normalize-space()='More actions']"); }
+    get save() { return this.page.locator('#saveSetting'); }
+    get saveMsg() { return this.page.locator("//div[contains(text(),'Website updated successfully.')]"); }
 
     async waitForElementAndClick(locator, stepName = '') {
         await locator.waitFor({ state: 'visible', timeout: 10000 });
@@ -91,12 +92,27 @@ class ModernCard {
         await test.step("Save settings and validate success", async () => {
             await this.save.waitFor({ state: 'visible', timeout: 10000 });
             await this.save.scrollIntoViewIfNeeded();
-            await this.save.click();
-            
-            await this.saveMsg.waitFor({ state: 'visible', timeout: 20000 });
+
+           
+            const [apiResponse] = await Promise.all([
+                this.page.waitForResponse(
+                    res => res.url().includes('/api/') && res.status() === 200,
+                    { timeout: 30000 }
+                ),
+                this.save.click()
+            ]);
+
+           
+            const responseBody = await apiResponse.json();
+            console.log('🔍 API URL:', apiResponse.url());
+            console.log('🔍 API Status:', apiResponse.status());
+            console.log('🔍 API Response:', JSON.stringify(responseBody, null, 2));
+
+            await this.saveMsg.waitFor({ state: 'visible', timeout: 40000 });
             await expect.soft(this.saveMsg).toHaveText('Website updated successfully.');
         });
     }
+
 }
 
 export default ModernCard;

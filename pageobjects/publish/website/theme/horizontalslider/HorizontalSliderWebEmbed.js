@@ -5,16 +5,19 @@ import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 class HorizontalSliderWebEmbed {
     constructor(page) {
         this.page = page;
-        this.firstCard = page.locator("//div[@class='tb_hs_post_in tb_hs_post_ani']").first();
-        this.instagramIcon = this.firstCard.locator("//div[@class='tb-instagram-default tb__icon tb_ico_default']");
-        this.authorName = this.firstCard.locator(".tb_hs_authorname");
-        this.authorHandle = this.firstCard.locator(".tb_hs_username");
-        this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
-        this.modalPopup = page.locator(".tb_post_modal_modal_body");
-        this.closePopup = page.locator(".tb_post_modal_close_btn");
-        this.nextArrow = page.locator("//div[contains(@aria-label,'Next slide')]");
-        this.prevArrow = page.locator("//div[@aria-label='Previous slide']");
     }
+
+    get firstCard() { return this.page.locator("//div[@class='tb_hs_post_in tb_hs_post_ani']").first(); }
+    get instagramIcon() { return this.firstCard.locator("//div[@class='tb-instagram-default tb__icon tb_ico_default']"); }
+    get authorName() { return this.firstCard.locator(".tb_hs_authorname"); }
+    get authorHandle() { return this.firstCard.locator(".tb_hs_username"); }
+    get modalContent() { return this.page.locator(".tb_post_modal_content.tb-cTBfont-regular"); }
+    get modalPopup() { return this.page.locator(".tb_post_modal_modal_body"); }
+    get closePopup() { return this.page.locator(".tb_post_modal_close_btn"); }
+    get nextArrow() { return this.page.locator("//div[contains(@aria-label,'Next slide')]"); }
+    get prevArrow() { return this.page.locator("//div[@aria-label='Previous slide']"); }
+
+   
 
  
     async getComputedStyles(element, properties) {

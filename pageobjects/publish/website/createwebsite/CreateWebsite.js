@@ -3,12 +3,13 @@ import { test, expect } from '@playwright/test';
 class CreateWebsite {
     constructor(page) {
         this.page = page;
-        this.addChannel = page.locator("//button[@aria-label='Add Channel']");
-        this.publishbtn = page.locator('#web_save_btn');
-        this.emptyChannelNameErrorMsg = page.locator('.invalid-feedback');
-        this.enterChannelName = page.locator('#g_name');
-        this.successMsg = page.locator("//div[contains(text(),'Website created successfully.')]");
     }
+
+    get addChannel() { return this.page.locator("//button[@aria-label='Add Channel']"); }
+    get publishbtn() { return this.page.locator('#web_save_btn'); }
+    get emptyChannelNameErrorMsg() { return this.page.locator('.invalid-feedback'); }
+    get enterChannelName() { return this.page.locator('#g_name'); }
+    get successMsg() { return this.page.locator("//div[contains(text(),'Website created successfully.')]"); }
 
     async createWebsite(channelName) {
         await test.step("Step 1.1: Click 'Add Channel' button", async () => {

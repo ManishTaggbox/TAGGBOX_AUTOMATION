@@ -4,34 +4,35 @@ import CreateWebsite from '../../createwebsite/CreateWebsite';
 class CtaButton {
     constructor(page) {
         this.page = page;
-        this.productCta = page.locator("//a[@data-rr-ui-event-key='cta']");
-        this.toggleBtn = page.locator("(//input[@id='inherit_'])[2]");
-        this.text = page.locator('#cta_title');
-        this.fontColor = page.locator('#cate_font_color');
-        this.fontColorClose = page.locator("label[for='cate_font_color']");
-        this.fontSize = page.locator("(//input[@id='radius_range'])[3]");
-        this.products = page.locator("//button[normalize-space()='Products']");
-        this.productTitleColor = page.locator('#pro_title_col');
-        this.productTitleColorClose = page.locator("label[for='pro_title_col']");
-        this.radius = page.locator("(//input[@name='range'])[7]");
-        this.priceColor = page.locator('#price_color');
-        this.priceColorClose = page.locator("label[for='price_color']");
-        this.priceRadius = page.locator("(//input[@name='range'])[8]");
-        this.button = page.locator("//button[normalize-space()='Button']");
-        this.btnText = page.locator('#btn_text');
-        this.btnFontColor = page.locator('#shop_btn_color');
-        this.btnFontColorClose = page.locator("label[for='shop_btn_color']");
-        this.btnBackgroundColor = page.locator('#shop_btn_bg');
-        this.btnBackgroundColorClose = page.locator("label[for='shop_btn_bg']");
-        this.btnFontSize = page.locator('#shop_btn_size');
-        this.hotspot = page.locator("//button[normalize-space()='Hotspot']");
-        this.hotspotBG = page.locator('#hotspot_bg');
-        this.hotspotBGClose = page.locator("label[for='hotspot_bg']");
-        this.hotspotFontColor = page.locator('#hotspot_text_color');
-        this.hotspotFontColorClose = page.locator("label[for='hotspot_text_color']");
-        this.saveSetting = page.locator('#saveSetting');
-        this.saveMsg = page.locator("//div[contains(text(),'Website updated successfully.')]");
     }
+
+    get productCta() { return this.page.locator("//a[@data-rr-ui-event-key='cta']"); }
+    get toggleBtn() { return this.page.locator("(//input[@id='inherit_'])[2]"); }
+    get text() { return this.page.locator('#cta_title'); }
+    get fontColor() { return this.page.locator('#cate_font_color'); }
+    get fontColorClose() { return this.page.locator("label[for='cate_font_color']"); }
+    get fontSize() { return this.page.locator("(//input[@id='radius_range'])[3]"); }
+    get products() { return this.page.locator("//button[normalize-space()='Products']"); }
+    get productTitleColor() { return this.page.locator('#pro_title_col'); }
+    get productTitleColorClose() { return this.page.locator("label[for='pro_title_col']"); }
+    get radius() { return this.page.locator("(//input[@name='range'])[7]"); }
+    get priceColor() { return this.page.locator('#price_color'); }
+    get priceColorClose() { return this.page.locator("label[for='price_color']"); }
+    get priceRadius() { return this.page.locator("(//input[@name='range'])[8]"); }
+    get button() { return this.page.locator("//button[normalize-space()='Button']"); }
+    get btnText() { return this.page.locator('#btn_text'); }
+    get btnFontColor() { return this.page.locator('#shop_btn_color'); }
+    get btnFontColorClose() { return this.page.locator("label[for='shop_btn_color']"); }
+    get btnBackgroundColor() { return this.page.locator('#shop_btn_bg'); }
+    get btnBackgroundColorClose() { return this.page.locator("label[for='shop_btn_bg']"); }
+    get btnFontSize() { return this.page.locator('#shop_btn_size'); }
+    get hotspot() { return this.page.locator("//button[normalize-space()='Hotspot']"); }
+    get hotspotBG() { return this.page.locator('#hotspot_bg'); }
+    get hotspotBGClose() { return this.page.locator("label[for='hotspot_bg']"); }
+    get hotspotFontColor() { return this.page.locator('#hotspot_text_color'); }
+    get hotspotFontColorClose() { return this.page.locator("label[for='hotspot_text_color']"); }
+    get saveSetting() { return this.page.locator('#saveSetting'); }
+    get saveMsg() { return this.page.locator("//div[contains(text(),'Website updated successfully.')]"); }
 
     async moveSlider(locator, offset = 90) {
         await locator.waitFor({ state: 'visible', timeout: 5000 });

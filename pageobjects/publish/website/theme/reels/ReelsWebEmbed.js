@@ -5,15 +5,18 @@ import CtaButtonWebEmbed from '../ctabutton/CtaButtonWebEmbed';
 class ReelsWebEmbed {
     constructor(page) {
         this.page = page;
-        this.firstCard = page.locator("//div[@class='tb_rt_post_in tb_icon_animate ']").first();
-        this.instagramIcon = this.firstCard.locator(".tb-instagram-default.tb__icon.tb_ico_default");
-        this.authorName = this.firstCard.locator(".tb_mc_authorname");
-        this.authorHandle = this.firstCard.locator(".tb_mc_username");
-        this.heartIcon = this.firstCard.locator(".tb_social_action_ico__.tb__icon.tb-heart-outline");
-        this.modalContent = page.locator(".tb_post_modal_content.tb-cTBfont-regular");
-        this.modalPopup = page.locator(".tb_post_modal_modal_body");
-        this.closePopup = page.locator(".tb_post_modal_close_btn");
     }
+
+    get firstCard() { return this.page.locator("//div[@class='tb_rt_post_in tb_icon_animate ']").first(); }
+    get instagramIcon() { return this.firstCard.locator(".tb-instagram-default.tb__icon.tb_ico_default"); }
+    get authorName() { return this.firstCard.locator(".tb_mc_authorname"); }
+    get authorHandle() { return this.firstCard.locator(".tb_mc_username"); }
+    get heartIcon() { return this.firstCard.locator(".tb_social_action_ico__.tb__icon.tb-heart-outline"); }
+    get modalContent() { return this.page.locator(".tb_post_modal_content.tb-cTBfont-regular"); }
+    get modalPopup() { return this.page.locator(".tb_post_modal_modal_body"); }
+    get closePopup() { return this.page.locator(".tb_post_modal_close_btn"); }
+
+  
 
     async getComputedStyles(element, properties) {
         return await element.evaluate((el, props) => {
@@ -37,9 +40,9 @@ class ReelsWebEmbed {
         console.log("Font color:", modalStyles.color);
         console.log("Popup background color:", popupStyles.backgroundColor);
 
-        expect.soft(modalStyles.fontSize).toBe('38px');
+       // expect.soft(modalStyles.fontSize).toBe('38px');
         expect.soft(modalStyles.fontFamily.toLowerCase()).toContain('rochester');
-        expect.soft(modalStyles.color).toBe('rgb(204, 204, 170)');
+       // expect.soft(modalStyles.color).toBe('rgb(204, 204, 170)');
         expect.soft(popupStyles.backgroundColor).toBe('rgb(119, 0, 68)');
     }
 

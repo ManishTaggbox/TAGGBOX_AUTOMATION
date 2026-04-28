@@ -3,11 +3,12 @@ import { test, expect } from '@playwright/test';
 class CtaButtonWebEmbed {
   constructor(page) {
     this.page = page;
-    this.heading = page.locator('.tb_pro__heading');
-    this.title = page.locator('.tb_pro__title.tb-cTBfont-None').first();
-    this.price = page.locator('.tb_pro__price.tb-cTBfont-regular').first();
-    this.button = page.locator('.tb_pro__btn.tb-cTBfont-regular').first();
   }
+
+    get heading() { return this.page.locator('.tb_pro__heading'); }
+    get title() { return this.page.locator('.tb_pro__title.tb-cTBfont-None').first(); }
+    get price() { return this.page.locator('.tb_pro__price.tb-cTBfont-regular').first(); }
+    get button() { return this.page.locator('.tb_pro__btn.tb-cTBfont-regular').first(); }
 
   async ctaButtonWebEmbed() {
     await test.step('Check .tb_pro__heading styles inside popup', async () => {
