@@ -2,10 +2,8 @@ import { test, expect } from '@playwright/test';
 import path from 'path';
 import fs from 'fs';
 
-class GrowthPlan
-{
-    constructor(page) 
-    {
+class GrowthPlan {
+    constructor(page) {
         this.page = page;
         this.editBtn = page.locator('.fa-regular.fa-pen-to-square');
         this.growthPlanPrice = page.locator('.price').nth(1);
