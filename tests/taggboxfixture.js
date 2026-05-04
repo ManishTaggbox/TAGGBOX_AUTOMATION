@@ -70,6 +70,24 @@ const buildFixtures = (accountIndex) => ({
     console.log(`✅ [${env.toUpperCase()}] [Account +${accountIndex}] Wall ID received:`, wallId);
     await use(wallId);
   }, { scope: 'worker' }],
+
+   // ✅ cookie banner handle fixture
+  page: async ({ page }, use) => {
+    page.on('load', async () => {
+      try {
+        const acceptBtn = page.locator("//button[normalize-space()='Accept']");
+        const isVisible = await acceptBtn.isVisible({ timeout: 15000 });
+        if (isVisible) {
+          await acceptBtn.click();
+          console.log('🍪 Cookie accepted');
+        }
+      } catch {
+         console.log('🍪 Cookie Not Accepted');
+      }
+    });
+
+    await use(page);
+  },
 });
 
 // ✅ Export a separate test instance per account
