@@ -35,6 +35,10 @@ const accounts = {
     live: { emailId: process.env.ACCOUNT_56_EMAIL, password, loginType },
     test: { emailId: process.env.ACCOUNT_56_EMAIL, password, loginType },
   },
+   57: {
+    live: { emailId: process.env.ACCOUNT_57_EMAIL, password, loginType },
+    test: { emailId: process.env.ACCOUNT_57_EMAIL, password, loginType },
+  },
 };
 
 // ✅ Factory: picks correct utility class based on env
@@ -75,4 +79,5 @@ export const test53 = base.extend(buildFixtures(53));
 export const test54 = base.extend(buildFixtures(54));
 export const test55 = base.extend(buildFixtures(55));
 export const test56 = base.extend(buildFixtures(56));
+export const test57 = base.extend(buildFixtures(57));
 export const expect = base.expect;
