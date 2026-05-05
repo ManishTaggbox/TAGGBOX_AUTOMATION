@@ -43,7 +43,7 @@ jobs:
       # 6️⃣ Run Playwright tests
       - name: Run Playwright Tests
         id: run-tests
-        run: npx playwright test tests/productcatalog
+        run: npx playwright test tests/feeds tests/productcatalog tests/profile tests/publish tests/moderation tests/login tests/dashboard
         env:
           CI: true
           ENV: ${{ secrets.ENV }}
