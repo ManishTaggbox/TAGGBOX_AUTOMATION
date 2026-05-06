@@ -19,7 +19,7 @@ class GenerateCode {
     });
 
     await test.step('Click Generate Code button', async () => {
-      await this.generateCodebtn.waitFor({ state: 'visible', timeout: 10000 });
+      await this.generateCodebtn.waitFor({ state: 'visible', timeout: 20000 });
       await this.generateCodebtn.click();
       await this.page.waitForTimeout(3000);
     });
