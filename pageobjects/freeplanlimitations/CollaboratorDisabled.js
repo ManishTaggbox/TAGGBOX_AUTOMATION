@@ -13,18 +13,22 @@ class CollaboratorDisabled {
     async verifyCollaboratorDisabled() {
 
         await test.step("Click to 'Profile' icon", async () => {
+            await this.profileIcon.waitFor({state: 'visible', timeout: 5000});
             await this.profileIcon.click();
         });
 
         await test.step("Click to 'My Profile' option", async () => {
+            await this.myProfileOption.waitFor({state: 'visible', timeout: 5000});
             await this.myProfileOption.click();
         });
 
         await test.step("Click to 'Collaborators' tab", async () => {
+            await this.collaboratorsTab.waitFor({state: 'visible', timeout: 5000});
             await this.collaboratorsTab.click();
         });
 
         await test.step("Verify 'Explore Pricing' button is displayed", async () => {
+            await this.pricingBtn.waitFor({state: 'visible', timeout: 5000});
             await expect(this.pricingBtn).toBeEnabled();
             await this.pricingBtn.click();
         });
@@ -50,6 +54,8 @@ class CollaboratorDisabled {
                 status: 'success',
                 activePlan: 'Free',
             });
+
+            console.log('productPlanDetails API Response:', responseBody);
         });           
     }
 }

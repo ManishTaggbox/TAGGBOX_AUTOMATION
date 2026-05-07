@@ -13,18 +13,22 @@ class AutoPilotDisabled {
     async verifyAutoPilotDisabled() {
 
         await test.step("Click to 'Edit Gallery' button", async () => {
+            await this.editGalleryBtn.waitFor({state: 'visible', timeout: 5000});
             await this.editGalleryBtn.click();
         });
 
         await test.step("Click to 'Auto Pilot' option", async () => {
+            await this.autoPilotOption.waitFor({state: 'visible', timeout: 5000});
             await this.autoPilotOption.click();
         });
         
         await test.step("Verify 'Upgrade Now' is displayed", async () => {
+            await this.upgradeNowBtn.waitFor({state: 'visible', timeout: 5000});
             await expect(this.upgradeNowBtn).toHaveText('Upgrade Now');
         });
 
         await test.step("Click to 'Upgrade Now' button", async () => {
+            await this.upgradeNowBtn.waitFor({state: 'visible', timeout: 5000});
             await expect(this.upgradeNowBtn).toBeEnabled();
             await this.upgradeNowBtn.click();
         });
@@ -50,6 +54,8 @@ class AutoPilotDisabled {
                 status: 'success',
                 activePlan: 'Free',
             });
+
+            console.log('productPlanDetails API Response:', responseBody);
         });         
     }
 }
