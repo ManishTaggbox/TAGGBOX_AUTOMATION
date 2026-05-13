@@ -14,10 +14,12 @@ class GalleryLimit {
     async verifyGalleryLimit() {
 
         await test.step("Click to 'Add Gallery' button", async () => {
+            await this.addGalleryBtn.waitFor({state: 'visible', timeout: 5000});
             await this.addGalleryBtn.click();
         });
 
         await test.step("Enter gallery name and save", async () => {
+            await this.galleryNameInput.waitFor({state: 'visible', timeout: 5000});
             await this.galleryNameInput.fill('Test Gallery');
         });
 
@@ -40,14 +42,18 @@ class GalleryLimit {
                 responseStatus: 'error',
                 responseMessage: 'Upgrade to create more galleries.!'
             });
+
+            console.log('addUpdate API Response:', responseBody);
         });
 
         await test.step("Verify upgrade prompt is displayed", async () => {
+            await this.upgradeTitle.waitFor({state: 'visible', timeout: 5000});
             await expect(this.upgradeTitle).toBeVisible();
             await expect(this.upgradeTitle).toHaveText('Upgrade to Add More Galleries');
         });
 
         await test.step("Click to 'Upgrade Now' button", async () => {
+            await this.upgradeBtn.waitFor({state: 'visible', timeout: 5000});
             await this.upgradeBtn.click();
         });
 
