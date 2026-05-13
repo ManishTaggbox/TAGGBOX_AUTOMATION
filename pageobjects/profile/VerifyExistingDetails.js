@@ -6,7 +6,6 @@ class VerifyExistingDetails {
         this.name = page.locator('.fw-bold.fs-8.profile_name');
         this.emailAddress = page.locator(".profile_email");
         this.fullName = page.locator(".profile_name").last();
-        //this.emailAddress = page.locator(".profile_email").last();
         this.verifyTag = page.locator(".badge-light-success");
     }
 
