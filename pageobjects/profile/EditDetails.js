@@ -79,7 +79,7 @@ class EditDetails
 
         await test.step("Step 8: Fill full name field", async () => 
         {
-            await this.fullName.fill('Manish Somani');
+            await this.fullName.fill('Shristy Sharma');
         });
 
         await test.step("Step 9: Click on first arrow icon to open industry dropdown", async () => 
