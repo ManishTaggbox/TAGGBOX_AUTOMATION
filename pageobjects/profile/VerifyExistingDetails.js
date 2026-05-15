@@ -24,8 +24,8 @@ class VerifyExistingDetails {
             await expect.soft(this.emailAddress.first()).toBeVisible();
         });
 
-        await test.step("Step 4: Verify email text is 'shristy+01@taggbox.com'", async () => {
-            await expect.soft(this.emailAddress.first()).toHaveText('shristy+01@taggbox.com');
+        await test.step("Step 4: Verify email text is 'qauser798+01@gmail.com'", async () => {
+            await expect.soft(this.emailAddress.first()).toHaveText('qauser798+01@gmail.com');
         });
 
         await test.step("Step 5: Verify full name element is visible", async () => {
@@ -42,8 +42,8 @@ class VerifyExistingDetails {
             await expect.soft(this.emailAddress.last()).toBeVisible();
         });
 
-        await test.step("Step 8: Verify email address text is 'shristy+01@taggbox.com'", async () => {
-            await expect.soft(this.emailAddress.last()).toHaveText('shristy+01@taggbox.com');
+        await test.step("Step 8: Verify email address text is 'qauser798+01@gmail.com'", async () => {
+            await expect.soft(this.emailAddress.last()).toHaveText('qauser798+01@gmail.com');
         });
 
         await test.step("Step 9: Verify verification tag is visible", async () => {
