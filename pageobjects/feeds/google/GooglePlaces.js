@@ -18,11 +18,11 @@ class GooglePlaces {
             await this.typeAddress.fill(GOOGLE.GOOGLEPLACE);
         });
 
-        await test.step('Step 2: Wait 2 seconds for UI update', async () => {
-            await this.page.waitForTimeout(2000);
+        await test.step('Step 2: Wait 5 seconds for UI update', async () => {
+            await this.page.waitForTimeout(5000);
         });
 
-        await test.step('Step 3: Click the "Create Feed" button', async () => {
+        await test.step('Step 3: Select the address from dropdown list', async () => {
             await this.selectAddress.click();
         });
 
@@ -38,8 +38,8 @@ class GooglePlaces {
             await this.createFeedBtn.click();
         });
 
-        await test.step('Step 7: Wait 25 seconds for Content Gallery to load', async () => {
-            await this.page.waitForTimeout(25000);
+        await test.step('Step 7: Wait 30 seconds for Content Gallery to load', async () => {
+            await this.page.waitForTimeout(30000);
         });
 
         await test.step('Step 8: Proceed with feed management if Content Gallery is loaded', async () => {

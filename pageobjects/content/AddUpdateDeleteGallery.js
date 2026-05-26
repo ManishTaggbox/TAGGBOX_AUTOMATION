@@ -11,7 +11,7 @@ class AddNewGallery
         this.galleryName = page.locator('#g_name');
         this.successMsg = page.locator("//div[contains(text(),'Your Gallery Created Successfully.!')]");
         this.contentgallery = page.locator("//span[contains(text(),'Content Gallery')]");
-        this.options = page.locator("//button[@class='arrow_disabled dropdown-toggle border-0 d-inline-flex py-1 px-3 dropdown-toggle btn btn-secondary']").first();
+        this.threeDotsIcon = page.locator("//div[@class='dropdown']").first();
         this.rename = page.locator("//a[normalize-space()='Rename']");
         this.update = page.locator('#con_update_btn');
         this.updateMsg = page.locator("//div[contains(text(),'Your Gallery Updated Successfully.!')]");
@@ -73,7 +73,7 @@ class AddNewGallery
 
         await test.step("Step 8: Rename gallery", async () => 
         {
-            await this.options.click();
+            await this.threeDotsIcon.click();
             await this.rename.waitFor({ state: 'visible' });
             await this.rename.click();
             await this.clearAndFillGalleryName('Shristy Taggbox');
@@ -83,7 +83,7 @@ class AddNewGallery
 
         await test.step("Step 9: Delete gallery", async () => 
         {
-            await this.options.click();
+            await this.threeDotsIcon.click();
             await this.deleteGallery.waitFor({ state: 'visible' });
             await this.deleteGallery.click();
             await this.yesDeleteGallery.waitFor({ state: 'visible' });
