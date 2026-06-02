@@ -18,7 +18,7 @@ class EditDetails
         this.designationInput = page.locator("(//div[contains(text(),'Social Media Manager')])[1]");
         this.successMsg = page.locator('//div[text()="Profile Updated ."]');
         this.arrowIcon = page.locator('.css-8mmkcg');
-        this.editIcon = page.locator('//button[@class="btn-active-primary my-1 btn btn-icon btn-sm"]');
+        this.editIcon = page.locator('//button[@class="my-1 btn btn-icon btn-sm"]');
         this.browse = page.locator('(//input[@type="file"])[1]');
     }
 
@@ -111,7 +111,7 @@ class EditDetails
             await this.designationInput.click();
         });
 
-        await test.step("Step 15: Click on first edit icon to open profile picture upload", async () => 
+        await test.step("Step 14: Click on first edit icon to open profile picture upload", async () => 
         {
             await this.editIcon.first().waitFor({state: 'visible', timeout: 5000});
             await this.editIcon.first().click();

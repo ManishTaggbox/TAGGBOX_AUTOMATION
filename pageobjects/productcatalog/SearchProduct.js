@@ -9,8 +9,8 @@ class SearchProduct
         this.productSearchResult = page.locator('//span[text()="Apple iPhone 12"]');
         this.searchClear = page.locator('#search_spinner');
         this.skuSearchResult = page.locator('//span[text()="YX3901"]');
-        this.dropdownArrow = page.locator('.css-8mmkcg');
-        this.skuOption = page.locator('//div[text()="SKU"]');
+        this.dropdownArrow = page.locator("#search-type-dropdown");
+        this.skuOption = page.locator('//a[text()="SKU"]');
     }
 
     async searchProduct() 

@@ -11,7 +11,7 @@ class AddNewGallery
         this.galleryName = page.locator('#g_name');
         this.successMsg = page.locator("//div[contains(text(),'Your Gallery Created Successfully.!')]");
         this.contentgallery = page.locator("//span[contains(text(),'Content Gallery')]");
-        this.threeDotsIcon = page.locator("//div[@class='dropdown']").first();
+        this.threeDotsIcon = page.locator("(//div[@class='dropdown'])[2]");
         this.rename = page.locator("//a[normalize-space()='Rename']");
         this.update = page.locator('#con_update_btn');
         this.updateMsg = page.locator("//div[contains(text(),'Your Gallery Updated Successfully.!')]");
