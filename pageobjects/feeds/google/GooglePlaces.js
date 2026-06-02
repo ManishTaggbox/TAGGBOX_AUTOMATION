@@ -7,7 +7,8 @@ class GooglePlaces {
     constructor(page) {
         this.page = page;
         this.typeAddress = page.locator("//input[@placeholder='Type address']");
-        this.selectAddress = page.locator("//*[text()='Taggbox, Queens Road, Vidyut Nagar B, Neelkanth Colony, Vidhyut Nagar, Jaipur, Rajasthan, India']");
+        //this.selectAddress = page.locator("//*[text()='Taggbox, Queens Road, Vidyut Nagar B, Neelkanth Colony, Vidhyut Nagar, Jaipur, Rajasthan, India']");
+        this.selectAddress = page.locator("//a[@data-item='place']");
         this.createFeedBtn = page.locator('#create_feed');
     }
 
@@ -18,8 +19,8 @@ class GooglePlaces {
             await this.typeAddress.fill(GOOGLE.GOOGLEPLACE);
         });
 
-        await test.step('Step 2: Wait 5 seconds for UI update', async () => {
-            await this.page.waitForTimeout(5000);
+        await test.step('Step 2: Wait 2 seconds for UI update', async () => {
+            await this.page.waitForTimeout(2000);
         });
 
         await test.step('Step 3: Select the address from dropdown list', async () => {

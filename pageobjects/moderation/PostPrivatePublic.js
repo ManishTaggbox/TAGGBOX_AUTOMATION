@@ -13,7 +13,7 @@ class PostPrivatePublic
         this.allCheckbox = page.locator('#select_all_');
         this.privateAllBtn = page.locator('//button[contains(@class,"btn-danger")]');
         this.continueBtn = page.locator('//button[contains(@class,"swal2-confirm")]');
-        this.publicAllBtn = page.locator('//button[contains(@class,"btn-success")]');  
+        this.publicAllBtn = page.locator('(//button[contains(@class,"btn-public")])[1]');  
         this.publicPostsCount = page.locator('//a[text()="Public"]//span');
         this.publicTab = page.locator('//a[text()="Public"]');
         this.publicBtn = page.locator('//button[text()="Public"]');
@@ -43,7 +43,7 @@ class PostPrivatePublic
         await test.step("Step 4: Assert private post botton", async () => 
         {
             const bgColor = await this.privateBtn.first().evaluate(el => getComputedStyle(el).backgroundColor);
-            expect.soft(bgColor).toBe('rgb(229, 28, 0)'); 
+            expect.soft(bgColor).toBe('rgb(239, 68, 68)'); 
         });
 
         await test.step("Step 5: Go to private section", async () => 

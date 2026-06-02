@@ -21,7 +21,7 @@ class AddGallery
 
         // Delete Gallery
         this.viewAllBtn = page.locator('//a[@href="/content"]'); 
-        this.threeDotsIcon = page.locator("//button[@class='arrow_disabled dropdown-toggle border-0 d-inline-flex py-1 px-3 dropdown-toggle btn btn-secondary']");
+        this.threeDotsIcon = page.locator('//button[@aria-label="more"]');
         this.deleteOption = page.locator('//a[text()="Delete"]');
         this.deleteConfirmBtn = page.locator('//button[@aria-label="delete_yes"]');
     }
