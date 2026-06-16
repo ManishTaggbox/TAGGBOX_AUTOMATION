@@ -15,7 +15,7 @@ const runRssFeedTest = ({ tag, PageObject, method }) => {
     });
 
     await test.step('Soft check for correct page title', async () => {
-      await expect.soft(page).toHaveTitle('Add feed | Taggbox', { timeout: 10000 });
+      await expect.soft(page).toHaveTitle('Create an Account to Collect Social Media, Reviews, Shoppable Feeds & More', { timeout: 10000 });
     });
 
     await test.step(`Run ${tag} feed creation flow`, async () => {

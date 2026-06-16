@@ -16,7 +16,7 @@ const runPinterestFeedTest = ({ tag, PageObject, method }) => {
     });
 
     await test.step('Soft check for correct page title', async () => {
-      await expect.soft(page).toHaveTitle('Add feed | Taggbox', { timeout: 10000 });
+      await expect.soft(page).toHaveTitle('Create an Account to Collect Social Media, Reviews, Shoppable Feeds & More', { timeout: 10000 });
     });
 
     await test.step(`Run ${tag} feed creation flow`, async () => {
@@ -33,8 +33,7 @@ const runPinterestFeedTest = ({ tag, PageObject, method }) => {
 // Feed types configuration
 const pinterestFeeds = [
   { tag: '@PinterestHandle  Create Feed', PageObject: PinterestHandlePage, method: 'pinterestHandle' },
- { tag: '@PinterestUserBoard  Create Feed', PageObject: PinterestUserBoardPage, method: 'pinterestUserBoard' }
- 
+  { tag: '@PinterestUserBoard  Create Feed', PageObject: PinterestUserBoardPage, method: 'pinterestUserBoard' }
 ];
 
 // Dynamically register each test

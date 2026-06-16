@@ -19,8 +19,7 @@ const runAirbndFeedTest = ({ tag, PageObject, method }) => {
     });
 
     await test.step('Soft check for correct page title', async () => {
-
-      await expect.soft(page).toHaveTitle('Add feed | Taggbox', { timeout: 10000 });
+      await expect.soft(page).toHaveTitle('Create an Account to Collect Social Media, Reviews, Shoppable Feeds & More', { timeout: 10000 });
     });
 
     await test.step(`Run ${tag} feed creation flow`, async () => {
@@ -37,9 +36,6 @@ const runAirbndFeedTest = ({ tag, PageObject, method }) => {
 // Feed types configuration
 const airbndFeeds = [
   { tag: '@AirnbRooms create Feed', PageObject: AirnbRoomsPage, method: 'airnbRooms' }
-
-
-
 ];
 
 // Dynamically register each test

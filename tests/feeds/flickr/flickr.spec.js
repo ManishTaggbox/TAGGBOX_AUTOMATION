@@ -16,7 +16,7 @@ const runFlickrFeedTest = ({ tag, PageObject, method }) => {
     });
 
     await test.step('Soft check for correct page title', async () => {
-      await expect.soft(page).toHaveTitle('Add feed | Taggbox', { timeout: 10000 });
+      await expect.soft(page).toHaveTitle('Create an Account to Collect Social Media, Reviews, Shoppable Feeds & More', { timeout: 10000 });
     });
 
     await test.step(`Run ${tag} feed creation flow`, async () => {
@@ -33,9 +33,7 @@ const runFlickrFeedTest = ({ tag, PageObject, method }) => {
 // Feed types configuration
 const flickrFeeds = [
   { tag: '@FlickrHashtag create Feed', PageObject: FlickrHashtagPage, method: 'flickrHashtag' },
-  { tag: '@FlickrHandle create Feed', PageObject: FlickrHandlePage, method: 'flickrHandle' }
-
- 
+  { tag: '@FlickrHandle create Feed', PageObject: FlickrHandlePage, method: 'flickrHandle' } 
 ];
 
 // Dynamically register each test

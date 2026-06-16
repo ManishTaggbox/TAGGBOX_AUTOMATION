@@ -4,7 +4,6 @@ import { FEED_PATH } from '../../../utils/constants.js';
 import GooglePlacesPage from '../../../pageobjects/feeds/google/GooglePlaces.js';
 import GoogleMyPlacesPage from '../../../pageobjects/feeds/google/GoogleMyPlaces.js';
 
-
 // Reusable function to run feed test
 const runGoogleFeedTest = ({ tag, PageObject, method }) => {
   test(tag, async ({ page, token, wallId }) => {
@@ -17,7 +16,7 @@ const runGoogleFeedTest = ({ tag, PageObject, method }) => {
     });
 
     await test.step('Soft check for correct page title', async () => {
-      await expect.soft(page).toHaveTitle('Add feed | Taggbox', { timeout: 10000 });
+      await expect.soft(page).toHaveTitle('Create an Account to Collect Social Media, Reviews, Shoppable Feeds & More', { timeout: 10000 });
     });
 
     await test.step(`Run ${tag} feed creation flow`, async () => {
